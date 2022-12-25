@@ -218,9 +218,9 @@ img{
 .home__name{
     font-size: var(--biggest-font-size);
 }
-.home__img(
+.home__img{
     width:160px;
-)
+}
 .home__handle{
     justify-self: center;
     width: 190px;
@@ -284,7 +284,7 @@ img{
 .home__scroll-icon{
     font-size: 1.2rem;
 }
-home__scroll-name{
+.home__scroll-name{
     font-size: var(--smaller-font-size);
     transform: rotate(90deg);
 }
@@ -390,3 +390,38 @@ home__scroll-name{
 .skills__level{
     font-size: var(--tiny-font-size);
 }
+
+/*========================================== services ==================================================*/
+.services__container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding-top: 1rem;
+}
+.services__card {
+    background-color: var(--container-color);
+    padding: 3rem 1.5rem 1.5rem;
+    border-radius: 1rem;
+}
+.services__title{
+    font-size: var(--h3-font-size);
+    margin-bottom: 2.5rem;
+}
+.services__button{
+    color: var(--first-color);
+    font-size: var(--small-font-size);
+    display: flex;
+    align-items: center;
+    column-gap: .25rem;
+    cursor: pointer;
+}
+.services__button:hover .services__icon{
+    transform: translateX(.25rem);
+}
+.services__icon{
+    font-size: 1rem;
+    transition: .4s;
+}
+/*==========================================Services modal ===================================================*/
+
+/*========================================== Active modal ====================================================*/
+
