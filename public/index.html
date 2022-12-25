@@ -15,6 +15,8 @@
     <link rel="shortcut icon" href="/static/images/favIcon.png" type="image/x-icon">
     <!-----------------------------------Boxi Icons-------------------------------->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-----------------------------------Swiper css-------------------------------->
+    <link rel="stylesheet" href="/static/css/swiper-bundle.min.css" />
     <title>Shawal Mbalire Portfolio</title>
 </head>
 
@@ -467,12 +469,106 @@
 
         <!-------------------------------------Work --------------------------------->
         <section class="work section" id="work">
+            <span class="section__subtitle">My Portfolio</span>
+            <h2 class="section__title">Recent Works</h2>
+            <div class="work__filters">
+                <span class="work__item active-work" data-filter="all">All</span>
+                <span class="work__item" data-filter=".python">Python</span>
+                <span class="work__item" data-filter=".embedded .">Embedded Systems</span>
+                <span class="work__item" data-filter=".blockchain">Blockchain</span>
+                <span class="work__item" data-filter=".web">Web 2.0</span>
+            </div>
+
+            <div class="work__container container grid">
+
+                <div class="work__card mix web">
+                    <img src="/static/images/favIcon.png" alt="" class="work__img">
+                    <h3 class="work__title">Web 2.0 development/h3>
+                    <a href="#" class="work__button">Demo
+                        <i class="bx bx-right-arrow-alt work__icon"></i>
+                    </a>
+                </div>
+
+                <div class="work__card mix blockchain">
+                    <img src="/static/images/favIcon.png" alt="" class="work__img">
+                    <h3 class="work__title">Web 3.0 development</h3>
+                    <a href="#" class="work__button">Demo
+                        <i class="bx bx-right-arrow-alt work__icon"></i>
+                    </a>
+                </div>
+
+                <div class="work__card mix embedded" >
+                    <img src="/static/images/favIcon.png" alt="" class="work__img">
+                    <h3 class="work__title">PCB Design Embedded Systems</h3>
+                    <a href="#" class="work__button">Demo
+                        <i class="bx bx-right-arrow-alt work__icon"></i>
+                    </a>
+                </div>
+
+                <div class="work__card mix python" >
+                    <img src="/static/images/favIcon.png" alt="" class="work__img">
+                    <h3 class="work__title">Data Science</h3>
+                    <a href="#" class="work__button">Demo
+                        <i class="bx bx-right-arrow-alt work__icon"></i>
+                    </a>
+                </div>
+
+                <div class="work__card mix" >
+                    <img src="/static/images/favIcon.png" alt="" class="work__img">
+                    <h3 class="work__title">Leadership</h3>
+                    <a href="#" class="work__button">Demo
+                        <i class="bx bx-right-arrow-alt work__icon"></i>
+                    </a>
+                </div>
+
+                <div class="work__card mix" >
+                    <img src="/static/images/favIcon.png" alt="" class="work__img">
+                    <h3 class="work__title">Hackathons</h3>
+                    <a href="#" class="work__button">Demo
+                        <i class="bx bx-right-arrow-alt work__icon"></i>
+                    </a>
+                </div>
+
+            </div>
 
         </section>
 
         <!-------------------------------------Testimonials ------------------------->
         <section class="testimonials section" id="testimonials">
+            <span class="section__subtitle">My clients say</span>
+            <h2 class="section__title">Testimonials</h2>
 
+            <div class="testimonial__container container swiper">
+                <div class="swiper-wrapper">
+
+                    <div class="testimonial__card swiper-slide">
+                        <img src="/static/images/shafrat.jpg" alt="" class="testimonial__img">
+                        <h3 class="testimonial__name">John Doe</h3>
+                        <p class="testimonial__description">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.
+                        </p>
+                    </div>
+
+                    <div class="testimonial__card swiper-slide">
+                        <img src="/static/images/shafrat.jpg" alt="" class="testimonial__img">
+                        <h3 class="testimonial__name">Jane Doe</h3>
+                        <p class="testimonial__description">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.
+                        </p>
+                    </div>
+
+                    <div class="testimonial__card swiper-slide">
+                        <img src="/static/images/shafrat.jpg" alt="" class="testimonial__img">
+                        <h3 class="testimonial__name">Jack Doe</h3>
+                        <p class="testimonial__description">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="swiper-pagination"></div>
+            </div>
         </section>
 
         <!-----------------------------------Contact--------------------------------->
@@ -496,6 +592,11 @@
     <a href="#">Leadership</a>
     ----------------------------->
 
+    <!----------------------------------Scroll Reveal js-------------------------------------------->
+    <!----------------------------------swiper js-------------------------------------------->
+    <script src="/static/javascript/swiper-bundle.min.js"></script>
+    <!----------------------------------mixitup js-------------------------------------------->
+    <script src="/static/javascript/mixitup.min.js"></script>,
     <!----------------------------------main js-------------------------------------------->
     <script src="/static/javascript/index.js"></script>
 </body>
