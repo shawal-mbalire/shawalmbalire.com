@@ -66,15 +66,10 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 html {
     scroll-behavior: smooth;/*smooth scroll not supported ios 15.4 or higher*/
 }
-
-body,
-input,
-button,
-textarea {
+body,input,button,textarea {
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
 }
@@ -82,31 +77,25 @@ body{
     background-color: var(--body-color);
     color: var(--text-color);
 }
-
 h1,h2,h3{
     color: var(--title-color);
     font-weight: var(--font-semi-bold);
 }
-
 ul{
     list-style: none;
 }
-
 a{
     text-decoration: none;
 }
-
 button{
     cursor: pointer;
     border: none;
     outline: none;
 }
-
 img{
     max-width: 100%;
     height: auto;
 }
-
 /*====================================== Theme ==================================*/
 
 /*====================================== Reusable css classes ==================================*/
@@ -126,8 +115,7 @@ img{
 .section{
     padding: 4.5rem 0 1rem;
 }
-.section__title,
-.section__subtitle{
+.section__title,.section__subtitle{
     text-align: center;
 }
 .section__title{
@@ -214,8 +202,7 @@ img{
 .home__data{
     text-align: center;
 }
-.home__greeting,
-.home__education{
+.home__greeting,.home__education{
     font-size: var(--small-font-size);
     font-weight: var(--font-medium);
 }
@@ -359,4 +346,47 @@ home__scroll-name{
 }
 .about_description{
     margin-bottom: 2rem;
+}
+/*========================================== skills ==================================================*/
+.skills__container{
+    row-gap: 2rem;
+    padding: 1rem;
+}
+.skills__content{
+    background-color: var(--container-color);
+    padding: 1.5rem;
+    border-radius: 1.25rem;
+}
+.skills__title{
+    font-size: var(--normal-font-size);
+    font-weight: var(--font-medium);
+    color: var(--first-color);
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+.skills__box{
+    display: flex;
+    justify-content: center;
+    column-gap: 2.5rem;
+}
+.skills__group{
+    display: grid;
+    align-content: flex-start;
+    row-gap: 1rem;
+}
+.skills__data{
+    display: flex;
+    column-gap: .5rem;
+}
+.skills .bxs-badge-check {
+    font-size: 1rem;
+    color: var(--first-color);
+}
+.skills__name {
+    font-size: var(--normal-font-size);
+    font-weight: var(--font-medium);
+    line-height: 18px;
+}
+.skills__level{
+    font-size: var(--tiny-font-size);
 }
