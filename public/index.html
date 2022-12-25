@@ -21,29 +21,29 @@
 
 <body>
     <!-----------------------------------Header-------------------------------->
-    <header class="header" id = "header">
+    <header class="header" id="header">
         <!-----------------------------------Nav-------------------------------->
         <nav class="nav container">
             <a href="" class="nav__logo">Shawal</a>
 
             <div class="nav__menu">
-                <ul class="nav__lis">
+                <ul class="nav__list">
                     <!-----------------------------------home icon-------------------------------->
                     <li class="nav__item"><a href="#home" class="nav__link active-link">
-                        <i class="bx bx-home-alt"></i>
-                    </a></li>
+                            <i class="bx bx-home-alt"></i>
+                        </a></li>
                     <!-----------------------------------about icon-------------------------------->
                     <li class="nav__item"><a href="#about" class="nav__link">
-                        <i class="bx bx-user"></i>
-                    </a></li>
+                            <i class="bx bx-user"></i>
+                        </a></li>
                     <!-----------------------------------work icon-------------------------------->
                     <li class="nav__item"><a href="#work" class="nav__link">
-                        <i class="bx bx-briefcase-alt-2"></i>
-                    </a></li>
+                            <i class="bx bx-briefcase-alt-2"></i>
+                        </a></li>
                     <!-----------------------------------contact icon-------------------------------->
                     <li class="nav__item"> <a href="#contact" class="nav__link">
-                        <i class="bx bx-message-square-detail"></i>
-                    </a></li>
+                            <i class="bx bx-message-square-detail"></i>
+                        </a></li>
 
                 </ul>
             </div>
@@ -56,19 +56,111 @@
 
     <!-----------------------------------Main-------------------------------->
 
-    <main class="main" id = "main">
-        <div class="main__container">
-            <div class="main__content">
-                <div class="main__content__text">
-                    <h1 class="main__content__text__title">Shawal Mbalire</h1>
-                    <p class="main__content__text__description">I am a software developer and a student at the University of Pretoria. I am passionate about technology and I am always looking for ways to improve my skills. I am currently looking for a job as a software developer.</p>
-                    <a href="#" class="main__content__text__button">Download CV</a>
+    <main class="main" id="main">
+        <!-----------------------------------Home-------------------------------->
+        <section class="home section" id="home">
+
+            <div class="home__container container grid">
+                <div class="home__data">
+                    <span class="home__greeting">Hello I'm</span>
+                    <h1 class="home__name">Shawal Mbalire</h1>
+                    <h3 class="home__education">Electrical Engineering Student</h3>
+                    <div class="home__buttons">
+                        <a download="" href="/public/static/documents/curriculumVitae.doc" class="button button--ghost">
+                            Download CV
+                        </a>
+                        <a href="#about" class="button">About me</a>
+                    </div>
                 </div>
-                <div class="main__content__img">
-                    <img src="/static/images/ProfilePic.png" alt="Profile Picture">
+
+                <div class="home__handle">
+                    <img src="/public/static/images/shafrat.jpg" alt="" class="home__img">
+                </div>
+
+                <div class="home__social">
+                    <a href="https://ug.linkedin.com/in/mbalireshawal"
+                        class="home__social-link bx bxl-linkedin-square"></a><!--LinkedIn-->
+                    <a href="https://github.com/shawal-mbalire" class="home__social-link bx bxl-github"></a>
+                    <!--Github-->
+                    <a href="https://twitter.com/shawalmbalire" class="home__social-link bx bxl-twitter"></a>
+                    <!--Twitter-->
+                    <a href="" class="home__social-link bx bxl-instagram-alt"></a> <!--Instagram-->
+                </div>
+
+                <a href="" class="home__scroll">
+                    <i class="bx bx-mouse home__scroll-icon"></i>
+                    <span class="home__scroll-name">Scroll Down</span>
+                </a>
+            </div>
+        </section>
+
+        <!-----------------------------------About-------------------------------->
+        <section class="about section" id="about">
+            <span class="section__subtitle">Who I am.</span>
+            <h2 class="section__title">About Me</h2>
+            <div class="about__container container grid">
+                <img src="/public/static/images/shafrat.jpg" alt="" class="about__img">
+                <div class="about__data">
+                    <div class="about__info">
+
+                        <div class="about__box">
+                            <i class="bx bx-award about__icon"></i>
+                            <h3 class="about__title">Experience</h3>
+                            <span class="about__subtitle">Full time student</span>
+                        </div>
+
+                        <div class="about__box">
+                            <i class="bx bx-briefcase-alt about__icon"></i>
+                            <h3 class="about__title">Completed</h3>
+                            <span class="about__subtitle">10+ Projects</span>
+                        </div>
+
+                        <div class="about__box">
+                            <i class="bx bx-support about__icon"></i>
+                            <h3 class="about__title">Support</h3>
+                            <span class="about__subtitle">24/7</span>
+                        </div>
+                        <!-----------------------------------------
+                        <div class="about__box">
+
+                            <h3 class="about__title"></h3>
+                            <span class="about__subtitle"></span>
+                        </div>
+                        ------------------------------------------->
+                    </div>
+
+                    <p class="about__description">
+                        Electrical Engineering student, I am passionate in micro-controllers and micro-processors. I
+                        develop
+                        software such as web applications and firmware.
+                    </p>
+
+                    <a href="#contact" class="button">Contact me</a>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-----------------------------------Skills-------------------------------->
+        <section class="skills section" id="skills">
+            <span class="section_subtitle">My abilities</span>
+            <h2 class="section_title">My Experience</h2>
+            <div class="skills_container container grid">
+                <div class="skills__content">
+                    <h3 class="skills_ title">Frontend developer</h3>
+                    <div class="skills__box">
+                        <div class="skills_group">
+                            <div class="skills_data"> I
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-----------------------------------Contact-------------------------------->
+        <section class="contact section" id="contact">
+
+        </section>
     </main>
 
     <!-----------------------------------Footer-------------------------------->
@@ -86,6 +178,8 @@
     <a href="#">Contact</a>
     ----------------------------->
 
+    <!----------------------------------mian js-------------------------------------------->
     <script src="/static/javascript/index.js"></script>
 </body>
+
 </html>
