@@ -1,8 +1,10 @@
 # Fdb version 4
-["pdflatex"] 1672497195 "d:/Github/shawalmbalire.com/public/static/documents/MbalireShawalCV.tex" "MbalireShawalCV.pdf" "MbalireShawalCV" 1672497196 0
+["pdflatex"] 1672579200 "d:/Github/shawalmbalire.com/public/static/documents/MbalireShawalCV.tex" "MbalireShawalCV.pdf" "MbalireShawalCV" 1672579201 0
   "C:/Users/Shawal" 1667956558 19031 1d49df30b5c4feb7da09c2d60b003fbe ""
   "C:/Users/Shawal Mbalire/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1672129060 82011 97247c01f6bfb6f6d0c40fab12a08423 ""
+  "C:/Users/Shawal Mbalire/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk" 1672090532 11548 5a89ebe88cf35e9151b04fcfeab0fab0 ""
   "C:/Users/Shawal Mbalire/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1672073024 23172891 119e3bf339a09cd3fdd53160b351c15c ""
+  "C:/Users/Shawal Mbalire/AppData/Local/Programs/MiKTeX/fonts/tfm/jknappen/ec/tcrm1000.tfm" 993062508 1436 c7f957a372ef2fbe93c0982f96625e12 ""
   "C:/Users/Shawal Mbalire/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmbx10.tfm" 1136765053 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "C:/Users/Shawal Mbalire/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmbx12.tfm" 1136765053 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "C:/Users/Shawal Mbalire/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmr12.tfm" 1136765053 1288 655e228510b4c2a1abe905c368440826 ""
@@ -23,9 +25,9 @@
   "C:/Users/Shawal Mbalire/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.sty" 1578053545 42759 9cf6c5257b1bc7af01a58859749dd37a ""
   "C:/Users/Shawal Mbalire/AppData/Local/Programs/MiKTeX/tex/latex/graphics/keyval.sty" 1665067579 2671 7e67d78d9b88c845599a85b2d41f2e39 ""
   "C:/Users/Shawal Mbalire/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-pdftex.def" 1666810012 30426 f2fb69fcda4dc35ed0b7dee211bce679 ""
-  "MbalireShawalCV.aux" 1672497196 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "MbalireShawalCV.tex" 1672497193 3930 3e676ce25b81ff975ce9a57eb95e3f70 ""
-  "d:/Github/shawalmbalire.com/public/static/documents/MbalireShawalCV.tex" 1672497193 3930 3e676ce25b81ff975ce9a57eb95e3f70 ""
+  "MbalireShawalCV.aux" 1672579201 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "MbalireShawalCV.tex" 1672579198 5273 c706a03978329b4a840af5d0214e36b8 ""
+  "d:/Github/shawalmbalire.com/public/static/documents/MbalireShawalCV.tex" 1672579198 5273 c706a03978329b4a840af5d0214e36b8 ""
   (generated)
   "MbalireShawalCV.aux"
   "MbalireShawalCV.log"
