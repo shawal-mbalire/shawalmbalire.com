@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1672579200 "d:/Github/shawalmbalire.com/public/static/documents/MbalireShawalCV.tex" "MbalireShawalCV.pdf" "MbalireShawalCV" 1672579201 0
+["pdflatex"] 1673388219 "d:/Github/shawalmbalire.com/public/static/documents/MbalireShawalCV.tex" "MbalireShawalCV.pdf" "MbalireShawalCV" 1673388222 0
   "C:/Users/Shawal" 1667956558 19031 1d49df30b5c4feb7da09c2d60b003fbe ""
-  "C:/Users/Shawal Mbalire/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1672129060 82011 97247c01f6bfb6f6d0c40fab12a08423 ""
+  "C:/Users/Shawal Mbalire/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1673078276 82011 97247c01f6bfb6f6d0c40fab12a08423 ""
   "C:/Users/Shawal Mbalire/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk" 1672090532 11548 5a89ebe88cf35e9151b04fcfeab0fab0 ""
   "C:/Users/Shawal Mbalire/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1672073024 23172891 119e3bf339a09cd3fdd53160b351c15c ""
   "C:/Users/Shawal Mbalire/AppData/Local/Programs/MiKTeX/fonts/tfm/jknappen/ec/tcrm1000.tfm" 993062508 1436 c7f957a372ef2fbe93c0982f96625e12 ""
@@ -21,13 +21,15 @@
   "C:/Users/Shawal Mbalire/AppData/Local/Programs/MiKTeX/tex/latex/base/article.cls" 1669844196 20144 d5ecf0a5140c8d8d8b72cbe86e320eff ""
   "C:/Users/Shawal Mbalire/AppData/Local/Programs/MiKTeX/tex/latex/base/inputenc.sty" 1669844196 5048 84b05796b49b69e2d4257d537721c960 ""
   "C:/Users/Shawal Mbalire/AppData/Local/Programs/MiKTeX/tex/latex/base/size10.clo" 1669844196 8448 c33a4e1cb35cee9b33c2b21033b73e39 ""
+  "C:/Users/Shawal Mbalire/AppData/Local/Programs/MiKTeX/tex/latex/enumitem/enumitem.sty" 1561039820 51697 f8f08183cd2080d9d18a41432d651dfb ""
   "C:/Users/Shawal Mbalire/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.cfg" 1578053545 1104 7ac475a4e3466b0b43e138e9356bda83 ""
   "C:/Users/Shawal Mbalire/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.sty" 1578053545 42759 9cf6c5257b1bc7af01a58859749dd37a ""
   "C:/Users/Shawal Mbalire/AppData/Local/Programs/MiKTeX/tex/latex/graphics/keyval.sty" 1665067579 2671 7e67d78d9b88c845599a85b2d41f2e39 ""
   "C:/Users/Shawal Mbalire/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-pdftex.def" 1666810012 30426 f2fb69fcda4dc35ed0b7dee211bce679 ""
-  "MbalireShawalCV.aux" 1672579201 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "MbalireShawalCV.tex" 1672579198 5273 c706a03978329b4a840af5d0214e36b8 ""
-  "d:/Github/shawalmbalire.com/public/static/documents/MbalireShawalCV.tex" 1672579198 5273 c706a03978329b4a840af5d0214e36b8 ""
+  "C:/Users/Shawal Mbalire/AppData/Local/Programs/MiKTeX/tex/latex/titlesec/titlesec.sty" 1625497667 48833 3b7b4cfab1a3d15596bfd3772a77ab65 ""
+  "MbalireShawalCV.aux" 1673388222 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "MbalireShawalCV.tex" 1673388217 5628 56898cb17dabcc5f5753c309d9c801d1 ""
+  "d:/Github/shawalmbalire.com/public/static/documents/MbalireShawalCV.tex" 1673388217 5628 56898cb17dabcc5f5753c309d9c801d1 ""
   (generated)
   "MbalireShawalCV.aux"
   "MbalireShawalCV.log"

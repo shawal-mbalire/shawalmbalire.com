@@ -1,11 +1,17 @@
 \documentclass[a4paper]{article}
 \usepackage[margin=0.5in]{geometry}
 \usepackage[utf8]{inputenc}
+\usepackage{titlesec}
+\usepackage{enumitem}
 
 \title{Curriculum Vitae}
 \author{Shawal Mbalire}
 \date{\today}
+\setlist{nolistsep}
 \setlength{\parindent}{0pt}
+\titlespacing*{\section}{0pt}{0pt}{0pt}
+\titlespacing*{\subsection}{0pt}{0pt}{0pt}
+\titlespacing*{\item}{0pt}{0pt}{0pt}
 
 \begin{document}
 
@@ -26,7 +32,7 @@
     \begin{minipage}[t]{0.5\textwidth}
 
         %============================Education==========================%
-        {\Large\bf Education}
+        \section*{\bf Education}
         \hrule
         %-------MUK-----------------
         {\bf Makerere University, Kampala}
@@ -44,7 +50,7 @@
 
 
         %========================Projects=============================%
-        {\Large\bf Projects}
+        \section*{\bf Projects}
         \hrule
         %\subsection*{Projects}
 
@@ -70,24 +76,28 @@
         A calendar with flutter emapsizing upcoming tests that can be updated by a class representative then shared to everyone else in the class
 
         %========================Hackathons=============================%
-        {\Large\bf Hackathons}
+        \section*{\bf Hackathons}
         \hrule
-        {\bf UNESCO India-Africa Hackathon}\\
-        \begin{itemize}
+        {\bf UNESCO India-Africa Hackathon}
+
+        \begin{itemize}[noitemsep]
             \item Selected as one of 19 students to represent Uganda in India to develop solutions for Africa
         \end{itemize}
 
-        {\bf 8th CAMTECH Med-Tech Hackathon}\\
+        {\bf 8th CAMTECH Med-Tech Hackathon}
+
         \begin{itemize}
+            \itemsep0em
             \item Ideated to develop solutions for faster data entry to reduce the tool on nurses in Uganda
         \end{itemize}
-        {\bf Decentralised Umoja 3 Bount Hack}\\
+        {\bf Decentralised Umoja 3 Bount Hack}
         \begin{itemize}
+            \itemsep0em
             \item Developed a solution for the price is right problem .
             \item Created a how to guide on creating the project for other learners to gain assistance.
         \end{itemize}
         %========================Coding Contests=============================%
-        {\Large\bf Coding Contests}
+        \section*{\bf Coding Contests}
         \hrule
         {\bf IEEE Extreme}\\
         {\bf Google Kickstart}\\
@@ -97,35 +107,39 @@
     %Psuedo second column
     \begin{minipage}[t]{0.5\textwidth}
         %----------------------LeaderShip-------------------%
-        {\Large\bf LeaderShip}
+        \section*{\bf LeaderShip}
         \hrule
         {\bf Chair IEEE Makerere University Student Branch}\\
-        \hfil{\em Sep 2022 - Sep 2023}\\
+        \hfil{\em Sep 2022 - Sep 2023}
         \begin{itemize}
+            \itemsep0em
             \item Increased membership sixfold through publicising IEEE events on social media.
             \item Doubled the number of student chapters by forming relations with lecturers.
         \end{itemize}
 
 
         {\bf Vice-Chair Makerere University RedCross Chapter}\\
-        \hfil{\em Sep 2022 - Sep 2023}\\
+        \hfil{\em Sep 2022 - Sep 2023}
         \begin{itemize}
+            \itemsep0em
             \item
         \end{itemize}
 
         {\bf Coordinator Makerere University RedCross Chapter}\\
-        \hfil{\em Feb 2022 - Sep 2022}\\
+        \hfil{\em Feb 2022 - Sep 2022}
         \begin{itemize}
+            \itemsep0em
             \item Increased the blood donations count by 50 percent relative to other colleges in University by reaching out to the respective class leaders and puhing for donation.
             \item
         \end{itemize}
 
         %----------------------Work------------------------%
-        {\Large\bf Work}
+        \section*{\bf Work}
         \hrule
         {\bf Shop Assistant Zenith Auto Spare Parts}\\
         \hfil{\em Aug 2018 - Feb 2022}
         \begin{itemize}
+            \itemsep0em
             \item Increased customers by 5 after registering business by registering the business on google maps
             \item Improved book keeping by printing data entry books
         \end{itemize}

@@ -74,7 +74,7 @@ body,input,button,textarea {
     font-size: var(--normal-font-size);
 }
 body{
-    background-color: var(--body-color);
+        background-color: var(--body-color);
     color: var(--text-color);
 }
 h1,h2,h3{
