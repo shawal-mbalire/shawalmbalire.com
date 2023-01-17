@@ -9,12 +9,9 @@
     <meta name="keywords" content="shawal, mbalire, portfolio, electrical, engineering, student, uganda, kampala, makerere, university, makerere university">
     <meta name="description" content="Shawal Mbalire Portfolio">
     <meta name="author" content="Shawal Mbalire">
-    <!--
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow">
     <meta name="google" content="nositelinkssearchbox">
-    <meta name="google" content="notranslate">
-    <meta name="google" content="nocrtrans">
     <meta name="google" content="notranslate">
     -->
     <!-----------------------------------CSS-------------------------------->
@@ -24,7 +21,7 @@
     <!-----------------------------------Fav icon-------------------------------->
     <link rel="shortcut icon" href="/static/images/favIcon.png" type="image/x-icon">
     <!-----------------------------------Boxi Icons-------------------------------->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!--<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>-->
     <!-----------------------------------Swiper css-------------------------------->
     <link rel="stylesheet" href="/static/css/swiper-bundle.min.css" />
     <title>Shawal Mbalire Portfolio</title>
@@ -72,7 +69,7 @@
         <!-----------------------------------Home-------------------------------->
         <section class="home section" id="home">
 
-            <div class="home__container container grid">
+            <div class="home__container container">
                 <div class="home__data">
                     <span class="home__greeting">Hello I'm</span>
                     <h1 class="home__name">Shawal Mbalire</h1>
@@ -86,17 +83,19 @@
                 </div>
 
                 <div class="home__handle">
-                    <img src="/static/images/potrait.jpeg" alt="" class="home__img">
+                    <img src="/static/images/potrait.png" alt="" class="home__img">
                 </div>
 
                 <div class="home__social">
-                    <a href="https://ug.linkedin.com/in/mbalireshawal"
+                    <a target="_blank" href="https://ug.linkedin.com/in/mbalireshawal"
                         class="home__social-link bx bxl-linkedin-square"></a><!--LinkedIn-->
-                    <a href="https://github.com/shawal-mbalire" class="home__social-link bx bxl-github"></a>
+                    <a target="_blank" href="https://github.com/shawal-mbalire" class="home__social-link bx bxl-github"></a>
                     <!--Github-->
-                    <a href="https://twitter.com/shawalmbalire" class="home__social-link bx bxl-twitter"></a>
+                    <a target="_blank" href="https://twitter.com/shawalmbalire" class="home__social-link bx bxl-twitter"></a>
                     <!--Twitter-->
-                    <a href="" class="home__social-link bx bxl-instagram-alt"></a> <!--Instagram-->
+                    <a target="_blank" href="" class="home__social-link bx bxl-instagram-alt"></a> <!--Instagram-->
+                    <!--Research Gate-->
+                    <a target="_blank" href="https://www.researchgate.net/profile/Shawal-Mbalire" class="home__social-link bx bx-book-reader"></a>
                 </div>
 
                 <a href="" class="home__scroll">
@@ -331,9 +330,9 @@
 
         <!-----------------------------------Services-------------------------------->
         <section class="services section" id="services">
-            <span class="section_subtitle">My Services</span>
-            <h2 class="section_title">What I offer</h2>
-            <div class="services_container container grid">
+            <span class="section__subtitle">My Services</span>
+            <h2 class="section__title">What I offer</h2>
+            <div class="services__container container grid">
 
                 <div class="services__card">
                     <h3 class="services__title">Python <br> developer</h3>
@@ -595,66 +594,121 @@
 
                         <div class="contact__card">
                             <i class="bx bx-mail-send contact__card-icon"></i>
-
                             <h3 class="contact__card-title">Email</h3>
                             <span class="contact__card-data">shawal@shawalmbalire.com</span>
                             <a href="mailto:shawal@shawalmbalire.com" target="_blank" class="contact__button">
                                 Write me <i class="bx bx-right-arrow-alt contact__button-icon"></i>
                             </a>
-
+                        </div>
+                        <!--
+                        <div class="contact__card">
+                            <i class="bx bx-mail-send contact__card-icon"></i>
                             <h3 class="contact__card-title">Gmail</h3>
                             <span class="contact__card-data">mbalireshawal@gmail.com</span>
                             <a href="mailto:mbalireshawal@gmail.com" target="_blank" class="contact__button">
                                 Write me <i class="bx bx-right-arrow-alt contact__button-icon"></i>
                             </a>
-
-                            <h3 class="contact__card-title">Mail</h3>
+                        </div>
+                        <div class="contact__card">
+                            <i class="bx bx-mail-send contact__card-icon"></i>
+                            <h3 class="contact__card-title">iCloud</h3>
                             <span class="contact__card-data">mshawal49@icloud.com</span>
                             <a href="mailto:mshawal49@icloud.com" target="_blank" class="contact__button">
                                 Write me <i class="bx bx-right-arrow-alt contact__button-icon"></i>
                             </a>
-
-                            <h3 class="contact__card-title">Gmail</h3>
+                        </div>
+                        <div class="contact__card">
+                            <i class="bx bx-mail-send contact__card-icon"></i>
+                            <h3 class="contact__card-title">Outlook</h3>
                             <span class="contact__card-data">mbalireshawal@outlook.com</span>
                             <a href="mailto:mbalireshawal@outlook.com" target="_blank" class="contact__button">
                                 Write me <i class="bx bx-right-arrow-alt contact__button-icon"></i>
                             </a>
                         </div>
+                        -->
 
                         <div class="contact__card">
                             <i class="bx bxl-whatsapp contact__card-icon"></i>
-
                             <h3 class="contact__card-title">Whatsapp</h3>
                             <span class="contact__card-data">+256760044705</span>
                             <a href="https://api.whatsapp.com/send?phone=256760044705&text=Hello, more information" target="_blank" class="contact__button">
-                                Write me <i class="bx bx-right-arrow-alt contact__button-icon"></i>
+                                Inbox me <i class="bx bx-right-arrow-alt contact__button-icon"></i>
                             </a>
                         </div>
 
                         <div class="contact__card">
                             <i class="bx bx-phone-call contact__card-icon"></i>
-
                             <h3 class="contact__card-title">Cellular</h3>
                             <span class="contact__card-data">+256757933006</span>
                             <a href="" target="_blank" class="contact__button">
-                                Write me <i class="bx bx-right-arrow-alt contact__button-icon"></i>
+                                Call me <i class="bx bx-right-arrow-alt contact__button-icon"></i>
                             </a>
                         </div>
+                    </div>
                 </div>
 
                 <div class="contact__content">
-                    <h3 class="contact__title">Write me your project</h3>
+                    <h3 class="contact__title">Write to me </h3>
+                    <form action="mailto:shawal@shawalmbalire.com" class="contact__form" method="post">
+
+                        <div class="contact__form-div">
+                            <label for="" class="contact__form-tag">Name</label>
+                            <input type="text" placeholder="Insert your name." class="contact__form-input">
+                        </div>
+
+                        <div class="contact__form-div">
+                            <label for="" class="contact__form-tag">Mail</label>
+                            <input type="text" placeholder="Insert your email" class="contact__form-input">
+                        </div>
+
+                        <div class="contact__form-div contact__form-area">
+                            <label for="" class="contact__form-tag ">Project</label>
+                            <textarea name="" id="" cols="30" rows="10" placeholder="Write to me" class="contact__form-input"></textarea>
+                        </div>
+                        <button class="button" type="submit">Send Message</button>
+                    </form>
                 </div>
 
             </div>
         </section>
 
-
     </main>
 
     <!-----------------------------------Footer-------------------------------->
     <footer class="footer">
+        <div class="footer__container container">
+            <h1 class="footer__title">Shawal</h1>
 
+            <ul class="footer__list">
+                <li>
+                    <a href="#about" class="footer__link">About</a>
+                </li>
+                <li>
+                    <a href="#work" class="footer__link">Work</a>
+                </li>
+                <li>
+                    <a href="#testimonials" class="footer__link">Testimonials</a>
+                </li>
+            </ul>
+
+            <ul class="footer__social">
+                <a href="https://ug.linkedin.com/in/mbalireshawal" target="_blank" class="footer__social-link">
+                    <i class="bx bxl-linkedin-square" ></i>
+                </a>
+
+                <a href="https://twitter.com/shawalmbalire" target="_blank" class="footer__social-link">
+                    <i class="bx bxl-twitter" ></i>
+                </a>
+
+                <a href="https://github.com/shawal-mbalire" target="_blank" class="footer__social-link">
+                    <i class="bx bxl-github" ></i>
+                </a>
+            </ul>
+
+            <span class="footer__copy">
+                &#169; Shawal. All rights reserved
+            </span>
+        </div>
     </footer>
 
     <!-----------------------------------Scroll reveal-------------------------------->
@@ -667,10 +721,11 @@
     ----------------------------->
 
     <!----------------------------------Scroll Reveal js-------------------------------------------->
+    <script src="/static/javascript/scrollreveal.min.js"></script>
     <!----------------------------------swiper js-------------------------------------------->
     <script src="/static/javascript/swiper-bundle.min.js"></script>
     <!----------------------------------mixitup js-------------------------------------------->
-    <script src="/static/javascript/mixitup.min.js"></script>,
+    <script src="/static/javascript/mixitup.min.js"></script>
     <!----------------------------------main js-------------------------------------------->
     <script src="/static/javascript/index.js"></script>
 </body>
