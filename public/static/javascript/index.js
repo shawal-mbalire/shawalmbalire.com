@@ -1,4 +1,5 @@
 import 'boxicons'
+import 'node_modules\\boxicons'
 /* ========================================= CHANGE BACKGROUND HEADER =============================== */
 function scrollHeader() {
     const header = document.getElementById('header')
