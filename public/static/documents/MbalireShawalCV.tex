@@ -6,7 +6,9 @@
 \usepackage{graphicx}
 \usepackage[export]{adjustbox}
 \usepackage{xurl}
+\usepackage{hyperref}
 
+\pagestyle{empty}
 \title{Curriculum Vitae}
 \author{Shawal Mbalire}
 \date{\today}
@@ -16,22 +18,26 @@
 \titlespacing*{\subsection}{0pt}{0pt}{0pt}
 \titlespacing*{\subsubsection}{0pt}{0pt}{0pt}
 \titlespacing*{\item}{0pt}{0pt}{0pt}
+\hypersetup{
+    colorlinks=true,
+    urlcolor=blue
+}
 
 \begin{document}
 
-    \begin{center}
+    {\centering
         \LARGE{\bf SHAWAL MBALIRE} \\
         {\small
-        mbalireshawal@gmail.com
-        +256-760-044-705
-        https://ug.linkedin.com/in/mbalireshawal
-        https://github.com/shawal-mbalire
-        shawalmbalire.com\\
+        \url{mbalireshawal@gmail.com}\hspace{2em}
+        +256-760-044-705\hspace{2em}
+        \url{https://ug.linkedin.com/in/mbalireshawal}
+        \url{https://github.com/shawal-mbalire} \hspace{2em}
+        \url{shawalmbalire.com}\\
         Python C++ C  C-sharp JavaScript
         HTML CSS SQL MATLAB
         Arduino AHDL Git Bash LaTeX Linux
         EAGLECAD ALTIUM}
-    \end{center}
+    }
 
     %Psuedo first column
     \begin{minipage}[t]{0.5\textwidth}

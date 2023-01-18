@@ -1,5 +1,4 @@
-import 'boxicons'
-import 'node_modules\\boxicons'
+//import 'boxicons'
 /* ========================================= CHANGE BACKGROUND HEADER =============================== */
 function scrollHeader() {
     const header = document.getElementById('header')
@@ -127,7 +126,7 @@ const sr = ScrollReveal({
     distance: '60px',
     duration: 2500,
     delay: 400,
-    //reset: true,
+    reset: true,
 })
 sr.reveal(`.home__data`)
 sr.reveal(`.home__handle`, {delay:700})
