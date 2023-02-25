@@ -575,7 +575,7 @@ body.light-theme{
     border-radius: 1rem;
 }
 .work__img{
-    width: 250px;
+    width: auto;
     border-radius: 1rem;
     margin-bottom: .75rem;
 }
@@ -847,7 +847,7 @@ body.light-theme{
         justify-content: center;
     }
     .work__img{
-        width: 295px;
+        width: auto;
     }
     .contact__info{
         grid-template-columns: 300px;
@@ -900,7 +900,7 @@ body.light-theme{
     font-size: 1.25rem;
 }
 .home__social::after{
-    transform: rotate(90deg) translate(16px 0);
+    transform: rotate(90deg) translate(18px 0);
 }
 .home__scroll-icon{
     font-size: 2rem;
