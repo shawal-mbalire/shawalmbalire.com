@@ -1,4 +1,4 @@
-\documentclass[a4paper]{article}
+\documentclass[a4paper,twocolumn]{article}
 \usepackage[margin=0.5in]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{titlesec}
@@ -7,7 +7,8 @@
 \usepackage[export]{adjustbox}
 \usepackage{xurl}
 \usepackage{hyperref}
-
+\usepackage{balance}
+	
 \pagestyle{empty}
 \title{Curriculum Vitae}
 \author{Shawal Mbalire}
@@ -28,19 +29,18 @@
     {\centering
         \LARGE{\bf SHAWAL MBALIRE} \\
         {\small
-        \url{mbalireshawal@gmail.com}\hspace{2em}
-        +256-760-044-705\hspace{2em}
-        \url{https://ug.linkedin.com/in/mbalireshawal}
-        \url{https://github.com/shawal-mbalire} \hspace{2em}
-        \url{shawalmbalire.com}\\
-        Python C++ C  C-sharp JavaScript
-        HTML CSS SQL MATLAB
-        Arduino AHDL Git Bash LaTeX Linux
-        EAGLECAD ALTIUM}
+	        \url{mbalireshawal@gmail.com}\hspace{1em}
+	        +256-760-044-705\hspace{2em}
+	        \url{https://ug.linkedin.com/in/mbalireshawal}
+	        \url{https://github.com/shawal-mbalire} \hspace{2em}
+	        \url{shawalmbalire.com}\\
+	        {\it Arduino, AHDL, ALTIUM, Assembly, Bash, C++, C,  C\#, CSS, EAGLECAD, HTML,  JavaScript, LaTeX,  MATLAB, Python, SQL}
+    	}
     }
 
-    %Psuedo first column
-    \begin{minipage}[t]{0.5\textwidth}
+    
+    
+    
 
         %============================Education==========================%
         \section*{\bf Education}
@@ -53,11 +53,28 @@
         %-------CIT-----------------
         {\bf CodeIT Institute of Technology}
         \hfil{\em Aug 2022 - Jan 2022}\\
-        Certificate in python, aws, blockchain\\
+        PCEP Certified Entry-Level Python Programmer\\
         %-------RUN-----------------
         {\bf Run Automations and Robotics}
         \hfil{\em Sep 2022 - Oct 2022}\\
-        Certificate in IOT and Embedded systems
+        Certificate in IOT and Embedded systems\\
+        %-------UACE-----------------
+        {\bf Mengo Senior School}
+        \hfil{\em Jan 2019 - Dec 2021}\\
+        Uganda Advanced Certificate of Education (Physics Chemistry Mathematics)
+        \hfil{\em $19$ points}\\
+        %-------UCE-----------------
+        {\bf Mengo Senior School}
+        \hfil{\em Jan 2015 - Dec 2018}\\
+        Uganda Certificate of Education (Technical Drawing, Wood-work, German)
+        \hfil{\em $11$ aggregate}\\
+        %-------PLE-----------------
+        {\bf Nabweru Parents Pimary School}
+        \hfil{\em Jan 2010 - Nov 2014}\\
+        Primary Leaving Examinations Certificate
+		\hfil{\em $7$ aggregate}
+
+
 
 
         %========================Projects=============================%
@@ -65,29 +82,32 @@
         %\hrule
         %\subsection*{Projects}
 
-        {\bf Unity Cyber Security Game}\\
+        {\bf Unity Cyber Security Game}
         A third person shooter based on unity engine and C-sharp to teach CyberSecurity to teenagers
 
-        {\bf Python Text to speech}\\
+        {\bf Python Text to speech}
         A gui python project to call apis or libraries like gtts to speak out text
 
-        {\bf Python Location FInder}\\
+        {\bf Python Location FInder}
         A python project to find location by checking the Ip address of a given device connected to the internet
 
-        {\bf Patient Database}\\
+        {\bf Patient Database}
         A web application invoking an online nosql Database Dynamo Db to store patient data on cloud
 
-        {\bf IOT Attendance Monitoring}\\
+        {\bf IOT Attendance Monitoring}
         A low cost RFID attendance system for employees at a small enterprise in Uganda
 
-        {\bf Qr code students Attendance}\\
+        {\bf Qr code students Attendance}
         An automated data entry system for student in universities to only print a qr code for attendance monitoring.
 
-        {\bf Student Calendar}\\
+        {\bf Student Calendar}
         A calendar with flutter emapsizing upcoming tests that can be updated by a class representative then shared to everyone else in the class.
 
-        {\bf shawalmbalire.com}\\
+        {\bf shawalmbalire.com}
         Developed a personal portfolio hosted on firebase with a custom domain from google domains.
+
+
+
 
         %========================Hackathons=============================%
         \section*{\bf Hackathons}
@@ -109,6 +129,9 @@
             \item Developed a solution for the price is right problem .
             \item Created a how to guide on creating the project for other learners to gain assistance.
         \end{itemize}
+    
+    
+    
         %========================Coding Contests=============================%
         \section*{\bf Coding Contests}
         %\hrule
@@ -130,11 +153,9 @@
             %\item Solved a series of math,coding and engineering puzzles.
             \item First to attain the level 8 emerald badge in Uganda and 18th puzzler in IEEE globally.
         \end{itemize}
-
-    \end{minipage}
-    \hfil
-    %Psuedo second column
-    \begin{minipage}[t]{0.5\textwidth}
+    
+    
+    
         %----------------------LeaderShip-------------------%
         \section*{\bf LeaderShip}
         %\hrule
@@ -160,6 +181,9 @@
             \itemsep0em
             \item Increased the blood donations count by 50 percent relative to other colleges in University by reaching out to the respective class leaders and puhing for donation.
         \end{itemize}
+    
+    
+    
 
         %----------------------Work------------------------%
         \section*{\bf Work}
@@ -171,6 +195,14 @@
             \item Increased customers by 5 after registering business by registering the business on google maps
             \item Improved book keeping by printing data entry books
         \end{itemize}
+    
+    
+    
+    	%============================Research==============================%
+    	\subsection*{Research}
+    	\subsubsection*{A Low-Cost IoT based cloud solution for the Intelligent Rearing of Black Soldier Fly(BSF)}
+
+
 
         %============================Other==============================%
         \section*{Other}
@@ -190,14 +222,17 @@
         \begin{itemize}
             \item Participated in the 2020 Premierbet National Chess League.
         \end{itemize}
+    
         \subsection*{Github}
         \begin{itemize}
             \item Ranked 228 among most active github users in Uganda
         \end{itemize}
+    
         \subsection*{Open Source}
         \begin{itemize}
             \item Part of Apache APISIX Global community and meetings
         \end{itemize}
+    
         \subsection*{Communities}
         \begin{itemize}
             \item Engineers for change
@@ -209,7 +244,6 @@
             \item Uganda Institute of professional Engineers
             \item IBM Z Global Student Hub
         \end{itemize}
-    \end{minipage}
 
 
 \end{document}
