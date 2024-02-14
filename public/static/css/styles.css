@@ -215,8 +215,7 @@ body.light-theme{
     color: var(--first-color);
     font-weight: var(--font-semi-bold);
     transition: .4s;
-}
-.nav__logo:hover{
+}nav__logo:hover{
     color: var(--first-color-alt);
 }
 .nav__menu{
@@ -773,6 +772,10 @@ body.light-theme{
 }
 ::-webkit-scrollbar-thumb:hover{
     background-color: hsl(var(--second-hue), 8%, 20%);
+}
+
+.nav__logo_image{
+    width: 4rem;
 }
 
 /*========================================== Break points ====================================================*/
