@@ -13,77 +13,86 @@
     <meta name="googlebot" content="index, follow">
     <meta name="google" content="nositelinkssearchbox">
     <meta name="google" content="notranslate">
-    -->
-    <!-----------------------------------CSS-------------------------------->
-    <link rel="stylesheet" href="/static/css/styles.css">
-    <!-----------------------------------Main javascript-------------------------------->
-    <!-- <link rel="stylesheet" href="/static/javascript/index.js"> -->
-    <!-----------------------------------Fav icon-------------------------------->
-    <link rel="shortcut icon" href="/static/images/favIcon.png" type="image/x-icon">
-    <!-----------------------------------Boxi Icons-------------------------------->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <!-----------------------------------Swiper css-------------------------------->
-    <link rel="stylesheet" href="/static/css/swiper-bundle.min.css" />
+
+    
+    <link rel='stylesheet'    href="/public/static/css/variablies.css">
+    <link rel="stylesheet"    href="/public/static/css/general.css">
+    <link rel="stylesheet"    href="/public/static/css/header.css">
+    <link rel='stylesheet'    href="/public/static/css/nav.css">
+    <link rel='stylesheet'    href="/public/static/css/home.css">
+    <link rel="stylesheet"    href="/public/static/javascript/index.js">
+    <link rel="shortcut icon" href="/public/static/images/favIcon.png" type="image/x-icon">
     <title>Shawal Mbalire Portfolio</title>
 </head>
 
 
 <body>
     <!-----------------------------------Header-------------------------------->
-    <header class="header" id="header">
-        <!-----------------------------------Nav-------------------------------->
-        <nav class="nav container">
-            <a href="" class="nav__logo"> Shawal</a>
-
-            <div class="nav__menu">
-                <ul class="nav__list">
-                    <!-----------------------------------home icon-------------------------------->
-                    <li class="nav__item"><a href="#home" class="nav__link active-link">
-                            <i class="bx bx-home-alt"></i>
-                        </a></li>
-                    <!-----------------------------------about icon-------------------------------->
-                    <li class="nav__item"><a href="#about" class="nav__link">
-                            <i class="bx bx-user"></i>
-                        </a></li>
-                    <!-----------------------------------skills icon-------------------------------->
-                    <li class="nav__item"><a href="#skills" class="nav__link">
-                        <i class="bx bx-trophy"></i>
-                    </a></li>
-                    <!-----------------------------------services icon-------------------------------->
-                    <li class="nav__item"><a href="#services" class="nav__link">
-                        <i class='bx bxl-product-hunt'></i>
-                    </a></li>
-                    <!-----------------------------------work icon-------------------------------->
-                    <li class="nav__item"><a href="#work" class="nav__link">
-                            <i class="bx bx-briefcase-alt-2"></i>
-                        </a></li>
-                    <!-----------------------------------contact icon-------------------------------->
-                    <li class="nav__item"> <a href="#contact" class="nav__link">
-                            <i class="bx bx-message-square-detail"></i>
-                        </a></li>
-
-                </ul>
-            </div>
-
-            <!-----------------------------------Theme change button------------------------------------->
-            <i class="bx bx-moon change-theme" id="theme-button"></i>
-        </nav>
-
+    <header id="header">
+        <div id="logo_div">
+            <a href="#" class="logo"><img id="logo" src="/public/static/images/logo.svg" alt=""></a>     
+            <a href="#" id="logo__text">Shawal</a>
+        </div>
+        <!-----------------------------------Theme change button------------------------------------->
+        <button id="theme__btn">
+            <img src="/public/static/icons/sun.svg" alt="Light Mode" class="nav__icon">
+        </button>        
     </header>
+    <!-----------------------------------Nav-------------------------------->
+    <nav class="container">
+        <div class="nav__list">
+            <!-----------------------------------home icon-------------------------------->
+            <div class="nav__item">
+                <a href="#home" class="nav__link active-link">
+                    <img src="/public/static/icons/home.svg" alt="Home" class="nav__icon">
+                </a>
+            </div>
+            <!-----------------------------------about icon-------------------------------->
+            <div class="nav__item">
+                <a href="#about" class="nav__link">
+                    <img src="/public/static/icons/about.svg" alt="About" class="nav__icon">
+                </a>
+            </div>
+            <!-----------------------------------skills icon-------------------------------->
+            <div class="nav__item">
+                <a href="#skills" class="nav__link">
+                    <img src="/public/static/icons/skills.svg" alt="Skills" class="nav__icon">
+                </a>
+            </div>
+            <!-----------------------------------services icon-------------------------------->
+            <div class="nav__item">
+                <a href="#services" class="nav__link" class="nav__icon">
+                    <img src="/public/static/icons/certificate.svg" alt="Cert" class="nav__icon">
+                </a>
+            </div>
+            <!-----------------------------------work icon-------------------------------->
+            <div class="nav__item">
+                <a href="#work" class="nav__link" class="nav__icon">
+                    <img src="/public/static/icons/work.svg" alt="Work" class="nav__icon">
+                </a>
+            </div>
+            <!-----------------------------------contact icon-------------------------------->
+            <div class="nav__item"> 
+                <a href="#contact" class="nav__link" class="nav__icon">
+                    <img src="/public/static/icons/contact.svg" alt="Contact" class="nav__icon">
+                </a>
+            </div>
+        </div>
+    </nav>
 
     <!-----------------------------------Main-------------------------------->
 
     <main class="main" id="main">
         <!-----------------------------------Home-------------------------------->
-        <section class="home section" id="home">
+        <section id="home">
 
-            <div class="home__container container">
-                <div class="home__data">
+            <div class="home__container">
+                <div >
                     <span class="home__greeting">Hello I'm</span>
                     <h1 class="home__name">Shawal Mbalire</h1>
                     <h3 class="home__education">Electrical Engineering Student</h3>
                     <div class="home__buttons">
-                        <a download="" href="/static/documents/MbalireShawalCV.pdf" class="button button--ghost">
+                        <a download="" href="/public/static/documents/MbalireShawalCV.pdf" class="button">
                             Download CV
                         </a>
                         <a href="#about" class="button">About me</a>
@@ -91,30 +100,30 @@
                 </div>
 
                 <div class="home__handle">
-                    <img src="/static/images/potrait.png" alt="" class="home__img">
+                    <img src="/public/static/images/potrait.png" alt="" class="home__img">
                 </div>
 
                 <div class="home__social">
                     <!-----------------------------------------------------------------------Linkedin-------------------------------------------->
-                    <a target="_blank" href="https://ug.linkedin.com/in/mbalireshawal" class="home__social-link bx bxl-linkedin-square"></a>
+                    <a target="_blank" href="https://ug.linkedin.com/in/mbalireshawal"><img src="/public/static/icons/linkedin.svg" alt="" class="home__icon"></a>
 
                     <!-----------------------------------------------------------------------Github-------------------------------------------->
-                    <a target="_blank" href="https://github.com/shawal-mbalire" class="home__social-link bx bxl-github"></a>
+                    <a target="_blank" href="https://github.com/shawal-mbalire" ><img src="/public/static/icons/github.svg" alt="" class="home__icon"></a>
 
                     <!-----------------------------------------------------------------------Twitter-------------------------------------------->
-                    <a target="_blank" href="https://twitter.com/shawalmbalire" class="home__social-link bx bxl-twitter"></a>
+                    <a target="_blank" href="https://twitter.com/shawalmbalire" ><img src="/public/static/icons/twitterx.svg" alt="" class="home__icon"></a>
 
                     <!-----------------------------------------------------------------------Instagram-------------------------------------------->
-                    <a target="_blank" href="https://www.instagram.com/shawal_mbalire_/" class="home__social-link bx bxl-instagram-alt"></a>
+                    <a target="_blank" href="https://www.instagram.com/shawal_mbalire_/" ><img src="/public/static/icons/instagram.svg" alt="" class="home__icon"></a>
 
                     <!-----------------------------------------------------------------------Researchgate-------------------------------------------->
-                    <a target="_blank" href="https://www.researchgate.net/profile/Shawal-Mbalire" class="home__social-link bx bx-book-reader"></a>
+                    <a target="_blank" href="https://www.researchgate.net/profile/Shawal-Mbalire" ><img src="/public/static/icons/research.svg" alt="" class="home__icon"></a>
                 </div>
 
-                <a href="" class="home__scroll">
+                <!-- <a href="" class="home__scroll">
                     <i class="bx bx-mouse home__scroll-icon"></i>
                     <span class="home__scroll-name">Scroll Down</span>
-                </a>
+                </a> -->
             </div>
         </section>
 

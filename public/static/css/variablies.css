@@ -1,0 +1,44 @@
+/*=======================================css variables=============================*/
+:root {
+    --header-height: 3.5rem;
+    /*=============Colours==============*/
+    /*Color mode HSL*/
+    /*
+        Purple: hsl(250,66%,75%)
+        Blue: hsl(207,90%,72%)
+        Pink: hsl(356,66%,75%)
+        Teal: hsl(174,63%,62%)
+    */
+    --first-hue: 250;
+    --sat: 66% ;
+    --lig: 75% ;
+    --second-hue:219;
+    --first-color: hsl(var(--first-hue),var(--sat),var(--lig));
+    --first-color-alt: hsl(var(--first-hue),var(--sat),71%) ;/*  -4%  */
+    --title-color: hsl(var(--second-hue),15%,95%);
+    --text-color: hsl(var(--second-hue),8%,75%);
+    --text-color-light: hsl(var(--second-hue),4%,55%);
+    --body-color: hsl(var(--second-hue),48%,8%);
+    --container-color: hsl(var(--second-hue),32%,12%);
+    /*============================= font and typography=============================*/
+    --font-family: 'Chivo Mono', monospace;
+    --body-font:  'Chivo Mono', monospace;
+    --biggest-font-size: 1.75rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: .938rem;
+    --small-font-size: 0.813rem;
+    --smaller-font-size: 0.75rem;
+    --tiny-font-size: 0.625rem;
+    /*============================= Font weight=============================*/
+    --font-medium: 500;
+    --font-semi-bold: 600;
+    /*============================= z-index=============================*/
+    --z-fixed: 100;
+    --z-tooltip: 10;
+    --z-modal: 1000;
+    /*============================= border radius=============================*/
+    --border-radius: 0.25rem;
+
+}
