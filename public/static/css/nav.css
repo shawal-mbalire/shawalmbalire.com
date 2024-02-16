@@ -33,6 +33,7 @@ nav{
     border-radius: 0.4rem;
     padding: 0.5rem;
     cursor: pointer;
+    color: #000;
 }
 .nav__icon:hover {
     background-color: rgba(134, 238, 102, 0.4);
