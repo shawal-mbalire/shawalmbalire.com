@@ -10,6 +10,7 @@
 }
 .home__social{
     position: absolute;
+    z-index: 1;
     bottom: 6rem;
     left: 15%;
     display: flex;
@@ -25,7 +26,7 @@
     padding: .4rem;
 }
 .home__icon:hover{
-    /* box-shadow: 0 0 50px 15px #48abe0; */
+    box-shadow: 0 0 50px 15px #48abe0;
     border-radius: .5rem;
     background-color: rgba(102, 238, 213, 0.14);
     backdrop-filter: blur(1rem);

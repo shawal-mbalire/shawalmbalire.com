@@ -21,11 +21,11 @@
     <link rel='stylesheet'    href="/public/static/css/nav.css">
     <link rel='stylesheet'    href="/public/static/css/home.css">
     <link rel='stylesheet'    href="/public/static/css/about.css">
-    <link rel='stylesheet'    href="/public/static/css/skills.css">
+    <link rel='stylesheet'    href="/public/static/css/work.css">
     <link rel='stylesheet'    href="/public/static/css/services.css">
     <link rel='stylesheet'    href="/public/static/css/certificate.css">
     <link rel='stylesheet'    href="/public/static/css/contact.css">
-    <!-- <link rel='stylesheet'    href="/public/static/css/home.css"> -->
+    <link rel='stylesheet'    href="/public/static/css/footer.css">
     <link rel="stylesheet"    href="/public/static/javascript/index.js">
     <link rel="shortcut icon" href="/public/static/images/favIcon.png" type="image/x-icon">
     <title>Shawal Mbalire Portfolio</title>
@@ -45,7 +45,7 @@
         </button>        
     </header>
     <!-----------------------------------Nav-------------------------------->
-    <nav class="container">
+    <nav >
         <div class="nav__list">
             <!-----------------------------------home icon-------------------------------->
             <div class="nav__item">
@@ -60,17 +60,17 @@
                 </a>
             </div>
             <!-----------------------------------skills icon-------------------------------->
-            <div class="nav__item">
+            <!-- <div class="nav__item">
                 <a href="#skills" class="nav__link">
                     <img src="/public/static/icons/skills.svg" alt="Skills" class="nav__icon">
                 </a>
-            </div>
+            </div> -->
             <!-----------------------------------services icon-------------------------------->
-            <div class="nav__item">
+            <!-- <div class="nav__item">
                 <a href="#services" class="nav__link" class="nav__icon">
                     <img src="/public/static/icons/certificate.svg" alt="Cert" class="nav__icon">
-                </a>
-            </div>
+                </a> -->
+            <!-- </div> -->
             <!-----------------------------------work icon-------------------------------->
             <div class="nav__item">
                 <a href="#work" class="nav__link" class="nav__icon">
@@ -135,10 +135,10 @@
 
         <!-----------------------------------About-------------------------------->
         <section id="about">
-            <span class="section__subtitle">Who I am.</span>
-            <h2 class="section__title">About Me</h2>
             <div class="about__container">
-                <!-- <img src="/public/static/images/shawal.jpeg" alt="" class="about__img"> -->
+                
+                <span class="section__subtitle">Who I am.</span>
+                <h2 class="section__title">About Me</h2>
                 <div class="about__data">
                     <div class="about__info">
 
@@ -173,23 +173,13 @@
                         Electrical Engineering Junior at Makerere University, I am passionate about aoutomation of daily processes using embedded computers. I am a researcher with strong iterest in emerging technologies. I am a software developer with a love for programming. 
                     </p>
 
-                    <a href="#contact" class="button">Contact me</a>
-                </div>
-
-                <div id="specs">
-                    Name Shawal Mbalire
-                    Interest Chess
+                    <a href="#contact" id="contactme" >Contact me</a>
                 </div>
             </div>
-        </section>
 
-        <!-----------------------------------Skills-------------------------------->
-        <section class="skills section" id="skills">
-            <span class="section__subtitle">My abilities</span>
-            <h2 class="section__title">My Experience</h2>
-            <div class="skills__container container grid">
+            <div id="about_skills">
                 <!----------------------------------- Front end skills-------------------------------->
-                <div class="skills__content">
+                <div class="skills_card">
                     <h3 class="skills__title">Front end developer</h3>
 
                     <div class="skills__box">
@@ -252,7 +242,7 @@
 
                 </div>
                 <!-----------------------------------Backend Skills-------------------------------->
-                <div class="skills__content">
+                <div class="skills_card">
                     <h3 class="skills__title">Back end developer</h3>
 
                     <div class="skills__box">
@@ -315,7 +305,7 @@
 
                 </div>
                 <!-----------------------------------Hardware Skills-------------------------------->
-                <div class="skills__content">
+                <div class="skills_card">
                     <h3 class="skills__title">Hardware developer</h3>
 
                     <div class="skills__box">
@@ -344,15 +334,6 @@
                                     <span class="skills__level">Intermediate</span>
                                 </div>
                             </div>
-
-                            <div class="skills__data">
-                                <i class='bx bxs-badge-check'></i>
-                                <div>
-                                    <h3 class="skills__name">3d Design</h3>
-                                    <span class="skills__level">Intermediate</span>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
 
@@ -361,7 +342,7 @@
         </section>
 
         <!-----------------------------------Services-------------------------------->
-        <section class="services section" id="services">
+        <!-- <section class="services section" id="services">
             <span class="section__subtitle">My Services</span>
             <h2 class="section__title">What I offer</h2>
             <div class="services__container container grid">
@@ -507,31 +488,31 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-------------------------------------Work --------------------------------->
-        <section class="work section" id="work">
+        <section id="work">
             <span class="section__subtitle">My Portfolio</span>
             <h2 class="section__title">Recent Works</h2>
             <div class="work__filters">
                 <span class="work__item active-work" data-filter="all">All</span>
                 <span class="work__item" data-filter=".python">Python</span>
-                <span class="work__item" data-filter=".embedded .">Embedded Systems</span>
+                <span class="work__item" data-filter=".embedded .">Electronics</span>
                 <span class="work__item" data-filter=".blockchain">Blockchain</span>
                 <span class="work__item" data-filter=".web">Web 2.0</span>
             </div>
 
-            <!-- <div class="work__container container grid">
+            <div class="work__container">
 
                 <div class="work__card mix web">
                     <img src="/public/static/images/favIcon.png" alt="" class="work__img">
-                    <h3 class="work__title">Web 2.0 development/h3>
+                    <h3 class="work__title">Web 2.0 development </h3>
                         <a href="#" class="work__button">Demo
                             <i class="bx bx-right-arrow-alt work__icon"></i>
                         </a>
                 </div>
 
-                <div class="work__card mix blockchain">
+                <div class="work__card">
                     <img src="/public/static/images/favIcon.png" alt="" class="work__img">
                     <h3 class="work__title">Web 3.0 development</h3>
                     <a href="#" class="work__button">Demo
@@ -571,7 +552,7 @@
                     </a>
                 </div>
 
-            </div> -->
+            </div>
 
         </section>
 
@@ -580,7 +561,7 @@
             <span class="section__subtitle">My clients say</span>
             <h2 class="section__title">Testimonials</h2>
 
-            <!-- <div class="testimonial__container container swiper">
+            <div class="testimonial__container container swiper">
                 <div class="swiper-wrapper">
 
                     <div class="testimonial__card swiper-slide">
@@ -610,29 +591,20 @@
                 </div>
 
                 <div class="swiper-pagination"></div>
-            </div> -->
+            </div>
         </section> -->
 
         <!-----------------------------------Contact--------------------------------->
-        <section class="contact section" id="contact">
+        <section id="contact">
             <span class="section__subtitle">Get in touch</span>
             <h2 class="section__title">Contact Me</h2>
-            <div class="contact__container container grid">
+            <div class="contact__container">
 
                 <div class="contact__content">
                     <h3 class="contact__title">Talk to me</h3>
 
                     <div class="contact__info">
-
-                        <div class="contact__card">
-                            <i class="bx bx-mail-send contact__card-icon"></i>
-                            <h3 class="contact__card-title">Email</h3>
-                            <span class="contact__card-data">shawal@shawalmbalire.com</span>
-                            <a href="mailto:shawal@shawalmbalire.com" target="_blank" class="contact__button">
-                                Write me <i class="bx bx-right-arrow-alt contact__button-icon"></i>
-                            </a>
-                        </div>
-                        <!--
+                        
                         <div class="contact__card">
                             <i class="bx bx-mail-send contact__card-icon"></i>
                             <h3 class="contact__card-title">Gmail</h3>
@@ -641,23 +613,7 @@
                                 Write me <i class="bx bx-right-arrow-alt contact__button-icon"></i>
                             </a>
                         </div>
-                        <div class="contact__card">
-                            <i class="bx bx-mail-send contact__card-icon"></i>
-                            <h3 class="contact__card-title">iCloud</h3>
-                            <span class="contact__card-data">mshawal49@icloud.com</span>
-                            <a href="mailto:mshawal49@icloud.com" target="_blank" class="contact__button">
-                                Write me <i class="bx bx-right-arrow-alt contact__button-icon"></i>
-                            </a>
-                        </div>
-                        <div class="contact__card">
-                            <i class="bx bx-mail-send contact__card-icon"></i>
-                            <h3 class="contact__card-title">Outlook</h3>
-                            <span class="contact__card-data">mbalireshawal@outlook.com</span>
-                            <a href="mailto:mbalireshawal@outlook.com" target="_blank" class="contact__button">
-                                Write me <i class="bx bx-right-arrow-alt contact__button-icon"></i>
-                            </a>
-                        </div>
-                        -->
+                       
 
                         <div class="contact__card">
                             <i class="bx bxl-whatsapp contact__card-icon"></i>
@@ -697,7 +653,7 @@
                             <label for="" class="contact__form-tag ">Project</label>
                             <textarea name="" id="" cols="30" rows="10" placeholder="Write to me" class="contact__form-input"></textarea>
                         </div>
-                        <button class="button" type="submit">Send Message</button>
+                        <div class="submitbutton" type="submit">Send Message</div>
                     </form>
                 </div>
 
@@ -708,39 +664,44 @@
 
     <!-----------------------------------Footer-------------------------------->
     <footer class="footer">
-        <div class="footer__container container">
-            <h1 class="footer__title">Shawal</h1>
-
-            <ul class="footer__list">
-                <li>
-                    <a href="#about" class="footer__link">About</a>
-                </li>
-                <li>
-                    <a href="#work" class="footer__link">Work</a>
-                </li>
-                <li>
-                    <a href="#testimonials" class="footer__link">Testimonials</a>
-                </li>
-            </ul>
-
-            <ul class="footer__social">
-                <a href="https://ug.linkedin.com/in/mbalireshawal" target="_blank" class="footer__social-link">
-                    <i class="bx bxl-linkedin-square" ></i>
-                </a>
-
-                <a href="https://twitter.com/shawalmbalire" target="_blank" class="footer__social-link">
-                    <i class="bx bxl-twitter" ></i>
-                </a>
-
-                <a href="https://github.com/shawal-mbalire" target="_blank" class="footer__social-link">
-                    <i class="bx bxl-github" ></i>
-                </a>
-            </ul>
-
-            <span class="footer__copy">
-                &#169; Shawal. All rights reserved
-            </span>
+        <div id="footer_logo_div">
+            <a href="#" class="logo"><img id="logo" src="/public/static/images/logo.svg" alt=""></a>     
+            <a href="#" id="logo__text">Shawal</a>
         </div>
+
+        <ul class="footer__list">
+            <li>
+                <a href="#about" class="footer__link">About</a>
+            </li>
+            <li>
+                <a href="#work" class="footer__link">Work</a>
+            </li>
+            <li>
+                <a href="#testimonials" class="footer__link">Testimonials</a>
+            </li>
+        </ul>
+
+        <div class="footer__social">
+           <!-----------------------------------------------------------------------Linkedin-------------------------------------------->
+           <a target="_blank" href="https://ug.linkedin.com/in/mbalireshawal"><img src="/public/static/icons/linkedin.svg" alt="" class="home__icon"></a>
+
+           <!-----------------------------------------------------------------------Github-------------------------------------------->
+           <a target="_blank" href="https://github.com/shawal-mbalire" ><img src="/public/static/icons/github.svg" alt="" class="home__icon"></a>
+
+           <!-----------------------------------------------------------------------Twitter-------------------------------------------->
+           <a target="_blank" href="https://twitter.com/shawalmbalire" ><img src="/public/static/icons/twitterx.svg" alt="" class="home__icon"></a>
+
+           <!-----------------------------------------------------------------------Instagram-------------------------------------------->
+           <a target="_blank" href="https://www.instagram.com/shawal_mbalire_/" ><img src="/public/static/icons/instagram.svg" alt="" class="home__icon"></a>
+
+           <!-----------------------------------------------------------------------Researchgate-------------------------------------------->
+           <a target="_blank" href="https://www.researchgate.net/profile/Shawal-Mbalire" ><img src="/public/static/icons/research.svg" alt="" class="home__icon"></a>
+
+        </div>
+
+        <span class="footer__copy">
+            &#169; Shawal. All rights reserved
+        </span>
     </footer>
 
     <!--------------------------

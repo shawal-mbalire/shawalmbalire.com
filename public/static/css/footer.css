@@ -1,42 +1,25 @@
-/*========================================== Footer ====================================================*/
-.footer{
-    background-color: var(--first-color);
-}
-.footer__container{
-    padding: 2rem 0 6rem;
-}
-.footer__title,
-.footer__link{
-    color: var(--body-color);
-}
-.footer__title{
-    text-align: center;
-    margin-bottom: 2rem;
+footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: rgba(102, 238, 213, 0.14);
+
+
+.footer__list, .footer__social{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 .footer__list{
-    display: flex;
-    justify-content: center;
-    column-gap: 1.5rem;
-    margin-bottom: 2rem;
+    width: 20%;
 }
 .footer__social{
-    display: flex;
-    justify-content: center;
-    column-gap: 1.25rem;
+    width: 50%;
 }
-.footer__social-link{
-    border: var(--body-color);
-    color: var(--first-color);
-    padding: .25rem;
-    border-radius: .25rem;
-    font-size: 1rem;
-    display: inline-flex;
-}
-
 .footer__copy{
-    display: block ;
-    margin-top: 4.5rem;
-    color: var(--container-color);
-    text-align: center;
-    font-size: var(--smaller-font-size);
+    margin-top: 2rem;
+}
+#footer_logo_div{
+    padding-top: 1rem;
 }

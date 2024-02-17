@@ -21,7 +21,7 @@ main{
 
 section{
     /* margin-top: 4rem; */
-    height: 80vh;
+    /* height: 80vh; */
     width: 80%;
     padding-left: 2rem;
     padding-right: 2rem;
@@ -33,7 +33,7 @@ section{
     padding-top: 5rem;
 }
 footer{
-    padding-bottom: 3rem;
+    padding-bottom: 7rem;
 }
 .button{
     display: inline;

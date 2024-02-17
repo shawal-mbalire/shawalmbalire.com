@@ -1,86 +1,75 @@
-/*========================================== Contact ====================================================*/
-.contact__container{
-    display: grid;
-    gap: 3rem;
-    padding-bottom: 3rem;
+#contact{
+    display: flex;
+    flex-direction: column;
 }
-.contact__title{
-    text-align: center;
-    font-size: var(--h3-font-size);
-    margin-bottom: 1.5rem;
+
+.contact__container{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.contact__content{
+    display: flex;
+    flex-direction: column;
 }
 .contact__info{
-    display: grid;
-    gap: 1rem;
-}
-.contact__card{
-    background-color: var(--container-color);
-    padding: 1rem;
-    border-radius: 0.75rem;
-    text-align: center;
-}
-.contact__card-icon{
-    font-size: 2rem;
-    color: var(--title-color);
-    margin-bottom: .25rem;
-}
-.contact__card-title,
-.contact__card-data{
-    font-size: var(--small-font-size);
-}
-.contact__card-title{
-    font-weight: var(--font-medium);
-}
-.contact__card-data{
-    display: block;
-    margin-bottom: .75rem;
-}
-.contact__button{
-    color: var(--first-color);
-    font-size: var(--small-font-size);
     display: flex;
     align-items: center;
+    flex-direction: column;
+}
+.contact__card{
+
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    column-gap: .25rem;
+    align-items: center;
+    width: 15rem;
+    background-color: rgba(102, 238, 213, 0.2);
+    border-radius: 0.6rem;
+    padding: 0.5rem;
+    margin: 1rem ;
 }
-.contact__button:hover .contact__button-icon{
-    transform: translateX(.25rem);
-}
-.contact__button-icon{
-    font-size: 1rem;
-    transition: .4s;
-}
+
 .contact__form-div{
     position: relative;
     margin-bottom: 2rem;
     height: 4rem;
 }
-.contact__form-input{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+input, textarea{
     height: 100%;
-    border: 2px solid var(--text-color-light);
-    background: none;
-    color: var(--text-color);
-    outline: none;
-    padding: 1.5rem;
-    border-radius: .75rem;
+    width: 100%;
+    color: black;
+    border: none;
+    border: 2px solid black;
+    background-color: rgba(102, 238, 213, 0);
     z-index: 1;
+    border-radius: 1rem;
+}
+input::placeholder, textarea::placeholder{
+    color: black;
+    padding-top: 0.5rem;
+    padding-left: 1rem;
+}
+input{
+    height: 2rem;
+}
+textarea{
+    height: 6rem;
 }
 .contact__form-tag{
     position: absolute;
     top: -.75rem;
     left: 1.25rem;
-    font-size: var(--smaller-font-size);
     padding: .25rem;
-    background-color: var(--body-color);
-    z-index: 10;
+    z-index: 2;
+    background-color: rgb(97, 113, 127);
 }
-.contact__form-area{
-    height: 11rem;
-}
-.contact__form-area textarea{
-    resize: none;
+.submitbutton{
+    width: max-content;
+    background-color: rgba(102, 238, 213, 0.2);
+    margin-top: 4rem;
+    border-radius: 0.4rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: #000;
+    backdrop-filter: blur(1rem);
 }

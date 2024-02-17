@@ -7,7 +7,9 @@
 }
 .about__container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    margin: 1rem;
+
 }
 #specs {
     background-color: var(--container-color);
@@ -23,12 +25,14 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: .5rem;
-    margin-bottom: 2rem
+    margin-bottom: 1rem
 }
 .about__box{
-    background-color: var(--container-color);
-    border-radius: .75rem;
-    padding: .75rem .5rem;
+    background-color: rgba(102, 238, 213, 0.2);
+    border-radius: 0.6rem;
+    padding: 0.5rem;
+    /* backdrop-filter: blur(1rem); */
+    width: 16rem;
 }
 .about__icon{
     font-size: 1.5rem;
@@ -43,4 +47,37 @@
 }
 .about__description{
     margin-bottom: 2rem;
+}
+#contactme{
+    width: 1.5rem;
+    /* height: 1rem; */
+    background-color: rgba(102, 238, 213, 0.2);
+    border-radius: 0.4rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: #000;
+    backdrop-filter: blur(1rem);
+}
+#about__container{
+    display: flex;
+}
+#about_skills{
+    display: flex;
+    justify-content: center;
+}
+.skills_card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 15rem;
+    background-color: rgba(102, 238, 213, 0.2);
+    border-radius: 0.6rem;
+    padding: 0.5rem;
+    backdrop-filter: blur(1rem);
+    /* margin: 2rem; */
+    margin-left: 2rem ;
+}
+.skills__group{
+    display: grid;
 }

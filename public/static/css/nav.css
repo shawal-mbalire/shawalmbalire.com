@@ -2,7 +2,6 @@ nav{
     position: fixed;
     bottom: 1rem;
     border-radius: 4rem;
-    /* background-color: antiquewhite; */
     padding: 1rem ;
     -webkit-backdrop-filter: blur(1rem);
     backdrop-filter: blur(1rem);
@@ -11,6 +10,7 @@ nav{
     width: 80%;
     height: 2rem;
     background-color: rgba(102, 238, 213, 0.14);
+    z-index: 100;
 }
 .nav__list{
     width: 100%;
@@ -29,7 +29,6 @@ nav{
 .nav__icon{
     width: 1.5rem;
     /* height: 1rem; */
-    /* background-color: rgba(102, 238, 213, 0.2); */
     border-radius: 0.4rem;
     padding: 0.5rem;
     cursor: pointer;

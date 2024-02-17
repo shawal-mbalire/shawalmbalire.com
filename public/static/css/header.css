@@ -20,6 +20,7 @@ header{
     height: var(--header-height);
     background-color: rgba(102, 238, 213, 0.14);
     backdrop-filter: blur(1rem);
+    z-index: 100;
 
     display: flex;
     align-items: center;
