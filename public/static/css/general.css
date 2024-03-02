@@ -3,7 +3,7 @@
     text-emphasis: none;
 }
 body{
-    background-color: rgb(97, 113, 127);
+    background-color: var(--backgroundColor);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,12 +20,9 @@ main{
 }
 
 section{
-    /* margin-top: 4rem; */
-    /* height: 80vh; */
     width: 80%;
     padding-left: 2rem;
     padding-right: 2rem;
-    /* padding-top: 2rem; */
     display: flex;
     justify-content: center;
     align-content: center;

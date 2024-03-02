@@ -1,6 +1,6 @@
 {
   "dependencies": {
     "boxicons": "^2.1.4",
-    "firebase-tools": "^11.19.0"
+    "firebase-tools": "^13.4.0"
   }
 }
