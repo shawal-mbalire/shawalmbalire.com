@@ -5,9 +5,18 @@ main {
     min-height: 80vh;
     flex-direction: column;
     row-gap: 1rem;
+    flex-wrap: wrap;
 }
 main div{
     display: flex;
     width: 30%;
     justify-content: space-between;
+}
+div a{
+    background-color: var(--secondaryColor);
+    border-radius: 10px;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    padding-inline: 1rem;
 }

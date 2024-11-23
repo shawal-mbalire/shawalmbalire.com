@@ -1,6 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 *{
-    background-color: brown;
+    --backgroundColor : black;
+    --fontColor       : white;
+    --glassColor      : white;
+    --iconColor       : white;
+
+    --primaryColor    : #1b2420;
+    --secondaryColor  : rgb(4, 39, 4);
+    --tertiaryColor   : blue;
+
+
+    background-color: var(--backgroundColor);
     color: white;
     text-decoration: none;
     text-emphasis: none;
@@ -8,14 +18,4 @@
     font-optical-sizing: auto;
     margin: 0;
     padding: 0;
-
-
-    --backgroundColor : black;
-    --fontColor       : white;
-    --glassColor      : white;
-    --iconColor       : white;
-
-    --primaryColor    : #1b2420;
-    --secondaryColor  : green;
-    --tertiaryColor   : blue;
 }

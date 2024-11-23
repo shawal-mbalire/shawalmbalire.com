@@ -1,27 +1,34 @@
-
-header{
+header {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
     height: 4.2rem;
     align-items: center;
-    background-color: #fff;
 }
-div img{
-    height:4rem;
+
+div img {
+    height: 4rem;
 }
-nav{
+
+nav {
     width: 60%;
     align-items: center;
     display: flex;
     justify-content: space-evenly;
 }
-nav img{
+
+nav img {
     height: 2rem;
 }
-button{
+
+button {
     height: 70%;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
 }
-button img{
+
+button img {
     height: 2rem;
 }
