@@ -1,0 +1,13 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+main div{
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
+}

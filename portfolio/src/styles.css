@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+*{
+    background-color: brown;
+    color: white;
+    text-decoration: none;
+    text-emphasis: none;
+    font-family: "Comfortaa", sans-serif;
+    font-optical-sizing: auto;
+    margin: 0;
+    padding: 0;
+
+
+    --backgroundColor : black;
+    --fontColor       : white;
+    --glassColor      : white;
+    --iconColor       : white;
+
+    --primaryColor    : #1b2420;
+    --secondaryColor  : green;
+    --tertiaryColor   : blue;
+}

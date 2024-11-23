@@ -1,0 +1,27 @@
+
+header{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    height: 4.2rem;
+    align-items: center;
+    background-color: #fff;
+}
+div img{
+    height:4rem;
+}
+nav{
+    width: 60%;
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+nav img{
+    height: 2rem;
+}
+button{
+    height: 70%;
+}
+button img{
+    height: 2rem;
+}
