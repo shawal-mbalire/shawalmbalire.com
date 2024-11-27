@@ -35,10 +35,10 @@ export default `<!DOCTYPE html>
   <base href="/">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <title>Shawal Mbalire</title>
-<style>*{--backgroundColor:black;--fontColor:white;--glassColor:white;--iconColor:white;--primaryColor:#1b2420;--secondaryColor:rgb(4, 39, 4);--tertiaryColor:blue;background-color:var(--backgroundColor);color:var(--fontColor);text-decoration:none;text-emphasis:none;font-family:Comfortaa,sans-serif;font-optical-sizing:auto;margin:0;padding:0}</style><link rel="stylesheet" href="styles-TDYAX434.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-TDYAX434.css"></noscript></head>
+<style>*{--backgroundColor:black;--fontColor:white;--glassColor:white;--iconColor:white;--glowColor:rgba(255,255,255,.2);--primaryColor:black;--secondaryColor:white;--tertiaryColor:blue;background-color:var(--backgroundColor);color:var(--fontColor);text-decoration:none;text-emphasis:none;font-family:Comfortaa,sans-serif;font-optical-sizing:auto;margin:0;padding:0}</style><link rel="stylesheet" href="styles-YWTKWIXQ.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-YWTKWIXQ.css"></noscript></head>
 
 <body ngcm="">
   <app-root></app-root>
-<script src="main-HABQHBGA.js" type="module"></script></body>
+<script src="main-HHZXSHAS.js" type="module"></script></body>
 
 </html>`;
