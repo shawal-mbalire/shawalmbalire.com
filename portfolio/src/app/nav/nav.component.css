@@ -1,34 +1,40 @@
 header {
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    height: 4.2rem;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  height: 4.2rem;
+  align-items: center;
 }
 
 div img {
-    height: 4rem;
+  height: 4rem;
 }
 
 nav {
-    width: 60%;
-    align-items: center;
-    display: flex;
-    justify-content: space-evenly;
+  width: 60%;
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
 }
 
-nav img {
-    height: 2rem;
+nav svg,
+button svg{
+  height: 2rem;
+}
+svg,
+svg path,
+svg g path{
+  fill:var(--iconColor);
 }
 
 button {
-    height: 70%;
-    border: none;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
+  height: 70%;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
 }
 
 button img {
-    height: 2rem;
+  height: 2rem;
 }
