@@ -11,3 +11,10 @@ div{
     align-items: center;
     gap: 2rem;
 }
+#workTiles{
+  display: flex;
+  justify-content: center;
+}
+app-work-entry{
+  width: 250px;
+}

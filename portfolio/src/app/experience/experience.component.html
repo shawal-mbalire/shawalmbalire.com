@@ -5,6 +5,11 @@
       I am most excited about my co-authoring a research paper which was published to IEEE Xplore as well as my
       internships. I hope this page is filled with more cool projects in the future.
     </p>
-    <app-work-entry></app-work-entry>
+    <div id="workTiles">
+      <app-work-entry
+        *ngFor="let workEntry of workEntryList"
+        [workEntry] = "workEntry"
+      ></app-work-entry>
+    </div>
   </div>
 </main>

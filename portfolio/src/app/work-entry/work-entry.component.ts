@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
+import { WorkEntry } from "../workEntry";
 
 @Component({
   selector: 'app-work-entry',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './work-entry.component.css'
 })
 export class WorkEntryComponent {
-
+  @Input() workEntry!:WorkEntry;
 }
