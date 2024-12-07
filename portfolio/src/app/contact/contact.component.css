@@ -3,26 +3,30 @@ main{
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-main div{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-}
-main div div{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-main div div div{
-  border: 2px solid;
-  min-width: 20rem;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
 
+    div{
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+      div{
+        border: 2px solid;
+        padding: 1rem;
+        min-width: 20rem;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+}
