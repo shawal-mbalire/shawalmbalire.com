@@ -11,3 +11,17 @@ div{
     align-items: center;
     gap: 2rem;
 }
+#workTiles{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+app-work-entry{
+  width: 250px;
+  border: 2px solid ;
+  height: 150px;
+  border-radius: 10px;
+  padding: 1rem;
+}

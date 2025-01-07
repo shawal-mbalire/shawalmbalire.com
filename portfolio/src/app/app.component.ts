@@ -6,12 +6,13 @@ import { AboutComponent } from './about/about.component';
 import { ExperienceComponent } from './experience/experience.component';
 import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
+import { WorkEntryComponent } from "./work-entry/work-entry.component";
 
 @Component({
   selector: 'app-root',
   imports: [
-    RouterOutlet, 
-    NavComponent, 
+    RouterOutlet,
+    NavComponent,
     HomeComponent,
     AboutComponent,
     ExperienceComponent,
