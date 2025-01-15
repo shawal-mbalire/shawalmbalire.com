@@ -23,5 +23,6 @@ app-work-entry{
   border: 2px solid ;
   height: 150px;
   border-radius: 10px;
+  overflow:hidden;
   padding: 1rem;
 }

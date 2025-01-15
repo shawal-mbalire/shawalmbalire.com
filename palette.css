@@ -1,0 +1,15 @@
+ {
+  /* CSS HEX */
+  --black: #000000ff;
+  --dark-blue: #1f01b9ff;
+  --alice-blue: #edf5fcff;
+  --dim-gray: #626868ff;
+  --myrtle-green: #297373ff;
+
+  /* CSS HSL */
+  --black: hsla(0, 0%, 0%, 1);
+  --dark-blue: hsla(250, 99%, 36%, 1);
+  --alice-blue: hsla(208, 71%, 96%, 1);
+  --dim-gray: hsla(180, 3%, 40%, 1);
+  --myrtle-green: hsla(180, 47%, 31%, 1);
+}
