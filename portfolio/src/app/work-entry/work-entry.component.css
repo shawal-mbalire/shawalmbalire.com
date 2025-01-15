@@ -1,0 +1,17 @@
+
+.work-entry {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0.2rem;
+        overflow: hidden;
+    }
+}

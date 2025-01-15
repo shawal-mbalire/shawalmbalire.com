@@ -1,0 +1,75 @@
+body {
+	background-color: black;
+	height: 100vh;
+	display: grid;
+	place-items: center;
+	margin: 0;
+	overflow: hidden;
+}
+
+#logo {
+	position: relative;
+	width: 300px;
+	aspect-ratio: 1000 / 556;
+	user-select: none;
+}
+
+#logo > img {
+	width: 100%;
+	position: absolute;
+}
+
+/* -- Links -- */
+
+#links {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	z-index: 100;
+	padding: 1rem;
+}
+
+.meta-link {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.meta-link > :is(span, a) {
+	font-family: "Rubik", sans-serif;
+	font-size: 1.25rem;
+	color: white;
+}
+
+.meta-link > .label {
+	text-align: right;
+}
+
+.meta-link > a {
+	text-decoration: none;
+	outline: none;
+}
+
+.meta-link > a.source {
+	color: rgb(94, 106, 210);
+}
+
+.meta-link > a:is(:hover, :focus) > i {
+	color: white;
+}
+
+.meta-link > a.youtube {
+	color: rgb(239, 83, 80);
+}
+
+.meta-link > a.youtube > i {
+	padding-top: 0.2rem;
+}
+
+.meta-link > a > i {
+	height: 1rem;
+	line-height: 1rem;
+}
