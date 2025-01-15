@@ -1,13 +1,11 @@
-<section>
-  <!--<img id="image" [src]="workEntry.photo" alt = "Photo of {{workEntry.title}}">-->
-  <h2 id="work_heading">{{workEntry.title}}</h2>
-  <h3>{{workEntry.company}}</h3>
-  <h3>{{workEntry.duration}}</h3>
-  <p id="work_description">{{workEntry.description}}</p>
+<div class="work-entry">
+  <div>
+    <!--<img id="image" [src]="workEntry.photo" alt = "Photo of {{workEntry.title}}">-->
+    <h2 id="work_heading">{{ workEntry.title }}</h2>
+    <h3>{{ workEntry.company }}</h3>
+    <h3>{{ workEntry.duration }}</h3>
+    <p id="work_description">{{ workEntry.description }}</p>
+  </div>
 
-  <dialog>
-    <button closeButton type="">Close</button>
-    Modal works!
-  </dialog>
-  <!-- <button showButton type="" (click)="dialog.showModal()">Show More</button> -->
-</section>
+  <button mat-button type="" (click)="openDialog()">Show More</button>
+</div>

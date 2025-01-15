@@ -1,0 +1,31 @@
+<mat-card class="dialog-card">
+    <mat-card-header>
+      <mat-card-title>{{ data.title }}</mat-card-title>
+      <mat-card-subtitle>{{ data.company }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p><strong>Type:</strong> {{ data.type }}</p>
+      <p><strong>Location:</strong> {{ data.location }}</p>
+      <p><strong>Duration:</strong> {{ data.duration }}</p>
+      <p><strong>Start Date:</strong> {{ data.startDate }}</p>
+      <p><strong>End Date:</strong> {{ data.endDate }}</p>
+      <p><strong>Work Mode:</strong> {{ data.workMode }}</p>
+      <p><strong>Description:</strong> {{ data.description }}</p>
+      <div *ngIf="data.skills?.length">
+        <p><strong>Skills:</strong></p>
+        <ul>
+          <li *ngFor="let skill of data.skills">{{ skill }}</li>
+        </ul>
+      </div>
+      <div *ngIf="data.responsibilities?.length">
+        <p><strong>Responsibilities:</strong></p>
+        <ul>
+          <li *ngFor="let responsibility of data.responsibilities">{{ responsibility }}</li>
+        </ul>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button mat-dialog-close>Close</button>
+    </mat-card-actions>
+  </mat-card>
+  

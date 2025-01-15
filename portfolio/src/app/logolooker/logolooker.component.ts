@@ -7,49 +7,57 @@ import { isPlatformBrowser } from '@angular/common';
   styleUrls: ['./logolooker.component.css']
 })
 export class LogolookerComponent implements OnInit, OnDestroy {
-  logo!: HTMLElement;
-  images!: NodeListOf<HTMLImageElement>;
+  private logo!: HTMLElement | null;
+  private images!: NodeListOf<HTMLImageElement>;
+  private active = false;
+  private isBrowser: boolean;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: any) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
   ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      this.logo = document.getElementById('logo') as HTMLElement;
-      this.images = this.logo.querySelectorAll('img');
-    
-      window.onmousemove = this.shiftLogo.bind(this);
-      document.body.onmouseleave = this.resetLogo.bind(this);
-      window.onmousedown = this.onMouseDown.bind(this);
-      window.onmouseup = this.onMouseUp.bind(this);
-    
-      this.resetLogo();
+    if (!this.isBrowser) return; // Ensure DOM interaction only in browser
+
+    // Access the DOM directly to get the logo element
+    this.logo = document.getElementById('logo');
+    if (!this.logo) {
+      console.error('Logo element not found.');
+      return;
     }
+
+    // Get all images inside the logo
+    this.images = this.logo.querySelectorAll('img');
+    if (!this.images.length) {
+      console.warn('No images found within the logo element.');
+    }
+
+    // Attach event listeners
+    window.onmousemove = this.shiftLogo.bind(this);
+    document.body.onmouseleave = this.resetLogo.bind(this);
+    window.onmousedown = this.onMouseDown.bind(this);
+    window.onmouseup = this.onMouseUp.bind(this);
+
+    this.resetLogo();
   }
 
   ngOnDestroy(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      window.onmousemove = null;
-      document.body.onmouseleave = null;
-      window.onmousedown = null;
-      window.onmouseup = null;
-    }
-  }
+    if (!this.isBrowser) return;
 
-  private getActive(): boolean {
-    return document.body.dataset['active'] === 'true';  // Bracket notation
-  }
-
-  private setActiveTo(active: boolean): void {
-    document.body.dataset['active'] = String(active);  // Bracket notation
+    // Cleanup event listeners
+    window.onmousemove = null;
+    document.body.onmouseleave = null;
+    window.onmousedown = null;
+    window.onmouseup = null;
   }
 
   private shift(image: HTMLImageElement, index: number, rangeX: number, rangeY: number): void {
-    const active = this.getActive();
-    const translationIntensity = active ? 24 : 4;
+    const translationIntensity = this.active ? 24 : 4;
     const maxTranslation = translationIntensity * (index + 1);
     const currentTranslation = `${maxTranslation * rangeX}% ${maxTranslation * rangeY}%`;
-    const scale = active ? 1 + index * 0.4 : 1;
+    const scale = this.active ? 1 + index * 0.4 : 1;
 
+    // Apply animations using the Web Animations API
     image.animate(
       {
         translate: currentTranslation,
@@ -63,27 +71,29 @@ export class LogolookerComponent implements OnInit, OnDestroy {
     this.images.forEach((image, index) => this.shift(image, index, rangeX, rangeY));
   }
 
-  private shiftLogo(e: MouseEvent): void {
+  private shiftLogo(event: MouseEvent): void {
+    if (!this.logo) return;
+
     const rect = this.logo.getBoundingClientRect();
     const radius = 1000;
 
+    // Calculate the offset of the mouse relative to the center of the logo
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
-
-    const rangeX = (e.clientX - centerX) / radius;
-    const rangeY = (e.clientY - centerY) / radius;
+    const rangeX = (event.clientX - centerX) / radius;
+    const rangeY = (event.clientY - centerY) / radius;
 
     this.shiftAll(rangeX, rangeY);
   }
 
   private resetLogo(): void {
-    this.setActiveTo(false);
+    this.active = false;
     this.shiftAll(0.4, -0.7);
   }
 
-  private onMouseDown(e: MouseEvent): void {
-    this.setActiveTo(true);
-    this.shiftLogo(e);
+  private onMouseDown(event: MouseEvent): void {
+    this.active = true;
+    this.shiftLogo(event);
   }
 
   private onMouseUp(): void {

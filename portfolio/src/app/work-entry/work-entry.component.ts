@@ -1,25 +1,53 @@
-import { Component,Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, inject, Inject } from '@angular/core';
 import { WorkEntry } from "../workEntry";
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+
 
 @Component({
   selector: 'app-work-entry',
-  imports: [],
+  styleUrl: './work-entry.component.css',
   templateUrl: './work-entry.component.html',
-  styleUrl: './work-entry.component.css'
+  imports: [
+    MatButtonModule, 
+    MatDialogModule
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-//const dialog = document.querySelector("dialog");
-//const showButton = document.querySelector("dialog + button");
-//const closeButton = document.querySelector("dialog button");
-//
-//// "Show the dialog" button opens the dialog modally
-//showButton.addEventListener("click", () => {
-//  dialog.showModal();
-//});
-//
-//// "Close" button closes the dialog
-//closeButton.addEventListener("click", () => {
-//  dialog.close();
-//});
 export class WorkEntryComponent {
-  @Input() workEntry!:WorkEntry;
+
+  @Input() workEntry!: WorkEntry;
+  readonly dialog = inject(MatDialog);
+  openDialog() {
+    const dialogRef = this.dialog.open(
+      WorkEntryComponentDialog,
+      {
+        height: '70vh',
+        width: '70vw',
+        data: this.workEntry
+      }
+    );
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+}
+
+@Component({
+  selector: 'app-work-entry-dialog',
+  templateUrl: './work-entry-dialog.html',
+  imports: [
+    MatDialogModule,
+    MatButtonModule,
+    MatListModule,
+    MatCardModule
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class WorkEntryComponentDialog {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: WorkEntry) { }
 }
