@@ -2,4 +2,16 @@ main{
     margin: 0;
     padding: 0;
     width: 100%;
+    
+    div {
+        display: grid;
+        place-items: center;
+        margin: 0;
+        /* overflow: hidden; */
+    }
+}
+
+
+a {
+    cursor: pointer;
 }

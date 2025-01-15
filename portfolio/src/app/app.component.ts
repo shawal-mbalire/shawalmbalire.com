@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLink } from '@angular/router';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ExperienceComponent } from './experience/experience.component';
 import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
-import { WorkEntryComponent } from "./work-entry/work-entry.component";
+import { LogolookerComponent } from "./logolooker/logolooker.component";
 
 @Component({
   selector: 'app-root',
@@ -18,7 +18,8 @@ import { WorkEntryComponent } from "./work-entry/work-entry.component";
     ExperienceComponent,
     ContactComponent,
     FooterComponent,
-  ],
+    LogolookerComponent
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
