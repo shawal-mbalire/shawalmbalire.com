@@ -1,30 +1,19 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
-import { ExperienceComponent } from './experience/experience.component';
+import { AppComponent } from './app.component';
 
 export const routes: Routes = [
     {
         path: '',
-        component: HomeComponent
+        component: AppComponent
     },
     {
         path: 'home',
-        component: HomeComponent
+        component: AppComponent
     },
-    {
-        path: 'about',
-        component: AboutComponent
-    },
-    {
-        path: 'work',
-        component: ExperienceComponent
-    },
-    {
-        path: 'contact',
-        component: ContactComponent
-    },
+    // {
+    //     path: 'about',
+    //     component: AboutComponent
+    // },
 
 
 

@@ -2,9 +2,6 @@
 .work-entry {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* color: #f0f0f0; */
     height: 100%;
     width: 100%;
     justify-content: space-between;
@@ -14,7 +11,7 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        gap: 1rem;
+        gap: 0.2rem;
         overflow: hidden;
     }
 }

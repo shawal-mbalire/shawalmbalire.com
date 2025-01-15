@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { NgFor,NgIf } from '@angular/common';
 
 
 @Component({
@@ -44,7 +45,9 @@ export class WorkEntryComponent {
     MatDialogModule,
     MatButtonModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    NgFor,
+    NgIf
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
