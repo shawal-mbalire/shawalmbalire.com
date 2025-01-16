@@ -9,6 +9,12 @@
   --secondaryColor  : white;
   --tertiaryColor   : blue;
 
+  --black: #000000ff;
+  --dark-blue: #1f01b9ff;
+  --alice-blue: #edf5fcff;
+  --dim-gray: #626868ff;
+  --myrtle-green: #297373ff;
+
 
   background-color:    var(--backgroundColor);
   color:               var(--fontColor);
@@ -37,10 +43,9 @@ svg g path{
   font-weight: bold;
   color: var(--primaryColor);
   background-color: var(--secondaryColor);
-  box-shadow: 0 0 10px 8px var(--glowColor);
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
 }
-
 .button:hover {
   background-color: var(--primaryColor);
   border-color: var(--fontColor);
@@ -48,15 +53,18 @@ svg g path{
   cursor: pointer;
   transform: scale(1.05);
 }
-.button {
-  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
-}
-
 
 
 header{
   position: fixed;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.mat-dialog-container {
+  border-radius: 16px; /* Rounded corners */
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+}
+.cdk-overlay-backdrop {
+  backdrop-filter: blur(8px); /* Adds blur effect */
+  background-color: rgba(0, 0, 0, 0.4); /* Optional for better contrast */
+}

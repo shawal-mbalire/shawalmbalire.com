@@ -3,6 +3,7 @@ main{
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
   div{
     display: flex;
     flex-direction: column;
@@ -17,7 +18,8 @@ main{
       flex-wrap: wrap;
       align-items: center;
       gap: 1rem;
-      div{
+
+      .contact__card {
         border: 2px solid;
         padding: 1rem;
         min-width: 20rem;
@@ -26,6 +28,10 @@ main{
         justify-content: center;
         flex-direction: column;
         align-items: center;
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+      }
+      .contact__card:hover{
+        transform: translate(scale(1.1));
       }
     }
   }
