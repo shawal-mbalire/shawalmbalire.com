@@ -25,4 +25,11 @@ app-work-entry{
   border-radius: 10px;
   overflow:hidden;
   padding: 1rem;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+  
+}
+app-work-entry:hover{
+  transform: scale(1.05);
+  box-shadow: 0 0 10px 8px var(--glowColor);
 }

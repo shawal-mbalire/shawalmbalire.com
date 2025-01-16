@@ -38,3 +38,12 @@ button {
 button img {
   height: 2rem;
 }
+svg{
+  transition: color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
+}
+svg:hover{
+  transform: scale(1.2);
+  background-color: var(--primaryColor);
+  
+}
