@@ -3,7 +3,7 @@ main {
   min-height: 25vh;
   align-items: center;
   justify-content: center;
-
+width: 100vw;
   div {
     display: flex;
     align-items: center;

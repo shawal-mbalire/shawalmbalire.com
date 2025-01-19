@@ -1,9 +1,10 @@
 header {
-  width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: space-evenly;
   height: 4.2rem;
   align-items: center;
+  filter: drop-shadow(0 0 0.75rem var(--glowColor));
 }
 
 div img {

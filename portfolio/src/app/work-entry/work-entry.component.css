@@ -13,7 +13,12 @@
         justify-content: flex-start;
         align-items: start;
         gap: 0.6rem;
-        overflow: hidden;
+        overflow-y: scroll;
+        /* scrool options */
+        scrollbar-width: none;
+        scroll-behavior: smooth;
+        scrollbar-color: var(--dim-gray) var(--dim-gray);
+        /* width */
 
         h2 {
             font-size: 1.5rem;
