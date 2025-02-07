@@ -1,23 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
 *{
-  --backgroundColor : black;
-  --fontColor       : white;
-  --glassColor      : white;
-  --iconColor       : white;
-  --glowColor       : rgba(255,255,255,0.2);
-  --primaryColor    : black;
-  --secondaryColor  : white;
-  --tertiaryColor   : blue;
-
-  --black: #000000ff;
-  --dark-blue: #1f01b9ff;
-  --alice-blue: #edf5fcff;
-  --dim-gray: #626868ff;
-  --myrtle-green: #297373ff;
-
-
-  background-color:    var(--backgroundColor);
-  color:               var(--fontColor);
+  color:               var(--fontColor); 
   text-decoration:     none;
   text-emphasis:       none;
   font-family:         "Comfortaa", sans-serif;
@@ -68,4 +50,47 @@ header{
 .cdk-overlay-backdrop {
   backdrop-filter: blur(8px); /* Adds blur effect */
   background-color: rgba(0, 0, 0, 0.4); /* Optional for better contrast */
+}
+
+/* Light Theme */
+.light-theme {
+  --backgroundColor: white;
+  --fontColor: black;
+  --glassColor: black;
+  --iconColor: black;
+  --glowColor: rgba(0, 0, 0, 0.2);
+  --primaryColor: white;
+  --secondaryColor: black;
+  --tertiaryColor: blue;
+
+  --black: #000000ff;
+  --dark-blue: #1f01b9ff;
+  --alice-blue: #edf5fcff;
+  --dim-gray: #626868ff;
+  --myrtle-green: #297373ff;
+}
+
+/* Dark Theme */
+.dark-theme {
+  --backgroundColor: black;
+  --fontColor: white;
+  --glassColor: white;
+  --iconColor: white;
+  --glowColor: rgba(255, 255, 255, 0.2);
+  --primaryColor: black;
+  --secondaryColor: white;
+  --tertiaryColor: blue;
+
+  --black: #000000ff;
+  --dark-blue: #1f01b9ff;
+  --alice-blue: #edf5fcff;
+  --dim-gray: #626868ff;
+  --myrtle-green: #297373ff;
+}
+
+/* Apply theme variables */
+body {
+  background-color: var(--backgroundColor);
+  color: var(--fontColor);
+  /* transition: background-color 0.05s ease, color 0.05s ease; */
 }

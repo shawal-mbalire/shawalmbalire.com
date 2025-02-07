@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1738048454.14054 "/home/shawal/GitHub/shawalmbalire.com/portfolio/public/documents/MbalireShawalCV.tex" "MbalireShawalCV.pdf" "MbalireShawalCV" 1738048454.62136 0
+["pdflatex"] 1738058326.62225 "/home/shawal/GitHub/shawalmbalire.com/portfolio/public/documents/MbalireShawalCV.tex" "MbalireShawalCV.pdf" "MbalireShawalCV" 1738058327.17011 0
   "/home/shawal/GitHub/shawalmbalire.com/portfolio/public/documents/MbalireShawalCV.tex" 1738048445.06609 4871 50bb59c4f5f1d039b9ad32050d553fa8 ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1736268207 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1736268207 1328 c834bbb027764024c09d3d2bf908b5f0 ""
@@ -51,8 +51,8 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1736268207 41588 b43d3e860a4f94167ee1e725ff526a72 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1736327647.61351 5318467 8236939515598d005dfbcc2e1a40f206 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1736327555 7113022 219c178ee9803f4a36a69284e7fbbd17 ""
-  "MbalireShawalCV.aux" 1738048454.57619 162 87159b23cce7c2b923b11c85495bbd6d "pdflatex"
-  "MbalireShawalCV.out" 1738048454.48619 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "MbalireShawalCV.aux" 1738058327.0835 162 87159b23cce7c2b923b11c85495bbd6d "pdflatex"
+  "MbalireShawalCV.out" 1738058326.99016 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   "MbalireShawalCV.tex" 1738048445.06609 4871 50bb59c4f5f1d039b9ad32050d553fa8 ""
   (generated)
   "MbalireShawalCV.aux"
