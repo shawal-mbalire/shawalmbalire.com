@@ -1,28 +1,29 @@
-import { Component } from '@angular/core';
-// import { RouterOutlet, RouterLink } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ThemeService } from './theme.service';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ExperienceComponent } from './experience/experience.component';
 import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
-// import { LogolookerComponent } from "./logolooker/logolooker.component";
 
 @Component({
   selector: 'app-root',
   imports: [
-    // RouterOutlet,
     NavComponent,
     HomeComponent,
     AboutComponent,
     ExperienceComponent,
     ContactComponent,
     FooterComponent,
-    // LogolookerComponent
 ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'portfolio';
+export class AppComponent implements OnInit {
+  constructor(private themeService: ThemeService) {}
+
+  ngOnInit() {
+    // The theme will be set based on the user's preference when the service is initialized
+  }
 }

@@ -1,0 +1,17 @@
+svg,
+button svg{
+  height: 2rem;
+}
+svg,
+svg path,
+svg g path{
+  fill:var(--iconColor);
+}
+button {
+    background-color: var(--primaryColor); 
+    height: 70%;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
