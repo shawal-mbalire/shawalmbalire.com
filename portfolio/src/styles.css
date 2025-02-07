@@ -54,12 +54,12 @@ header{
 
 /* Light Theme */
 .light-theme {
-  --backgroundColor: white;
+  --backgroundColor: #edf5fc; /* Softer blue hue */
   --fontColor: black;
   --glassColor: black;
   --iconColor: black;
   --glowColor: rgba(0, 0, 0, 0.2);
-  --primaryColor: white;
+  --primaryColor: #edf5fc; /* Softer blue hue */
   --secondaryColor: black;
   --tertiaryColor: blue;
 
@@ -92,5 +92,5 @@ header{
 body {
   background-color: var(--backgroundColor);
   color: var(--fontColor);
-  /* transition: background-color 0.05s ease, color 0.05s ease; */
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
