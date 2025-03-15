@@ -41,7 +41,7 @@ strong {
   padding: 1rem;
   background-color: var(--backgroundColor);
   border-radius: 10px;
-  border: 2px solid var(--fontColor);
+  border: 1px solid var(--fontColor);
   overflow: scroll;
   .metadata{
     text-align: left;
