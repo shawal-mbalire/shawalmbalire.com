@@ -55,15 +55,14 @@ header{
 /* Light Theme */
 .light-theme {
   --backgroundColor: #edf5fc; /* Softer blue hue */
-  --fontColor: black;
-  --glassColor: black;
-  --iconColor: black;
+  --fontColor: #111517;
+  --glassColor: #111517;
+  --iconColor: #111517;
   --glowColor: rgba(0, 0, 0, 0.2);
   --primaryColor: #edf5fc; /* Softer blue hue */
-  --secondaryColor: black;
+  --secondaryColor: #111517;
   --tertiaryColor: blue;
 
-  --black: #000000ff;
   --dark-blue: #1f01b9ff;
   --alice-blue: #edf5fcff;
   --dim-gray: #626868ff;
@@ -72,16 +71,15 @@ header{
 
 /* Dark Theme */
 .dark-theme {
-  --backgroundColor: black;
+  --backgroundColor: #111517;
   --fontColor: white;
   --glassColor: white;
   --iconColor: white;
   --glowColor: rgba(255, 255, 255, 0.2);
-  --primaryColor: black;
+  --primaryColor: #111517;
   --secondaryColor: white;
   --tertiaryColor: blue;
 
-  --black: #000000ff;
   --dark-blue: #1f01b9ff;
   --alice-blue: #edf5fcff;
   --dim-gray: #626868ff;
