@@ -6,5 +6,9 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideExperimentalZonelessChangeDetection(), provideRouter(routes), provideClientHydration(withEventReplay()), provideAnimationsAsync()]
+  providers: [
+    provideExperimentalZonelessChangeDetection(), 
+    provideRouter(routes), 
+    provideClientHydration(withEventReplay()), 
+    provideAnimationsAsync()]
 };
