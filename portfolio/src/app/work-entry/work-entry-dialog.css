@@ -1,51 +1,59 @@
 main {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    filter: drop-shadow(0px 0px 10px var(--glowColor));
-    /* border: 2px solid var(--fontColor); */
-    /* border-radius: 10px; */
-    align-items: center;
-    /* row-gap: 1rem; */
-    div {
-        width: 90%;
-    }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  filter: drop-shadow(0px 0px 10px var(--glowColor));
+  border: 1px solid var(--fontColor);
+  border-radius: 30px;
+  align-items: center;
+  row-gap: 1rem;
+  div {
+    width: 90%;
+  }
+}
+.card-header{
+    display: grid;
+    row-gap: 1rem;
+    justify-content: center;
 }
 .card-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--fontColor);
-    text-align: center;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  color: var(--fontColor);
+  text-align: center;
 }
 .card-subtitle {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: var(--fontColor);
-    text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--fontColor);
+  text-align: center;
+}
+strong {
+  font-weight: bolder;
 }
 .card-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    row-gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  row-gap: 1rem;
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--backgroundColor);
+  border-radius: 10px;
+  border: 2px solid var(--fontColor);
+  overflow: scroll;
+  .metadata{
+    text-align: left;
+    display: block;
+    grid-template-columns: 1fr 3fr;
+    row-gap: 0.75rem;
+    column-gap: 0.5rem;
     width: 100%;
-    padding: 1rem;
-    background-color: var(--backgroundColor);
-    border-radius: 10px;
-    border: 2px solid var(--fontColor);
-    div {
-        width: 100%;
-    }
+
+  }
 }
-.card-actions {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    padding: 1rem;
-    background-color: var(--backgroundColor);
-    button {
-        width: 100%;
-    }
+
+button {
+  width: 90%;
 }
