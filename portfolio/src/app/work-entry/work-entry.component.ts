@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, inject, Inject } from '@angular/core';
-import { WorkEntry } from "../workEntry";
+import { WorkEntry } from '../core/models/workEntry';
 import { MatDialog, MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { NgFor, NgIf } from '@angular/common';
 
