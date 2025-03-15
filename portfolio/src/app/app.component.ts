@@ -6,6 +6,9 @@ import { AboutComponent } from './about/about.component';
 import { ExperienceComponent } from './experience/experience.component';
 import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
+import { RouterModule } from '@angular/router';
+import { NewExpComponent } from './new-exp/new-exp.component';
+import { routes } from './app.routes';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +19,7 @@ import { FooterComponent } from './footer/footer.component';
     ExperienceComponent,
     ContactComponent,
     FooterComponent,
+    RouterModule
 ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
