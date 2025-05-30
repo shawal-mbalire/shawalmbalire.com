@@ -1,5 +1,5 @@
 <main>
-    <!-- Header -->
+  <!-- Header -->
   <div class="card-header">
     <div class="card-title">{{ data.title }}</div>
     <div class="card-subtitle">{{ data.company }}</div>
@@ -8,32 +8,40 @@
 
     <!-- Metadata -->
     <div class="metadata" style="display: grid; grid-template-columns: 1fr 2fr;">
-        <div>Type:</div><div>{{ data.type }}</div>
-        <div>Location:</div><div>{{ data.location }}</div>
-        <div>Duration:</div><div>{{ data.duration }}</div>
-        <div>Start Date:</div><div>{{ data.startDate }}</div>
-        <div>End Date:</div><div>{{ data.endDate }}</div>
-        <div>Work Mode:</div><div>{{ data.workMode }}</div>
-        <div>Description:</div><div>{{ data.description }}</div>
+      <div>Type:</div><div>{{ data.type }}</div>
+      <div>Location:</div><div>{{ data.location }}</div>
+      <div>Duration:</div><div>{{ data.duration }}</div>
+      <div>Start Date:</div><div>{{ data.startDate }}</div>
+      <div>End Date:</div><div>{{ data.endDate }}</div>
+      <div>Work Mode:</div><div>{{ data.workMode }}</div>
+      <div>Description:</div><div>{{ data.description }}</div>
     </div>
 
     <!-- Responsibilities -->
-    <div *ngIf="data.responsibilities?.length">
-      <p><strong>Responsibilities:</strong></p>
-      <ol>
-        <li *ngFor="let responsibility of data.responsibilities">
-          {{ responsibility }}
-        </li>
-      </ol>
-    </div>
+    @if (data.responsibilities?.length) {
+      <div>
+        <p><strong>Responsibilities:</strong></p>
+        <ol>
+          @for (responsibility of data.responsibilities; track responsibility) {
+            <li>
+              {{ responsibility }}
+            </li>
+          }
+        </ol>
+      </div>
+    }
 
     <!-- Skills  -->
-    <div *ngIf="data.skills?.length">
-      <div>Skills:</div><br />
-      <ol>
-        <li *ngFor="let skill of data.skills">{{ skill }}</li>
-      </ol>
-    </div>
+    @if (data.skills?.length) {
+      <div>
+        <div>Skills:</div><br />
+        <ol>
+          @for (skill of data.skills; track skill) {
+            <li>{{ skill }}</li>
+          }
+        </ol>
+      </div>
+    }
   </div>
   <button class="button" (click)="closeDialog()">Close</button>
 </main>

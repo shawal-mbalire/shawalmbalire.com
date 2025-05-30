@@ -6,10 +6,11 @@
       internships. I hope this page is filled with more cool projects in the future.
     </p>
     <div id="workTiles">
-      <app-work-entry
-        *ngFor="let workEntry of workEntryList"
-        [workEntry] = "workEntry"
-      ></app-work-entry>
+      @for (workEntry of workEntryList; track workEntry) {
+        <app-work-entry
+          [workEntry] = "workEntry"
+        ></app-work-entry>
+      }
     </div>
   </div>
 </main>
