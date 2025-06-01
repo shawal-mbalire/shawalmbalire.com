@@ -1,6 +1,10 @@
 
 export default {
   basePath: '/',
-  entryPoints: new Map([['', () => import('./main.server.mjs')]]),
+  supportedLocales: {
+  "en-US": ""
+},
+  entryPoints: {
+    '': () => import('./main.server.mjs')
+  },
 };
-  

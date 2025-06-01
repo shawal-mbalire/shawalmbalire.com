@@ -2,17 +2,29 @@
 export default {
   bootstrap: () => import('./main.server.mjs').then(m => m.default),
   inlineCriticalCss: true,
+  baseHref: '/',
+  locale: undefined,
   routes: [
   {
     "renderMode": 2,
     "route": "/"
+  },
+  {
+    "renderMode": 2,
+    "route": "/home"
+  },
+  {
+    "renderMode": 2,
+    "redirectTo": "/",
+    "route": "/**"
   }
 ],
-  assets: new Map([
-['index.csr.html', {size: 4266, hash: '9cdb118fecbde957b5306690a4a7979596ba7f61b3d14da614a97f9aafd9e09f', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)}], 
-['index.server.html', {size: 4294, hash: 'eab937b6bd796a960e3be29f19664f8ca457d5e5752aac494152e7deb52ef2ee', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)}], 
-['index.html', {size: 28450, hash: '8c2dca393d665c10ee2c765eb1483ae22f4883d45184596b5c763257d95323f0', text: () => import('./assets-chunks/index_html.mjs').then(m => m.default)}], 
-['styles-YWTKWIXQ.css', {size: 957, hash: 'Gh82omiFJ+s', text: () => import('./assets-chunks/styles-YWTKWIXQ_css.mjs').then(m => m.default)}]
-]),
-  locale: undefined,
+  entryPointToBrowserMapping: undefined,
+  assets: {
+    'index.csr.html': {size: 29314, hash: '20957316dfb0f6cf2bfdee016dc71e17d5c58e8958fc05d94a0c9e8b22caf0a0', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
+    'index.server.html': {size: 22183, hash: 'be87b56eaaf3aa12536a0ab9a40b6f808e4cd838219cf7f8643e39788f0b554a', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
+    'home/index.html': {size: 66798, hash: '0a80978f4b27ab928f2012be3392e06494e1ff6da71ada19c46a988843002f16', text: () => import('./assets-chunks/home_index_html.mjs').then(m => m.default)},
+    'index.html': {size: 66798, hash: '0a80978f4b27ab928f2012be3392e06494e1ff6da71ada19c46a988843002f16', text: () => import('./assets-chunks/index_html.mjs').then(m => m.default)},
+    'styles-L6RL7THV.css': {size: 8718, hash: 'uQMorehqfb0', text: () => import('./assets-chunks/styles-L6RL7THV_css.mjs').then(m => m.default)}
+  },
 };
