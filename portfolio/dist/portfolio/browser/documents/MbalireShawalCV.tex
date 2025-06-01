@@ -1,249 +1,99 @@
-\documentclass[a4paper,twocolumn]{article}
-\usepackage[margin=0.5in]{geometry}
-\usepackage[utf8]{inputenc}
-\usepackage{titlesec}
+\documentclass[a4paper,10pt]{article}
+\usepackage[a4paper,margin=0.75in]{geometry}
 \usepackage{enumitem}
-\usepackage{graphicx}
-\usepackage[export]{adjustbox}
-\usepackage{xurl}
-\usepackage{hyperref}
-\usepackage{balance}
-	
-\pagestyle{empty}
-\title{Curriculum Vitae}
-\author{Shawal Mbalire}
-\date{\today}
-\setlist{nolistsep}
-\setlength{\parindent}{0pt}
-\titlespacing*{\section}{0pt}{0pt}{0pt}
-\titlespacing*{\subsection}{0pt}{0pt}{0pt}
-\titlespacing*{\subsubsection}{0pt}{0pt}{0pt}
-\titlespacing*{\item}{0pt}{0pt}{0pt}
-\hypersetup{
-    colorlinks=true,
-    urlcolor=blue
-}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage[hidelinks]{hyperref}
 
+% Customizing section spacing
+\titlespacing*{\section}{0pt}{2ex}{1ex}
+\titlespacing*{\subsection}{0pt}{1ex}{1ex}
+
+% Header Section
 \begin{document}
+\parindent=0pt
 
-    {\centering
-        \LARGE{\bf SHAWAL MBALIRE} \\
-        {\small
-	        \url{mbalireshawal@gmail.com}\hspace{1em}
-	        +256-760-044-705\hspace{2em}
-	        \url{https://ug.linkedin.com/in/mbalireshawal}
-	        \url{https://github.com/shawal-mbalire} \hspace{2em}
-	        \url{shawalmbalire.com}\\
-	        {\it Arduino, AHDL, ALTIUM, Assembly, Bash, C++, C,  C\#, CSS, EAGLECAD, HTML,  JavaScript, LaTeX,  MATLAB, Python, SQL}
-    	}
-    }
+\begin{center}
+    {\LARGE \textbf{Shawal Mbalire}}\\
+    ITU GCYE, Intern IoT-ra, Electrical Engineering Junior\\
+    Makerere University . CODEIT Software Engineering Graduate\\
+    Kampala, Central Region, Uganda\\
+    \href{mailto:mbalireshawal@gmail.com}{mbalireshawal@gmail.com} | +256760044705\\
+    \href{https://www.linkedin.com/in/mbalireshawal}{linkedin.com/in/mbalireshawal} | \href{https://shawalmbalire.com}{shawalmbalire.com}
+\end{center}
 
-    
-    
-    
+% Summary
+\section*{Summary}
+Aspiring electrical engineer passionate about automation, IoT, and software engineering. Hands-on experience with Python development, embedded systems, and web development. Proven leadership in organizing technical events and driving innovative projects.
 
-        %============================Education==========================%
-        \section*{\bf Education}
-        %\hrule
-        %-------MUK-----------------
-        {\bf Makerere University, Kampala}
-        \hfil{\em Feb 2022 - Jan 2026}\\
-        Bachelor of Science, Electrical Engineering.
-        \hfil CGPA: 3.99\\
-        %-------CIT-----------------
-        {\bf CodeIT Institute of Technology}
-        \hfil{\em Aug 2022 - Jan 2022}\\
-        PCEP Certified Entry-Level Python Programmer\\
-        %-------RUN-----------------
-        {\bf Run Automations and Robotics}
-        \hfil{\em Sep 2022 - Oct 2022}\\
-        Certificate in IOT and Embedded systems\\
-        %-------UACE-----------------
-        {\bf Mengo Senior School}
-        \hfil{\em Jan 2019 - Dec 2021}\\
-        Uganda Advanced Certificate of Education (Physics Chemistry Mathematics)
-        \hfil{\em $19$ points}\\
-        %-------UCE-----------------
-        {\bf Mengo Senior School}
-        \hfil{\em Jan 2015 - Dec 2018}\\
-        Uganda Certificate of Education (Technical Drawing, Wood-work, German)
-        \hfil{\em $11$ aggregate}\\
-        %-------PLE-----------------
-        {\bf Nabweru Parents Pimary School}
-        \hfil{\em Jan 2010 - Nov 2014}\\
-        Primary Leaving Examinations Certificate
-		\hfil{\em $7$ aggregate}
+% Experience
+\section*{Experience}
 
+\textbf{Africa Developer Group}\\
+\textit{Backend Developer} \hfill Dec 2024 -- Jan 2025\\
+- Developing and demoing system architecture for a compliant cloud using docker compose and google cloud
 
+\textbf{International Telecommunication Union}\\
+\textit{Generation Connect Youth Envoy} \hfill May 2024 -- Present\\
+- Engaging youth in technology initiatives and promoting innovation through advocacy and events.\\
+- Collaborating with international teams to organize seminars and global youth dialogues.
 
+\textbf{IoT-ra (Internet of Things - Research \& Applications) Lab}\\
+\textit{Embedded System Intern} \hfill March 2024 -- Present\\
+- Developing IoT-based cloud solutions for agricultural automation.\\
+- Designing low-cost systems to monitor environmental factors using sensors.\\
+- Writing Python scripts for sensor data collection and analysis.\\
+- Contributed to the bee hive project, focusing on sensor integration and data analysis.
 
-        %========================Projects=============================%
-        \section*{\bf Projects}
-        %\hrule
-        %\subsection*{Projects}
+\textbf{netLabs!UG}\\
+\textit{Engineering Intern, E-waste Recycling Project} \hfill February 2023 -- Present\\
+- Refurbishing e-waste to build functional computers for underprivileged communities.\\
+- Conducting hardware diagnostics and installing dual-boot systems (Windows 11, Ubuntu 22).\\
+- Building automated scripts for system diagnostics and repair.\\
+- Tutored students in computer repair and operating system installations.
 
-        {\bf Unity Cyber Security Game}
-        A third person shooter based on unity engine and C-sharp to teach CyberSecurity to teenagers
+\textbf{Green Hub East Africa Ltd}\\
+\textit{Engineering, Software Development, Data Analysis Intern} \hfill Jan 2024 -- Sep 2024\\
+- Developed Python scripts for data analysis and database creation.\\
+- Contributed to automation solutions for e-mobility and battery swapping systems.\\
+- Created web pages to support internal projects and streamline internal workflows.
 
-        {\bf Python Text to speech}
-        A gui python project to call apis or libraries like gtts to speak out text
+\textbf{Makerere AI Lab}\\
+\textit{Communication and Participation Lead} \hfill Feb 2024 -- May 2024\\
+- Led hackathon communication, coordinating student participation across universities.\\
+- Built the event website and managed online engagement.\\
+- Automated participant data collection and feedback analysis using Python.
 
-        {\bf Python Location FInder}
-        A python project to find location by checking the Ip address of a given device connected to the internet
+\textbf{The Marconi Research and Innovations Laboratory}\\
+\textit{Undergraduate Researcher} \hfill Feb 2024 -- Aug 2024\\
+- Trained a natural voice language model on a Runyankore dataset.\\
+- Focused on dataset preparation, model training, and performance evaluation.
 
-        {\bf Patient Database}
-        A web application invoking an online nosql Database Dynamo Db to store patient data on cloud
+\textbf{Dojo Hub (SMC) Ltd}\\
+\textit{Internship Coordinator} \hfill Jun 2023 -- Aug 2023\\
+- Managed intern schedules, organized training spaces, and ensured program logistics.\\
+- Monitored intern progress and facilitated hardware/software learning.\\
+- Created Python-based tools to automate attendance tracking and session evaluations.
 
-        {\bf IOT Attendance Monitoring}
-        A low cost RFID attendance system for employees at a small enterprise in Uganda
+% Education
+\section*{Education}
+\textbf{Makerere University}\\
+Bachelor of Engineering, Electrical and Electronics Engineering \hfill 2022 -- 2026\\
+\textbf{Mengo Senior School}\\
+UACE, Physics, Chemistry, Mathematics \hfill 2019 -- 2021\\
+UCE, General \hfill 2015 -- 2018\\
+\textbf{Nabweru Parents Primary School}\\
+PLE \hfill 2010 -- 2014
 
-        {\bf Qr code students Attendance}
-        An automated data entry system for student in universities to only print a qr code for attendance monitoring.
+% Skills and Certifications
+\section*{Skills and Certifications}
+\textbf{Top Skills:} Python Development, Web Development, Computer Repair, PostgreSQL, Automation\\
+\textbf{Certifications:} Machine Learning with Python, ChatGPT API, Introduction to Cybersecurity, AI Capstone Project, IoT Development
 
-        {\bf Student Calendar}
-        A calendar with flutter emapsizing upcoming tests that can be updated by a class representative then shared to everyone else in the class.
-
-        {\bf shawalmbalire.com}
-        Developed a personal portfolio hosted on firebase with a custom domain from google domains.
-
-
-
-
-        %========================Hackathons=============================%
-        \section*{\bf Hackathons}
-
-        {\bf UNESCO India-Africa Hackathon}
-        \begin{itemize}[noitemsep]
-            \item Selected as one of 19 students to represent Uganda in India to develop solutions for Africa
-        \end{itemize}
-
-        {\bf 8th CAMTECH Med-Tech Hackathon}
-        \begin{itemize}
-            \itemsep0em
-            \item Ideated to develop solutions for faster data entry to reduce the tool on nurses in Uganda
-        \end{itemize}
-
-        {\bf Decentralised Umoja 3 Bount Hack}
-        \begin{itemize}
-            \itemsep0em
-            \item Developed a solution for the price is right problem .
-            \item Created a how to guide on creating the project for other learners to gain assistance.
-        \end{itemize}
-    
-    
-    
-        %========================Coding Contests=============================%
-        \section*{\bf Coding Contests}
-        %\hrule
-        {\bf IEEE Extreme}
-        \begin{itemize}
-            \itemsep0em
-            \item  Solved algorithm questions in a time frame of 24 hours
-            \item Ranked in top 20 percent of the 6000 teams globaly and third in Uganda
-        \end{itemize}
-
-        {\bf Google Kickstart}
-        \begin{itemize}
-            %\item Increased my coding knowledge in data structures and alogrithms to the point of winning other competetions.
-            \item Earned python badges after solving algorith problems a skill learnt by participation in coding competetionswith google.
-        \end{itemize}
-
-        {\bf IEEE puzzlers}
-        \begin{itemize}
-            %\item Solved a series of math,coding and engineering puzzles.
-            \item First to attain the level 8 emerald badge in Uganda and 18th puzzler in IEEE globally.
-        \end{itemize}
-    
-    
-    
-        %----------------------LeaderShip-------------------%
-        \section*{\bf LeaderShip}
-        %\hrule
-        {\bf Chair IEEE Makerere University Student Branch}\\
-        \hfil{\em Sep 2022 - Sep 2023}
-        \begin{itemize}
-            \itemsep0em
-            \item Increased membership sixfold through publicising IEEE events on social media.
-            \item Doubled the number of student chapters by forming relations with lecturers.
-        \end{itemize}
-
-
-        {\bf Vice-Chair Makerere University RedCross Chapter}\\
-        \hfil{\em Sep 2022 - Sep 2023}
-        \begin{itemize}
-            \itemsep0em
-            \item assistance to the chair in attending meetings and organising evnts such as blood donations, community services among others.
-        \end{itemize}
-
-        {\bf Coordinator Makerere University RedCross Chapter}\\
-        \hfil{\em Feb 2022 - Sep 2022}
-        \begin{itemize}
-            \itemsep0em
-            \item Increased the blood donations count by 50 percent relative to other colleges in University by reaching out to the respective class leaders and puhing for donation.
-        \end{itemize}
-    
-    
-    
-
-        %----------------------Work------------------------%
-        \section*{\bf Work}
-        %\hrule
-        {\bf Shop Assistant Zenith Auto Spare Parts}\\
-        \hfil{\em Aug 2018 - Feb 2022}
-        \begin{itemize}
-            \itemsep0em
-            \item Increased customers by 5 after registering business by registering the business on google maps
-            \item Improved book keeping by printing data entry books
-        \end{itemize}
-    
-    
-    
-    	%============================Research==============================%
-    	\subsection*{Research}
-    	\subsubsection*{A Low-Cost IoT based cloud solution for the Intelligent Rearing of Black Soldier Fly(BSF)}
-
-
-
-        %============================Other==============================%
-        \section*{Other}
-        \subsection*{GDSC Makerere University}
-        \begin{itemize}
-            \item Presented flutter mock application for students to manage their timetable after attending a 3 week flutter training session.
-            \item Increased membership from college of engineering by publicising GDSC events on social media
-        \end{itemize}
-
-        \subsection*{Math olympiad}
-        \begin{itemize}
-            \item Selected as one of 6 students to represent Uganda in both International math olympiad(2020 and 2021) and Pan African Math olympiad (2021)
-            \item Awarded bronze medal for outstanding perfomance in Pan African Math olympiad 2021
-        \end{itemize}
-
-        \subsection*{Chess}
-        \begin{itemize}
-            \item Participated in the 2020 Premierbet National Chess League.
-        \end{itemize}
-    
-        \subsection*{Github}
-        \begin{itemize}
-            \item Ranked 228 among most active github users in Uganda
-        \end{itemize}
-    
-        \subsection*{Open Source}
-        \begin{itemize}
-            \item Part of Apache APISIX Global community and meetings
-        \end{itemize}
-    
-        \subsection*{Communities}
-        \begin{itemize}
-            \item Engineers for change
-            \item GDSC Makerere University
-            \item GDG Kampala
-            \item Python Kampala
-            \item IEEE
-            \item Engineers without boundaries
-            \item Uganda Institute of professional Engineers
-            \item IBM Z Global Student Hub
-        \end{itemize}
-
+% Publications
+\section*{Publications}
+\textbf{A Low-Cost IoT Cloud-Based Solution for Intelligent Rearing of the Black Soldier Fly}\\
+- Co-authored and accepted for publication in IEEE Xplore, focusing on sustainable IoT applications.\\
+- Developed Python code for data visualization and analysis.
 
 \end{document}

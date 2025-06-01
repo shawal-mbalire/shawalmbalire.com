@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, inject, Inject } from '@angular/core';
 import { WorkEntry } from '../core/models/workEntry';
 import { MatDialog, MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { NgFor, NgIf } from '@angular/common';
+
 
 
 @Component({
@@ -38,10 +38,8 @@ export class WorkEntryComponent {
   styleUrl: './work-entry-dialog.css',
   templateUrl: './work-entry-dialog.html',
   imports: [
-    MatDialogModule,
-    NgFor,
-    NgIf
-  ],
+    MatDialogModule
+],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WorkEntryComponentDialog {

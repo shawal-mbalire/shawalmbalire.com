@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 import { WorkEntryComponent } from "../work-entry/work-entry.component";
-import { CommonModule } from "@angular/common";
+
 import { WorkEntry } from '../core/models/workEntry';
 
 @Component({
   selector: 'app-experience',
   imports: [
-    WorkEntryComponent,
-    CommonModule,
-  ],
+    WorkEntryComponent
+],
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.css'
 })
