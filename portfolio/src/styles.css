@@ -92,3 +92,53 @@ body {
   color: var(--fontColor);
   transition: background-color 0.5s ease, color 0.5s ease;
 }
+
+@font-face {
+  font-family: 'Comfortaa';
+  src: url('/assets/fonts/comfortaa-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Comfortaa';
+  src: url('/assets/fonts/comfortaa-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Comfortaa';
+  src: url('/assets/fonts/comfortaa-light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('/assets/fonts/roboto-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('/assets/fonts/roboto-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('/assets/fonts/roboto-light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Material Icons';
+  src: url('/assets/fonts/material-icons.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
