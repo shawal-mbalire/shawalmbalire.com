@@ -1,53 +1,86 @@
-from fastapi import FastAPI, HTTPException, Depends, Request, Form, File, UploadFile
+"""
+Google Cloud Functions entry point for Resume Builder API
+"""
+import functions_framework
+from fastapi import FastAPI, HTTPException, Depends, Form, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse, FileResponse, JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
+from fastapi.security import HTTPBearer
+from pydantic import BaseModel
+from typing import List, Optional
 import firebase_admin
-from firebase_admin import auth, credentials, firestore
-import os
-from dotenv import load_dotenv
+from firebase_admin import credentials, firestore, auth
 import google.generativeai as genai
-from datetime import datetime
-import uuid
+import os
 import tempfile
+import json
+from datetime import datetime
 import logging
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 
+# Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-load_dotenv()
-
+# Initialize Firebase Admin SDK
 try:
+    # For Cloud Functions, use default credentials
     firebase_admin.initialize_app()
 except ValueError:
+    # App already initialized
     pass
 
 db = firestore.client()
 
+# Configure Gemini AI
 genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
 model = genai.GenerativeModel('gemini-2.0-flash-exp')
 
 app = FastAPI(title="Resume Builder API", version="1.0.0")
 
+# Add CORS middleware for Cloud Functions
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"],  # Configure this properly for production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-from resume_builder.models.experience import Experience
-from resume_builder.models.education import Education
-from resume_builder.models.skills_and_certifications import SkillsAndCertifications
-from resume_builder.services.ai_assistant import AIAssistant
-
+# Security
 security = HTTPBearer()
-ai_assistant = AIAssistant()
 
-def verify_token(credentials: HTTPAuthorizationCredentials = Depends(security)):
+# Pydantic models
+class UserProfile(BaseModel):
+    name: str
+    title: str
+    email: str
+    phone: Optional[str] = None
+    location: Optional[str] = None
+    linkedin: Optional[str] = None
+    website: Optional[str] = None
+    summary: Optional[str] = None
+
+class Experience(BaseModel):
+    company: str
+    title: str
+    start_date: str
+    end_date: Optional[str] = None
+    description: str
+
+class Education(BaseModel):
+    institution: str
+    degree: str
+    graduation_date: str
+    gpa: Optional[str] = None
+
+class Skill(BaseModel):
+    name: str
+    category: str
+
+# Helper functions
+def verify_token(token: str = Depends(security)):
     try:
-        decoded_token = auth.verify_id_token(credentials.credentials)
+        decoded_token = auth.verify_id_token(token.credentials)
         return decoded_token
     except Exception as e:
         logger.error(f"Token verification failed: {e}")
@@ -61,13 +94,11 @@ def get_user_id_from_email(email: str):
         logger.error(f"Failed to get user ID: {e}")
         return None
 
-@app.get("/", response_class=JSONResponse)
-async def home():
-    return {"message": "Resume Builder API", "version": "1.0.0"}
-
 @app.post("/api/login")
 async def login(email: str = Form(...), password: str = Form(...)):
     try:
+        # For Cloud Functions, you might want to implement custom authentication
+        # or use Firebase Auth directly
         user_id = get_user_id_from_email(email)
         if user_id:
             return {"user_id": user_id, "email": email}
@@ -86,16 +117,19 @@ async def get_resume_preview(user_id: str):
         
         user_data = user_doc.to_dict()
         
+        # Get experiences
         experiences = []
         exp_docs = db.collection('users').document(user_id).collection('experiences').stream()
         for doc in exp_docs:
             experiences.append(doc.to_dict())
         
+        # Get education
         education = []
         edu_docs = db.collection('users').document(user_id).collection('education').stream()
         for doc in edu_docs:
             education.append(doc.to_dict())
         
+        # Get skills
         skills = []
         skill_docs = db.collection('users').document(user_id).collection('skills').stream()
         for doc in skill_docs:
@@ -112,9 +146,9 @@ async def get_resume_preview(user_id: str):
         raise HTTPException(status_code=500, detail="Failed to get resume data")
 
 @app.post("/api/profile/{user_id}")
-async def update_profile(user_id: str, profile: dict):
+async def update_profile(user_id: str, profile: UserProfile):
     try:
-        db.collection('users').document(user_id).set(profile, merge=True)
+        db.collection('users').document(user_id).set(profile.dict(), merge=True)
         return {"message": "Profile updated successfully"}
     except Exception as e:
         logger.error(f"Failed to update profile: {e}")
@@ -148,12 +182,33 @@ async def add_experience(
 @app.get("/api/ai-questions/{user_id}")
 async def get_ai_questions(user_id: str):
     try:
+        # Get user data for context
         user_doc = db.collection('users').document(user_id).get()
         if not user_doc.exists:
             raise HTTPException(status_code=404, detail="User not found")
         
         user_data = user_doc.to_dict()
-        questions = ai_assistant.generate_questions(user_data)
+        
+        # Generate AI questions based on user profile
+        prompt = f"""
+        Based on this professional profile, generate 5 specific questions to help improve their resume:
+        
+        Name: {user_data.get('name', 'N/A')}
+        Title: {user_data.get('title', 'N/A')}
+        Summary: {user_data.get('summary', 'N/A')}
+        
+        Generate questions that will help:
+        1. Expand on their achievements and impact
+        2. Add specific metrics and quantifiable results
+        3. Improve their professional summary
+        4. Identify missing skills or experiences
+        5. Optimize their resume for their target roles
+        
+        Return only the questions, one per line.
+        """
+        
+        response = model.generate_content(prompt)
+        questions = response.text.strip().split('\n')
         
         return {"questions": questions}
     except Exception as e:
@@ -163,29 +218,36 @@ async def get_ai_questions(user_id: str):
 @app.post("/api/generate-resume/{user_id}")
 async def generate_resume(user_id: str, type: str = "long"):
     try:
+        # Get all user data
         user_doc = db.collection('users').document(user_id).get()
         if not user_doc.exists:
             raise HTTPException(status_code=404, detail="User not found")
         
         user_data = user_doc.to_dict()
         
+        # Get experiences
         experiences = []
         exp_docs = db.collection('users').document(user_id).collection('experiences').stream()
         for doc in exp_docs:
             experiences.append(doc.to_dict())
         
+        # Get education
         education = []
         edu_docs = db.collection('users').document(user_id).collection('education').stream()
         for doc in edu_docs:
             education.append(doc.to_dict())
         
+        # Get skills
         skills = []
         skill_docs = db.collection('users').document(user_id).collection('skills').stream()
         for doc in skill_docs:
             skills.append(doc.to_dict())
         
+        # Generate LaTeX content
         latex_content = generate_latex_resume(user_data, experiences, education, skills, type)
         
+        # For Cloud Functions, return the LaTeX content
+        # PDF generation would need to be handled by a separate service
         return JSONResponse(content={"latex": latex_content})
         
     except Exception as e:
@@ -193,6 +255,8 @@ async def generate_resume(user_id: str, type: str = "long"):
         raise HTTPException(status_code=500, detail="Failed to generate resume")
 
 def generate_latex_resume(user_data, experiences, education, skills, resume_type):
+    """Generate LaTeX content for resume"""
+    
     latex = f"""
 \\documentclass[11pt,a4paper]{{article}}
 \\usepackage[utf8]{{inputenc}}
@@ -249,10 +313,44 @@ def generate_latex_resume(user_data, experiences, education, skills, resume_type
     
     return latex
 
+# Health check endpoint for Cloud Functions
 @app.get("/health")
 async def health_check():
     return {"status": "healthy", "timestamp": datetime.now().isoformat()}
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+# Root endpoint
+@app.get("/")
+async def root():
+    return {"message": "Resume Builder API", "version": "1.0.0"}
+
+# Cloud Functions entry point
+@functions_framework.http
+def resume_builder(request):
+    """HTTP Cloud Function entry point"""
+    import asyncio
+    from fastapi.middleware.wsgi import WSGIMiddleware
+    from fastapi.testclient import TestClient
+    
+    # Create a test client for the FastAPI app
+    client = TestClient(app)
+    
+    # Get the request data
+    method = request.method
+    url = request.path
+    headers = dict(request.headers)
+    body = request.get_data()
+    
+    # Create the appropriate request
+    if method == "GET":
+        response = client.get(url, headers=headers)
+    elif method == "POST":
+        response = client.post(url, headers=headers, data=body)
+    elif method == "PUT":
+        response = client.put(url, headers=headers, data=body)
+    elif method == "DELETE":
+        response = client.delete(url, headers=headers)
+    else:
+        return ("Method not allowed", 405)
+    
+    # Return the response
+    return (response.content, response.status_code, response.headers.items()) 

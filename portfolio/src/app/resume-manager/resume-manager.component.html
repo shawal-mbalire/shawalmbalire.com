@@ -1,0 +1,230 @@
+<div class="resume-manager">
+  <!-- Login Section -->
+  <div *ngIf="!isLoggedIn" class="login-section">
+    <div class="login-card">
+      <h2><i class="fas fa-file-alt"></i> Resume Manager</h2>
+      <p>Log in to manage your resume and generate PDFs</p>
+      
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input 
+            type="email" 
+            id="email" 
+            formControlName="email" 
+            class="form-control"
+            placeholder="Enter your email">
+        </div>
+        
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input 
+            type="password" 
+            id="password" 
+            formControlName="password" 
+            class="form-control"
+            placeholder="Enter your password">
+        </div>
+        
+        <button 
+          type="submit" 
+          class="btn btn-primary"
+          [disabled]="!loginForm.valid || isLoading">
+          <span *ngIf="isLoading" class="spinner"></span>
+          {{ isLoading ? 'Logging in...' : 'Login' }}
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Dashboard Section -->
+  <div *ngIf="isLoggedIn" class="dashboard">
+    <header class="dashboard-header">
+      <h1><i class="fas fa-file-alt"></i> Resume Manager</h1>
+      <div class="user-info">
+        <span>Welcome, {{ currentUser?.email }}</span>
+        <button (click)="logout()" class="btn btn-outline">Logout</button>
+      </div>
+    </header>
+
+    <div class="dashboard-content">
+      <!-- Navigation -->
+      <nav class="sidebar">
+        <button 
+          (click)="setActiveSection('profile')" 
+          [class.active]="activeSection === 'profile'"
+          class="nav-btn">
+          <i class="fas fa-user"></i> Profile
+        </button>
+        <button 
+          (click)="setActiveSection('experience')" 
+          [class.active]="activeSection === 'experience'"
+          class="nav-btn">
+          <i class="fas fa-briefcase"></i> Experience
+        </button>
+        <button 
+          (click)="setActiveSection('ai')" 
+          [class.active]="activeSection === 'ai'"
+          class="nav-btn">
+          <i class="fas fa-robot"></i> AI Assistant
+        </button>
+        <button 
+          (click)="setActiveSection('generate')" 
+          [class.active]="activeSection === 'generate'"
+          class="nav-btn">
+          <i class="fas fa-download"></i> Generate Resume
+        </button>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Profile Section -->
+        <div *ngIf="activeSection === 'profile'" class="section">
+          <h3><i class="fas fa-user"></i> Profile Information</h3>
+          <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" formControlName="name" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="title">Professional Title</label>
+                <input type="text" id="title" formControlName="title" class="form-control">
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="profile-email">Email</label>
+                <input type="email" id="profile-email" formControlName="email" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" formControlName="phone" class="form-control">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="location">Location</label>
+              <input type="text" id="location" formControlName="location" class="form-control">
+            </div>
+            
+            <div class="form-group">
+              <label for="linkedin">LinkedIn URL</label>
+              <input type="url" id="linkedin" formControlName="linkedin" class="form-control">
+            </div>
+            
+            <div class="form-group">
+              <label for="website">Website</label>
+              <input type="url" id="website" formControlName="website" class="form-control">
+            </div>
+            
+            <div class="form-group">
+              <label for="summary">Professional Summary</label>
+              <textarea id="summary" formControlName="summary" class="form-control" rows="4"></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" [disabled]="!profileForm.valid">
+              <i class="fas fa-save"></i> Save Profile
+            </button>
+          </form>
+        </div>
+
+        <!-- Experience Section -->
+        <div *ngIf="activeSection === 'experience'" class="section">
+          <h3><i class="fas fa-briefcase"></i> Work Experience</h3>
+          
+          <!-- Add Experience Form -->
+          <div class="add-experience">
+            <h4>Add New Experience</h4>
+            <form [formGroup]="experienceForm" (ngSubmit)="addExperience()">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="company">Company</label>
+                  <input type="text" id="company" formControlName="company" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="job-title">Job Title</label>
+                  <input type="text" id="job-title" formControlName="title" class="form-control">
+                </div>
+              </div>
+              
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="start-date">Start Date</label>
+                  <input type="date" id="start-date" formControlName="start_date" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="end-date">End Date</label>
+                  <input type="date" id="end-date" formControlName="end_date" class="form-control">
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" formControlName="description" class="form-control" rows="4"></textarea>
+              </div>
+              
+              <button type="submit" class="btn btn-success" [disabled]="!experienceForm.valid">
+                <i class="fas fa-plus"></i> Add Experience
+              </button>
+            </form>
+          </div>
+
+          <!-- Experience List -->
+          <div class="experience-list" *ngIf="resumeData?.experiences?.length">
+            <h4>Current Experience</h4>
+            <div class="experience-item" *ngFor="let exp of resumeData.experiences">
+              <h5>{{ exp.title }} at {{ exp.company }}</h5>
+              <p class="dates">{{ exp.start_date }} - {{ exp.end_date || 'Present' }}</p>
+              <p>{{ exp.description }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Assistant Section -->
+        <div *ngIf="activeSection === 'ai'" class="section">
+          <h3><i class="fas fa-robot"></i> AI Assistant</h3>
+          <p>Get AI-powered suggestions to improve your resume</p>
+          
+          <button (click)="getAIQuestions()" class="btn btn-primary">
+            <i class="fas fa-question-circle"></i> Get AI Questions
+          </button>
+          
+          <div *ngIf="showAIQuestions && aiQuestions.length" class="ai-questions">
+            <h4>AI-Generated Questions</h4>
+            <div class="question-item" *ngFor="let question of aiQuestions; let i = index">
+              <h5>Question {{ i + 1 }}</h5>
+              <p>{{ question }}</p>
+              <textarea class="form-control" rows="3" placeholder="Your answer..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Generate Resume Section -->
+        <div *ngIf="activeSection === 'generate'" class="section">
+          <h3><i class="fas fa-download"></i> Generate Resume</h3>
+          <p>Generate PDF versions of your resume</p>
+          
+          <div class="generate-options">
+            <div class="option-card">
+              <h4>Short Resume</h4>
+              <p>Concise 1-page version for quick applications</p>
+              <button (click)="generateResume('short')" class="btn btn-primary">
+                <i class="fas fa-download"></i> Generate Short Resume
+              </button>
+            </div>
+            
+            <div class="option-card">
+              <h4>Long Resume</h4>
+              <p>Detailed version with all experiences and skills</p>
+              <button (click)="generateResume('long')" class="btn btn-success">
+                <i class="fas fa-download"></i> Generate Long Resume
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
