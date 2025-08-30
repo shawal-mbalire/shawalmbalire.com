@@ -1,0 +1,102 @@
+% Long CV - generated at compile-time from JSON using LuaLaTeX
+\documentclass[a4paper,10pt]{article}
+\usepackage[a4paper,margin=0.75in]{geometry}
+\usepackage{luacode}
+% load the LaTeX3 types system
+\input{parts/types.tex}
+
+% Single luacode block: load helpers and expose generator functions
+\begin{luacode}
+local helpers = dofile('documents/lua/json_helpers.lua')
+local json = helpers.json
+local readfile = helpers.readfile
+local esc = helpers.esc
+
+function generate_personal(path)
+  local s = readfile(path)
+  if not s then return end
+  local t = json.decode(s)
+  local p = t.personal or {}
+  local id = 'personal'
+  local kv = string.format("name={%s},title={%s},bio={%s},linkedin={%s},github={%s}", esc(p.name), esc(p.title or ''), esc(p.bio or ''), esc((p.socialLinks and p.socialLinks.linkedin) or '#'), esc((p.socialLinks and p.socialLinks.github) or '#'))
+  tex.print(string.format('\\CVPersonalNew{%s}{%s}', id, kv))
+  tex.print('\\CVPersonalRender{'..id..'}')
+end
+
+function generate_experiences(path)
+  local s = readfile(path)
+  if not s then return end
+  local t = json.decode(s)
+  local ex = t.experiences or {}
+  tex.print('\\section*{Experience}')
+  local i = 0
+  for _,e in ipairs(ex) do
+    i = i + 1
+    local id = 'exp'..i
+    local ach = ''
+    if e.achievements and #e.achievements>0 then
+      local parts = {}
+      for _,a in ipairs(e.achievements) do table.insert(parts, esc(a)) end
+      ach = table.concat(parts, ',')
+    end
+    local kv = string.format("company={%s},title={%s},duration={%s},description={%s},achievements={%s}", esc(e.company or ''), esc(e.title or ''), esc(e.duration or ''), esc(e.description or ''), ach)
+    tex.print(string.format('\\CVExperienceNew{%s}{%s}', id, kv))
+    tex.print('\\CVExperienceRender{'..id..'}')
+  end
+end
+
+function generate_projects(path)
+  local s = readfile(path)
+  if not s then return end
+  local t = json.decode(s)
+  local ps = t.projects or {}
+  tex.print('\\section*{Projects}')
+  local j = 0
+  for _,p in ipairs(ps) do
+    j = j + 1
+    local id = 'proj'..j
+    local details = ''
+    if p.details and #p.details>0 then
+      local parts = {}
+      for _,d in ipairs(p.details) do table.insert(parts, esc(d)) end
+      details = table.concat(parts, ',')
+    end
+    local kv = string.format("title={%s},description={%s},details={%s}", esc(p.title or ''), esc(p.description or ''), details)
+    tex.print(string.format('\\CVProjectNew{%s}{%s}', id, kv))
+    tex.print('\\CVProjectRender{'..id..'}')
+  end
+end
+
+function generate_skills(path)
+  local s = readfile(path)
+  if not s then return end
+  local t = json.decode(s)
+  local skills = {}
+  if t.experiences then
+    for _,e in ipairs(t.experiences) do
+      if e.skills then for _,sk in ipairs(e.skills) do skills[sk]=true end end
+    end
+  end
+  local skills_list = {}
+  for k,_ in pairs(skills) do table.insert(skills_list,k) end
+  table.sort(skills_list)
+  local skillline = table.concat(skills_list, ', ')
+  tex.print(string.format('\\CVSkillsRender{%s}', esc(skillline)))
+end
+\end{luacode}
+
+\begin{document}
+\parindent=0pt
+
+% Generate sections from JSON files located at ../assets/data/
+\directlua{ generate_personal('assets/data/personal.json') }
+\directlua{ generate_experiences('assets/data/experiences.json') }
+\directlua{ generate_projects('assets/data/projects.json') }
+
+% Keep education/skills/publications as editable parts for now
+\input{parts/education.tex}
+% generate skills from JSON (aggregated from experiences)
+\directlua{ generate_skills('assets/data/experiences.json') }
+\input{parts/publications.tex}
+
+\end{document}

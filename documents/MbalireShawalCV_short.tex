@@ -1,0 +1,100 @@
+% Short CV - generated at compile-time from JSON using LuaLaTeX
+\documentclass[a4paper,10pt]{article}
+\usepackage[a4paper,margin=0.75in]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage[hidelinks]{hyperref}
+\usepackage{luacode}
+% load the LaTeX3 types system; add parts directory to input path so builds from repo root work
+\makeatletter
+\def\input@path{{documents/parts/}}
+\makeatother
+\input{types.tex}
+
+% section spacing
+\titlespacing*{\section}{0pt}{2ex}{1ex}
+
+\begin{luacode*}
+local helpers = dofile('documents/lua/json_helpers.lua')
+local json = helpers.json
+local readfile = helpers.readfile
+local esc = helpers.esc
+
+function generate_personal_short(path)
+  local s = readfile(path)
+  if not s then return end
+  local t = json.decode(s)
+  local p = t.personal or {}
+  local id = 'personal'
+  local kv = string.format("name={%s},title={%s},bio={%s},linkedin={%s},github={%s}", esc(p.name), esc(p.title or ''), esc(p.bio or ''), esc((p.socialLinks and p.socialLinks.linkedin) or '#'), esc((p.socialLinks and p.socialLinks.github) or '#'))
+  -- debug: also append the payload to a debug file for inspection
+  local df = io.open('documents/cv_emit_debug.log','a')
+  if df then df:write(string.format('CVPersonalNew{%s}{%s}\n', id, kv)); df:close() end
+  texio.write_nl('log', 'DEBUG: CVPersonalNew payload written to documents/cv_emit_debug.log')
+  -- use per-field setters to avoid kv parsing issues
+  tex.print('\\CVPersonalNew{'..id..'}{}')
+  tex.print('\\CVPersonalSet{'..id..'}{name}{'..esc(p.name)..'}')
+  tex.print('\\CVPersonalSet{'..id..'}{title}{'..esc(p.title or '')..'}')
+  tex.print('\\CVPersonalSet{'..id..'}{bio}{'..esc(p.bio or '')..'}')
+  tex.print('\\CVPersonalSet{'..id..'}{linkedin}{'..esc((p.socialLinks and p.socialLinks.linkedin) or '')..'}')
+  tex.print('\\CVPersonalSet{'..id..'}{github}{'..esc((p.socialLinks and p.socialLinks.github) or '')..'}')
+  tex.print('\\CVPersonalRender{'..id..'}')
+end
+
+function generate_experiences_short(path)
+  local s = readfile(path)
+  if not s then return end
+  local t = json.decode(s)
+  local ex = t.experiences or {}
+  tex.print('\\section*{Experience}')
+  local count = 0
+  for _,e in ipairs(ex) do
+    count = count + 1
+    if count>3 then break end
+    local id = 'exp'..count
+    local ach = ''
+    if e.achievements and #e.achievements>0 then
+      local parts = {}
+      for _,a in ipairs(e.achievements) do table.insert(parts, esc(a)) end
+      ach = table.concat(parts, ',')
+    end
+    -- write debug
+    local df = io.open('documents/cv_emit_debug.log','a')
+    if df then df:write(string.format('CVExperience new %s\n', id)); df:close() end
+    -- emit per-field setters
+    tex.print('\\CVExperienceNew{'..id..'}{}')
+    tex.print('\\CVExperienceSet{'..id..'}{company}{'..esc(e.company or '')..'}')
+    tex.print('\\CVExperienceSet{'..id..'}{title}{'..esc(e.title or '')..'}')
+    tex.print('\\CVExperienceSet{'..id..'}{duration}{'..esc(e.duration or '')..'}')
+    tex.print('\\CVExperienceSet{'..id..'}{description}{'..esc(e.description or '')..'}')
+    if ach~='' then tex.print('\\CVExperienceSet{'..id..'}{achievements}{'..esc(ach)..'}') end
+    tex.print('\\CVExperienceRender{'..id..'}')
+  end
+end
+
+function generate_skills(path)
+  local s = readfile(path)
+  if not s then return end
+  local t = json.decode(s)
+  local skills = {}
+  if t.experiences then
+    for _,e in ipairs(t.experiences) do
+      if e.skills then for _,sk in ipairs(e.skills) do skills[sk]=true end end
+    end
+  end
+  local skills_list = {}
+  for k,_ in pairs(skills) do table.insert(skills_list,k) end
+  table.sort(skills_list)
+  local skillline = table.concat(skills_list, ', ')
+  tex.print(string.format('\\CVSkillsRender{%s}', esc(skillline)))
+end
+\end{luacode*}
+
+\begin{document}
+\parindent=0pt
+\directlua{ generate_personal_short('assets/data/personal.json') }
+\directlua{ generate_experiences_short('assets/data/experiences.json') }
+% generate skills aggregated from experiences
+\directlua{ generate_skills('assets/data/experiences.json') }
+\end{document}

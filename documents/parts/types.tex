@@ -1,0 +1,212 @@
+% documents/parts/types.tex
+% Clean expl3-based types system for the CV generator.
+\RequirePackage{expl3,xparse,hyperref}
+\ExplSyntaxOn
+
+% token to hold the current instance id while setting keys
+\tl_new:N \l_cv_target_prop_tl
+% temporary sequence for splitting multi-item fields (achievements, details)
+\seq_new:N \l_cv_tmp_seq
+
+% create a property bag named g_cv_<type>_<id>_prop
+\cs_new_protected:Nn \cv_create_prop_for:nn
+  { \prop_new:c { g_cv_ #1 _ #2 _prop } }
+
+% -------------------- Personal --------------------
+\keys_define:nn { cv/personal }
+  {
+  name .code:n     = \prop_put:cnn { g_cv_personal_ \l_cv_target_prop_tl _prop } { name } { ##1 },
+  title .code:n    = \prop_put:cnn { g_cv_personal_ \l_cv_target_prop_tl _prop } { title } { ##1 },
+  bio .code:n      = \prop_put:cnn { g_cv_personal_ \l_cv_target_prop_tl _prop } { bio } { ##1 },
+  linkedin .code:n = \prop_put:cnn { g_cv_personal_ \l_cv_target_prop_tl _prop } { linkedin } { ##1 },
+  github .code:n   = \prop_put:cnn { g_cv_personal_ \l_cv_target_prop_tl _prop } { github } { ##1 },
+  }
+
+\NewDocumentCommand \CVPersonalNew { m m }
+  {
+    \cv_create_prop_for:nn { personal } { #1 }
+    \tl_set:Nn \l_cv_target_prop_tl { #1 }
+    % legacy: accept kv string, but prefer using \CVPersonalSet for safety
+    \keys_set:nn { cv/personal } { #2 }
+  }
+
+% safer per-field setter used by Lua emitters
+\NewDocumentCommand \CVPersonalSet { m m m }
+  {
+    \prop_put:cnn { g_cv_personal_ #1 _prop } { #2 } { #3 }
+  }
+
+\NewDocumentCommand \CVPersonalRender { m }
+  {
+    \prop_get:cnN { g_cv_personal_ #1 _prop } { name } \l_tmpa_tl
+    \prop_get:cnN { g_cv_personal_ #1 _prop } { title } \l_tmpb_tl
+    \prop_get:cnN { g_cv_personal_ #1 _prop } { bio } \l_tmpc_tl
+    \prop_get:cnN { g_cv_personal_ #1 _prop } { linkedin } \l_tmpd_tl
+    \prop_get:cnN { g_cv_personal_ #1 _prop } { github } \l_tmpe_tl
+
+    \begin{center}
+      {\LARGE \textbf{\tl_use:N \l_tmpa_tl}}\\[0.5ex]
+      {\small \tl_use:N \l_tmpb_tl}\\[1ex]
+      {\small \href{\tl_use:N \l_tmpd_tl}{LinkedIn} \ | \href{\tl_use:N \l_tmpe_tl}{GitHub}}
+    \end{center}
+    \tl_if_blank:VTF \l_tmpc_tl { } {\noindent \tl_use:N \l_tmpc_tl \\ }
+  }
+
+% -------------------- Experience --------------------
+\keys_define:nn { cv/experience }
+  {
+  company .code:n     = \prop_put:cnn { g_cv_experience_ \l_cv_target_prop_tl _prop } { company } { ##1 },
+  title .code:n       = \prop_put:cnn { g_cv_experience_ \l_cv_target_prop_tl _prop } { title } { ##1 },
+  duration .code:n    = \prop_put:cnn { g_cv_experience_ \l_cv_target_prop_tl _prop } { duration } { ##1 },
+  description .code:n = \prop_put:cnn { g_cv_experience_ \l_cv_target_prop_tl _prop } { description } { ##1 },
+  achievements .code:n= \prop_put:cnn { g_cv_experience_ \l_cv_target_prop_tl _prop } { achievements } { ##1 },
+  skills .code:n      = \prop_put:cnn { g_cv_experience_ \l_cv_target_prop_tl _prop } { skills } { ##1 },
+  }
+
+\NewDocumentCommand \CVExperienceNew { m m }
+  {
+    \cv_create_prop_for:nn { experience } { #1 }
+    \tl_set:Nn \l_cv_target_prop_tl { #1 }
+    % legacy: accept kv string; prefer using \CVExperienceSet for field-wise setting
+    \keys_set:nn { cv/experience } { #2 }
+  }
+
+\NewDocumentCommand \CVExperienceSet { m m m }
+  {
+    \prop_put:cnn { g_cv_experience_ #1 _prop } { #2 } { #3 }
+  }
+
+\NewDocumentCommand \CVExperienceRender { m }
+  {
+    \prop_get:cnN { g_cv_experience_ #1 _prop } { company } \l_tmpa_tl
+    \prop_get:cnN { g_cv_experience_ #1 _prop } { title } \l_tmpb_tl
+    \prop_get:cnN { g_cv_experience_ #1 _prop } { duration } \l_tmpc_tl
+    \prop_get:cnN { g_cv_experience_ #1 _prop } { description } \l_tmpd_tl
+    \prop_get:cnN { g_cv_experience_ #1 _prop } { achievements } \l_tmpe_tl
+    \prop_get:cnN { g_cv_experience_ #1 _prop } { skills } \l_tmpf_tl
+
+    \vspace{0.2em}
+    \noindent{\textbf{\tl_use:N \l_tmpa_tl}}\\
+    {\itshape \tl_use:N \l_tmpb_tl} \hfill \tl_use:N \l_tmpc_tl\\
+    \tl_if_blank:VTF \l_tmpd_tl { } { \tl_use:N \l_tmpd_tl \\ }
+    \tl_if_blank:VTF \l_tmpe_tl { } {
+      \seq_set_split:Nnn \l_cv_tmp_seq { || } { \l_tmpe_tl }
+      \begin{itemize}[leftmargin=*,topsep=0pt,itemsep=0pt]
+        \seq_map_inline:Nn \l_cv_tmp_seq { \item ##1 }
+      \end{itemize}
+    }
+  }
+
+% -------------------- Projects --------------------
+\keys_define:nn { cv/project }
+  {
+  title .code:n       = \prop_put:cnn { g_cv_project_ \l_cv_target_prop_tl _prop } { title } { ##1 },
+  description .code:n = \prop_put:cnn { g_cv_project_ \l_cv_target_prop_tl _prop } { description } { ##1 },
+  details .code:n     = \prop_put:cnn { g_cv_project_ \l_cv_target_prop_tl _prop } { details } { ##1 },
+  }
+
+\NewDocumentCommand \CVProjectNew { m m }
+  {
+    \cv_create_prop_for:nn { project } { #1 }
+    \tl_set:Nn \l_cv_target_prop_tl { #1 }
+    % legacy kv supported; prefer \CVProjectSet for safety
+    \keys_set:nn { cv/project } { #2 }
+  }
+
+\NewDocumentCommand \CVProjectSet { m m m }
+  {
+    \prop_put:cnn { g_cv_project_ #1 _prop } { #2 } { #3 }
+  }
+
+\NewDocumentCommand \CVProjectRender { m }
+  {
+    \prop_get:cnN { g_cv_project_ #1 _prop } { title } \l_tmpa_tl
+    \prop_get:cnN { g_cv_project_ #1 _prop } { description } \l_tmpb_tl
+    \prop_get:cnN { g_cv_project_ #1 _prop } { details } \l_tmpc_tl
+
+    \vspace{0.2em}
+    \noindent{\textbf{\tl_use:N \l_tmpa_tl}}\\
+    \tl_if_blank:VTF \l_tmpb_tl { } { \tl_use:N \l_tmpb_tl \\ }
+    \tl_if_blank:VTF \l_tmpc_tl { } {
+      \seq_set_split:Nnn \l_cv_tmp_seq { || } { \l_tmpc_tl }
+      \begin{itemize}[leftmargin=*,topsep=0pt,itemsep=0pt]
+        \seq_map_inline:Nn \l_cv_tmp_seq { \item ##1 }
+      \end{itemize}
+    }
+  }
+
+% -------------------- Skills rendering --------------------
+\NewDocumentCommand \CVSkillsRender { m }
+  {
+    \section*{Skills and Certifications}
+    \tl_set:Nn \l_tmpa_tl { #1 }
+    \noindent \tl_use:N \l_tmpa_tl
+  }
+
+% -------------------- Education --------------------
+\keys_define:nn { cv/education }
+  {
+    institution .code:n = \prop_put:cnn { g_cv_education_ \l_cv_target_prop_tl _prop } { institution } { ##1 },
+    degree .code:n      = \prop_put:cnn { g_cv_education_ \l_cv_target_prop_tl _prop } { degree } { ##1 },
+    period .code:n      = \prop_put:cnn { g_cv_education_ \l_cv_target_prop_tl _prop } { period } { ##1 },
+    notes .code:n       = \prop_put:cnn { g_cv_education_ \l_cv_target_prop_tl _prop } { notes } { ##1 },
+  }
+
+\NewDocumentCommand \CVEducationNew { m m }
+  {
+    \cv_create_prop_for:nn { education } { #1 }
+    	l_set:Nn \l_cv_target_prop_tl { #1 }
+    \keys_set:nn { cv/education } { #2 }
+  }
+
+\NewDocumentCommand \CVEducationSet { m m m }
+  {
+    \prop_put:cnn { g_cv_education_ #1 _prop } { #2 } { #3 }
+  }
+
+\NewDocumentCommand \CVEducationRender { m }
+  {
+    \prop_get:cnN { g_cv_education_ #1 _prop } { institution } \l_tmpa_tl
+    \prop_get:cnN { g_cv_education_ #1 _prop } { degree } \l_tmpb_tl
+    \prop_get:cnN { g_cv_education_ #1 _prop } { period } \l_tmpc_tl
+    \prop_get:cnN { g_cv_education_ #1 _prop } { notes } \l_tmpd_tl
+
+    \vspace{0.2em}
+    \noindent{\textbf{\tl_use:N \l_tmpa_tl}}\\
+    {\itshape \tl_use:N \l_tmpb_tl} \hfill \tl_use:N \l_tmpc_tl\\
+    	l_if_blank:VTF \l_tmpd_tl { } { \tl_use:N \l_tmpd_tl \\ }
+  }
+
+% -------------------- Publications --------------------
+\keys_define:nn { cv/publication }
+  {
+    title .code:n = \prop_put:cnn { g_cv_publication_ \l_cv_target_prop_tl _prop } { title } { ##1 },
+    venue .code:n = \prop_put:cnn { g_cv_publication_ \l_cv_target_prop_tl _prop } { venue } { ##1 },
+    notes .code:n = \prop_put:cnn { g_cv_publication_ \l_cv_target_prop_tl _prop } { notes } { ##1 },
+  }
+
+\NewDocumentCommand \CVPublicationNew { m m }
+  {
+    \cv_create_prop_for:nn { publication } { #1 }
+    	l_set:Nn \l_cv_target_prop_tl { #1 }
+    \keys_set:nn { cv/publication } { #2 }
+  }
+
+\NewDocumentCommand \CVPublicationSet { m m m }
+  {
+    \prop_put:cnn { g_cv_publication_ #1 _prop } { #2 } { #3 }
+  }
+
+\NewDocumentCommand \CVPublicationRender { m }
+  {
+    \prop_get:cnN { g_cv_publication_ #1 _prop } { title } \l_tmpa_tl
+    \prop_get:cnN { g_cv_publication_ #1 _prop } { venue } \l_tmpb_tl
+    \prop_get:cnN { g_cv_publication_ #1 _prop } { notes } \l_tmpc_tl
+
+    \vspace{0.2em}
+    \noindent{\textbf{\tl_use:N \l_tmpa_tl}}\\
+    	l_if_blank:VTF \l_tmpb_tl { } { \tl_use:N \l_tmpb_tl \\ }
+    	l_if_blank:VTF \l_tmpc_tl { } { \tl_use:N \l_tmpc_tl \\ }
+  }
+\ExplSyntaxOff
+

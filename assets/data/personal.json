@@ -1,0 +1,43 @@
+{
+  "personal": {
+    "name": "Shawal Mbalire",
+    "title": "Electrical and Software Engineering Student",
+    "tagline": "Today is a nice day for Engineering",
+    "bio": "I am an Electrical Engineering student at Makerere University. I am passionate about research and automation. This shapes my interests such as electronics and technology.",
+    "avatar": "/placeholder.svg",
+    "socialLinks": {
+      "linkedin": "https://linkedin.com/in/shawalmbalire",
+      "github": "https://github.com/shawalmbalire",
+      "twitter": "https://twitter.com/shawalmbalire"
+    },
+    "cvDownload": "/documents/MbalireShawalCV.pdf"
+  },
+  "hobbies": [
+    {
+      "id": "chess",
+      "title": "Chess Strategy",
+      "description": "Strategic thinking and pattern recognition",
+      "icon": "♟️",
+      "link": "/chess"
+    },
+    {
+      "id": "math",
+      "title": "Mathematics",
+      "description": "Problem solving and analytical thinking",
+      "icon": "∑",
+      "link": "/math"
+    },
+    {
+      "id": "electronics",
+      "title": "Electronics",
+      "description": "Circuit design and embedded systems",
+      "icon": "🔌"
+    },
+    {
+      "id": "research",
+      "title": "Research",
+      "description": "Academic research and publications",
+      "icon": "🔬"
+    }
+  ]
+}
