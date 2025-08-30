@@ -36,7 +36,7 @@
     \prop_put:cnn { g_cv_personal_ #1 _prop } { #2 } { #3 }
   }
 
-\NewDocumentCommand \CVPersonalRender { m }
+\NewDocumentCommand\CVPersonalRender{ m }
   {
     \prop_get:cnN { g_cv_personal_ #1 _prop } { name } \l_tmpa_tl
     \prop_get:cnN { g_cv_personal_ #1 _prop } { title } \l_tmpb_tl
@@ -53,6 +53,16 @@
   }
 
 % -------------------- Experience --------------------
+% Date range helper (extensible). Currently a pass-through; central place to adjust styling.
+% Date range macro (single place to style/format dates).
+% Provide a default then renew with normalization so first load works.
+\ProvideDocumentCommand{\CVDateRange}{m}{#1}
+\RenewDocumentCommand{\CVDateRange}{m}{%
+  	l_set:Nn \l_tmpa_tl { #1 }%
+  % normalize spaced double hyphen patterns
+  \regex_replace_all:nnN { \s*--\s* } {~--~} \l_tmpa_tl
+  	l_use:N \l_tmpa_tl
+}
 \keys_define:nn { cv/experience }
   {
   company .code:n     = \prop_put:cnn { g_cv_experience_ \l_cv_target_prop_tl _prop } { company } { ##1 },
@@ -86,8 +96,8 @@
     \prop_get:cnN { g_cv_experience_ #1 _prop } { skills } \l_tmpf_tl
 
     \vspace{0.2em}
-    \noindent{\textbf{\tl_use:N \l_tmpa_tl}}\\
-    {\itshape \tl_use:N \l_tmpb_tl} \hfill \tl_use:N \l_tmpc_tl\\
+  \noindent{\textbf{\tl_use:N \l_tmpa_tl}}\\
+  {\itshape \tl_use:N \l_tmpb_tl} \hfill \CVDateRange{\tl_use:N \l_tmpc_tl}\\
     \tl_if_blank:VTF \l_tmpd_tl { } { \tl_use:N \l_tmpd_tl \\ }
     \tl_if_blank:VTF \l_tmpe_tl { } {
       \seq_set_split:Nnn \l_cv_tmp_seq { || } { \l_tmpe_tl }
@@ -154,9 +164,9 @@
 
 \NewDocumentCommand \CVEducationNew { m m }
   {
-    \cv_create_prop_for:nn { education } { #1 }
-    	l_set:Nn \l_cv_target_prop_tl { #1 }
-    \keys_set:nn { cv/education } { #2 }
+  \cv_create_prop_for:nn { education } { #1 }
+  	l_set:Nn \l_cv_target_prop_tl { #1 }
+  \keys_set:nn { cv/education } { #2 }
   }
 
 \NewDocumentCommand \CVEducationSet { m m m }
@@ -171,10 +181,10 @@
     \prop_get:cnN { g_cv_education_ #1 _prop } { period } \l_tmpc_tl
     \prop_get:cnN { g_cv_education_ #1 _prop } { notes } \l_tmpd_tl
 
-    \vspace{0.2em}
-    \noindent{\textbf{\tl_use:N \l_tmpa_tl}}\\
-    {\itshape \tl_use:N \l_tmpb_tl} \hfill \tl_use:N \l_tmpc_tl\\
-    	l_if_blank:VTF \l_tmpd_tl { } { \tl_use:N \l_tmpd_tl \\ }
+  \vspace{0.2em}
+  \noindent{\textbf{\tl_use:N \l_tmpa_tl}}\\
+  {\itshape \tl_use:N \l_tmpb_tl} \hfill \CVDateRange{\tl_use:N \l_tmpc_tl}\\
+  	l_if_blank:VTF \l_tmpd_tl { } { \tl_use:N \l_tmpd_tl \\ }
   }
 
 % -------------------- Publications --------------------
@@ -187,9 +197,9 @@
 
 \NewDocumentCommand \CVPublicationNew { m m }
   {
-    \cv_create_prop_for:nn { publication } { #1 }
-    	l_set:Nn \l_cv_target_prop_tl { #1 }
-    \keys_set:nn { cv/publication } { #2 }
+  \cv_create_prop_for:nn { publication } { #1 }
+  	l_set:Nn \l_cv_target_prop_tl { #1 }
+  \keys_set:nn { cv/publication } { #2 }
   }
 
 \NewDocumentCommand \CVPublicationSet { m m m }
@@ -203,10 +213,10 @@
     \prop_get:cnN { g_cv_publication_ #1 _prop } { venue } \l_tmpb_tl
     \prop_get:cnN { g_cv_publication_ #1 _prop } { notes } \l_tmpc_tl
 
-    \vspace{0.2em}
-    \noindent{\textbf{\tl_use:N \l_tmpa_tl}}\\
-    	l_if_blank:VTF \l_tmpb_tl { } { \tl_use:N \l_tmpb_tl \\ }
-    	l_if_blank:VTF \l_tmpc_tl { } { \tl_use:N \l_tmpc_tl \\ }
+  \vspace{0.2em}
+  \noindent{\textbf{\tl_use:N \l_tmpa_tl}}\\
+  	l_if_blank:VTF \l_tmpb_tl { } { \tl_use:N \l_tmpb_tl \\ }
+  	l_if_blank:VTF \l_tmpc_tl { } { \tl_use:N \l_tmpc_tl \\ }
   }
 \ExplSyntaxOff
 

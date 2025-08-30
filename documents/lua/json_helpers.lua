@@ -111,7 +111,9 @@ local function esc(s)
   s = tostring(s)
   -- Extract URLs and replace with markers so we don't escape the generated \href
   local urls = {}
-  s = s:gsub('(https?://[^%s%]\,;]+)', function(u)
+  -- Match URLs (avoid unescaped % in Lua patterns). Character class excludes whitespace and some delimiters.
+  s = s:gsub('(https?://[^%s%]%],;]+)', function(u) return u end)
+  s = s:gsub('(https?://[^%s%,;]+)', function(u)
     table.insert(urls, u)
     return '__URL' .. tostring(#urls) .. '__'
   end)
