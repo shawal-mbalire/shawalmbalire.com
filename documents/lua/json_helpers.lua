@@ -109,8 +109,20 @@ end
 local function esc(s)
   if not s then return '' end
   s = tostring(s)
+  -- Extract URLs and replace with markers so we don't escape the generated \href
+  local urls = {}
+  s = s:gsub('(https?://[^%s%]\,;]+)', function(u)
+    table.insert(urls, u)
+    return '__URL' .. tostring(#urls) .. '__'
+  end)
+  -- Escape backslashes to \textbackslash{} (should be rare in JSON content)
   s = s:gsub('\\','\\textbackslash{}')
+  -- Escape common LaTeX special characters
   s = s:gsub('([%%#%$&_{}~%^])','\\%1')
+  -- Restore URLs as clickable \href{url}{url}
+  for i,u in ipairs(urls) do
+    s = s:gsub('__URL' .. tostring(i) .. '__', '\\href{' .. u .. '}{' .. u .. '}')
+  end
   return s
 end
 

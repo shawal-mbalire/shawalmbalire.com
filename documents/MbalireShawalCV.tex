@@ -1,3 +1,153 @@
+% Unified CV master: set \cvmode to 'short' or 'long' to compile the desired variant.
+% Default is short. To build long from the command line:
+%   lualatex -jobname=ShawalMbalireCV "\def\cvmode{long} \input{documents/MbalireShawalCV.tex}"
+\documentclass[a4paper,10pt]{article}
+\usepackage[a4paper,margin=0.75in]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage[hidelinks]{hyperref}
+\usepackage{luacode}
+\usepackage{ifthen}
+
+% mode: 'short' or 'long' (override with \def\cvmode{long} before \input)
+\providecommand{\cvmode}{short}
+
+% add parts dir to input path so builds from repo root work
+\makeatletter
+\def\input@path{{documents/parts/}}
+\makeatother
+\input{types.tex}
+
+% small spacing tweak
+\titlespacing*{\section}{0pt}{2ex}{1ex}
+
+% load Lua helpers and declare generator functions (safe per-field setters)
+\begin{luacode}
+local helpers = dofile('documents/lua/json_helpers.lua')
+local json = helpers.json
+local readfile = helpers.readfile
+local esc = helpers.esc
+
+function generate_personal_common(path)
+  local s = readfile(path)
+  if not s then return end
+  local t = json.decode(s)
+  local p = t.personal or {}
+  local id = 'personal'
+  tex.print('\\CVPersonalNew{'..id..'}{}')
+  tex.print('\\CVPersonalSet{'..id..'}{name}{'..esc(p.name or '')..'}')
+  tex.print('\\CVPersonalSet{'..id..'}{title}{'..esc(p.title or '')..'}')
+  tex.print('\\CVPersonalSet{'..id..'}{bio}{'..esc(p.bio or '')..'}')
+  tex.print('\\CVPersonalSet{'..id..'}{linkedin}{'..esc((p.socialLinks and p.socialLinks.linkedin) or '')..'}')
+  tex.print('\\CVPersonalSet{'..id..'}{github}{'..esc((p.socialLinks and p.socialLinks.github) or '')..'}')
+  tex.print('\\CVPersonalRender{'..id..'}')
+end
+
+function generate_experiences_from_table(ex, limit)
+  tex.print('\\section*{Experience}')
+  local i = 0
+  for _,e in ipairs(ex) do
+    i = i + 1
+    if limit and i>limit then break end
+    local id = 'exp'..i
+    local ach = ''
+    if e.achievements and #e.achievements>0 then
+      local parts = {}
+      for _,a in ipairs(e.achievements) do table.insert(parts, esc(a)) end
+      ach = table.concat(parts, '||')
+    end
+    tex.print('\\CVExperienceNew{'..id..'}{}')
+    tex.print('\\CVExperienceSet{'..id..'}{company}{'..esc(e.company or '')..'}')
+    tex.print('\\CVExperienceSet{'..id..'}{title}{'..esc(e.title or '')..'}')
+    tex.print('\\CVExperienceSet{'..id..'}{duration}{'..esc(e.duration or '')..'}')
+    tex.print('\\CVExperienceSet{'..id..'}{description}{'..esc(e.description or '')..'}')
+    if ach~='' then tex.print('\\CVExperienceSet{'..id..'}{achievements}{'..ach..'}') end
+    tex.print('\\CVExperienceRender{'..id..'}')
+  end
+end
+
+function generate_experiences(path)
+  local s = readfile(path)
+  if not s then return end
+  local t = json.decode(s)
+  local ex = t.experiences or {}
+  generate_experiences_from_table(ex, nil)
+end
+
+function generate_experiences_short(path)
+  local s = readfile(path)
+  if not s then return end
+  local t = json.decode(s)
+  local ex = t.experiences or {}
+  generate_experiences_from_table(ex, 3)
+end
+
+function generate_projects(path)
+  local s = readfile(path)
+  if not s then return end
+  local t = json.decode(s)
+  local ps = t.projects or {}
+  tex.print('\\section*{Projects}')
+  local j = 0
+  for _,p in ipairs(ps) do
+    j = j + 1
+    local id = 'proj'..j
+    local details = ''
+    if p.details and #p.details>0 then
+      local parts = {}
+      for _,d in ipairs(p.details) do table.insert(parts, esc(d)) end
+      details = table.concat(parts, '||')
+    end
+    tex.print('\\CVProjectNew{'..id..'}{}')
+    tex.print('\\CVProjectSet{'..id..'}{title}{'..esc(p.title or '')..'}')
+    tex.print('\\CVProjectSet{'..id..'}{description}{'..esc(p.description or '')..'}')
+    if details~='' then tex.print('\\CVProjectSet{'..id..'}{details}{'..details..'}') end
+    tex.print('\\CVProjectRender{'..id..'}')
+  end
+end
+
+function generate_skills_from_experiences(path)
+  local s = readfile(path)
+  if not s then return end
+  local t = json.decode(s)
+  local skills = {}
+  if t.experiences then
+    for _,e in ipairs(t.experiences) do
+      if e.skills then for _,sk in ipairs(e.skills) do skills[sk]=true end end
+    end
+  end
+  local skills_list = {}
+  for k,_ in pairs(skills) do table.insert(skills_list,k) end
+  table.sort(skills_list)
+  local skillline = table.concat(skills_list, ', ')
+  tex.print(string.format('\\CVSkillsRender{%s}', esc(skillline)))
+end
+
+\end{luacode}
+
+\begin{document}
+\parindent=0pt
+% make the PDF use LaTeX date for metadata
+\date{\today}
+\hypersetup{pdfauthor={Shawal Mbalire}, pdftitle={Shawal Mbalire CV}, pdfsubject={Curriculum Vitae}}
+
+% switch between short and long
+\ifthenelse{\equal{\cvmode}{short}}{
+  \directlua{ generate_personal_common('assets/data/personal.json') }
+  \directlua{ generate_experiences_short('assets/data/experiences.json') }
+  \directlua{ generate_skills_from_experiences('assets/data/experiences.json') }
+}{
+  \directlua{ generate_personal_common('assets/data/personal.json') }
+  \directlua{ generate_experiences('assets/data/experiences.json') }
+  \directlua{ generate_projects('assets/data/projects.json') }
+  % include education and publications (they are parts using the expl3 types)
+  \input{education.tex}
+  \directlua{ generate_skills_from_experiences('assets/data/experiences.json') }
+  \input{publications.tex}
+}
+
+\end{document}
 % Modular wrapper generated by Makefile
 \documentclass[a4paper,10pt]{article}
 \usepackage[a4paper,margin=0.75in]{geometry}

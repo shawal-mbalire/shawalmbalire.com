@@ -31,8 +31,8 @@ modules/.vscode
 *secret.js
 
 # Ignore npm/yarn debug log
-npm-debug.log
-yarn-error.log
+*.log
+*.bak.tex
 
 # build-analytics
 .build-analytics
