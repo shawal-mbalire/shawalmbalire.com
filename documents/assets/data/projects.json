@@ -1,0 +1,34 @@
+{
+  "projects": [
+    {
+      "title": "IEEE Research Publication",
+      "description": "Co-authored a research paper published to IEEE Xplore.",
+      "details": [
+        "Peer-reviewed publication",
+        "Conducted literature review",
+        "Developed novel approaches",
+        "Collaborated with senior researchers"
+      ]
+    },
+    {
+      "title": "E-waste Computer Recycling Initiative",
+      "description": "Repurposing electronic waste into functional computers for education.",
+      "details": [
+        "Established e-waste collection",
+        "Developed refurbishment protocols",
+        "Created installation procedures",
+        "Implemented QA testing"
+      ]
+    },
+    {
+      "title": "IoT Applications Development",
+      "description": "Embedded systems and IoT solutions for agriculture and environment.",
+      "details": [
+        "Developed sensor networks",
+        "Data collection systems",
+        "Implemented wireless protocols",
+        "Visualization interfaces"
+      ]
+    }
+  ]
+}

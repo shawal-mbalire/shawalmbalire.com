@@ -1,0 +1,56 @@
+{
+  "experiences": [
+    {
+      "company": "International Telecommunication Union",
+      "title": "Generation Connect Youth Envoy",
+      "duration": "May 2024 -- Present",
+      "description": "Telecommunications and digital transformation initiatives for youth empowerment across Africa and globally.",
+      "achievements": [
+        "Represented African youth in global telecommunications initiatives",
+        "Participated in ITU strategic planning for digital inclusion",
+        "Collaborated with international stakeholders on digital divide solutions",
+        "Contributed to policy development for youth digital empowerment"
+      ],
+      "skills": ["Telecommunications", "Policy", "Stakeholder Engagement"]
+    },
+    {
+      "company": "IoT-ra (Internet of Things - Research and Applications) Lab",
+      "title": "Embedded System Intern",
+      "duration": "Mar 2024 -- Present",
+      "description": "Developed embedded systems solutions and IoT applications, including agricultural monitoring prototypes.",
+      "achievements": [
+        "Designed and implemented IoT prototype systems",
+        "Developed automated monitoring solutions for agricultural applications",
+        "Created smart home automation systems using wireless sensors",
+        "Contributed to research publications on IoT applications"
+      ],
+      "skills": ["Embedded Systems", "IoT", "C", "Python", "Sensors"]
+    },
+    {
+      "company": "Green Hub East Africa Ltd",
+      "title": "Engineering, Software Dev & Data Analysis Intern",
+      "duration": "Jan 2024 -- Sep 2024",
+      "description": "Environmental monitoring software and data analysis for sustainability projects.",
+      "achievements": [
+        "Built data pipelines for sustainability metrics",
+        "Implemented dashboards for environmental KPIs",
+        "Optimized data collection workflows",
+        "Collaborated on e-mobility feasibility studies"
+      ],
+      "skills": ["Data Analysis", "Python", "Dashboards", "Sustainability"]
+    },
+    {
+      "company": "netLabs!UG",
+      "title": "Engineering Intern, E-waste Recycling Project",
+      "duration": "2022 -- 2024",
+      "description": "Repurposed e-waste to create functional computers for underprivileged communities.",
+      "achievements": [
+        "Refurbished 100+ computers",
+        "Provided functional computers to 20+ schools",
+        "Implemented systematic recycling processes",
+        "Trained community members in computer maintenance"
+      ],
+      "skills": ["Hardware", "Refurbishment", "Linux", "Community Training"]
+    }
+  ]
+}

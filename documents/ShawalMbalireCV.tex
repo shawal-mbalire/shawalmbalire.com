@@ -1,6 +1,9 @@
 % Unified CV master: set \cvmode to 'short' or 'long' to compile the desired variant.
-% Default is short. To build long from the command line:
-%   lualatex -jobname=ShawalMbalireCV "\def\cvmode{long} \input{documents/MbalireShawalCV.tex}"
+% Default is short. To build long from the repo root with Make:
+%   make -C documents long
+% Direct manual compile example:
+%   lualatex -jobname=ShawalMbalireCV_long "\def\cvmode{long} \input{documents/ShawalMbalireCV.tex}"
+% Data-driven sections are populated from JSON under documents/assets/data/* with Lua helpers.
 \documentclass[a4paper,10pt]{article}
 \usepackage[a4paper,margin=0.75in]{geometry}
 \usepackage{enumitem}
@@ -9,6 +12,12 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{luacode}
 \usepackage{ifthen}
+\usepackage[final]{microtype}
+\usepackage{fontspec}
+% Choose clean sans + mono (fallbacks if unavailable will revert to Latin Modern)
+\setmainfont{TeX Gyre Pagella}
+\setsansfont{TeX Gyre Heros}
+\setmonofont{Inconsolata}
 
 % mode: 'short' or 'long' (override with \def\cvmode{long} before \input)
 \providecommand{\cvmode}{short}
@@ -134,10 +143,12 @@ end
 
 % switch between short and long
 \ifthenelse{\equal{\cvmode}{short}}{
+  % Short mode (trimmed experience list, no projects / publications / education)
   \directlua{ generate_personal_common('assets/data/personal.json') }
   \directlua{ generate_experiences_short('assets/data/experiences.json') }
   \directlua{ generate_skills_from_experiences('assets/data/experiences.json') }
 }{
+  % Long mode (full experience list, projects, education, skills, publications)
   \directlua{ generate_personal_common('assets/data/personal.json') }
   \directlua{ generate_experiences('assets/data/experiences.json') }
   \directlua{ generate_projects('assets/data/projects.json') }

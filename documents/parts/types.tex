@@ -44,6 +44,7 @@
     \prop_get:cnN { g_cv_personal_ #1 _prop } { linkedin } \l_tmpd_tl
     \prop_get:cnN { g_cv_personal_ #1 _prop } { github } \l_tmpe_tl
 
+    % TODO: extend with optional location / email fields when added to JSON
     \begin{center}
       {\LARGE \textbf{\tl_use:N \l_tmpa_tl}}\\[0.5ex]
       {\small \tl_use:N \l_tmpb_tl}\\[1ex]

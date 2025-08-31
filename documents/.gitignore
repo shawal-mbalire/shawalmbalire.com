@@ -1,0 +1,19 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+# Generated PDFs (keep final artifacts if desired; comment out to track)
+ShawalMbalireCV_short.pdf
+ShawalMbalireCV_long.pdf
+# Temporary job outputs
+ShawalMbalireCV_short.*
+ShawalMbalireCV_long.*
+# Editor backup / swap
+*~
+*.bak
