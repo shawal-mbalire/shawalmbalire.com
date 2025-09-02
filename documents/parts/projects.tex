@@ -1,36 +1,63 @@
-% projects.tex - use project types only
-\CVProjectNew{proj1}{}
-\CVProjectSet{proj1}{title}{IEEE Research Publication}
-\CVProjectSet{proj1}{description}{Co-authored a research paper published to IEEE Xplore, contributing to electrical engineering and telecommunications research.}
-\CVProjectSet{proj1}{details}{Co-authored peer-reviewed paper||Conducted literature review||Developed novel approaches||Collaborated with senior researchers}
-\CVProjectRender{proj1}
+% projects.tex - Projects using types system
 
-\CVProjectNew{proj2}{}
-\CVProjectSet{proj2}{title}{E-waste Computer Recycling Initiative}
-\CVProjectSet{proj2}{description}{Developed sustainable solutions for repurposing electronic waste into functional computers for educational institutions.}
-\CVProjectSet{proj2}{details}{Established e-waste collection||Developed refurbishment protocols||Created installation procedures||Implemented QA testing}
-\CVProjectRender{proj2}
+\CVProjectNew{ieee_pub}{IEEE Research Publication}
+\CVProjectSet{ieee_pub}{title}{IEEE Research Publication}
+\CVProjectSet{ieee_pub}{description}{Co-authored research paper published to IEEE Xplore, contributing to telecommunications research.}
+\CVProjectSet{ieee_pub}{achievements}{%
+\begin{itemize}[leftmargin=1.2em,topsep=0pt,itemsep=0pt]
+  \item Co-authored peer-reviewed research paper in telecommunications field
+  \item Performed literature review, devised wireless communication approaches, collaborated with senior researchers
+\end{itemize}%
+}
 
-\CVProjectNew{proj3}{}
-\CVProjectSet{proj3}{title}{IoT Applications Development}
-\CVProjectSet{proj3}{description}{Created embedded systems and IoT solutions for agricultural and environmental applications.}
-\CVProjectSet{proj3}{details}{Developed sensor networks||Created data collection systems||Implemented wireless protocols||Designed visualization interfaces}
-\CVProjectRender{proj3}
+\CVProjectNew{ewaste}{E-waste Computer Recycling Initiative}
+\CVProjectSet{ewaste}{title}{E-waste Computer Recycling Initiative}
+\CVProjectSet{ewaste}{description}{Sustainable solutions for repurposing electronic waste into functional computers for education.}
+\CVProjectSet{ewaste}{achievements}{%
+\begin{itemize}[leftmargin=1.2em,topsep=0pt,itemsep=0pt]
+  \item Successfully provided 100+ functional computers to schools in underserved communities
+  \item Built e-waste collection \& QA pipeline impacting 2,000+ students' digital access
+\end{itemize}%
+}
 
-\CVProjectNew{proj4}{}
-\CVProjectSet{proj4}{title}{Green Hub E-mobility Research}
-\CVProjectSet{proj4}{description}{Contributed to research on electric vehicle technology and sustainable transportation solutions.}
-\CVProjectSet{proj4}{details}{Feasibility analysis||Researched charging infrastructure||Analyzed economic/environmental impact||Developed policy recommendations}
-\CVProjectRender{proj4}
+\CVProjectNew{iot_apps}{IoT Applications Development}
+\CVProjectSet{iot_apps}{title}{IoT Applications Development}
+\CVProjectSet{iot_apps}{description}{Embedded systems and IoT solutions for agricultural, environmental, and urban contexts.}
+\CVProjectSet{iot_apps}{achievements}{%
+\begin{itemize}[leftmargin=1.2em,topsep=0pt,itemsep=0pt]
+  \item Developed sensor networks for agricultural monitoring
+  \item Built environmental data \& wireless monitoring systems deployed in 5+ locations
+\end{itemize}%
+}
 
-\CVProjectNew{proj5}{}
-\CVProjectSet{proj5}{title}{IEEE Student Branch Programs}
-\CVProjectSet{proj5}{description}{Organized educational initiatives including Arduino workshops and solar energy training.}
-\CVProjectSet{proj5}{details}{Organized 15+ workshops||Developed curriculum||Coordinated competitions||Established mentorship programs}
-\CVProjectRender{proj5}
+\CVProjectNew{emobility}{Green Hub E-mobility Research}
+\CVProjectSet{emobility}{title}{Green Hub E-mobility Research}
+\CVProjectSet{emobility}{description}{Research on electric vehicle technology and sustainable transportation solutions for Kampala.}
+\CVProjectSet{emobility}{achievements}{%
+\begin{itemize}[leftmargin=1.2em,topsep=0pt,itemsep=0pt]
+  \item Conducted feasibility analysis for electric vehicle adoption in Kampala
+  \item Studied charging infrastructure, impact, and fed results into policy discussions
+\end{itemize}%
+}
 
-\CVProjectNew{proj6}{}
-\CVProjectSet{proj6}{title}{Telecommunications Research}
-\CVProjectSet{proj6}{description}{Conducted advanced research in wireless communication systems and signal processing.}
-\CVProjectSet{proj6}{details}{Developed signal processing algorithms||Simulation and testing||Research on 5G||Collaborated with international teams}
-\CVProjectRender{proj6}
+\CVProjectNew{ieee_programs}{IEEE Student Branch Programs}
+\CVProjectSet{ieee_programs}{title}{IEEE Student Branch Programs}
+\CVProjectSet{ieee_programs}{description}{Educational initiatives including Arduino workshops, solar training, and programming competitions.}
+\CVProjectSet{ieee_programs}{achievements}{%
+\begin{itemize}[leftmargin=1.2em,topsep=0pt,itemsep=0pt]
+  \item Organized 15+ technical workshops and training sessions
+  \item Built Arduino/solar curriculum \& mentorship reaching 500+ students
+\end{itemize}%
+}
+
+\CVProjectNew{telecom_research}{Telecommunications Research}
+\CVProjectSet{telecom_research}{title}{Telecommunications Research}
+\CVProjectSet{telecom_research}{description}{Advanced research in wireless communication systems and signal processing at Marconi Laboratory.}
+\CVProjectSet{telecom_research}{achievements}{%
+\begin{itemize}[leftmargin=1.2em,topsep=0pt,itemsep=0pt]
+  \item Developed novel signal processing algorithms for wireless systems
+  \item Simulated protocols, co-authored 3 papers, advanced next-gen wireless understanding
+\end{itemize}%
+}
+
+\CVProjectsRender

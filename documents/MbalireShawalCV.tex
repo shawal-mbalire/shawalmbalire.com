@@ -1,0 +1,90 @@
+\documentclass[10pt]{article}
+
+\usepackage[a4paper,top=1cm,bottom=1cm,left=1cm,right=1cm,includeheadfoot]{geometry}
+\usepackage{enumitem}
+\usepackage{parskip}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage[final]{microtype}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{ragged2e}
+
+% Global spacing controls
+\setlist{itemsep=0pt,topsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=0.8em}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+\renewcommand{\baselinestretch}{1.0}
+
+% Line breaking (fixed stray line issue)
+\pretolerance=1000
+\tolerance=2000
+\emergencystretch=1.5em
+\hyphenpenalty=200
+\hbadness=10000
+\hfuzz=0.5pt
+
+% Colors
+\definecolor{cvAccentLanguages}{HTML}{2E86C1}
+\definecolor{cvAccentEmbedded}{HTML}{8E44AD}
+\definecolor{cvAccentTools}{HTML}{28B463}
+\definecolor{cvAccentPlatforms}{HTML}{F39C12}
+\definecolor{cvAccentCloud}{HTML}{17A2B8}
+\definecolor{cvAccentOther}{HTML}{E74C3C}
+\definecolor{headercolor}{RGB}{44,62,80}
+\definecolor{lightgray}{RGB}{149,165,166}
+\definecolor{backgroundgray}{RGB}{248,249,250}
+\definecolor{darktext}{RGB}{33,37,41}
+
+\pagecolor{white}
+\color{darktext}
+
+% Adjustable vertical spacing macros
+\newcommand{\CVSectionPreSkip}{0.18em}
+\newcommand{\CVSectionPostSkip}{0.08em}
+
+% Section heading macro (compact + consistent)
+\newcommand{\CVSection}[1]{%
+  \vspace{\CVSectionPreSkip}%
+  {\large\bfseries\color{headercolor} #1}\par\vspace{0.14em}%
+  {\color{cvAccentLanguages}\rule{\textwidth}{0.5pt}}\vspace{\CVSectionPostSkip}%
+}
+
+% Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\footnotesize\textbf{\thepage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Metadata
+% Adjusted title punctuation to avoid chktex intersentence spacing warning
+\hypersetup{pdfauthor={Shawal Mbalire},pdftitle={Shawal Mbalire CV \textbullet{} Software Engineer},pdfsubject={Curriculum Vitae}}
+
+% Data & personal info
+\input{parts/types.tex}
+\input{parts/personal.tex}
+
+\begin{document}
+
+% Header
+\input{parts/header.tex}
+
+% Summary
+\input{parts/summary.tex}
+
+\CVSection{Professional Experience}
+\input{parts/experiences.tex}
+
+\CVSection{Selected Projects}
+\input{parts/projects.tex}
+
+\CVSection{Education}
+\input{parts/education.tex}
+
+\CVSection{Technical Skills}
+\input{parts/skills.tex}
+
+\end{document}

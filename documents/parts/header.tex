@@ -1,0 +1,23 @@
+% header.tex - Document header section
+% This file contains the main header/banner for the CV
+
+% Slight upward pull to align with top margin but keep breathing room
+\vspace*{-0.35em}
+\begin{center}
+  \colorbox{backgroundgray}{\parbox{0.95\textwidth}{\centering
+    \setlength{\parskip}{0pt}\setlength{\parindent}{0pt}% tight paragraph spacing
+    % Top block: icon + name + title
+    \vspace{0.2em}% top padding
+    \includegraphics[width=0.45cm,height=0.45cm,keepaspectratio]{assets/png/white.png}\\[0.15em]
+    {\Large\bfseries\color{headercolor}\CVPersonalGet{name}}\\[-0.05em]
+    {\footnotesize\color{cvAccentLanguages}\CVPersonalGet{title}}\\[0.25em]
+    % Divider for visual separation
+    {\color{cvAccentLanguages}\rule{0.70\textwidth}{0.5pt}}\\[0.25em]
+    % Contact line (second block)
+    {\scriptsize\color{darktext}
+      \href{mailto:\CVPersonalGet{email}}{\CVPersonalGet{email}} \; | \;\CVPersonalGet{phone} \; | \; \CVPersonalGet{location} \; | \;\href{\CVPersonalGet{linkedin}}{LinkedIn} \; | \; \href{\CVPersonalGet{github}}{GitHub}}
+    \vspace{0.15em}% bottom padding
+  }}
+\end{center}
+% Space after header before summary (give the summary room to breathe)
+\vspace{0.5em}
