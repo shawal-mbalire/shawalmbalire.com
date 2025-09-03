@@ -1,23 +1,30 @@
-% header.tex - Document header section
-% This file contains the main header/banner for the CV
+% header.tex - Compact document header section
 
-% Slight upward pull to align with top margin but keep breathing room
-\vspace*{-0.35em}
+% Optimize vertical space while maintaining professional appearance
+\vspace*{-0.4em}
 \begin{center}
-  \colorbox{backgroundgray}{\parbox{0.95\textwidth}{\centering
+  \colorbox{backgroundgray}{\parbox{0.96\textwidth}{\centering
     \setlength{\parskip}{0pt}\setlength{\parindent}{0pt}% tight paragraph spacing
     % Top block: icon + name + title
-    \vspace{0.2em}% top padding
-    \includegraphics[width=0.45cm,height=0.45cm,keepaspectratio]{assets/png/white.png}\\[0.15em]
-    {\Large\bfseries\color{headercolor}\CVPersonalGet{name}}\\[-0.05em]
-    {\footnotesize\color{cvAccentLanguages}\CVPersonalGet{title}}\\[0.25em]
-    % Divider for visual separation
-    {\color{cvAccentLanguages}\rule{0.70\textwidth}{0.5pt}}\\[0.25em]
-    % Contact line (second block)
+    \vspace{0.15em}% reduced top padding
+    \includegraphics[width=0.5cm,height=0.5cm,keepaspectratio]{assets/png/white.png}\\[0.12em]
+    {\LARGE\bfseries\color{headercolor}Shawal Mbalire}\\[0.01em]
+    {\small\color{cvAccentLanguages}\textbf{Embedded Systems Engineer Hardware and Software}}\\[0.2em]
+    % Enhanced divider for visual separation
+    {\color{cvAccentLanguages}\rule{0.25\textwidth}{1.5pt}}%
+    {\color{sectiondivider}\rule{0.5\textwidth}{0.8pt}}%
+    {\color{cvAccentLanguages}\rule{0.25\textwidth}{1.5pt}}\\[0.2em]
+    % Enhanced contact line (second block)
     {\scriptsize\color{darktext}
-      \href{mailto:\CVPersonalGet{email}}{\CVPersonalGet{email}} \; | \;\CVPersonalGet{phone} \; | \; \CVPersonalGet{location} \; | \;\href{\CVPersonalGet{linkedin}}{LinkedIn} \; | \; \href{\CVPersonalGet{github}}{GitHub}}
-    \vspace{0.15em}% bottom padding
+      \textbf{\href{mailto:mbalireshawal@gmail.com}{mbalireshawal@gmail.com}} $\bullet$
+    \href{https://shawalmbalire.com}{shawalmbalire.com} $\bullet$
+    \textbf{+256760044705} \par\vspace{0.06em}
+    \href{https://www.linkedin.com/in/mbalireshawal}{linkedin.com/in/mbalireshawal} $\bullet$
+    \href{https://github.com/shawal-mbalire}{github.com/shawal-mbalire} $\bullet$
+    \href{https://twitter.com/shawalmbalire}{twitter.com/shawalmbalire} \par\vspace{0.02em}
+    \textcolor{cvAccentEmbedded}{\textbf{Kampala, Central Region, Uganda}}}
+    \vspace{0.15em}% reduced bottom padding
   }}
 \end{center}
-% Space after header before summary (give the summary room to breathe)
-\vspace{0.5em}
+% Reduced space after header
+\vspace{0.4em}

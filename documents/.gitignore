@@ -5,15 +5,47 @@
 *.fdb_latexmk
 *.fls
 *.synctex.gz
+*.synctex(busy)
+*.bbl
+*.blg
 *.toc
-*.lof
+*.nav
+*.snm
+*.vrb
+*.idx
+*.ind
+*.ilg
 *.lot
-# Generated PDFs (keep final artifacts if desired; comment out to track)
-ShawalMbalireCV_short.pdf
-ShawalMbalireCV_long.pdf
-# Temporary job outputs
-ShawalMbalireCV_short.*
-ShawalMbalireCV_long.*
-# Editor backup / swap
+*.lof
+
+# Backup files
 *~
 *.bak
+*.tmp
+*_backup.*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build outputs (optional - you may want to track the final PDF)
+# MbalireShawalCV.pdf
+# MbalireShawalCV_extended.pdf
+# MbalireShawalCV_optimized.pdf
+
+# Legacy files
+ShawalMbalireCV_short.pdf
+ShawalMbalireCV_long.pdf
+ShawalMbalireCV_short.*
+ShawalMbalireCV_long.*

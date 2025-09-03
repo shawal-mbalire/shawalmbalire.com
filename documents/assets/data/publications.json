@@ -1,0 +1,44 @@
+{
+  "publications": [
+    {
+      "id": 1,
+      "title": "A Low-Cost Internet of things cloud based solution for the intelligent rearing of the black soldier fly",
+      "authors": ["Shawal Mbalire", "Research Team"],
+      "venue": "IEEE Xplore Digital Library",
+      "type": "conference",
+      "date": "2023",
+      "description": "Research paper accepted to IEEE AFRICON 2023, presented in October 2023. Developed a low-cost cloud-based solution for black soldier fly rearing with potential applications in sustainable agriculture and animal feed production.",
+      "status": "published",
+      "doi": "",
+      "url": "https://ieeexplore.ieee.org",
+      "conference": "IEEE AFRICON 2023",
+      "keywords": ["IoT", "Cloud Computing", "Black Soldier Fly", "Sustainable Agriculture", "Animal Feed Production"]
+    }
+  ],
+  "presentations": [
+    {
+      "id": 1,
+      "title": "A Low-Cost Internet of things cloud based solution for the intelligent rearing of the black soldier fly",
+      "event": "IEEE AFRICON 2023",
+      "date": "October 2023",
+      "type": "paper_presentation",
+      "description": "Presented research on IoT sensors for detecting humidity, temperature and light values for black soldier fly rearing, with remote monitoring capabilities for studying their effect on BSF growth."
+    },
+    {
+      "id": 2,
+      "title": "Drivers, Future and Opportunities of Power and Energy in Uganda",
+      "event": "IEEE PES Day 2023",
+      "date": "April-May 2023",
+      "type": "panel_session",
+      "description": "Organized and participated in panel session as IEEE PES Day Ambassador, promoting awareness about sustainable energy and power engineering opportunities in Uganda."
+    },
+    {
+      "id": 3,
+      "title": "Natural Voice Language Model Training on Runyankore Dataset",
+      "event": "Marconi Research and Innovations Laboratory",
+      "date": "February-August 2024",
+      "type": "research_presentation",
+      "description": "Worked on training natural voice language model on Runyankore dataset for 3 months as undergraduate researcher."
+    }
+  ]
+}

@@ -2,122 +2,127 @@
   "experiences": [
     {
       "id": 1,
-      "title": "Generation Connect Youth Envoy",
-      "company": "International Telecommunication Union",
-      "duration": "8 months",
-      "description": "Arranged internship focused on telecommunications and digital transformation initiatives for youth empowerment across Africa and globally.",
-      "type": "leadership",
-      "skills": ["Digital Transformation", "Youth Empowerment", "Telecommunications Policy", "International Relations", "Project Management"],
+      "title": "Hardware and Software Engineer",
+      "company": "Kamitek Solar SMC LTD",
+      "duration": "July 2025 - Present (3 months)",
+      "location": "Kampala, Central Region, Uganda",
+      "description": "Current role developing hardware and software solutions for solar energy systems and renewable technology applications.",
+      "type": "fulltime",
+      "skills": ["Solar Technology", "Hardware Engineering", "Software Development", "Renewable Energy", "System Integration"],
       "achievements": [
-        "Represented African youth in global telecommunications initiatives",
-        "Participated in ITU strategic planning for digital inclusion",
-        "Collaborated with international stakeholders on digital divide solutions",
-        "Contributed to policy development for youth digital empowerment"
+        "Developing innovative solar energy solutions",
+        "Integrating hardware and software systems for renewable energy applications",
+        "Contributing to sustainable technology development"
       ]
     },
     {
       "id": 2,
-      "title": "Embedded System Intern",
-      "company": "IoT-ra (Internet of Things - Research & Applications) Lab",
-      "duration": "10 months",
-      "description": "Developed embedded systems solutions and IoT applications, working on cutting-edge research projects in smart technology and automation.",
-      "type": "research",
-      "skills": ["Arduino", "Raspberry Pi", "C/C++", "IoT Protocols", "Sensor Integration", "Wireless Communication"],
+      "title": "Mobile Application Developer",
+      "company": "Events Gallery Uganda",
+      "duration": "July 2025 - Present (3 months)",
+      "location": "Kampala, Central Region, Uganda",
+      "description": "Developing mobile applications for event management and gallery showcasing in Uganda's event industry.",
+      "type": "parttime",
+      "skills": ["Mobile Development", "Application Programming Interfaces (API)", "Event Management", "Gallery Systems"],
       "achievements": [
-        "Designed and implemented 5+ IoT prototype systems",
-        "Developed automated monitoring solutions for agricultural applications",
-        "Created smart home automation systems using wireless sensors",
-        "Contributed to research publications on IoT applications in developing countries"
+        "Developing mobile applications for event management",
+        "Creating user-friendly interfaces for gallery showcasing",
+        "Implementing API integrations for event platforms"
       ]
     },
     {
       "id": 3,
-      "title": "Engineering Intern, E-waste Recycling Project",
-      "company": "netLabs!UG",
-      "duration": "1 year 11 months",
-      "description": "Part of a team working on repurposing e-waste to create functional computers for underprivileged communities. Responsible for woodworking and operating systems installation and configuration.",
-      "type": "internship",
-      "skills": ["Hardware Refurbishment", "Linux Administration", "Windows Installation", "Woodworking", "Computer Assembly", "Sustainability"],
+      "title": "Generation Connect Youth Envoy",
+      "company": "International Telecommunication Union",
+      "duration": "May 2024 - July 2025 (1 year 3 months)",
+      "location": "Kampala, Central Region, Uganda",
+      "description": "Represented youth perspectives in international telecommunications policy and digital transformation initiatives across Africa and globally.",
+      "type": "leadership",
+      "skills": ["Digital Transformation", "Youth Advocacy", "Telecommunications Policy", "International Relations", "Public Speaking"],
       "achievements": [
-        "Refurbished 100+ computers from electronic waste",
-        "Provided functional computers to 20+ schools in underserved communities",
-        "Reduced electronic waste by implementing systematic recycling processes",
-        "Trained community members in basic computer maintenance and repair"
+        "Represented African youth in global telecommunications initiatives",
+        "Participated in ITU strategic planning for digital inclusion",
+        "Advocated for youth perspectives in international policy discussions",
+        "Contributed to digital transformation frameworks for developing countries"
       ]
     },
     {
       "id": 4,
-      "title": "Computer Trainer",
-      "company": "Freelance",
-      "duration": "1 month",
-      "description": "Tutored students at netlabs in computer repair, hardware diagnostics, and operating system installation. Provided hands-on training in technical troubleshooting.",
+      "title": "Engineering Intern, E-waste Recycling Project",
+      "company": "netLabs!UG",
+      "duration": "February 2023 - July 2025 (2 years 6 months)",
+      "location": "Kampala, Central Region, Uganda",
+      "description": "Part of a team working on repurposing e-waste to create functional computers for underprivileged communities. Responsible for woodworking and operating systems installation.",
       "type": "internship",
-      "skills": ["Technical Training", "Computer Repair", "Hardware Diagnostics", "OS Installation", "Troubleshooting"],
+      "skills": ["Hardware Refurbishment", "Linux Administration", "Windows Installation", "Woodworking", "Computer Assembly", "Sustainability"],
       "achievements": [
-        "Trained 15+ students in computer repair techniques",
-        "Developed comprehensive training curriculum for hardware diagnostics",
-        "Achieved 95% student satisfaction rate in training programs",
-        "Created practical troubleshooting guides for common computer issues"
+        "Refurbished computers from electronic waste for underprivileged communities",
+        "Installed Windows 11 alongside Ubuntu 22 on refurbished systems",
+        "Contributed to environmental sustainability through e-waste recycling",
+        "Provided practical computer repair training to students"
       ]
     },
     {
       "id": 5,
-      "title": "Engineering, Software Development and Data Analysis Intern",
-      "company": "Green Hub East Africa Ltd",
-      "duration": "9 months",
-      "description": "Arranged internship focusing on sustainable technology solutions, software development for environmental applications, and data analysis for green initiatives.",
-      "type": "internship",
-      "skills": ["Software Development", "Data Analysis", "Environmental Technology", "Python", "Sustainability Solutions"],
+      "title": "Computer Trainer",
+      "company": "netLabs!UG",
+      "duration": "February 2024 - February 2024 (1 month)",
+      "location": "Kampala, Central Region, Uganda",
+      "description": "Tutored students in computer repair, hardware diagnostics tools, and operating system installation on refurbished e-waste computers.",
+      "type": "training",
+      "skills": ["Computer Training", "Hardware Repair", "Software Installation", "Operating Systems", "Technical Support"],
       "achievements": [
-        "Developed environmental monitoring software solutions",
-        "Analyzed data for 10+ green technology projects",
-        "Created automated reporting systems for sustainability metrics",
-        "Contributed to carbon footprint reduction strategies"
+        "Tutored students in computer repair techniques",
+        "Taught hardware diagnostic tools and software usage",
+        "Ensured practical learning through hands-on operating system installation",
+        "Provided comprehensive training on Windows and Ubuntu systems"
       ]
     },
     {
       "id": 6,
-      "title": "Chairperson Makerere University Student Branch",
-      "company": "IEEE",
-      "duration": "2 years 1 month",
-      "description": "Led a team of 9 students in organizing technology and engineering education initiatives, including Arduino training, solar training, programming competitions, and leadership development programs.",
-      "type": "leadership",
-      "skills": ["Leadership", "Event Management", "Arduino Programming", "Solar Technology", "Team Management"],
+      "title": "Embedded System Intern",
+      "company": "IoT-ra (Internet of Things - Research & Applications) Lab",
+      "duration": "March 2024 - April 2025 (1 year 2 months)",
+      "location": "Kampala, Central Region, Uganda",
+      "description": "Worked on IoT research projects including bee hive monitoring systems and other embedded system applications.",
+      "type": "research",
+      "skills": ["IoT Development", "Embedded Systems", "Sensor Networks", "Arduino", "Research", "Data Collection"],
       "achievements": [
-        "Led a team of 9 executive members",
-        "Organized 15+ technical workshops and training sessions",
-        "Increased branch membership by 150% during tenure",
-        "Established partnerships with 5+ technology companies"
+        "Contributed to bee hive monitoring project development",
+        "Developed IoT-based monitoring solutions",
+        "Gained experience in embedded systems programming",
+        "Participated in IoT research and applications"
       ]
     },
     {
       "id": 7,
-      "title": "Project Assistant 'Green Hub Kampala – e-mobility'",
-      "company": "Access2innovation",
-      "duration": "3 months",
-      "description": "Arranged internship supporting e-mobility initiatives in Kampala, focusing on sustainable transportation solutions and electric vehicle technology research.",
-      "type": "internship",
-      "skills": ["E-mobility", "Electric Vehicles", "Sustainable Transportation", "Project Management", "Research"],
+      "title": "Back End Developer",
+      "company": "ADG",
+      "duration": "December 2024 - February 2025 (3 months)",
+      "location": "Kampala, Central Region, Uganda",
+      "description": "Developed backend systems and cloud infrastructure using Docker and Google Cloud Platform technologies.",
+      "type": "development",
+      "skills": ["Backend Development", "Docker", "Google Cloud Platform", "Containerization", "Cloud Infrastructure"],
       "achievements": [
-        "Supported feasibility studies for e-mobility solutions in Kampala",
-        "Contributed to electric vehicle adoption strategy development",
-        "Researched sustainable transportation alternatives",
-        "Assisted in stakeholder engagement for green mobility initiatives"
+        "Developed Docker Compose environment for cloud deployment",
+        "Successfully connected backend systems to Google Cloud Platform",
+        "Implemented scalable cloud infrastructure solutions"
       ]
     },
     {
       "id": 8,
-      "title": "Undergraduate Researcher",
-      "company": "The Marconi Research and Innovations Laboratory",
-      "duration": "7 months",
-      "description": "Conducted research in telecommunications and wireless technologies, contributing to innovative solutions in wireless communication systems and signal processing.",
-      "type": "research",
-      "skills": ["Signal Processing", "Wireless Communication", "MATLAB", "Research Methods", "Telecommunications"],
+      "title": "Engineering, Software Development and Data Analysis Intern",
+      "company": "Green Hub East Africa Ltd",
+      "duration": "January 2024 - September 2024 (9 months)",
+      "location": "Kampala, Central Region, Uganda",
+      "description": "Supported data analysis, database creation, battery swapping infrastructure development, and automation solutions for e-mobility ecosystem.",
+      "type": "internship",
+      "skills": ["Data Analysis", "Database Development", "E-mobility", "Battery Technology", "Automation Solutions", "Web Development"],
       "achievements": [
-        "Contributed to 3 research papers in telecommunications",
-        "Developed novel signal processing algorithms",
-        "Conducted extensive research on wireless communication systems",
-        "Presented findings at 2 international conferences"
+        "Supported data analysis and database creation projects",
+        "Contributed to battery swapping infrastructure development",
+        "Developed automation solutions for e-mobility ecosystem",
+        "Participated in innovative web page development"
       ]
     }
   ]

@@ -1,0 +1,86 @@
+{
+  "certifications": [
+    {
+      "id": 1,
+      "title": "ITU Generation Connect Youth Envoy",
+      "issuer": "International Telecommunication Union",
+      "date": "2024",
+      "status": "current",
+      "description": "Official designation for telecommunications advocacy and youth engagement",
+      "credentialId": "",
+      "verificationUrl": ""
+    },
+    {
+      "id": 2,
+      "title": "IEEE Student Member",
+      "issuer": "Institute of Electrical and Electronics Engineers",
+      "date": "2022",
+      "status": "current",
+      "description": "Professional membership with access to technical resources and research publications",
+      "credentialId": "",
+      "verificationUrl": ""
+    },
+    {
+      "id": 3,
+      "title": "Arduino Certified Trainer",
+      "issuer": "Arduino Education",
+      "date": "2023",
+      "status": "active",
+      "description": "Certified to deliver Arduino programming and embedded systems training",
+      "credentialId": "",
+      "verificationUrl": ""
+    }
+  ],
+  "awards": [
+    {
+      "id": 1,
+      "title": "ITU Generation Connect Youth Envoy Selection",
+      "issuer": "International Telecommunication Union",
+      "date": "2024",
+      "description": "Selected among global youth to represent Africa in telecommunications advocacy"
+    },
+    {
+      "id": 2,
+      "title": "IEEE Student Leadership Excellence Award",
+      "issuer": "IEEE Makerere University Student Branch",
+      "date": "2023",
+      "description": "Recognition for outstanding leadership and branch development achievements"
+    },
+    {
+      "id": 3,
+      "title": "Best Innovation Award - E-waste Project",
+      "issuer": "netLabs!UG Sustainability Initiative",
+      "date": "2023",
+      "description": "Recognition for innovative approach to electronic waste recycling and community impact"
+    },
+    {
+      "id": 4,
+      "title": "Dean's List Academic Excellence",
+      "issuer": "Makerere University College of Engineering",
+      "date": "2022-2024",
+      "description": "Consistent academic performance in top 10% of engineering students"
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "proficiency": "Native/Fluent",
+      "description": "Professional working proficiency"
+    },
+    {
+      "language": "Luganda",
+      "proficiency": "Native",
+      "description": "Local language fluency"
+    },
+    {
+      "language": "Swahili",
+      "proficiency": "Conversational",
+      "description": "East African regional communication"
+    },
+    {
+      "language": "French",
+      "proficiency": "Basic",
+      "description": "Academic level understanding"
+    }
+  ]
+}

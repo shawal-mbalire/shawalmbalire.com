@@ -1,5 +1,5 @@
 # Professional CV Build System
-# Enhanced build system with improved organization and accurate data
+# Enhanced build system with improved organization
 
 # Configuration
 CV_NAME = MbalireShawalCV
@@ -20,7 +20,7 @@ all: $(OUTPUT_DIR)/$(CV_NAME).pdf
 
 # Standard CV build (current version)
 $(OUTPUT_DIR)/$(CV_NAME).pdf: $(TEX_FILE) $(wildcard $(PARTS_DIR)/*.tex)
-	@echo "Building professional CV with accurate data from Profile.pdf..."
+	@echo "Building professional CV..."
 	$(LATEX_CMD) $(TEX_FILE)
 	@mv $(BUILD_DIR)/$(CV_NAME).pdf $(OUTPUT_DIR)/
 	@echo "✅ CV generated: $(OUTPUT_DIR)/$(CV_NAME).pdf"
@@ -40,6 +40,7 @@ academic: $(OUTPUT_DIR)/$(CV_NAME)_academic.pdf
 $(OUTPUT_DIR)/$(CV_NAME)_academic.pdf: $(wildcard $(PARTS_DIR)/*.tex)
 	@echo "Building academic-focused CV..."
 	@cp $(TEX_FILE) $(BUILD_DIR)/$(CV_NAME)_academic_temp.tex
+	@sed -i.bak 's/\\input{parts\/summary}/\\input{parts\/research_summary}/' $(BUILD_DIR)/$(CV_NAME)_academic_temp.tex || true
 	$(LATEX_CMD) $(CV_NAME)_academic_temp.tex
 	@mv $(BUILD_DIR)/$(CV_NAME)_academic_temp.pdf $(OUTPUT_DIR)/$(CV_NAME)_academic.pdf
 	@rm -f $(BUILD_DIR)/$(CV_NAME)_academic_temp.* 
@@ -50,6 +51,7 @@ industry: $(OUTPUT_DIR)/$(CV_NAME)_industry.pdf
 $(OUTPUT_DIR)/$(CV_NAME)_industry.pdf: $(wildcard $(PARTS_DIR)/*.tex)
 	@echo "Building industry-focused CV..."
 	@cp $(TEX_FILE) $(BUILD_DIR)/$(CV_NAME)_industry_temp.tex
+	@sed -i.bak 's/\\input{parts\/volunteer}/% \\input{parts\/volunteer}/' $(BUILD_DIR)/$(CV_NAME)_industry_temp.tex || true
 	$(LATEX_CMD) $(CV_NAME)_industry_temp.tex
 	@mv $(BUILD_DIR)/$(CV_NAME)_industry_temp.pdf $(OUTPUT_DIR)/$(CV_NAME)_industry.pdf
 	@rm -f $(BUILD_DIR)/$(CV_NAME)_industry_temp.*
@@ -60,6 +62,7 @@ startup: $(OUTPUT_DIR)/$(CV_NAME)_startup.pdf
 $(OUTPUT_DIR)/$(CV_NAME)_startup.pdf: $(wildcard $(PARTS_DIR)/*.tex)
 	@echo "Building startup-focused CV..."
 	@cp $(TEX_FILE) $(BUILD_DIR)/$(CV_NAME)_startup_temp.tex
+	@sed -i.bak 's/\\input{parts\/certifications}/% \\input{parts\/certifications}/' $(BUILD_DIR)/$(CV_NAME)_startup_temp.tex || true
 	$(LATEX_CMD) $(CV_NAME)_startup_temp.tex
 	@mv $(BUILD_DIR)/$(CV_NAME)_startup_temp.pdf $(OUTPUT_DIR)/$(CV_NAME)_startup.pdf
 	@rm -f $(BUILD_DIR)/$(CV_NAME)_startup_temp.*
@@ -67,7 +70,7 @@ $(OUTPUT_DIR)/$(CV_NAME)_startup.pdf: $(wildcard $(PARTS_DIR)/*.tex)
 
 # Complete portfolio generation
 portfolio: clean
-	@echo "🎯 Generating complete CV portfolio with accurate data..."
+	@echo "🎯 Generating complete CV portfolio..."
 	@$(MAKE) all
 	@$(MAKE) extended  
 	@$(MAKE) academic
@@ -79,11 +82,11 @@ portfolio: clean
 compare:
 	@echo "📊 CV Variants Comparison:"
 	@echo "=========================="
-	@for file in $(OUTPUT_DIR)/$(CV_NAME)*.pdf; do \
+	@for file in $(CV_NAME)*.pdf; do \
 		if [ -f "$$file" ]; then \
 			size=$$(ls -lh "$$file" | awk '{print $$5}'); \
 			pages=$$(pdfinfo "$$file" 2>/dev/null | grep Pages | awk '{print $$2}' || echo "?"); \
-			echo "📄 $$(basename $$file): $$size, $$pages pages"; \
+			echo "📄 $$file: $$size, $$pages pages"; \
 		fi \
 	done
 
@@ -118,15 +121,6 @@ optimize: $(OUTPUT_DIR)/$(CV_NAME).pdf
 		echo "❌ Ghostscript not found. Install with: brew install ghostscript"; \
 	fi
 
-# Validate LaTeX syntax
-validate:
-	@echo "Validating LaTeX syntax..."
-	@if command -v chktex >/dev/null 2>&1; then \
-		chktex $(TEX_FILE); \
-	else \
-		echo "❌ chktex not found. Install with: brew install chktex"; \
-	fi
-
 # Show PDF info
 info: $(OUTPUT_DIR)/$(CV_NAME).pdf
 	@echo "📄 CV Information:"
@@ -144,17 +138,16 @@ view: $(OUTPUT_DIR)/$(CV_NAME).pdf
 # Clean build artifacts
 clean:
 	@echo "Cleaning build artifacts..."
-	@rm -rf $(BUILD_DIR)/*
-	@mkdir -p $(BUILD_DIR)
+	@rm -f *.aux *.log *.out *.fdb_latexmk *.fls *.synctex.gz *.synctex\(busy\) *.bbl *.blg *.toc
 
 # Clean everything including PDFs
 clean-all: clean
 	@echo "Removing all generated files..."
-	@rm -f $(OUTPUT_DIR)/*.pdf
+	@rm -f $(PDF_FILE) $(CV_NAME)_extended.pdf $(CV_NAME)_academic.pdf $(CV_NAME)_industry.pdf $(CV_NAME)_startup.pdf $(CV_NAME)_optimized.pdf
 
 # Show available targets
 help:
-	@echo "📋 Available Make Targets (Updated with Accurate Data):"
+	@echo "📋 Available Make Targets:"
 	@echo ""
 	@echo "🏗️  Build Targets:"
 	@echo "  all        - Build standard professional CV (default)"
@@ -179,11 +172,5 @@ help:
 	@echo "  clean      - Remove build artifacts"
 	@echo "  clean-all  - Remove all generated files"
 	@echo "  help       - Show this help message"
-	@echo ""
-	@echo "📁 Directory Structure:"
-	@echo "  $(OUTPUT_DIR)/     - Generated PDF files"
-	@echo "  $(BUILD_DIR)/      - Build artifacts"
-	@echo "  $(SOURCE_DIR)/     - Source files and backups"
-	@echo "  $(DOCS_DIR)/       - Documentation"
 
 .PHONY: all extended academic industry startup portfolio compare quick watch optimize validate info view clean clean-all help
