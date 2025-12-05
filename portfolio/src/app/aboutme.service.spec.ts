@@ -1,3 +1,4 @@
+import '../test-setup';
 import { TestBed } from '@angular/core/testing';
 
 import { AboutmeService } from './aboutme.service';

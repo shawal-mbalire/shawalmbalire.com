@@ -1,6 +1,8 @@
+import '../../test-setup';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WorkEntryComponent } from './work-entry.component';
+import { WorkEntry } from '../../core/models/workEntry';
 
 describe('WorkEntryComponent', () => {
   let component: WorkEntryComponent;
@@ -14,6 +16,13 @@ describe('WorkEntryComponent', () => {
 
     fixture = TestBed.createComponent(WorkEntryComponent);
     component = fixture.componentInstance;
+    component.workEntry = {
+      title: 'Test Title',
+      company: 'Test Company',
+      duration: 'Test Duration',
+      description: 'Test Description',
+      photo: 'test.jpg'
+    } as WorkEntry;
     fixture.detectChanges();
   });
 

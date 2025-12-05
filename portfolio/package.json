@@ -30,6 +30,7 @@
     "zone.js": "~0.15.1"
   },
   "devDependencies": {
+    "@analogjs/vite-plugin-angular": "^2.1.2",
     "@angular/build": "^21.0.2",
     "@angular/cli": "^21.0.2",
     "@angular/compiler-cli": "^21.0.3",
@@ -37,6 +38,7 @@
     "@types/jasmine": "~5.1.8",
     "@types/node": "^24.10.1",
     "jasmine-core": "~5.4.0",
+    "jsdom": "^27.2.0",
     "karma": "~6.4.4",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.1",
