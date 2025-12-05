@@ -1,11 +1,30 @@
-import '../test-setup';
 import { TestBed } from '@angular/core/testing';
+import {
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting,
+} from '@angular/platform-browser-dynamic/testing';
 import { AppComponent } from './app.component';
+import { ThemeService } from './theme.service';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
+    if (!TestBed.platform) {
+      TestBed.initTestEnvironment(
+        BrowserDynamicTestingModule,
+        platformBrowserDynamicTesting(),
+      );
+    }
     await TestBed.configureTestingModule({
-      imports: [AppComponent]
+      imports: [AppComponent],
+      providers: [
+        {
+          provide: ThemeService,
+          useValue: {
+            getActiveTheme: () => 'light-theme',
+            setActiveTheme: () => {}
+          }
+        }
+      ]
     }).compileComponents();
   });
 

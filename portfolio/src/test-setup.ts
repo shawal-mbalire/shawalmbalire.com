@@ -1,28 +1,36 @@
 import 'zone.js';
-import 'zone.js/testing';
-import { getTestBed } from '@angular/core/testing';
-import {
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting,
-} from '@angular/platform-browser-dynamic/testing';
+import { vi } from 'vitest';
 
-// Mock window.matchMedia
-Object.defineProperty(window, 'matchMedia', {
-  writable: true,
-  value: (query: string) => ({
-    matches: false,
-    media: query,
-    onchange: null,
-    addListener: () => {},
-    removeListener: () => {},
-    addEventListener: () => {},
-    removeEventListener: () => {},
-    dispatchEvent: () => {},
-  }),
+import { getTestBed } from '@angular/core/testing';
+import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
+
+// Initialize the Angular testing environment.
+getTestBed().initTestEnvironment(
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting(),
+);
+
+// Mock browser APIs
+vi.stubGlobal('matchMedia', (query: string) => ({
+  matches: false,
+  media: query,
+  onchange: null,
+  addListener: () => {},
+  removeListener: () => {},
+  addEventListener: () => {},
+  removeEventListener: () => {},
+  dispatchEvent: () => {},
+}));
+
+(Element.prototype as any).animate = () => ({
+  play: () => {},
+  pause: () => {},
+  finish: () => {},
+  cancel: () => {},
 });
 
-// Mock IntersectionObserver
-global.IntersectionObserver = class IntersectionObserver {
+// Mock IntersectionObserver globally
+vi.stubGlobal('IntersectionObserver', class IntersectionObserver {
   constructor() {}
   observe() {
     return null;
@@ -33,20 +41,4 @@ global.IntersectionObserver = class IntersectionObserver {
   unobserve() {
     return null;
   }
-};
-
-// Mock Element.animate
-Object.defineProperty(Element.prototype, 'animate', {
-  writable: true,
-  value: () => ({
-    play: () => {},
-    pause: () => {},
-    finish: () => {},
-    cancel: () => {},
-  }),
 });
-
-getTestBed().initTestEnvironment(
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting(),
-);

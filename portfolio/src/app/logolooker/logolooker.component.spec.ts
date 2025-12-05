@@ -1,5 +1,8 @@
-import '../../test-setup';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting,
+} from '@angular/platform-browser-dynamic/testing';
 
 import { LogolookerComponent } from './logolooker.component';
 
@@ -8,6 +11,12 @@ describe('LogolookerComponent', () => {
   let fixture: ComponentFixture<LogolookerComponent>;
 
   beforeEach(async () => {
+    if (!TestBed.platform) {
+      TestBed.initTestEnvironment(
+        BrowserDynamicTestingModule,
+        platformBrowserDynamicTesting(),
+      );
+    }
     await TestBed.configureTestingModule({
       imports: [LogolookerComponent]
     })
@@ -15,6 +24,14 @@ describe('LogolookerComponent', () => {
 
     fixture = TestBed.createComponent(LogolookerComponent);
     component = fixture.componentInstance;
+
+    (Element.prototype as any).animate = () => ({
+      play: () => {},
+      pause: () => {},
+      finish: () => {},
+      cancel: () => {},
+    });
+
     fixture.detectChanges();
   });
 
