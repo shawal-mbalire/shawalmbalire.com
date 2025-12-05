@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, inject, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, inject, Inject } from '@angular/core';
 import { WorkEntry } from '../core/models/workEntry';
 import { MatDialog, MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
@@ -15,13 +15,13 @@ import { MatDialog, MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angu
 })
 export class WorkEntryComponent {
 
-  @Input() workEntry!: WorkEntry;
+  workEntry = input.required<WorkEntry>();
   readonly dialog = inject(MatDialog);
   openDialog() {
     const dialogRef = this.dialog.open(
       WorkEntryComponentDialog,
       {
-        data: this.workEntry
+        data: this.workEntry()
       }
     );
 

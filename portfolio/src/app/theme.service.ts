@@ -1,29 +1,31 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal, effect } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
-  private activeTheme!: string;
+  private activeThemeSignal = signal<string>('light-theme');
+  activeTheme = this.activeThemeSignal.asReadonly();
 
   constructor() {
     if (typeof window !== 'undefined') {
-      this.detectPreferredTheme();
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      this.activeThemeSignal.set(prefersDark ? 'dark-theme' : 'light-theme');
     }
-  }
 
-  private detectPreferredTheme() {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    this.activeTheme = prefersDark ? 'dark-theme' : 'light-theme';
-    document.body.className = this.activeTheme;
+    effect(() => {
+      const theme = this.activeThemeSignal();
+      if (typeof window !== 'undefined') {
+        document.body.className = theme;
+      }
+    });
   }
 
   setActiveTheme(theme: string) {
-    this.activeTheme = theme;
-    document.body.className = theme;
+    this.activeThemeSignal.set(theme);
   }
 
   getActiveTheme(): string {
-    return this.activeTheme;
+    return this.activeThemeSignal();
   }
 }

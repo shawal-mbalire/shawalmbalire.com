@@ -33,24 +33,22 @@
         <!--</div>-->
       </div>
     </div>
-  <!--      <div class="contact__form-div">-->
-  <!--        <label for="" class="contact__form-tag">Name</label>-->
-  <!--        <input type="text" placeholder="Insert your name." class="contact__form-input">-->
-  <!--      </div>-->
-  <!---->
-  <!--      <div class="contact__form-div">-->
-  <!--        <label for="" class="contact__form-tag">Mail</label>-->
-  <!--        <input type="text" placeholder="Insert your email" class="contact__form-input">-->
-  <!--      </div>-->
-  <!---->
-  <!--      <div class="contact__form-div contact__form-area">-->
-  <!--        <label for="" class="contact__form-tag ">Project</label>-->
-  <!--        <textarea name="" id="" cols="30" rows="10" placeholder="Write to me"-->
-  <!--          class="contact__form-input"></textarea>-->
-  <!--      </div>-->
-  <!--      <div class="submitbutton" type="submit">Send Message</div>-->
-  <!--    </form>-->
-  <!--  </div>-->
-  <!---->
-  <!--</div>-->
+    <form (ngSubmit)="onSubmit()" novalidate>
+      <div class="contact__form-div">
+        <label for="name" class="contact__form-tag">Name</label>
+        <input id="name" type="text" placeholder="Insert your name." class="contact__form-input" required>
+      </div>
+
+      <div class="contact__form-div">
+        <label for="email" class="contact__form-tag">Email</label>
+        <input id="email" type="email" placeholder="Insert your email" class="contact__form-input" required>
+      </div>
+
+      <div class="contact__form-div contact__form-area">
+        <label for="project" class="contact__form-tag">Project</label>
+        <textarea id="project" cols="30" rows="10" placeholder="Write to me"
+          class="contact__form-input" required></textarea>
+      </div>
+      <button class="submitbutton" type="submit">Send Message</button>
+    </form>
 </main>
