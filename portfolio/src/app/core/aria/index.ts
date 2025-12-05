@@ -1,69 +1,57 @@
-import { Directive, ElementRef, Input, TemplateRef, ViewContainerRef, computed, effect, inject, signal, output, input } from '@angular/core';
+import { Directive, Output, EventEmitter, signal, inject, input } from '@angular/core';
 
 @Directive({
-  selector: '[menu]',
+  selector: '[ngMenu]',
+  exportAs: 'ngMenu',
   standalone: true,
   host: {
     'role': 'menu',
-    '[attr.aria-orientation]': 'orientation()',
-    '[tabindex]': '0'
+    '[attr.data-visible]': 'visible()'
   }
 })
 export class Menu {
-  orientation = signal<'vertical' | 'horizontal'>('vertical');
+  visible = signal(false);
+  @Output() onSelect = new EventEmitter<any>();
+  
+  toggle() {
+    this.visible.update(v => !v);
+  }
 }
 
 @Directive({
-  selector: '[menuItem]',
+  selector: '[ngMenuItem]',
   standalone: true,
   host: {
     'role': 'menuitem',
-    '[tabindex]': '-1',
-    '(click)': 'handleClick()',
-    '(keydown.enter)': 'handleClick()',
-    '(keydown.space)': 'handleClick()'
+    '(click)': 'handleClick()'
   }
 })
 export class MenuItem {
-  triggered = output<void>();
+  value = input.required<any>();
+  
+  private menu = inject(Menu, { optional: true });
 
   handleClick() {
-    this.triggered.emit();
+    if (this.menu) {
+      this.menu.onSelect.emit(this.value());
+      this.menu.visible.set(false);
+    }
   }
 }
 
 @Directive({
-  selector: '[menuTriggerFor]',
+  selector: 'button[ngMenuTrigger]',
   standalone: true,
   host: {
     '(click)': 'toggleMenu()',
     '[attr.aria-haspopup]': 'true',
-    '[attr.aria-expanded]': 'isOpen()'
+    '[attr.aria-expanded]': 'menu()?.visible()'
   }
 })
 export class MenuTrigger {
-  menuTemplate = input.required<TemplateRef<unknown>>({ alias: 'menuTriggerFor' });
+  menu = input.required<Menu>();
   
-  private vcr = inject(ViewContainerRef);
-  private isOpenSignal = signal(false);
-  isOpen = this.isOpenSignal.asReadonly();
-
   toggleMenu() {
-    this.isOpenSignal.update(v => !v);
-    if (this.isOpenSignal()) {
-      this.open();
-    } else {
-      this.close();
-    }
-  }
-
-  private open() {
-    this.vcr.createEmbeddedView(this.menuTemplate());
-    // In a real implementation, we'd use CDK Overlay or similar to position it
-    // For this mock, we just render it inline or append it
-  }
-
-  private close() {
-    this.vcr.clear();
+    this.menu().toggle();
   }
 }

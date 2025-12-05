@@ -17,6 +17,11 @@ button {
     cursor: pointer;
 }
 
+:host {
+  position: relative;
+  display: inline-block;
+}
+
 .theme-menu {
   background: var(--primaryColor);
   border: 1px solid var(--iconColor);
@@ -28,6 +33,11 @@ button {
   min-width: 150px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   z-index: 1000;
+  display: none;
+}
+
+.theme-menu[data-visible="true"] {
+  display: block;
 }
 
 .menu-item {
