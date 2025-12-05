@@ -30,7 +30,7 @@ vi.stubGlobal('matchMedia', (query: string) => ({
 });
 
 // Mock IntersectionObserver globally
-vi.stubGlobal('IntersectionObserver', class IntersectionObserver {
+const IntersectionObserverMock = class IntersectionObserver {
   constructor() {}
   observe() {
     return null;
@@ -41,4 +41,7 @@ vi.stubGlobal('IntersectionObserver', class IntersectionObserver {
   unobserve() {
     return null;
   }
-});
+};
+
+vi.stubGlobal('IntersectionObserver', IntersectionObserverMock);
+window.IntersectionObserver = IntersectionObserverMock;

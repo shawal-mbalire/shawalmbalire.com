@@ -25,13 +25,13 @@ describe('WorkEntryComponent', () => {
 
     fixture = TestBed.createComponent(WorkEntryComponent);
     component = fixture.componentInstance;
-    component.workEntry = {
+    fixture.componentRef.setInput('workEntry', {
       title: 'Test Title',
       company: 'Test Company',
       duration: 'Test Duration',
       description: 'Test Description',
       photo: 'test.jpg'
-    } as WorkEntry;
+    } as WorkEntry);
     fixture.detectChanges();
   });
 

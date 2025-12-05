@@ -6,10 +6,18 @@
       internships. I hope this page is filled with more cool projects in the future.
     </p>
     <div id="workTiles">
-      @for (workEntry of workEntryList; track workEntry) {
-        <app-work-entry
-          [workEntry] = "workEntry"
-        ></app-work-entry>
+      @if (workEntriesResource.isLoading()) {
+        <p>Loading...</p>
+      }
+      @if (workEntriesResource.error()) {
+        <p>Error loading experience.</p>
+      }
+      @if (workEntriesResource.value()) {
+        @for (workEntry of workEntriesResource.value(); track workEntry.title) {
+          <app-work-entry
+            [workEntry] = "workEntry"
+          ></app-work-entry>
+        }
       }
     </div>
   </div>
