@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { WorkEntryComponent } from "../work-entry/work-entry.component";
-
 import { WorkEntry } from '../core/models/workEntry';
 
 @Component({
@@ -13,4 +12,4 @@ import { WorkEntry } from '../core/models/workEntry';
 })
 export class ExperienceComponent {
   workEntryList: WorkEntry[] = require('../../../public/work-entries.json');
- }
+}

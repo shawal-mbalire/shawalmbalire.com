@@ -86,9 +86,9 @@ header{
   --myrtle-green: #297373ff;
 }
 
-/* Apply theme variables */
-body {
-  background-color: var(--backgroundColor);
-  color: var(--fontColor);
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
+/* Material Design utility classes (Angular v21 feature) */
+.mat-primary-text { color: var(--mat-sys-primary); }
+.mat-surface-container { background-color: var(--mat-sys-surface-container); }
+.mat-outline { border: 1px solid var(--mat-sys-outline); }
+.mat-elevation-1 { box-shadow: var(--mat-sys-level1); }
+.mat-elevation-2 { box-shadow: var(--mat-sys-level2); }

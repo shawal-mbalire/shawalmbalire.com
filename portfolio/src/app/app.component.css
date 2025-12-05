@@ -2,7 +2,7 @@ main{
     margin: 0;
     padding: 0;
     width: 100%;
-    
+
     div {
         display: grid;
         place-items: center;
@@ -14,4 +14,23 @@ main{
 
 a {
     cursor: pointer;
+}
+
+/* Loading placeholders for @defer */
+.loading-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    margin: 2rem 0;
+    width: 100%;
+}
+
+.loading-placeholder h2 {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    opacity: 0.7;
 }
