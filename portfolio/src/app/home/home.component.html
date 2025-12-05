@@ -2,8 +2,8 @@
   <span class="home__greeting">Hello I'm</span>
   <h1 class="home__name">Shawal Mbalire</h1>
   <h3 class="home__education">Electrical and Software Engineering Student</h3>
-  @let greeting = isMorning ? 'Good morning' : 'Good afternoon';
-  @let dayMessage = isWeekend ? 'Enjoy your weekend!' : 'Have a productive day!';
+  @let greeting = isMorning() ? 'Good morning' : 'Good afternoon';
+  @let dayMessage = isWeekend() ? 'Enjoy your weekend!' : 'Have a productive day!';
   <h4>{{ greeting }}, {{ dayMessage }}</h4>
   <div>
     <a download="" href="/documents/MbalireShawalCV.pdf" class="button">

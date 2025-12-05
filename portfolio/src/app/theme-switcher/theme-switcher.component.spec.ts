@@ -6,6 +6,7 @@ import {
 
 import { ThemeSwitcherComponent } from './theme-switcher.component';
 import { ThemeService } from '../theme.service';
+import { signal } from '@angular/core';
 
 describe('ThemeSwitcherComponent', () => {
   let component: ThemeSwitcherComponent;
@@ -24,7 +25,7 @@ describe('ThemeSwitcherComponent', () => {
         {
           provide: ThemeService,
           useValue: {
-            getActiveTheme: () => 'light-theme',
+            activeTheme: signal('light-theme').asReadonly(),
             setActiveTheme: () => {}
           }
         }

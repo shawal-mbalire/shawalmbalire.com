@@ -7,5 +7,5 @@
     <p id="work_description">{{ workEntry().description }}</p>
   </div>
 
-  <button class="button" (click)="openDialog()">Show More</button>
+  <button class="button" (click)="openDialog()" [attr.aria-label]="'Show more about ' + workEntry().title">Show More</button>
 </div>

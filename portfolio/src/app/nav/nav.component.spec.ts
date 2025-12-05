@@ -5,6 +5,7 @@ import {
 } from '@angular/platform-browser-dynamic/testing';
 import { NavComponent} from './nav.component';
 import { ThemeService } from '../theme.service';
+import { signal } from '@angular/core';
 
 describe('NavComponent', () => {
   let component: NavComponent;
@@ -23,7 +24,7 @@ describe('NavComponent', () => {
         {
           provide: ThemeService,
           useValue: {
-            getActiveTheme: () => 'light-theme',
+            activeTheme: signal('light-theme').asReadonly(),
             setActiveTheme: () => {}
           }
         }

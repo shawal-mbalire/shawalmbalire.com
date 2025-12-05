@@ -5,6 +5,7 @@ import {
 } from '@angular/platform-browser-dynamic/testing';
 import { AppComponent } from './app.component';
 import { ThemeService } from './theme.service';
+import { signal } from '@angular/core';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -20,7 +21,7 @@ describe('AppComponent', () => {
         {
           provide: ThemeService,
           useValue: {
-            getActiveTheme: () => 'light-theme',
+            activeTheme: signal('light-theme').asReadonly(),
             setActiveTheme: () => {}
           }
         }

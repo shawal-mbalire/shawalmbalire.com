@@ -31,7 +31,16 @@ vi.stubGlobal('matchMedia', (query: string) => ({
 
 // Mock IntersectionObserver globally
 const IntersectionObserverMock = class IntersectionObserver {
-  constructor() {}
+  readonly root: Element | Document | null = null;
+  readonly rootMargin: string = '';
+  readonly thresholds: ReadonlyArray<number> = [];
+
+  constructor(callback: IntersectionObserverCallback, options?: IntersectionObserverInit) {
+    this.root = options?.root ?? null;
+    this.rootMargin = options?.rootMargin ?? '';
+    this.thresholds = options?.threshold ? (Array.isArray(options.threshold) ? options.threshold : [options.threshold]) : [];
+  }
+  
   observe() {
     return null;
   }
@@ -41,7 +50,11 @@ const IntersectionObserverMock = class IntersectionObserver {
   unobserve() {
     return null;
   }
+  takeRecords(): IntersectionObserverEntry[] {
+    return [];
+  }
 };
 
 vi.stubGlobal('IntersectionObserver', IntersectionObserverMock);
 window.IntersectionObserver = IntersectionObserverMock;
+global.IntersectionObserver = IntersectionObserverMock;

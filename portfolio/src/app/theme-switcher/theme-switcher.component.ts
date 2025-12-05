@@ -1,17 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ThemeService } from '../theme.service';
+import { Menu, MenuItem, MenuTrigger } from '../core/aria';
 
 @Component({
   selector: 'app-theme-switcher',
   templateUrl: './theme-switcher.component.html',
-  styleUrl: './theme-switcher.component.css'
+  styleUrl: './theme-switcher.component.css',
+  imports: [Menu, MenuItem, MenuTrigger]
 })
 export class ThemeSwitcherComponent {
-  constructor(private themeService: ThemeService) { }
+  themeService = inject(ThemeService);
 
-  toggleTheme() {
-    const activeTheme = this.themeService.getActiveTheme();
-    const newTheme = activeTheme === 'light-theme' ? 'dark-theme' : 'light-theme';
-    this.themeService.setActiveTheme(newTheme);
+  setTheme(theme: string) {
+    this.themeService.setActiveTheme(theme);
   }
 }
