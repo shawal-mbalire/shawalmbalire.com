@@ -81,7 +81,6 @@ node_modules/
 /node_modules/
 /package-lock.json
 /yarn.lock
-/bun.lock
 
 # Environment files
 /.env
