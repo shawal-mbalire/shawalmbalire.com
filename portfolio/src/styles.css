@@ -8,6 +8,11 @@
   padding:             0;
   scrollbar-width: none;
 }
+body{
+  background-color: var(--backgroundColor);
+  color: var(--fontColor);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
 main {
   min-height: 80vh;
 }
@@ -19,22 +24,22 @@ svg g path{
 }
 
 .button{
-  border: 2px solid var(--fontColor);
+  border: 2px solid var(--secondaryColor);
   border-radius: 10px;
   padding-inline: 1rem;
   padding-block:0.5rem;
   font-weight: bold;
-  color: var(--primaryColor);
-  background-color: var(--secondaryColor);
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  transition: background-color 0.2s ease-in-out;
+  color: var(--secondaryColor);
+  background-color: transparent;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 .button:hover {
-  background-color: var(--primaryColor);
-  border-color: var(--fontColor);
-  color: var(--secondaryColor);
+  background-color: var(--secondaryColor);
+  border-color: var(--secondaryColor);
+  color: #0d1117;
   cursor: pointer;
   transform: scale(1.05);
+  box-shadow: 0 4px 12px var(--glowColor);
 }
 
 
@@ -44,12 +49,13 @@ header{
 
 .mat-dialog-container {
   border-radius: 16px; /* Rounded corners */
-  background: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  background: var(--primaryColor);
+  color: var(--fontColor);
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.35); /* Soft shadow */
 }
 .cdk-overlay-backdrop {
   backdrop-filter: blur(8px); /* Adds blur effect */
-  background-color: rgba(0, 0, 0, 0.4); /* Optional for better contrast */
+  background-color: rgba(0, 0, 0, 0.6); /* Better contrast in both themes */
 }
 
 /* Light Theme */
@@ -71,19 +77,19 @@ header{
 
 /* Dark Theme */
 .dark-theme {
-  --backgroundColor: #111517;
-  --fontColor: white;
-  --glassColor: white;
-  --iconColor: white;
-  --glowColor: rgba(255, 255, 255, 0.2);
-  --primaryColor: #111517;
-  --secondaryColor: white;
-  --tertiaryColor: blue;
+  --backgroundColor: #0d1117;
+  --fontColor: #f0f6fc;
+  --glassColor: #f0f6fc;
+  --iconColor: #58a6ff;
+  --glowColor: rgba(88, 166, 255, 0.3);
+  --primaryColor: #161b22;
+  --secondaryColor: #58a6ff;
+  --tertiaryColor: #79c0ff;
 
-  --dark-blue: #1f01b9ff;
-  --alice-blue: #edf5fcff;
-  --dim-gray: #626868ff;
-  --myrtle-green: #297373ff;
+  --dark-blue: #58a6ff;
+  --alice-blue: #79c0ff;
+  --dim-gray: #8b949e;
+  --myrtle-green: #3fb950;
 }
 
 /* Material Design utility classes (Angular v21 feature) */

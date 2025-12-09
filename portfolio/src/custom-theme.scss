@@ -3,12 +3,26 @@
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
 
+// Light theme
 html {
   @include mat.theme((
     color: (
-      theme-type: dark,
+      theme-type: light,
       primary: mat.$azure-palette,
       tertiary: mat.$blue-palette,
+    ),
+    typography: Comfortaa,
+    density: 0,
+  ));
+}
+
+// Dark theme
+.dark-theme {
+  @include mat.theme((
+    color: (
+      theme-type: dark,
+      primary: mat.$blue-palette,
+      tertiary: mat.$azure-palette,
     ),
     typography: Comfortaa,
     density: 0,

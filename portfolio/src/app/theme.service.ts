@@ -9,14 +9,18 @@ export class ThemeService {
 
   constructor() {
     if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('activeTheme');
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      this.activeThemeSignal.set(prefersDark ? 'dark-theme' : 'light-theme');
+      const initial = saved ?? (prefersDark ? 'dark-theme' : 'light-theme');
+      this.activeThemeSignal.set(initial);
     }
 
     effect(() => {
       const theme = this.activeThemeSignal();
       if (typeof window !== 'undefined') {
-        document.body.className = theme;
+        document.body.classList.remove('light-theme', 'dark-theme');
+        document.body.classList.add(theme);
+        localStorage.setItem('activeTheme', theme);
       }
     });
   }

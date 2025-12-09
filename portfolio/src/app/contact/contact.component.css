@@ -20,7 +20,7 @@ main{
       gap: 1rem;
 
       .contact__card {
-        border: 2px solid;
+        border: 2px solid var(--secondaryColor);
         padding: 1rem;
         min-width: 20rem;
         border-radius: 10px;
@@ -31,40 +31,60 @@ main{
         transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
       }
       .contact__card:hover{
-        transform: translate(scale(1.1));
+        transform: scale(1.03);
+        box-shadow: 0 6px 16px var(--glowColor);
       }
     }
   }
 }
 
 /* Contact Form Styles */
+.contact__heading {
+  text-align: center;
+}
+
+form {
+  width: min(720px, 92vw);
+  margin: 2rem auto 3rem;
+  padding: 1.5rem;
+  display: grid;
+  gap: 1rem;
+  background: var(--primaryColor);
+  border: 1.5px solid var(--secondaryColor);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px var(--glowColor);
+}
+
 .contact__form-div {
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 400px;
   margin-bottom: 1rem;
+  margin-inline: auto;
 }
 
 .contact__form-tag {
   margin-bottom: 0.5rem;
   font-weight: 500;
-  color: var(--text-color);
+  color: var(--fontColor);
 }
 
 .contact__form-input {
   padding: 0.75rem;
-  border: 2px solid var(--border-color);
+  border: 1.5px solid var(--secondaryColor);
   border-radius: 5px;
-  background: var(--bg-color);
-  color: var(--text-color);
+  background: var(--primaryColor);
+  color: var(--fontColor);
   font-size: 1rem;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  width: 100%;
 }
 
 .contact__form-input:focus {
   outline: none;
-  border-color: var(--primary-color);
+  border-color: var(--secondaryColor);
+  box-shadow: 0 0 0 3px var(--glowColor);
 }
 
 .contact__form-input.ng-invalid.ng-touched {
@@ -77,19 +97,20 @@ main{
 
 .submitbutton {
   padding: 0.75rem 2rem;
-  background: var(--primary-color);
-  color: white;
+  background: var(--secondaryColor);
+  color: var(--backgroundColor);
   border: none;
   border-radius: 5px;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  align-self: flex-start;
+  justify-self: center;
+  min-width: 200px;
 }
 
 .submitbutton:hover:not(:disabled) {
-  background: var(--primary-hover);
+  background: var(--tertiaryColor);
   transform: translateY(-2px);
 }
 

@@ -8,13 +8,17 @@ svg g path{
   fill:var(--iconColor);
 }
 button {
-    background-color: var(--primaryColor); 
-    height: 70%;
-    border: none;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
+  background-color: var(--primaryColor); 
+  height: 70%;
+  border: 1px solid var(--secondaryColor);
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
 }
 
 :host {
@@ -52,4 +56,17 @@ button {
 .menu-item:hover, .menu-item:focus {
   background-color: rgba(0,0,0,0.1);
   outline: none;
+}
+
+.theme-switcher {
+  display: inline-flex;
+  gap: 0.25rem;
+}
+
+.theme-switcher .caret {
+  width: 2.2rem;
+}
+
+.theme-switcher .icon {
+  width: 2.6rem;
 }

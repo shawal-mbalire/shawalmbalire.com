@@ -14,4 +14,10 @@ export class ThemeSwitcherComponent {
   setTheme(theme: string) {
     this.themeService.setActiveTheme(theme);
   }
+
+  toggleTheme() {
+    const current = this.themeService.getActiveTheme();
+    const next = current === 'dark-theme' ? 'light-theme' : 'dark-theme';
+    this.themeService.setActiveTheme(next);
+  }
 }
