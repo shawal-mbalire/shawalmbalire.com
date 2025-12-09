@@ -92,6 +92,74 @@ header{
   --myrtle-green: #3fb950;
 }
 
+/* Catppuccin (Mocha) */
+.catppuccin-theme {
+  --backgroundColor: #1e1e2e;
+  --fontColor: #cdd6f4;
+  --glassColor: #cdd6f4;
+  --iconColor: #89b4fa;
+  --glowColor: rgba(137, 180, 250, 0.25);
+  --primaryColor: #181825;
+  --secondaryColor: #89b4fa;
+  --tertiaryColor: #f38ba8;
+
+  --dark-blue: #89b4fa;
+  --alice-blue: #b4befe;
+  --dim-gray: #a6adc8;
+  --myrtle-green: #a6e3a1;
+}
+
+/* Tokyo Night */
+.tokyonight-theme {
+  --backgroundColor: #1a1b26;
+  --fontColor: #c0caf5;
+  --glassColor: #c0caf5;
+  --iconColor: #7aa2f7;
+  --glowColor: rgba(122, 162, 247, 0.28);
+  --primaryColor: #16161e;
+  --secondaryColor: #7aa2f7;
+  --tertiaryColor: #9ece6a;
+
+  --dark-blue: #7aa2f7;
+  --alice-blue: #a9b1d6;
+  --dim-gray: #565f89;
+  --myrtle-green: #9ece6a;
+}
+
+/* Solarized Light */
+.solarized-light-theme {
+  --backgroundColor: #fdf6e3;
+  --fontColor: #657b83;
+  --glassColor: #586e75;
+  --iconColor: #268bd2;
+  --glowColor: rgba(38, 139, 210, 0.18);
+  --primaryColor: #eee8d5;
+  --secondaryColor: #268bd2;
+  --tertiaryColor: #b58900;
+
+  --dark-blue: #268bd2;
+  --alice-blue: #93a1a1;
+  --dim-gray: #839496;
+  --myrtle-green: #859900;
+}
+
+/* Solarized Dark */
+.solarized-dark-theme {
+  --backgroundColor: #002b36;
+  --fontColor: #eee8d5;
+  --glassColor: #eee8d5;
+  --iconColor: #268bd2;
+  --glowColor: rgba(38, 139, 210, 0.25);
+  --primaryColor: #073642;
+  --secondaryColor: #268bd2;
+  --tertiaryColor: #b58900;
+
+  --dark-blue: #268bd2;
+  --alice-blue: #93a1a1;
+  --dim-gray: #586e75;
+  --myrtle-green: #859900;
+}
+
 /* Material Design utility classes (Angular v21 feature) */
 .mat-primary-text { color: var(--mat-sys-primary); }
 .mat-surface-container { background-color: var(--mat-sys-surface-container); }
