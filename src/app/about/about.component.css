@@ -1,13 +1,135 @@
-main{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  padding: 2rem 1rem;
 }
-div{
+
+.about__content {
+  width: 80%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.about__label {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  background: var(--secondaryColor);
+  color: var(--backgroundColor);
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.about__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--fontColor);
+  text-align: center;
+  margin: 0;
+}
+
+.about__card {
+  width: 100%;
+  max-width: 700px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  text-align: center;
+}
+
+.about__description {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--fontColor);
+  margin: 0;
+}
+
+.about__highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+.highlight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--primaryColor);
+  border-radius: 8px;
+  border-left: 3px solid var(--secondaryColor);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+}
+
+.highlight:hover {
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.highlight__icon {
+  width: 20px;
+  height: 20px;
+  color: var(--secondaryColor);
+  flex-shrink: 0;
+}
+
+.highlight span {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--fontColor);
+}
+
+/* Responsive styles */
+@media (max-width: 900px) {
+  .about__card {
+    padding: 1.5rem;
+  }
+
+  .about__title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  #about {
+    padding: 1.5rem 1rem;
+  }
+
+  .about__content {
     width: 90%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
+    max-width: 100%;
+  }
+
+  .about__title {
+    font-size: 1.75rem;
+  }
+
+  .about__card {
+    padding: 1.25rem;
+  }
+
+  .about__description {
+    font-size: 0.95rem;
+  }
+
+  .highlight {
+    padding: 0.6rem 0.85rem;
+  }
+
+  .highlight span {
+    font-size: 0.9rem;
+  }
 }
