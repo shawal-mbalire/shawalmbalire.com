@@ -14,7 +14,9 @@
       "Used an online database for transfer learning"
     ],
     "skills": ["Federated Learning", "ECG", "Healthcare", "Machine Learning", "Privacy"],
-    "links": {},
+    "links": {
+      "pdf": "/documents/federated-learning-poster.pdf"
+    },
     "order": 1
   },
   {
@@ -33,8 +35,8 @@
     ],
     "skills": ["IoT", "Cloud Computing", "Python", "Firebase", "Embedded Systems", "Agriculture Technology"],
     "links": {
-      "ieee": "https://ieeexplore.ieee.org/document/10445678",
-      "doi": "10.1109/AFRICON53745.2023.10445678"
+      "ieee": "https://ieeexplore.ieee.org/document/10293221",
+      "doi": "10.1109/AFRICON53745.2023.10293221"
     },
     "order": 2
   }
