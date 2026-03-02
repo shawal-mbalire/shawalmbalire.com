@@ -1,5 +1,9 @@
 # Portfolio Justfile
-# Common commands for development and deployment
+# Common commands for development and Firebase deployment
+
+# Default target
+default:
+    @just --list
 
 # Development server
 serve:
@@ -31,25 +35,67 @@ preview:
     @echo "Previewing production build..."
     bun run preview
 
-# Deploy to Firebase
+# Firebase: Login to Firebase
+firebase-login:
+    @echo "Logging in to Firebase..."
+    firebase login
+
+# Firebase: Initialize project (if needed)
+firebase-init:
+    @echo "Initializing Firebase project..."
+    firebase init hosting
+
+# Firebase: Deploy to production (live channel)
 deploy: build
-    @echo "Deploying to Firebase..."
+    @echo "Deploying to Firebase Hosting (production)..."
     firebase deploy --only hosting
 
-# Deploy to Firebase with force
+# Firebase: Deploy to production with force
 deploy-force: build
-    @echo "Force deploying to Firebase..."
+    @echo "Force deploying to Firebase Hosting..."
     firebase deploy --only hosting --force
 
-# Open CV document
+# Firebase: Deploy preview channel (for PRs)
+deploy-preview: build
+    @echo "Deploying to Firebase Hosting (preview channel)..."
+    firebase hosting:channel:deploy preview
+
+# Firebase: Delete preview channel
+delete-preview:
+    @echo "Deleting preview channel..."
+    firebase hosting:channel:delete preview
+
+# Firebase: List all channels
+channels:
+    @echo "Listing Firebase Hosting channels..."
+    firebase hosting:channel:list
+
+# Firebase: Open Firebase Console
+firebase-console:
+    @echo "Opening Firebase Console..."
+    @if command -v xdg-open > /dev/null; then \
+        xdg-open https://console.firebase.google.com/project/shawalmbalirecom; \
+    elif command -v open > /dev/null; then \
+        open https://console.firebase.google.com/project/shawalmbalirecom; \
+    else \
+        echo "Open: https://console.firebase.google.com/project/shawalmbalirecom"; \
+    fi
+
+# Build CV (output: ShawalMbalireCV/ShawalMbalireCV.pdf)
 cv:
+    @echo "Building CV..."
+    cd ShawalMbalireCV && just build
+    @echo "CV built: ShawalMbalireCV/ShawalMbalireCV.pdf"
+
+# Open CV document
+cv-open:
     @echo "Opening CV..."
     @if command -v xdg-open > /dev/null; then \
-        xdg-open ShawalMbalireCV/main.pdf; \
+        xdg-open ShawalMbalireCV/ShawalMbalireCV.pdf; \
     elif command -v open > /dev/null; then \
-        open ShawalMbalireCV/main.pdf; \
+        open ShawalMbalireCV/ShawalMbalireCV.pdf; \
     else \
-        echo "Please open: ShawalMbalireCV/main.pdf"; \
+        echo "Please open: ShawalMbalireCV/ShawalMbalireCV.pdf"; \
     fi
 
 # Clean build artifacts
@@ -96,18 +142,37 @@ generate-service name:
     @echo "Generating service: {{name}}"
     bunx ng generate service {{name}}
 
+# Full deployment workflow
+full-deploy: test build deploy
+    @echo "Full deployment complete!"
+
 # Show help
 help:
     @echo "Portfolio Commands:"
+    @echo ""
+    @echo "Development:"
     @echo "  just serve        - Start development server"
     @echo "  just build        - Build for production"
     @echo "  just build-dev    - Build for development"
     @echo "  just test         - Run tests"
     @echo "  just test-watch   - Run tests in watch mode"
-    @echo "  just preview      - Preview production build"
-    @echo "  just deploy       - Deploy to Firebase"
-    @echo "  just deploy-force - Force deploy to Firebase"
-    @echo "  just cv           - Open CV document"
+    @echo "  just preview      - Preview production build locally"
+    @echo ""
+    @echo "Firebase Deployment:"
+    @echo "  just firebase-login    - Login to Firebase"
+    @echo "  just deploy            - Deploy to Firebase Hosting (production)"
+    @echo "  just deploy-force      - Force deploy to Firebase"
+    @echo "  just deploy-preview    - Deploy to preview channel"
+    @echo "  just delete-preview    - Delete preview channel"
+    @echo "  just channels          - List all hosting channels"
+    @echo "  just firebase-console  - Open Firebase Console"
+    @echo "  just full-deploy       - Test, build, and deploy"
+    @echo ""
+    @echo "CV:"
+    @echo "  just cv           - Build CV and copy to public/documents"
+    @echo "  just cv-open      - Open the generated CV PDF"
+    @echo ""
+    @echo "Utilities:"
     @echo "  just clean        - Clean build artifacts"
     @echo "  just install      - Install dependencies"
     @echo "  just update       - Update dependencies"

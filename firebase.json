@@ -1,16 +1,98 @@
 {
+  "$schema": "https://firebase.tools/schema/hosting/v1.json",
   "hosting": {
-    "public": "portfolio/dist/portfolio/browser",
+    "public": "dist/portfolio/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
-      "**/node_modules/**"
+      "**/node_modules/**",
+      "**/dist/**/!(*.js|*.css|*.html|*.ico|*.png|*.jpg|*.jpeg|*.gif|*.svg|*.woff|*.woff2|*.ttf|*.eot)"
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(js|css)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=31536000, immutable"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/javascript; charset=utf-8"
+          }
+        ]
+      },
+      {
+        "source": "**/*.@(woff2|woff|ttf|eot)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=31536000, immutable"
+          }
+        ]
+      },
+      {
+        "source": "**/*.@(png|jpg|jpeg|gif|svg|webp|ico)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=31536000, immutable"
+          }
+        ]
+      },
+      {
+        "source": "**/*.html",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          },
+          {
+            "key": "X-Content-Type-Options",
+            "value": "nosniff"
+          }
+        ]
+      },
+      {
+        "source": "**",
+        "headers": [
+          {
+            "key": "X-Content-Type-Options",
+            "value": "nosniff"
+          },
+          {
+            "key": "X-Frame-Options",
+            "value": "DENY"
+          },
+          {
+            "key": "X-XSS-Protection",
+            "value": "1; mode=block"
+          },
+          {
+            "key": "Referrer-Policy",
+            "value": "strict-origin-when-cross-origin"
+          },
+          {
+            "key": "Permissions-Policy",
+            "value": "geolocation=(), microphone=(), camera=()"
+          }
+        ]
+      }
     ],
     "rewrites": [
       {
         "source": "**",
         "destination": "/index.html"
       }
-    ]
+    ],
+    "redirects": [
+      {
+        "source": "/home",
+        "destination": "/",
+        "type": 301
+      }
+    ],
+    "trailingSlash": false,
+    "cleanUrls": true
   }
 }

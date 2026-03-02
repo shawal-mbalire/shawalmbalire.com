@@ -75,7 +75,7 @@
 % Needed to manage math fonts
 \RequirePackage{unicode-math}
 % Needed to use icons from font-awesome
-\RequirePackage{fontawesome6}
+\RequirePackage{fontawesome5}
 \RequirePackage{roboto}
 \RequirePackage[default,opentype]{sourcesanspro}
 % Needed for the photo ID
@@ -503,19 +503,19 @@
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
           % \mbox prevents wrapping of elements%
-          \mbox{\faCakeCandles\acvHeaderIconSep\@dateofbirth}%
+          \mbox{\faBirthdayCake\acvHeaderIconSep\@dateofbirth}%
         }%
       \ifthenelse{\isundefined{\@homepage}}%
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{http://\@homepage}{\faHouseChimney\acvHeaderIconSep\@homepage}%
+          \href{http://\@homepage}{\faHome\acvHeaderIconSep\@homepage}%
         }%
       \ifthenelse{\isundefined{\@github}}%
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://github.com/\@github}{\faSquareGithub\acvHeaderIconSep\@github}%
+          \href{https://github.com/\@github}{\faGithub\acvHeaderIconSep\@github}%
         }%
       \ifthenelse{\isundefined{\@gitlab}}%
         {}%
@@ -557,7 +557,7 @@
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://x.com/\@x}{\faXTwitter\acvHeaderIconSep\@x}%
+          \href{https://x.com/\@x}{\faTwitter\acvHeaderIconSep\@x}%
         }%
       \ifthenelse{\isundefined{\@mastodonname}}%
         {}%
@@ -587,7 +587,7 @@
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://www.xing.com/profile/\@xing}{\faSquareXing\acvHeaderIconSep\@xing}
+          \href{https://www.xing.com/profile/\@xing}{\faXing\acvHeaderIconSep\@xing}
         }%
       \ifthenelse{\isundefined{\@medium}}%
         {}%

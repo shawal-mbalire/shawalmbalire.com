@@ -1,6 +1,6 @@
 # Portfolio Application
 
-Modern Angular v21 portfolio website with SSR support and multiple themes.
+Modern Angular v21 portfolio website optimized for Firebase Hosting.
 
 ## Quick Start
 
@@ -14,124 +14,111 @@ bun run start
 # Build for production
 bun run build:prod
 
-# Run tests
-bun run test
+# Deploy to Firebase
+bun run deploy
 ```
 
 ## Project Structure
 
 ```
-src/app/
-├── core/                    # Core module (singleton services, models, constants)
-│   ├── models/              # TypeScript interfaces and types
-│   │   ├── index.ts         # Barrel export
-│   │   └── work-entry.model.ts
-│   ├── services/            # Application-wide services
-│   │   ├── index.ts         # Barrel export
-│   │   ├── theme.service.ts
-│   │   ├── about.service.ts
-│   │   ├── experience.service.ts
-│   │   └── work-entry.service.ts
-│   ├── constants/           # Application constants
-│   │   └── app.constants.ts
-│   ├── interceptors/        # HTTP interceptors (future)
-│   ├── guards/              # Route guards (future)
-│   ├── pipes/               # Custom pipes (future)
-│   ├── aria/                # Accessibility directives
-│   │   └── index.ts
-│   └── index.ts             # Barrel export
+.
+├── .github/workflows/       # GitHub Actions CI/CD
+│   ├── firebase-hosting-merge.yml
+│   └── firebase-hosting-pull-request.yml
+├── .firebaseignore          # Firebase Hosting ignore patterns
+├── firebase.json            # Firebase Hosting configuration
+├── firestore.rules          # Firestore security rules
+├── database.rules.json      # Realtime Database rules
+├── .firebaserc              # Firebase project mapping
 │
-├── home/                    # Home feature module
-│   ├── home.component.ts
-│   ├── home.component.html
-│   ├── home.component.css
-│   ├── home.component.spec.ts
-│   └── index.ts
+├── src/app/
+│   ├── core/                # Core module (singleton services, models, constants)
+│   │   ├── models/          # TypeScript interfaces and types
+│   │   ├── services/        # Application-wide services
+│   │   ├── constants/       # Application constants
+│   │   ├── aria/            # Accessibility directives
+│   │   └── index.ts         # Barrel export
+│   │
+│   ├── home/                # Home feature
+│   ├── about/               # About feature
+│   ├── experience/          # Experience feature
+│   ├── contact/             # Contact feature
+│   ├── nav/                 # Navigation feature
+│   ├── footer/              # Footer feature
+│   ├── theme-switcher/      # Theme switcher feature
+│   └── work-entry/          # Work entry component
 │
-├── about/                   # About feature module
-│   ├── about.component.ts
-│   ├── about.component.html
-│   ├── about.component.css
-│   ├── about.component.spec.ts
-│   └── index.ts
+├── scripts/
+│   └── generate-config.ts   # Runtime config generator
 │
-├── experience/              # Experience feature module
-│   ├── experience.component.ts
-│   ├── experience.component.html
-│   ├── experience.component.css
-│   ├── experience.component.spec.ts
-│   └── index.ts
-│
-├── contact/                 # Contact feature module
-│   ├── contact.component.ts
-│   ├── contact.component.html
-│   ├── contact.component.css
-│   ├── contact.component.spec.ts
-│   └── index.ts
-│
-├── nav/                     # Navigation feature module
-│   ├── nav.component.ts
-│   ├── nav.component.html
-│   ├── nav.component.css
-│   ├── nav.component.spec.ts
-│   └── index.ts
-│
-├── footer/                  # Footer feature module
-│   ├── footer.component.ts
-│   ├── footer.component.html
-│   ├── footer.component.css
-│   ├── footer.component.spec.ts
-│   └── index.ts
-│
-├── theme-switcher/          # Theme switcher feature module
-│   ├── theme-switcher.component.ts
-│   ├── theme-switcher.component.html
-│   ├── theme-switcher.component.css
-│   ├── theme-switcher.component.spec.ts
-│   └── index.ts
-│
-├── work-entry/              # Work entry shared component
-│   ├── work-entry.component.ts
-│   ├── work-entry.component.html
-│   ├── work-entry.component.css
-│   ├── work-entry-dialog.html
-│   ├── work-entry-dialog.css
-│   ├── work-entry.component.spec.ts
-│   └── index.ts
-│
-├── app.component.ts         # Root component
-├── app.config.ts            # Application configuration
-├── app.config.server.ts     # Server-side configuration
-├── app.routes.ts            # Client-side routes
-├── app.routes.server.ts     # Server-side routes
-└── index.ts                 # Main barrel export
+├── public/                  # Static assets (copied to build output)
+├── dist/                    # Build output (deployed to Firebase)
+└── package.json
 ```
 
-## Architecture Principles
+## Firebase Hosting Configuration
 
-### Standalone Components
-All components use Angular's standalone API (no NgModules for components).
+### Caching Strategy
 
-### Barrel Exports
-Use barrel exports (`index.ts`) for clean imports:
-```typescript
-// Instead of:
-import { ThemeService } from '../../core/services/theme.service';
+| File Type | Cache-Control |
+|-----------|---------------|
+| JS/CSS | `max-age=31536000, immutable` |
+| Fonts | `max-age=31536000, immutable` |
+| Images | `max-age=31536000, immutable` |
+| HTML | `no-cache, no-store, must-revalidate` |
 
-// Use:
-import { ThemeService } from '@app/core/services';
+### Security Headers
+
+- `X-Content-Type-Options: nosniff`
+- `X-Frame-Options: DENY`
+- `X-XSS-Protection: 1; mode=block`
+- `Referrer-Policy: strict-origin-when-cross-origin`
+- `Permissions-Policy: geolocation=(), microphone=(), camera=()`
+
+## Development
+
+### Using Just (Recommended)
+
+```bash
+just serve           # Start dev server
+just build           # Build for production
+just test            # Run tests
+just deploy          # Deploy to Firebase (production)
+just deploy-preview  # Deploy to preview channel
+just firebase-console # Open Firebase Console
 ```
 
-### Core Module Pattern
-- **models**: Shared TypeScript interfaces
-- **services**: Singleton services with `providedIn: 'root'`
-- **constants**: Application-wide constants
-- **aria**: Accessibility directives
+### Using npm scripts
 
-### Feature Modules
-Each feature folder contains:
-- Component files (ts, html, css, spec.ts)
-- Barrel export (index.ts)
+```bash
+bun run start        # Start dev server
+bun run build:prod   # Build for production
+bun run deploy       # Build and deploy to Firebase
+```
+
+## Deployment
+
+### Manual Deploy
+
+```bash
+# Login to Firebase (first time only)
+firebase login
+
+# Deploy to production
+just deploy
+# or
+bun run deploy
+```
+
+### CI/CD with GitHub Actions
+
+The repository includes GitHub Actions workflows for automated deployment:
+
+1. **On PR**: Deploys to a preview channel
+2. **On merge to main**: Deploys to production (live channel)
+
+Required secrets:
+- `FIREBASE_SERVICE_ACCOUNT_SHAWALMBALIRECOM` - Firebase service account JSON
 
 ## Available Themes
 
@@ -142,29 +129,19 @@ Each feature folder contains:
 - Solarized Light
 - Solarized Dark
 
-## Development
+## CV Build
 
-### Using Just (Recommended)
-If you have [just](https://github.com/casey/just) installed:
+The CV is built from LaTeX source in the `ShawalMbalireCV/` directory:
+
 ```bash
-just serve      # Start dev server
-just build      # Build for production
-just test       # Run tests
-just deploy     # Deploy to Firebase
-just cv         # Open CV document
+# Build CV and copy to public/documents
+just cv
+
+# Open the generated CV
+just cv-open
 ```
 
-### Using Bun
-```bash
-bun run start   # Start dev server
-bun run build   # Build for development
-bun run build:prod  # Build for production
-bun run test    # Run tests
-```
-
-## Build Notes
-
-The application uses static site generation (SSG) for optimal performance. SSR files are included in the project for future enhancement when Angular SSR route extraction is stable.
+The generated PDF is placed at `public/documents/MbalireShawalCV.pdf` and included in the build output.
 
 ## Testing
 
@@ -179,19 +156,60 @@ bun run test:watch
 bun run test:coverage
 ```
 
-## Deployment
-
-```bash
-# Build and deploy to Firebase
-bun run build:prod
-firebase deploy --only hosting
-```
-
 ## Tech Stack
 
-- **Angular v21** - Frontend framework
+- **Angular v21** - Frontend framework with standalone components
 - **TypeScript** - Type-safe JavaScript
 - **Angular Material** - UI components
 - **Vitest** - Testing framework
-- **Firebase Hosting** - Deployment platform
-- **Bun** - Package manager and runtime
+- **Firebase Hosting** - CDN-backed hosting with SSL
+- **Bun** - Fast package manager and runtime
+- **GitHub Actions** - CI/CD automation
+
+## Firebase Commands Reference
+
+```bash
+# Authentication
+firebase login
+firebase logout
+
+# Project management
+firebase projects:list
+firebase use <project-id>
+
+# Hosting
+firebase deploy --only hosting
+firebase hosting:channel:deploy <channel-name>
+firebase hosting:channel:list
+firebase hosting:channel:delete <channel-name>
+
+# Full deploy (hosting + other services)
+firebase deploy
+```
+
+## Build Output
+
+The build produces optimized bundles:
+
+```
+dist/portfolio/browser/
+├── index.html         # Main entry point
+├── *.js              # JavaScript bundles (hashed)
+├── *.css             # Stylesheet bundles (hashed)
+└── public/           # Static assets
+```
+
+## Environment Variables
+
+Runtime configuration is generated at build time:
+
+```json
+{
+  "appName": "Portfolio",
+  "environment": "production",
+  "baseUrl": "/",
+  "contactEmail": "mbalireshawal@gmail.com"
+}
+```
+
+Generated at: `public/app-config.json`
