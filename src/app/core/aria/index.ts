@@ -1,18 +1,22 @@
-import { Directive, Output, EventEmitter, signal, inject, input } from '@angular/core';
+import { Directive, Output, EventEmitter, signal, inject, input, HostBinding } from '@angular/core';
 
 @Directive({
   selector: '[ngMenu]',
   exportAs: 'ngMenu',
   standalone: true,
   host: {
-    'role': 'menu',
-    '[attr.data-visible]': 'visible()'
+    'role': 'menu'
   }
 })
 export class Menu {
   visible = signal(false);
   @Output() onSelect = new EventEmitter<any>();
   
+  @HostBinding('attr.data-visible')
+  get dataVisible(): string {
+    return this.visible() ? 'true' : 'false';
+  }
+
   toggle() {
     this.visible.update(v => !v);
   }
