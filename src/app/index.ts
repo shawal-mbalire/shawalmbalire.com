@@ -1,6 +1,6 @@
 /**
  * Barrel exports for the application
- * 
+ *
  * Usage:
  * import { AppComponent, HomeComponent, ThemeService } from '@app';
  */
@@ -8,6 +8,7 @@ export * from './app.component';
 export * from './app.config';
 export * from './app.routes';
 export * from './core';
+export * from './shared';
 export * from './home';
 export * from './about';
 export * from './experience';
