@@ -7,7 +7,14 @@
     </p>
     <div id="workTiles">
       @if (workEntriesResource.isLoading()) {
-        <p>Loading...</p>
+        @for (skeleton of [1, 2, 3, 4, 5, 6]; track skeleton) {
+          <div class="work-entry-skeleton">
+            <div class="skeleton skeleton--title"></div>
+            <div class="skeleton skeleton--subtitle"></div>
+            <div class="skeleton skeleton--text"></div>
+            <div class="skeleton skeleton--text skeleton--text-short"></div>
+          </div>
+        }
       }
       @if (workEntriesResource.error()) {
         <p>Error loading experience.</p>

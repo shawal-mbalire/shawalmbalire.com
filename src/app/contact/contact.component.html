@@ -13,42 +13,84 @@
             Email me
           </a>
         </div>
-
-
-        <!--<div>-->
-        <!--  <h3>Whatsapp</h3>-->
-        <!--  <span>+256760044705</span>-->
-        <!--  <a href="https://api.whatsapp.com/send?phone=256760044705&text=Hello, more information"-->
-        <!--    target="_blank">-->
-        <!--    Inbox me-->
-        <!--  </a>-->
-        <!--</div>-->
-        <!---->
-        <!--<div>-->
-        <!--  <h3>Cellular</h3>-->
-        <!--  <span>+256757933006</span>-->
-        <!--  <a href="" target="_blank" class="contact__button">-->
-        <!--    Call me-->
-        <!--  </a>-->
-        <!--</div>-->
       </div>
     </div>
-    <form (ngSubmit)="onSubmit()" novalidate>
+
+    @if (formStatus() === 'success') {
+      <div class="form-feedback form-feedback--success">
+        <svg class="form-feedback__icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </svg>
+        <span>Thank you! Your message has been sent successfully.</span>
+      </div>
+    }
+
+    @if (formStatus() === 'error') {
+      <div class="form-feedback form-feedback--error">
+        <svg class="form-feedback__icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+        </svg>
+        <span>Something went wrong. Please try again or email me directly.</span>
+      </div>
+    }
+
+    <form (ngSubmit)="onSubmit()" novalidate [class.form-submitting]="formStatus() === 'submitting'">
       <div class="contact__form-div">
         <label for="name" class="contact__form-tag">Name</label>
-        <input id="name" type="text" placeholder="Insert your name." class="contact__form-input" required>
+        <input 
+          id="name" 
+          type="text" 
+          placeholder="Insert your name." 
+          class="contact__form-input" 
+          required
+          [ngModel]="formData().name"
+          (ngModelChange)="onInputChange('name', $event)"
+          name="name"
+          [disabled]="formStatus() === 'submitting'"
+        >
       </div>
 
       <div class="contact__form-div">
         <label for="email" class="contact__form-tag">Email</label>
-        <input id="email" type="email" placeholder="Insert your email" class="contact__form-input" required>
+        <input 
+          id="email" 
+          type="email" 
+          placeholder="Insert your email" 
+          class="contact__form-input" 
+          required
+          [ngModel]="formData().email"
+          (ngModelChange)="onInputChange('email', $event)"
+          name="email"
+          [disabled]="formStatus() === 'submitting'"
+        >
       </div>
 
       <div class="contact__form-div contact__form-area">
         <label for="project" class="contact__form-tag">Project</label>
-        <textarea id="project" cols="30" rows="10" placeholder="Write to me"
-          class="contact__form-input" required></textarea>
+        <textarea 
+          id="project" 
+          cols="30" 
+          rows="10" 
+          placeholder="Write to me"
+          class="contact__form-input" 
+          required
+          [ngModel]="formData().message"
+          (ngModelChange)="onInputChange('message', $event)"
+          name="message"
+          [disabled]="formStatus() === 'submitting'"
+        ></textarea>
       </div>
-      <button class="submitbutton" type="submit">Send Message</button>
+      <button class="submitbutton" type="submit" [disabled]="formStatus() === 'submitting'">
+        @if (formStatus() === 'submitting') {
+          <span class="button-loading">
+            <svg class="spinner" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="31.4 31.4" stroke-linecap="round"/>
+            </svg>
+            Sending...
+          </span>
+        } @else {
+          <span>Send Message</span>
+        }
+      </button>
     </form>
 </main>
