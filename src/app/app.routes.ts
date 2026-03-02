@@ -9,7 +9,7 @@ export const routes: Routes = [
   {
     path: '',
     component: AppComponent,
-    data: { 
+    data: {
       title: 'Shawal Mbalire - Electrical & Software Engineering Student',
       description: 'Portfolio of Shawal Mbalire - Electrical Engineering student at Makerere University, specializing in IoT, Automation, and Software Development'
     }
@@ -17,7 +17,7 @@ export const routes: Routes = [
   {
     path: 'home',
     component: AppComponent,
-    data: { 
+    data: {
       title: 'Home - Shawal Mbalire',
       description: 'Electrical and Software Engineering Student passionate about IoT, Automation, and modern web technologies'
     }
@@ -25,7 +25,7 @@ export const routes: Routes = [
   {
     path: 'about',
     component: AppComponent,
-    data: { 
+    data: {
       title: 'About Me - Shawal Mbalire',
       description: 'Learn more about Shawal Mbalire - Electrical Engineering student at Makerere University with expertise in embedded systems and web development'
     }
@@ -33,15 +33,23 @@ export const routes: Routes = [
   {
     path: 'experience',
     component: AppComponent,
-    data: { 
+    data: {
       title: 'Experience - Shawal Mbalire',
       description: 'Professional experience in IoT, embedded systems, software development, and engineering projects at Makerere University and beyond'
     }
   },
   {
+    path: 'research',
+    component: AppComponent,
+    data: {
+      title: 'Research - Shawal Mbalire',
+      description: 'Research publications and projects by Shawal Mbalire - IEEE AFRICON author specializing in IoT, Automation, and Embedded Systems'
+    }
+  },
+  {
     path: 'contact',
     component: AppComponent,
-    data: { 
+    data: {
       title: 'Contact - Shawal Mbalire',
       description: 'Get in touch with Shawal Mbalire for collaborations, opportunities, or questions about engineering projects'
     }

@@ -7,6 +7,7 @@ import { NavComponent } from './nav';
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 import { ExperienceComponent } from './experience';
+import { ResearchComponent } from './research';
 import { ContactComponent } from './contact';
 import { FooterComponent } from './footer';
 
@@ -21,6 +22,7 @@ import { FooterComponent } from './footer';
     HomeComponent,
     AboutComponent,
     ExperienceComponent,
+    ResearchComponent,
     ContactComponent,
     FooterComponent
   ],

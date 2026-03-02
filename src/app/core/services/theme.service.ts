@@ -1,4 +1,5 @@
-import { Injectable, signal, effect } from '@angular/core';
+import { Injectable, signal, effect, inject } from '@angular/core';
+import { CookieService } from './cookie.service';
 
 export type ThemeKey =
   | 'dark-theme'
@@ -7,12 +8,15 @@ export type ThemeKey =
   | 'solarized-dark-theme';
 
 /**
- * Service to manage application theme with localStorage persistence
+ * Service to manage application theme with cookie persistence
  */
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
+  private readonly cookieService = inject(CookieService);
+  private readonly COOKIE_NAME = 'theme_preference';
+
   readonly availableThemes: ReadonlyArray<{ label: string; value: ThemeKey }> = [
     { label: 'Solarized Light', value: 'solarized-light-theme' },
     { label: 'Dark', value: 'dark-theme' },
@@ -26,7 +30,7 @@ export class ThemeService {
 
   constructor() {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('activeTheme') as ThemeKey | null;
+      const saved = this.cookieService.get(this.COOKIE_NAME) as ThemeKey | null;
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       const initial: ThemeKey = saved ?? (prefersDark ? 'dark-theme' : 'solarized-light-theme');
       this.activeThemeSignal.set(initial);
@@ -37,7 +41,8 @@ export class ThemeService {
       if (typeof window !== 'undefined') {
         document.documentElement.classList.remove(...this.allThemeClasses);
         document.documentElement.classList.add(theme);
-        localStorage.setItem('activeTheme', theme);
+        // Store theme preference in cookie (1 year expiry)
+        this.cookieService.set(this.COOKIE_NAME, theme, 365 * 24 * 60 * 60);
       }
     });
   }
