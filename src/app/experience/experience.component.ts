@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, resource } from '@angular/core';
 import { WorkEntryComponent } from '../work-entry/work-entry.component';
+import { FeaturedResearchComponent } from '../featured-research/featured-research.component';
 import { WorkEntry } from '../core/models/work-entry.model';
 
 /**
@@ -7,7 +8,7 @@ import { WorkEntry } from '../core/models/work-entry.model';
  */
 @Component({
   selector: 'app-experience',
-  imports: [WorkEntryComponent],
+  imports: [WorkEntryComponent, FeaturedResearchComponent],
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
