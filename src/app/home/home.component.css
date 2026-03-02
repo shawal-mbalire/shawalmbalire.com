@@ -1,0 +1,29 @@
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  flex-direction: column;
+  row-gap: 1rem;
+  flex-wrap: wrap;
+}
+
+main div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+}
+
+div a{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home__tagline {
+  font-size: 1.25rem;
+  font-weight: 400;
+  opacity: 0.9;
+  margin: 0.5rem 0;
+}

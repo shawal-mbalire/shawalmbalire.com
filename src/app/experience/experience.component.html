@@ -1,0 +1,41 @@
+<main id="work">
+  <div>
+    <h1>My Experience</h1>
+    <p>
+      I am most excited about my co-authoring a research paper which was published to IEEE Xplore as well as my
+      internships. I hope this page is filled with more cool projects in the future.
+    </p>
+    
+    @defer (on viewport) {
+      <app-featured-research></app-featured-research>
+    } @placeholder {
+      <div class="research-placeholder">
+        <div class="skeleton skeleton--title"></div>
+        <div class="skeleton skeleton--text"></div>
+      </div>
+    }
+    
+    <div id="workTiles">
+      @if (workEntriesResource.isLoading()) {
+        @for (skeleton of [1, 2, 3, 4, 5, 6]; track skeleton) {
+          <div class="work-entry-skeleton">
+            <div class="skeleton skeleton--title"></div>
+            <div class="skeleton skeleton--subtitle"></div>
+            <div class="skeleton skeleton--text"></div>
+            <div class="skeleton skeleton--text skeleton--text-short"></div>
+          </div>
+        }
+      }
+      @if (workEntriesResource.error()) {
+        <p>Error loading experience.</p>
+      }
+      @if (workEntriesResource.value()) {
+        @for (workEntry of workEntriesResource.value(); track workEntry.title) {
+          <app-work-entry
+            [workEntry] = "workEntry"
+          ></app-work-entry>
+        }
+      }
+    </div>
+  </div>
+</main>

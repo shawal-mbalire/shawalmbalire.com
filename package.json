@@ -1,0 +1,70 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Shawal Mbalire's Portfolio - Angular v21",
+  "scripts": {
+    "ng": "./node_modules/.bin/ng",
+    "prebuild": "bun scripts/generate-config.ts",
+    "start": "bunx --bun ng serve",
+    "build": "bunx --bun ng build",
+    "watch": "ng build --watch --configuration development",
+    "build:prod": "bunx --bun ng build --configuration production",
+    "preview": "bunx --bun http-server dist/portfolio/browser -p ${PORT:-4173} -c-1",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "firebase:login": "firebase login",
+    "firebase:init": "firebase init hosting",
+    "deploy": "bun run build:prod && firebase deploy --only hosting",
+    "deploy:force": "bun run build:prod && firebase deploy --only hosting --force",
+    "deploy:preview": "bun run build:prod && firebase hosting:channel:deploy preview"
+  },
+  "private": true,
+  "author": "Shawal Mbalire <mbalireshawal@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shawalmbalire/shawalmbalire.com.git"
+  },
+  "keywords": [
+    "portfolio",
+    "angular",
+    "angular21",
+    "firebase",
+    "shawal-mbalire"
+  ],
+  "dependencies": {
+    "@angular/animations": "^21.0.3",
+    "@angular/cdk": "^21.0.2",
+    "@angular/common": "^21.0.3",
+    "@angular/compiler": "^21.0.3",
+    "@angular/core": "^21.0.3",
+    "@angular/forms": "^21.0.3",
+    "@angular/material": "^21.0.2",
+    "@angular/platform-browser": "^21.0.3",
+    "@angular/platform-browser-dynamic": "^21.0.3",
+    "@angular/platform-server": "^21.0.3",
+    "@angular/router": "^21.0.3",
+    "@angular/ssr": "^21.0.2",
+    "express": "^4.21.2",
+    "rxjs": "~7.8.2",
+    "tslib": "^2.8.1",
+    "zone.js": "~0.15.1"
+  },
+  "devDependencies": {
+    "@analogjs/vite-plugin-angular": "^2.1.2",
+    "@angular/build": "^21.0.2",
+    "@angular/cli": "^21.0.2",
+    "@angular/compiler-cli": "^21.0.3",
+    "@types/express": "^4.17.22",
+    "@types/node": "^24.10.1",
+    "firebase-tools": "^13.0.0",
+    "jsdom": "^27.2.0",
+    "typescript": "~5.9.3",
+    "vitest": "^4.0.15"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "bun": ">=1.0.0"
+  }
+}

@@ -3,11 +3,11 @@
 default := "build"
 
 build:
-	xelatex -interaction=nonstopmode -halt-on-error -file-line-error -output-directory=. main.tex
-	xelatex -interaction=nonstopmode -halt-on-error -file-line-error -output-directory=. main.tex
+	xelatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=ShawalMbalireCV -output-directory=. main.tex
+	xelatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=ShawalMbalireCV -output-directory=. main.tex
 
 clean:
 	rm -f *.aux *.log *.out *.toc *.pdf
 
 view:
-	if [ -f main.pdf ]; then xdg-open main.pdf; else echo "main.pdf not found"; fi
+	if [ -f ShawalMbalireCV.pdf ]; then xdg-open ShawalMbalireCV.pdf; else echo "ShawalMbalireCV.pdf not found"; fi

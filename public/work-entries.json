@@ -1,0 +1,156 @@
+[
+  {
+    "title": "Software Engineer",
+    "company": "Accelera Digital Group (ADG)",
+    "type": "Remote",
+    "location": "Dubai, UAE",
+    "startDate": "Jan 2026",
+    "endDate": "Jun 2026",
+    "description": "Develop software demos for customer products",
+    "workMode": "Remote",
+    "category": "Work"
+  },
+  {
+    "title": "Hardware and Software Engineer",
+    "company": "Kamitek Solar SMC LTD",
+    "type": "On-site",
+    "location": "Kampala, Uganda",
+    "startDate": "Jul 2025",
+    "endDate": "Jan 2026",
+    "description": "Developed embedded hardware and firmware for solar-based systems. Designed test and monitoring systems for automation.",
+    "workMode": "On-site",
+    "category": "Work"
+  },
+  {
+    "title": "Mobile Application Developer",
+    "company": "Events Gallery Uganda",
+    "type": "Hybrid",
+    "location": "Kampala, Uganda",
+    "startDate": "Jul 2025",
+    "endDate": "Dec 2025",
+    "description": "Designed and implemented Android application for event management. Designed backend architecture for mobile + web application. Created a data management website with different access roles.",
+    "workMode": "Hybrid",
+    "category": "Work"
+  },
+  {
+    "title": "Engineering Intern – E-waste Recycling Project",
+    "company": "netLabs!UG",
+    "type": "Internship",
+    "location": "Kampala, Uganda",
+    "startDate": "Feb 2023",
+    "endDate": "Jul 2025",
+    "description": "Part of a team refurbishing e-waste into usable computers for underprivileged communities. Installed dual-boot (Windows 11 + Ubuntu 22) systems for practical learning.",
+    "workMode": "On-site",
+    "category": "Work"
+  },
+  {
+    "title": "Embedded Systems Intern",
+    "company": "IoT-ra (Internet of Things - Research & Applications) Lab",
+    "type": "Internship",
+    "location": "Kampala, Uganda",
+    "startDate": "Mar 2024",
+    "endDate": "Apr 2025",
+    "description": "Developed Firmware for power management module. Designed 3d models and operated 3d printer. Field testing and debugging of hive prototypes.",
+    "workMode": "On-site",
+    "category": "Work"
+  },
+  {
+    "title": "Back End Developer",
+    "company": "Accelera Digital Group (ADG)",
+    "type": "Contract",
+    "location": "Kampala, Uganda",
+    "startDate": "Dec 2024",
+    "endDate": "Feb 2025",
+    "description": "Developed Docker Compose environments integrated with GCP services.",
+    "workMode": "Hybrid",
+    "category": "Work"
+  },
+  {
+    "title": "Engineering Intern – Software Development & Data Analysis",
+    "company": "Green Hub East Africa Ltd",
+    "type": "Internship",
+    "location": "Kampala, Uganda",
+    "startDate": "Jan 2024",
+    "endDate": "Sep 2024",
+    "description": "Supported data analysis, database design, and automation for E-mobility. Built company site on existing Infra with GoDaddy. Assisted in development of a battery-swapping infrastructure.",
+    "workMode": "Hybrid",
+    "category": "Work"
+  },
+  {
+    "title": "Project Assistant – Green Hub Kampala (E-Mobility)",
+    "company": "Access2Innovation",
+    "type": "Contract",
+    "location": "Aalborg, Denmark",
+    "startDate": "Jun 2024",
+    "endDate": "Aug 2024",
+    "description": "Supported international collaboration on sustainable E-Mobility solutions.",
+    "workMode": "Hybrid",
+    "category": "Work"
+  },
+  {
+    "title": "Undergraduate Internship",
+    "company": "Marconi Research and Innovations Laboratory",
+    "type": "Internship",
+    "location": "Kampala, Uganda",
+    "startDate": "Feb 2024",
+    "endDate": "Aug 2024",
+    "description": "Trained a Runyankore natural voice language model for smart agriculture. Achieved a 50% model accuracy.",
+    "workMode": "Hybrid",
+    "category": "Work"
+  },
+  {
+    "title": "Internship Coordinator",
+    "company": "Dojo Hub (SMC) Ltd",
+    "type": "Part-time",
+    "location": "Kampala, Uganda",
+    "startDate": "Jun 2023",
+    "endDate": "Aug 2023",
+    "description": "Managed logistics, training schedules, and reporting for the internship program.",
+    "workMode": "On-site",
+    "category": "Work"
+  },
+  {
+    "title": "Generation Connect Youth Envoy",
+    "company": "International Telecommunication Union",
+    "type": "Volunteer",
+    "location": "Kampala, Uganda",
+    "startDate": "May 2024",
+    "endDate": "Jul 2025",
+    "description": "Represented youth interests in ICT and digital innovation initiatives. Given insights on youth digital literacy in Uganda.",
+    "workMode": "Hybrid",
+    "category": "Volunteer"
+  },
+  {
+    "title": "Chairperson, Makerere University Student Branch",
+    "company": "IEEE",
+    "type": "Volunteer",
+    "location": "Kampala, Uganda",
+    "startDate": "Sep 2022",
+    "endDate": "Sep 2024",
+    "description": "Led a team of 9 in organizing training and hackathons on Arduino, solar, and leadership. Grew the IEEE membership from 2 to about 70 at peak in my University. Formed 3 more Student chapters. Organised PES Day 2023 with Delegates from Ministry of Energy, GIZ Uganda, AEE and Government representative on Renewable energy. Spearheaded the formation of AEE Makerere University Branch.",
+    "workMode": "Hybrid",
+    "category": "Volunteer"
+  },
+  {
+    "title": "Communication and Participation Lead",
+    "company": "Makerere AI Lab",
+    "type": "Volunteer",
+    "location": "Kampala, Uganda",
+    "startDate": "Feb 2024",
+    "endDate": "May 2024",
+    "description": "Led outreach and volunteer coordination for AI hackathons across Ugandan universities. Attained an in person attendance of about 70 students. Attained 4 universities average attendance in Kampala.",
+    "workMode": "On-site",
+    "category": "Volunteer"
+  },
+  {
+    "title": "Vice Chair, CEDAT Coordinator",
+    "company": "Makerere University Redcross Chapter",
+    "type": "Volunteer",
+    "location": "Kampala, Uganda",
+    "startDate": "Feb 2022",
+    "endDate": "Sep 2023",
+    "description": "Awarded most active coordinator during the guild health week for having the largest call out for blood donation. With support from other members coordinated community give back to Katanga.",
+    "workMode": "Hybrid",
+    "category": "Volunteer"
+  }
+]

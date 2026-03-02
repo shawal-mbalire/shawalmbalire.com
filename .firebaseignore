@@ -1,0 +1,51 @@
+# Firebase Hosting ignore patterns
+# Files that should not be uploaded to Firebase Hosting
+
+# Git
+.git/**
+.gitignore
+.github/**
+
+# Node modules
+node_modules/**
+
+# Development files
+*.md
+!README.md
+*.log
+*.tsbuildinfo
+
+# Build artifacts (only browser output is deployed)
+dist/**/server/**
+dist/**/*.mjs
+dist/**/prerendered-routes.json
+
+# Angular build files
+.angular/**
+out-tsc/**
+
+# IDE and editor files
+.idea/**
+.vscode/**
+*.swp
+*.swo
+
+# Test files
+**/*.spec.ts
+**/*.test.ts
+coverage/**
+vitest.config.ts
+
+# Environment and config
+.env
+.env.*
+!.env.example
+firebase-debug.log*
+public/app-config.json
+
+# Scripts (not needed in production)
+scripts/**
+
+# Documentation
+STRUCTURE.md
+ng_21.md
