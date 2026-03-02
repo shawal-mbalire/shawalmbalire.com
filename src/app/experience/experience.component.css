@@ -12,33 +12,38 @@ div{
     gap: 2rem;
 }
 #workTiles{
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
   width: 100%;
+  max-width: 1400px;
+  justify-content: center;
+  justify-items: center;
 }
 app-work-entry{
-  width: 250px;
-  border: 2px solid ;
-  height: 250px;
-  border-radius: 10px;
-  padding: 1rem;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-
-
+  width: 100%;
+  max-width: 320px;
+  min-height: 280px;
+  border: 2px solid var(--secondaryColor);
+  border-radius: 12px;
+  padding: 1.25rem;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  background: var(--primaryColor);
+  cursor: pointer;
 }
 app-work-entry:hover{
-  transform: scale(1.05);
-  box-shadow: 0 0 10px 8px var(--glowColor);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px var(--glowColor);
+  border-color: var(--fontColor);
 }
 
 .work-entry-skeleton {
-  width: 250px;
-  height: 250px;
-  border-radius: 10px;
-  padding: 1rem;
-  border: 2px solid transparent;
+  width: 100%;
+  max-width: 320px;
+  min-height: 280px;
+  border-radius: 12px;
+  padding: 1.25rem;
+  border: 2px solid var(--secondaryColor);
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -82,4 +87,42 @@ app-work-entry:hover{
 
 .skeleton--text-short {
   width: 60%;
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+  #workTiles {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.75rem;
+  }
+}
+
+@media (max-width: 900px) {
+  #workTiles {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  app-work-entry {
+    min-height: 260px;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  #workTiles {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    gap: 1.25rem;
+    justify-items: stretch;
+  }
+  
+  app-work-entry {
+    max-width: 100%;
+    min-height: 240px;
+  }
+  
+  .work-entry-skeleton {
+    max-width: 100%;
+    min-height: 240px;
+  }
 }
