@@ -17,18 +17,23 @@ export class ContactComponent {
   readonly formData = signal({ name: '', email: '', message: '' });
 
   onSubmit(): void {
+    // Only submit if there's a message
+    if (!this.formData().message.trim()) {
+      return;
+    }
+
     this.formStatus.set('submitting');
-    
+
     // Simulate form submission
     setTimeout(() => {
       // In production, replace with actual API call
       const success = true;
       this.formStatus.set(success ? 'success' : 'error');
-      
+
       if (success) {
         this.formData.set({ name: '', email: '', message: '' });
       }
-      
+
       // Reset status after 5 seconds
       setTimeout(() => this.formStatus.set('idle'), 5000);
     }, 1000);

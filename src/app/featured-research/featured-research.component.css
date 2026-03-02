@@ -2,12 +2,13 @@
   width: 100%;
   max-width: 900px;
   margin: 2rem auto 3rem;
-  padding: 2rem;
+  padding: 1.5rem;
   background: var(--primaryColor);
   border: 2px solid var(--secondaryColor);
   border-radius: 12px;
   box-shadow: 0 8px 24px var(--glowColor);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
 }
 
 .featured-research:hover {
@@ -49,6 +50,8 @@
   color: var(--fontColor);
   line-height: 1.3;
   margin: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .featured-research__conference {
@@ -58,6 +61,7 @@
   font-size: 0.875rem;
   color: var(--dimGray);
   margin: 0;
+  flex-wrap: wrap;
 }
 
 .featured-research__description {
@@ -65,6 +69,8 @@
   line-height: 1.6;
   color: var(--fontColor);
   margin: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .featured-research__highlights {
@@ -108,6 +114,7 @@
   font-weight: 500;
   color: var(--fontColor);
   transition: background 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
 }
 
 .skill-pill:hover {
@@ -117,7 +124,7 @@
 
 .featured-research__actions {
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
   flex-wrap: wrap;
 }
 
@@ -126,7 +133,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 1.25rem;
   border-radius: 8px;
   font-weight: 500;
   text-decoration: none;
@@ -134,6 +141,7 @@
   cursor: pointer;
   border: none;
   font-size: 0.9rem;
+  white-space: nowrap;
 }
 
 .button--primary {
@@ -162,6 +170,44 @@
   width: 18px;
   height: 18px;
   flex-shrink: 0;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 640px) {
+  .featured-research {
+    margin: 1rem auto 2rem;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .featured-research__title {
+    font-size: 1.25rem;
+  }
+
+  .featured-research__description {
+    font-size: 0.9rem;
+  }
+
+  .featured-research__highlights li {
+    font-size: 0.85rem;
+  }
+
+  .featured-research__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .button {
+    width: 100%;
+    justify-content: center;
+    padding: 0.65rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .skill-pill {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+  }
 }
 
 .research-placeholder {

@@ -80,7 +80,7 @@
           [disabled]="formStatus() === 'submitting'"
         ></textarea>
       </div>
-      <button class="submitbutton" type="submit" [disabled]="formStatus() === 'submitting'">
+      <button class="submitbutton" type="submit" [disabled]="formStatus() === 'submitting' || !formData().message.trim()">
         @if (formStatus() === 'submitting') {
           <span class="button-loading">
             <svg class="spinner" viewBox="0 0 24 24">

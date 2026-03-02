@@ -20,7 +20,7 @@ export class ThemeSwitcherComponent {
 
   toggleTheme(): void {
     const current = this.themeService.getActiveTheme();
-    const next = current === 'dark-theme' ? 'light-theme' : 'light-theme';
+    const next = current === 'dark-theme' ? 'solarized-light-theme' : 'dark-theme';
     this.themeService.setActiveTheme(next);
   }
 }
