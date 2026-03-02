@@ -85,7 +85,10 @@ firebase-console:
 cv:
     @echo "Building CV..."
     cd ShawalMbalireCV && just build
-    @echo "CV built: ShawalMbalireCV/ShawalMbalireCV.pdf"
+    @echo "Copying CV to public/documents..."
+    mkdir -p public/documents
+    cp ShawalMbalireCV/ShawalMbalireCV.pdf public/documents/MbalireShawalCV.pdf
+    @echo "CV built and copied to public/documents/MbalireShawalCV.pdf"
 
 # Open CV document
 cv-open:
