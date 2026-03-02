@@ -2,10 +2,13 @@
   "name": "portfolio",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "ng": "./node_modules/.bin/ng",
+    "prebuild": "bun scripts/generate-config.ts",
+    "start": "bunx --bun ng serve",
+    "build": "bunx --bun ng build",
     "watch": "ng build --watch --configuration development",
+    "build:prod": "bunx --bun ng build --configuration production",
+    "preview": "bunx --bun http-server dist/portfolio/browser -p ${PORT:-4173} -c-1",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage"

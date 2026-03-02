@@ -13,12 +13,10 @@
 </div>
 
 <div #menuRef="ngMenu" ngMenu class="theme-menu" (onSelect)="setTheme($event)">
-  <div ngMenuItem [value]="'light-theme'" class="menu-item">
-    <span>Light</span>
-    @if (themeService.activeTheme() === 'light-theme') { ✓ }
-  </div>
-  <div ngMenuItem [value]="'dark-theme'" class="menu-item">
-    <span>Dark</span>
-    @if (themeService.activeTheme() === 'dark-theme') { ✓ }
-  </div>
+  @for (t of themeService.availableThemes; track t.value) {
+    <div ngMenuItem [value]="t.value" class="menu-item">
+      <span>{{ t.label }}</span>
+      @if (themeService.activeTheme() === t.value) { ✓ }
+    </div>
+  }
 </div>

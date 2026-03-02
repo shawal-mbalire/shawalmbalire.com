@@ -1,0 +1,43 @@
+\documentclass[11pt, a4paper]{awesome-cv}
+
+\geometry{left=1cm, top=1cm, right=1cm, bottom=1cm, footskip=.5cm}
+\setbool{acvSectionColorHighlight}{true}
+\renewcommand{\acvHeaderAfterNameSkip}{1pt}
+
+% Personal Information
+\name{Shawal}{Mbalire}
+\position{Embedded Systems Engineer{\enskip\cdotp\enskip}Hardware and Software}
+\address{Kampala, Central Region, Uganda}
+\mobile{+256 760 044705}
+\email{mbalireshawal@gmail.com}
+\linkedin{linkedin.com/in/mbalireshawal}
+\homepage{shawalmbalire.com}
+\github{shawal-mbalire}
+% \dateofbirth{December 2nd, 2002}
+% \googlescholar{googlescholar-id}{name-to-display}
+
+\quote{``Today is a nice day for engineering."}
+
+\colorlet{awesome}{awesome-skyblue}
+\setbool{acvSectionColorHighlight}{true}
+
+% If you would like to change the social information separator from a pipe (|) to something else
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+
+
+%-------------------------------------------------------------------------------
+\begin{document}
+
+    % Print the header with above personal information
+    % Give optional argument to change alignment(C: center, L: left, R: right)
+    \makecvheader[C]
+    \raggedbottom
+    \input{section/summary}
+    \input{section/experience}
+    \input{section/volunteer}
+    \input{section/education}
+    \input{section/publication}
+    \input{section/certificates}
+    \input{section/honors}
+    
+\end{document}

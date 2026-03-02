@@ -28,3 +28,29 @@ html {
     density: 0,
   ));
 }
+
+// Additional dark variants map to Angular Material dark
+.catppuccin-theme, .tokyonight-theme, .solarized-dark-theme {
+  @include mat.theme((
+    color: (
+      theme-type: dark,
+      primary: mat.$blue-palette,
+      tertiary: mat.$azure-palette,
+    ),
+    typography: Comfortaa,
+    density: 0,
+  ));
+}
+
+// Additional light variant maps to Material light
+.solarized-light-theme {
+  @include mat.theme((
+    color: (
+      theme-type: light,
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    typography: Comfortaa,
+    density: 0,
+  ));
+}

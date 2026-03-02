@@ -1,59 +1,67 @@
 # Portfolio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.0.
+Static Angular SPA served as static files. Scripts are Bun-first and follow applicable 12‑Factor practices (explicit deps, env‑driven config, build/release/run separation).
 
-## Development server
+## Prerequisites
 
-To start a local development server, run:
+- Bun 1.0+
 
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Install
 
 ```bash
-ng generate component component-name
+bun install
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Development
 
 ```bash
-ng generate --help
+bun start
+# http://localhost:4200
 ```
 
-## Building
+## Configuration (12‑Factor: Config)
 
-To build the project run:
+Non‑secret runtime config is generated at build time from environment variables and written to `public/app-config.json`.
+
+1. Copy `.env.example` to `.env` and edit values.
+2. Build (the `prebuild` step generates the config file).
+
+Available variables:
+
+- `PUBLIC_APP_NAME` – Display name
+- `PUBLIC_ENV` – `production` | `development`
+- `PUBLIC_BASE_URL` – Base URL for deployment
+- `PUBLIC_CONTACT_EMAIL` – Contact email
+- `PUBLIC_ANALYTICS_ID` – Analytics tag (optional)
+
+## Build (12‑Factor: Build, Release, Run)
 
 ```bash
-ng build
+# Development build
+bun run build
+
+# Production build
+bun run build:prod
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Artifacts are written to `dist/portfolio/browser`.
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Preview static build
 
 ```bash
-ng test
+bun run preview
+# http://localhost:4173
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+## Tests
 
 ```bash
-ng e2e
+bun run test        # run once
+bun run test:watch  # watch mode
+bun run test:coverage
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Notes
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- No server/Express is required in production; hosting serves the contents of `dist/portfolio/browser`.
+- `.env` is ignored by Git; `.env.example` documents expected config.
