@@ -16,9 +16,25 @@ export class ContactComponent {
   readonly formStatus = signal<FormStatus>('idle');
   readonly formData = signal({ name: '', email: '', message: '' });
 
+  private isValidEmail(email: string): boolean {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
+  private isValidName(name: string): boolean {
+    return name.trim().length >= 2;
+  }
+
+  canSubmit(): boolean {
+    const data = this.formData();
+    return this.isValidName(data.name) && 
+           this.isValidEmail(data.email) && 
+           data.message.trim().length > 0;
+  }
+
   onSubmit(): void {
-    // Only submit if there's a message
-    if (!this.formData().message.trim()) {
+    // Only submit if all fields are valid
+    if (!this.canSubmit()) {
       return;
     }
 

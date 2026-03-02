@@ -83,6 +83,7 @@ form {
 
 .contact__form-input.ng-invalid.ng-touched {
   border-color: #ff6b6b;
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
 }
 
 .contact__form-input:disabled {
