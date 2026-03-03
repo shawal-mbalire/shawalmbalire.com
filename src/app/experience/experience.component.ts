@@ -10,7 +10,7 @@ import { WorkEntryService } from '../core/services/work-entry.service';
   selector: 'app-experience',
   imports: [WorkEntryComponent],
   templateUrl: './experience.component.html',
-  styleUrl: './experience.component.css',
+  styleUrl: './experience.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExperienceComponent {

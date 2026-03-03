@@ -10,7 +10,7 @@ export type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
   selector: 'app-contact',
   imports: [FormsModule],
   templateUrl: './contact.component.html',
-  styleUrl: './contact.component.css'
+  styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
   readonly formStatus = signal<FormStatus>('idle');

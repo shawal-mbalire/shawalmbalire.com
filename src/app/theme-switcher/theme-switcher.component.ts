@@ -8,7 +8,7 @@ import { Menu, MenuItem, MenuTrigger } from '../core/aria';
 @Component({
   selector: 'app-theme-switcher',
   templateUrl: './theme-switcher.component.html',
-  styleUrl: './theme-switcher.component.css',
+  styleUrl: './theme-switcher.component.scss',
   imports: [Menu, MenuItem, MenuTrigger]
 })
 export class ThemeSwitcherComponent {

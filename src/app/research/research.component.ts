@@ -11,7 +11,7 @@ import { SectionComponent } from '../shared/components/section/section.component
   standalone: true,
   imports: [CommonModule, SectionComponent],
   templateUrl: './research.component.html',
-  styleUrl: './research.component.css'
+  styleUrl: './research.component.scss'
 })
 export class ResearchComponent {
   private readonly researchService = inject(ResearchService);

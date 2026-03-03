@@ -1,0 +1,92 @@
+// Theme Definitions
+// CSS Custom Properties for all themes
+
+// =============================================================================
+// DEFAULT THEME (Solarized Light)
+// =============================================================================
+html {
+  --backgroundColor: #fdf6e3;
+  --fontColor: #657b83;
+  --glassColor: #586e75;
+  --iconColor: #2aa198;
+  --glowColor: rgba(42, 161, 152, 0.25);
+  --primaryColor: #eee8d5;
+  --secondaryColor: #2aa198;
+  --tertiaryColor: #b58900;
+  --dark-blue: #268bd2;
+  --alice-blue: #93a1a1;
+  --dim-gray: #839496;
+  --myrtle-green: #859900;
+}
+
+// =============================================================================
+// SOLARIZED LIGHT
+// =============================================================================
+html.solarized-light-theme {
+  --backgroundColor: #fdf6e3;
+  --fontColor: #657b83;
+  --glassColor: #586e75;
+  --iconColor: #2aa198;
+  --glowColor: rgba(42, 161, 152, 0.25);
+  --primaryColor: #eee8d5;
+  --secondaryColor: #2aa198;
+  --tertiaryColor: #b58900;
+  --dark-blue: #268bd2;
+  --alice-blue: #93a1a1;
+  --dim-gray: #839496;
+  --myrtle-green: #859900;
+}
+
+// =============================================================================
+// DARK THEME
+// =============================================================================
+html.dark-theme {
+  --backgroundColor: #0d1117;
+  --fontColor: #f0f6fc;
+  --glassColor: #f0f6fc;
+  --iconColor: #297373;
+  --glowColor: rgba(41, 115, 115, 0.4);
+  --primaryColor: #161b22;
+  --secondaryColor: #297373;
+  --tertiaryColor: #3fb950;
+  --dark-blue: #58a6ff;
+  --alice-blue: #79c0ff;
+  --dim-gray: #8b949e;
+  --myrtle-green: #3fb950;
+}
+
+// =============================================================================
+// CATPPUCCIN MOCHA
+// =============================================================================
+html.catppuccin-theme {
+  --backgroundColor: #1e1e2e;
+  --fontColor: #cdd6f4;
+  --glassColor: #cdd6f4;
+  --iconColor: #b4befe;
+  --glowColor: rgba(180, 190, 254, 0.3);
+  --primaryColor: #181825;
+  --secondaryColor: #b4befe;
+  --tertiaryColor: #f38ba8;
+  --dark-blue: #89b4fa;
+  --alice-blue: #b4befe;
+  --dim-gray: #a6adc8;
+  --myrtle-green: #a6e3a1;
+}
+
+// =============================================================================
+// SOLARIZED DARK
+// =============================================================================
+html.solarized-dark-theme {
+  --backgroundColor: #002b36;
+  --fontColor: #eee8d5;
+  --glassColor: #eee8d5;
+  --iconColor: #2aa198;
+  --glowColor: rgba(42, 161, 152, 0.35);
+  --primaryColor: #073642;
+  --secondaryColor: #2aa198;
+  --tertiaryColor: #b58900;
+  --dark-blue: #268bd2;
+  --alice-blue: #93a1a1;
+  --dim-gray: #586e75;
+  --myrtle-green: #859900;
+}

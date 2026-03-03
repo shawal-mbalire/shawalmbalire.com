@@ -1,3 +1,18 @@
+/* Dialog container styling */
+::ng-deep .mat-mdc-dialog-surface {
+  background: var(--primaryColor) !important;
+  color: var(--fontColor) !important;
+}
+
+::ng-deep .mat-mdc-dialog-container {
+  background: transparent !important;
+}
+
+::ng-deep .mdc-dialog__surface {
+  background: var(--primaryColor) !important;
+  color: var(--fontColor) !important;
+}
+
 main {
   display: flex;
   flex-direction: column;
@@ -6,6 +21,8 @@ main {
   padding: 1.5rem;
   max-width: 600px;
   margin: 0 auto;
+  background: var(--primaryColor);
+  color: var(--fontColor);
 }
 
 .card-header {

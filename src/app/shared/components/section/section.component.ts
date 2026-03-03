@@ -28,7 +28,7 @@ import { CommonModule } from '@angular/common';
       </div>
     </section>
   `,
-  styleUrl: './section.component.css'
+  styleUrl: './section.component.scss'
 })
 export class SectionComponent {
   /** Section ID for anchor links */

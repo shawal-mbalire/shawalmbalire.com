@@ -7,7 +7,7 @@ import { MatDialog, MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angu
  */
 @Component({
   selector: 'app-work-entry',
-  styleUrl: './work-entry.component.css',
+  styleUrl: './work-entry.component.scss',
   templateUrl: './work-entry.component.html',
   imports: [MatDialogModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -32,7 +32,7 @@ export class WorkEntryComponent {
 
 @Component({
   selector: 'app-work-entry-dialog',
-  styleUrl: './work-entry-dialog.css',
+  styleUrl: './work-entry-dialog.scss',
   templateUrl: './work-entry-dialog.html',
   imports: [MatDialogModule],
   changeDetection: ChangeDetectionStrategy.OnPush,

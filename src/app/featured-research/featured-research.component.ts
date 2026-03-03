@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
   selector: 'app-featured-research',
   imports: [],
   templateUrl: './featured-research.component.html',
-  styleUrl: './featured-research.component.css'
+  styleUrl: './featured-research.component.scss'
 })
 export class FeaturedResearchComponent {
   readonly project = {
