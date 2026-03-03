@@ -3,31 +3,9 @@
   <app-nav></app-nav>
   <app-home></app-home>
   <app-about></app-about>
-
-  <!-- Using @defer with custom IntersectionObserver options (Angular v21 feature) -->
-  @defer (on viewport({ rootMargin: '100px' })) {
-    <app-experience></app-experience>
-  } @placeholder {
-    <div class="loading-placeholder">
-      <h2>Loading Experience...</h2>
-    </div>
-  }
-
-  @defer (on viewport({ rootMargin: '100px' })) {
-    <app-research></app-research>
-  } @placeholder {
-    <div class="loading-placeholder">
-      <h2>Loading Research...</h2>
-    </div>
-  }
-
-  @defer (on viewport({ rootMargin: '200px', threshold: 0.1 })) {
-    <app-contact></app-contact>
-  } @placeholder {
-    <div class="loading-placeholder">
-      <h2>Loading Contact...</h2>
-    </div>
-  }
+  <app-experience></app-experience>
+  <app-research></app-research>
+  <app-contact></app-contact>
 
   <div>
     <app-footer></app-footer>

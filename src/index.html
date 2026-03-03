@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="solarized-light-theme">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -101,6 +101,15 @@
 </head>
 
 <body>
+  <script>
+    // Apply theme immediately before app loads to prevent flash of unstyled content
+    (function() {
+      var savedTheme = localStorage.getItem('theme_preference');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = savedTheme || (prefersDark ? 'dark-theme' : 'solarized-light-theme');
+      document.documentElement.classList.add(theme);
+    })();
+  </script>
   <app-root></app-root>
 </body>
 
