@@ -101,25 +101,6 @@
 </head>
 
 <body>
-  <!-- Inline theme script to prevent flash of unstyled content -->
-  <script>
-    (function() {
-      // Get theme from localStorage (persistent across sessions)
-      var theme = null;
-      try {
-        theme = localStorage.getItem('theme_preference');
-      } catch (e) {}
-      
-      // Default to solarized-light-theme or respect system preference
-      if (!theme) {
-        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        theme = prefersDark ? 'dark-theme' : 'solarized-light-theme';
-      }
-      
-      // Apply theme immediately to prevent flash
-      document.documentElement.classList.add(theme);
-    })();
-  </script>
   <app-root></app-root>
 </body>
 

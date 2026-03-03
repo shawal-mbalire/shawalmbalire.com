@@ -15,12 +15,14 @@ export class ThemeSwitcherComponent {
   readonly themeService = inject(ThemeService);
 
   setTheme(theme: ThemeKey): void {
+    console.log('Theme selected:', theme);
     this.themeService.setActiveTheme(theme);
   }
 
   toggleTheme(): void {
     const current = this.themeService.getActiveTheme();
     const next = current === 'dark-theme' ? 'solarized-light-theme' : 'dark-theme';
+    console.log('Toggling theme:', current, '->', next);
     this.themeService.setActiveTheme(next);
   }
 }
