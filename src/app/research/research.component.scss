@@ -37,12 +37,14 @@
   flex-direction: column;
   gap: 3rem;
   margin-top: 1rem;
+  overflow-x: hidden;
 }
 
 .timeline-year {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  width: 100%;
 }
 
 .timeline-year__header {
