@@ -1,14 +1,15 @@
 // Home Component Styles
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@use 'sass:map';
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as mixins;
 
 #home {
-  @include flex-center;
+  @include mixins.flex-center;
   min-height: 85vh;
-  @include padding('2xl');
+  @include mixins.padding('2xl');
 
-  @include mobile-first('sm') {
-    @include padding('xl');
+  @include mixins.mobile-first('sm') {
+    @include mixins.padding('xl');
     min-height: 80vh;
   }
 }
@@ -16,69 +17,69 @@
 .home__content {
   max-width: 800px;
   width: 100%;
-  @include flex-center;
+  @include mixins.flex-center;
 }
 
 .home__text {
-  @include flex-column($gap: map-get($spacing, 'lg'));
+  @include mixins.flex-column($gap: map.get($spacing, 'lg'));
   text-align: center;
   align-items: center;
 }
 
 .home__greeting {
   display: inline-block;
-  padding: map-get($spacing, 'sm') map-get($spacing, 'lg');
+  padding: map.get($spacing, 'sm') map.get($spacing, 'lg');
   background: var(--secondaryColor);
   color: var(--backgroundColor);
-  @include rounded;
-  font-size: map-get($font-sizes, 'sm');
-  font-weight: map-get($font-weights, 'semibold');
+  @include mixins.rounded;
+  font-size: map.get($font-sizes, 'sm');
+  font-weight: map.get($font-weights, 'semibold');
   text-transform: uppercase;
   letter-spacing: 0.05em;
   width: fit-content;
 }
 
 .home__name {
-  @include responsive-font(2.25rem, 3.5rem);
-  font-weight: map-get($font-weights, 'bold');
+  @include mixins.responsive-font(2.25rem, 3.5rem);
+  font-weight: map.get($font-weights, 'bold');
   color: var(--fontColor);
   margin: 0;
   line-height: 1.1;
 }
 
 .home__education {
-  @include responsive-font(1rem, 1.5rem);
-  font-weight: map-get($font-weights, 'semibold');
+  @include mixins.responsive-font(1rem, 1.5rem);
+  font-weight: map.get($font-weights, 'semibold');
   color: var(--secondaryColor);
   margin: 0;
 }
 
 .home__tagline {
-  @include responsive-font(0.9rem, 1.1rem);
-  font-weight: map-get($font-weights, 'normal');
+  @include mixins.responsive-font(0.9rem, 1.1rem);
+  font-weight: map.get($font-weights, 'normal');
   color: var(--dim-gray);
-  margin: map-get($spacing, 'sm') 0 map-get($spacing, 'lg');
-  line-height: map-get($line-heights, 'normal');
-  @include gentle-float;
+  margin: map.get($spacing, 'sm') 0 map.get($spacing, 'lg');
+  line-height: map.get($line-heights, 'normal');
+  @include mixins.gentle-float;
 }
 
 .home__buttons {
   display: flex;
-  gap: map-get($spacing, 'lg');
+  gap: map.get($spacing, 'lg');
   flex-wrap: wrap;
-  margin-top: map-get($spacing, 'sm');
+  margin-top: map.get($spacing, 'sm');
 
-  @include mobile-first('sm') {
+  @include mixins.mobile-first('sm') {
     flex-direction: column;
     width: 100%;
-    gap: map-get($spacing, 'md');
+    gap: map.get($spacing, 'md');
   }
 
   .button {
-    @include button-base;
-    padding: map-get($spacing, 'md') map-get($spacing, 'xl');
-    font-weight: map-get($font-weights, 'bold');
-    @include border-radius('lg');
+    @include mixins.button-base;
+    padding: map.get($spacing, 'md') map.get($spacing, 'xl');
+    font-weight: map.get($font-weights, 'bold');
+    @include mixins.border-radius('lg');
     border: 2px solid var(--secondaryColor);
     color: var(--secondaryColor);
     background: transparent;
@@ -89,34 +90,34 @@
       color: #0d1117;
     }
 
-    @include mobile-first('sm') {
+    @include mixins.mobile-first('sm') {
       width: 100%;
-      padding: map-get($spacing, 'md') map-get($spacing, 'xl');
+      padding: map.get($spacing, 'md') map.get($spacing, 'xl');
     }
   }
 }
 
 // Responsive breakpoints
-@include respond-to('lg') {
+@include mixins.respond-to('lg') {
   .home__name {
-    font-size: map-get($font-sizes, '3xl');
+    font-size: map.get($font-sizes, '3xl');
   }
 
   .home__education {
-    font-size: map-get($font-sizes, 'xl');
+    font-size: map.get($font-sizes, 'xl');
   }
 }
 
-@include mobile-first('md') {
+@include mixins.mobile-first('md') {
   .home__name {
-    font-size: map-get($font-sizes, '2xl');
+    font-size: map.get($font-sizes, '2xl');
   }
 
   .home__education {
-    font-size: map-get($font-sizes, 'lg');
+    font-size: map.get($font-sizes, 'lg');
   }
 
   .home__tagline {
-    font-size: map-get($font-sizes, 'base');
+    font-size: map.get($font-sizes, 'base');
   }
 }

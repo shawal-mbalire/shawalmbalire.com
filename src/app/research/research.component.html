@@ -1,6 +1,6 @@
-<app-section
-  id="research"
-  label="Publications"
+<app-section 
+  id="research" 
+  label="Publications" 
   title="Research & Publications">
 
   @if (isLoading()) {
@@ -18,15 +18,19 @@
       <p>No research publications yet. Check back soon!</p>
     </div>
   } @else {
+    @let groupedResearch = researchByYear();
+    
     <div class="research-timeline">
       @for (year of years; track year) {
+        @let researchForYear = groupedResearch.get(year);
+        
         <div class="timeline-year">
           <div class="timeline-year__header">
             <span class="timeline-year__label">{{ year }}</span>
           </div>
 
           <div class="timeline-items">
-            @for (research of researchByYear().get(year); track research.id) {
+            @for (research of researchForYear; track research.id) {
               <div class="timeline-item">
                 <div class="timeline-item__marker"></div>
 

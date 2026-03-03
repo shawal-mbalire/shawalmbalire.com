@@ -1,6 +1,9 @@
 // SCSS Configuration and Variables
 // Portfolio Application - Shawal Mbalire
 
+// Use modern Sass module system
+@use 'sass:map';
+
 // =============================================================================
 // BREAKPOINTS
 // =============================================================================
@@ -92,9 +95,9 @@ $transitions: (
 );
 
 // Transition duration variables for direct use
-$fast-transition: map-get($transitions, 'fast');
-$base-transition: map-get($transitions, 'base');
-$slow-transition: map-get($transitions, 'slow');
+$fast-transition: map.get($transitions, 'fast');
+$base-transition: map.get($transitions, 'base');
+$slow-transition: map.get($transitions, 'slow');
 
 // =============================================================================
 // Z-INDEX

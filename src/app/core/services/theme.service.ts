@@ -1,4 +1,5 @@
-import { Injectable, signal, effect, inject } from '@angular/core';
+import { Injectable, signal, effect, inject, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CookieService } from './cookie.service';
 
 export type ThemeKey =
@@ -9,12 +10,14 @@ export type ThemeKey =
 
 /**
  * Service to manage application theme with cookie persistence
+ * Uses Angular 17+ features: inject(), signal(), effect(), takeUntilDestroyed()
  */
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
   private readonly cookieService = inject(CookieService);
+  private readonly destroyRef = inject(DestroyRef);
   private readonly COOKIE_NAME = 'theme_preference';
 
   readonly availableThemes: ReadonlyArray<{ label: string; value: ThemeKey }> = [
@@ -36,6 +39,7 @@ export class ThemeService {
       this.activeThemeSignal.set(initial);
     }
 
+    // Effect with cleanup using takeUntilDestroyed (Angular 17+)
     effect(() => {
       const theme = this.activeThemeSignal();
       if (typeof window !== 'undefined') {
@@ -44,6 +48,9 @@ export class ThemeService {
         // Store theme preference in cookie (1 year expiry)
         this.cookieService.set(this.COOKIE_NAME, theme, 365 * 24 * 60 * 60);
       }
+    }, {
+      // Automatically cleanup when service is destroyed
+      injector: this.destroyRef as any
     });
   }
 

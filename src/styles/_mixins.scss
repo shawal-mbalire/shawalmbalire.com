@@ -1,22 +1,26 @@
 // SCSS Mixins
 // Reusable styling patterns for the portfolio
 
+// Use modern Sass module system
+@use 'sass:map';
+@use 'variables' as *;
+
 // =============================================================================
 // RESPONSIVE BREAKPOINTS
 // =============================================================================
 @mixin respond-to($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    @media (min-width: map-get($breakpoints, $breakpoint)) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (min-width: map.get($breakpoints, $breakpoint)) {
       @content;
     }
   } @else {
-    @warn "Unknown breakpoint: #{$breakpoint}. Available: #{map-keys($breakpoints)}";
+    @warn "Unknown breakpoint: #{$breakpoint}. Available: #{map.keys($breakpoints)}";
   }
 }
 
 // Mobile-first responsive mixin
 @mixin mobile-first($breakpoint) {
-  @media (max-width: map-get($breakpoints, $breakpoint) - 1px) {
+  @media (max-width: map.get($breakpoints, $breakpoint) - 1px) {
     @content;
   }
 }
@@ -74,8 +78,8 @@
 // SPACING
 // =============================================================================
 @mixin spacing($property, $size) {
-  @if map-has-key($spacing, $size) {
-    #{$property}: map-get($spacing, $size);
+  @if map.has-key($spacing, $size) {
+    #{$property}: map.get($spacing, $size);
   } @else {
     #{$property}: $size;
   }
@@ -93,30 +97,30 @@
 // BORDERS & RADIUS
 // =============================================================================
 @mixin border-radius($size) {
-  @if map-has-key($border-radius, $size) {
-    border-radius: map-get($border-radius, $size);
+  @if map.has-key($border-radius, $size) {
+    border-radius: map.get($border-radius, $size);
   } @else {
     border-radius: $size;
   }
 }
 
 @mixin rounded {
-  border-radius: map-get($border-radius, 'full');
+  border-radius: map.get($border-radius, 'full');
 }
 
 // =============================================================================
 // SHADOWS & EFFECTS
 // =============================================================================
 @mixin shadow($size) {
-  @if map-has-key($shadows, $size) {
-    box-shadow: map-get($shadows, $size);
+  @if map.has-key($shadows, $size) {
+    box-shadow: map.get($shadows, $size);
   } @else {
     box-shadow: $size;
   }
 }
 
 @mixin glow-hover {
-  transition: box-shadow $base-transition;
+  transition: box-shadow $slow-transition;
   
   &:hover {
     box-shadow: 0 8px 24px var(--glowColor);
@@ -124,7 +128,7 @@
 }
 
 @mixin card-hover {
-  transition: transform $base-transition, box-shadow $base-transition, border-color $base-transition;
+  transition: transform $slow-transition, box-shadow $slow-transition, border-color $slow-transition;
   
   &:hover {
     transform: translateY(-4px);
@@ -140,11 +144,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: map-get($spacing, 'sm');
-  font-weight: map-get($font-weights, 'bold');
-  border-radius: map-get($border-radius, 'lg');
+  gap: map.get($spacing, 'sm');
+  font-weight: map.get($font-weights, 'bold');
+  border-radius: map.get($border-radius, 'lg');
   cursor: pointer;
-  transition: transform $base-transition, box-shadow $base-transition, background-color $base-transition, color $base-transition;
+  transition: transform $slow-transition, box-shadow $slow-transition, background-color $slow-transition, color $slow-transition;
   text-decoration: none;
   white-space: nowrap;
   border: 2px solid transparent;
