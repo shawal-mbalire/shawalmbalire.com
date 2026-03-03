@@ -12,7 +12,29 @@
 // =============================================================================
 // GLOBAL RESET & BASE STYLES
 // =============================================================================
-* {
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  background-color: var(--backgroundColor);
+  color: var(--fontColor);
+  transition: background-color 0.25s ease, color 0.25s ease;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+body * {
   color: var(--fontColor);
   text-decoration: none;
   text-emphasis: none;
@@ -23,14 +45,19 @@
   scrollbar-width: none;
 }
 
-body {
-  background-color: var(--backgroundColor);
-  color: var(--fontColor);
-  transition: background-color 0.25s ease, color 0.25s ease;
-}
-
 main {
   min-height: 80vh;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+// Prevent images and media from causing overflow
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
 }
 
 // =============================================================================

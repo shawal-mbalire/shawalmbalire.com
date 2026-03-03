@@ -1,17 +1,7 @@
-svg,
-button svg{
-  height: 2rem;
-}
-svg,
-svg path,
-svg g path{
-  fill:var(--iconColor);
-}
 button {
-  background-color: var(--primaryColor); 
+  background-color: transparent;
   height: 70%;
-  border: 1px solid var(--secondaryColor);
-  border-radius: 8px;
+  border: none;
   text-align: center;
   text-decoration: none;
   display: inline-flex;
@@ -19,6 +9,29 @@ button {
   justify-content: center;
   cursor: pointer;
   padding: 0.25rem 0.5rem;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+button svg {
+  height: 2rem;
+  width: 2rem;
+  color: var(--iconColor);
+  transition: color 0.2s ease;
+}
+
+button svg path,
+button svg line {
+  fill: none;
+  stroke: var(--iconColor);
+  stroke-width: 3;
+}
+
+button:hover svg,
+button:hover svg path,
+button:hover svg line {
+  color: var(--secondaryColor);
+  stroke: var(--secondaryColor);
 }
 
 :host {
@@ -38,6 +51,7 @@ button {
   box-shadow: 0 4px 16px rgba(0,0,0,0.2);
   z-index: 9999;
   display: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 .theme-menu[data-visible="true"] {
@@ -65,12 +79,31 @@ button {
   color: var(--fontColor);
   border-radius: 4px;
   transition: background-color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .menu-item:hover, .menu-item:focus {
   background-color: var(--secondaryColor);
   color: var(--backgroundColor);
   outline: none;
+}
+
+/* iOS touch optimizations */
+@media (hover: none) and (pointer: coarse) {
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .menu-item {
+    padding: 0.8rem 1rem;
+    min-height: 44px;
+  }
+  
+  .theme-menu {
+    min-width: 200px;
+  }
 }
 
 .theme-switcher {

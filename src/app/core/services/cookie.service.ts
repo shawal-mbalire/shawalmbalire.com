@@ -1,55 +1,70 @@
 import { Injectable } from '@angular/core';
 
 /**
- * Cookie utility service for managing browser cookies
+ * Theme persistence service using localStorage
+ * More reliable than cookies, especially on iOS Safari
+ * Data persists across sessions and browser restarts
  */
 @Injectable({
   providedIn: 'root'
 })
 export class CookieService {
-  private readonly defaultMaxAge = 365 * 24 * 60 * 60; // 1 year in seconds
+  private readonly STORAGE_KEY = 'theme_preference';
 
   /**
-   * Set a cookie
-   * @param name Cookie name
-   * @param value Cookie value
-   * @param maxAge Max age in seconds (default: 1 year)
+   * Set theme preference in localStorage
+   * @param theme Theme name to store
    */
-  set(name: string, value: string, maxAge: number = this.defaultMaxAge): void {
-    if (typeof document === 'undefined') return;
+  set(theme: string): void {
+    if (typeof localStorage === 'undefined') {
+      console.warn('localStorage not available');
+      return;
+    }
     
-    const expires = `max-age=${maxAge}`;
-    document.cookie = `${name}=${encodeURIComponent(value)}; ${expires}; path=/; SameSite=Lax`;
+    try {
+      localStorage.setItem(this.STORAGE_KEY, theme);
+    } catch (e) {
+      console.error('Failed to save theme preference:', e);
+    }
   }
 
   /**
-   * Get a cookie value
-   * @param name Cookie name
-   * @returns Cookie value or null if not found
+   * Get theme preference from localStorage
+   * @returns Theme name or null if not set
    */
-  get(name: string): string | null {
-    if (typeof document === 'undefined') return null;
+  get(): string | null {
+    if (typeof localStorage === 'undefined') {
+      return null;
+    }
     
-    const match = document.cookie.match(new RegExp(`(^| )${name}=([^;]+)`));
-    return match ? decodeURIComponent(match[2]) : null;
+    try {
+      return localStorage.getItem(this.STORAGE_KEY);
+    } catch (e) {
+      console.error('Failed to read theme preference:', e);
+      return null;
+    }
   }
 
   /**
-   * Delete a cookie
-   * @param name Cookie name
+   * Delete theme preference from localStorage
    */
-  delete(name: string): void {
-    if (typeof document === 'undefined') return;
+  delete(): void {
+    if (typeof localStorage === 'undefined') {
+      return;
+    }
     
-    document.cookie = `${name}=; max-age=0; path=/`;
+    try {
+      localStorage.removeItem(this.STORAGE_KEY);
+    } catch (e) {
+      console.error('Failed to delete theme preference:', e);
+    }
   }
 
   /**
-   * Check if a cookie exists
-   * @param name Cookie name
-   * @returns True if cookie exists
+   * Check if theme preference exists
+   * @returns True if theme is stored
    */
-  exists(name: string): boolean {
-    return this.get(name) !== null;
+  exists(): boolean {
+    return this.get() !== null;
   }
 }
