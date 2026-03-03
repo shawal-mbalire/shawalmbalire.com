@@ -10,7 +10,7 @@
     ],
     "headers": [
       {
-        "source": "**/*.@(js|css)",
+        "source": "**/*.js",
         "headers": [
           {
             "key": "Cache-Control",
@@ -19,6 +19,19 @@
           {
             "key": "Content-Type",
             "value": "text/javascript; charset=utf-8"
+          }
+        ]
+      },
+      {
+        "source": "**/*.css",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=31536000, immutable"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/css; charset=utf-8"
           }
         ]
       },
