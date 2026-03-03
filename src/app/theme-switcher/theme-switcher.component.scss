@@ -1,17 +1,7 @@
-svg,
-button svg{
-  height: 2rem;
-}
-svg,
-svg path,
-svg g path{
-  fill:var(--iconColor);
-}
 button {
-  background-color: var(--primaryColor);
+  background-color: transparent;
   height: 70%;
-  border: 1px solid var(--secondaryColor);
-  border-radius: 8px;
+  border: none;
   text-align: center;
   text-decoration: none;
   display: inline-flex;
@@ -21,6 +11,27 @@ button {
   padding: 0.25rem 0.5rem;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
+}
+
+button svg {
+  height: 2rem;
+  width: 2rem;
+  color: var(--iconColor);
+  transition: color 0.2s ease;
+}
+
+button svg path,
+button svg line {
+  fill: none;
+  stroke: var(--iconColor);
+  stroke-width: 3;
+}
+
+button:hover svg,
+button:hover svg path,
+button:hover svg line {
+  color: var(--secondaryColor);
+  stroke: var(--secondaryColor);
 }
 
 :host {
