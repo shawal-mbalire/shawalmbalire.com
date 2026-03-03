@@ -3,13 +3,14 @@ main{
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 2rem 1rem;
 
   div{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
 
     div{
       display: flex;
@@ -38,17 +39,12 @@ main{
   }
 }
 
-/* Contact Form Styles */
-.contact__heading {
-  text-align: center;
-}
-
 form {
-  width: min(720px, 92vw);
-  margin: 2rem auto 3rem;
+  width: min(600px, 95vw);
+  margin: 1.5rem auto 2rem;
   padding: 1.5rem;
   display: grid;
-  gap: 1rem;
+  gap: 1.25rem;
   background: var(--primaryColor);
   border: 1.5px solid var(--secondaryColor);
   border-radius: 12px;
@@ -59,22 +55,20 @@ form {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 400px;
-  margin-bottom: 1rem;
-  margin-inline: auto;
 }
 
 .contact__form-tag {
-  margin-bottom: 0.5rem;
-  font-weight: 500;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  font-size: 0.9rem;
   color: var(--fontColor);
 }
 
 .contact__form-input {
-  padding: 0.75rem;
+  padding: 0.85rem 1rem;
   border: 1.5px solid var(--secondaryColor);
-  border-radius: 5px;
-  background: var(--primaryColor);
+  border-radius: 8px;
+  background: var(--backgroundColor);
   color: var(--fontColor);
   font-size: 1rem;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
@@ -89,6 +83,7 @@ form {
 
 .contact__form-input.ng-invalid.ng-touched {
   border-color: #ff6b6b;
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
 }
 
 .contact__form-input:disabled {
@@ -96,22 +91,29 @@ form {
   cursor: not-allowed;
 }
 
+.contact__form-area textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
 .contact__form-area {
-  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .submitbutton {
-  padding: 0.75rem 2rem;
-  background: var(--secondaryColor);
-  color: var(--backgroundColor);
-  border: none;
-  border-radius: 5px;
+  padding: 0.85rem 2rem;
+  background: transparent;
+  color: var(--secondaryColor);
+  border: 2px solid var(--secondaryColor);
+  border-radius: 10px;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   justify-self: center;
-  min-width: 200px;
+  width: 100%;
+  max-width: 250px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -119,12 +121,14 @@ form {
 }
 
 .submitbutton:hover:not(:disabled) {
-  background: var(--tertiaryColor);
-  transform: translateY(-2px);
+  background: var(--secondaryColor);
+  color: #0d1117;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px var(--glowColor);
 }
 
 .submitbutton:disabled {
-  background: #ccc;
+  opacity: 0.5;
   cursor: not-allowed;
   transform: none;
 }
@@ -194,4 +198,36 @@ form {
   font-size: 0.875rem;
   margin-top: 0.25rem;
   font-weight: 500;
+}
+
+/* Responsive styles */
+@media (max-width: 640px) {
+  main {
+    padding: 1rem 0.75rem;
+  }
+
+  form {
+    width: 95vw;
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+
+  .contact__form-input {
+    padding: 0.75rem 0.85rem;
+    font-size: 0.95rem;
+  }
+
+  .contact__form-area textarea {
+    min-height: 120px;
+  }
+
+  .submitbutton {
+    width: 100%;
+    max-width: none;
+    padding: 0.85rem 1.5rem;
+  }
+
+  .contact__card {
+    min-width: 100%;
+  }
 }

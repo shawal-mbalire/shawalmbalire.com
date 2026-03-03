@@ -1,23 +1,22 @@
-import { ChangeDetectionStrategy, Component, inject, resource } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { WorkEntryComponent } from '../work-entry/work-entry.component';
-import { FeaturedResearchComponent } from '../featured-research/featured-research.component';
-import { WorkEntry } from '../core/models/work-entry.model';
+import { WorkEntryService } from '../core/services/work-entry.service';
 
 /**
- * Experience component displaying work history using resource API
+ * Experience component displaying work history
+ * Uses WorkEntryService for data management
  */
 @Component({
   selector: 'app-experience',
-  imports: [WorkEntryComponent, FeaturedResearchComponent],
+  imports: [WorkEntryComponent],
   templateUrl: './experience.component.html',
-  styleUrl: './experience.component.css',
+  styleUrl: './experience.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExperienceComponent {
-  readonly workEntriesResource = resource({
-    loader: async () => {
-      const response = await fetch('/work-entries.json');
-      return await response.json() as WorkEntry[];
-    },
-  });
+  private readonly workEntryService = inject(WorkEntryService);
+  
+  readonly workEntries = this.workEntryService.data;
+  readonly isLoading = this.workEntryService.isLoading;
+  readonly hasError = this.workEntryService.hasError;
 }

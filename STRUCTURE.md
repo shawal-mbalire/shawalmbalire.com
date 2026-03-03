@@ -25,6 +25,8 @@ bun run deploy
 ├── .github/workflows/       # GitHub Actions CI/CD
 │   ├── firebase-hosting-merge.yml
 │   └── firebase-hosting-pull-request.yml
+├── REFACTORING.md           # Refactoring plan and roadmap
+├── STRUCTURE.md             # This file - project documentation
 ├── .firebaseignore          # Firebase Hosting ignore patterns
 ├── firebase.json            # Firebase Hosting configuration
 ├── firestore.rules          # Firestore security rules
@@ -35,8 +37,23 @@ bun run deploy
 │   ├── core/                # Core module (singleton services, models, constants)
 │   │   ├── models/          # TypeScript interfaces and types
 │   │   ├── services/        # Application-wide services
+│   │   │   ├── base.service.ts      # Base service with common patterns
+│   │   │   ├── theme.service.ts
+│   │   │   └── ...
 │   │   ├── constants/       # Application constants
+│   │   │   ├── app.constants.ts
+│   │   │   └── design-tokens.ts     # Design system tokens
 │   │   ├── aria/            # Accessibility directives
+│   │   ├── guards/          # Route guards
+│   │   ├── interceptors/    # HTTP interceptors
+│   │   ├── pipes/           # Shared pipes
+│   │   └── index.ts         # Barrel export
+│   │
+│   ├── shared/              # Shared reusable components
+│   │   ├── components/
+│   │   │   ├── button/      # Reusable button component
+│   │   │   ├── card/        # Reusable card component
+│   │   │   └── section/     # Section layout component
 │   │   └── index.ts         # Barrel export
 │   │
 │   ├── home/                # Home feature

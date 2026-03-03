@@ -5,7 +5,7 @@ import {
 } from '@angular/platform-browser-dynamic/testing';
 
 import { WorkEntryComponent } from './work-entry.component';
-import { WorkEntry } from '../../core/models/workEntry';
+import { WorkEntry } from '../../core/models/work-entry.model';
 
 describe('WorkEntryComponent', () => {
   let component: WorkEntryComponent;

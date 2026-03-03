@@ -1,0 +1,43 @@
+[
+  {
+    "id": "federated-learning-2024",
+    "title": "Exploring Federated Learning Based Cardiac Monitoring",
+    "description": "Poster presentation on prototyping ECG monitoring with federated learning for privacy-preserving cardiac data analysis.",
+    "venue": "Makerere University",
+    "location": "Kampala, Uganda",
+    "date": "2024",
+    "year": 2024,
+    "type": "Poster Presentation",
+    "highlights": [
+      "Prototyped a simple ECG monitor",
+      "ECG sensor was inaccurate and needed more denoising for usable data",
+      "Used an online database for transfer learning"
+    ],
+    "skills": ["Federated Learning", "ECG", "Healthcare", "Machine Learning", "Privacy"],
+    "links": {
+      "pdf": "/documents/federated-learning-poster.pdf"
+    },
+    "order": 1
+  },
+  {
+    "id": "bsf-iot-2023",
+    "title": "A Low-Cost Internet of Things Cloud-Based Solution for the Intelligent Rearing of the Black Soldier Fly",
+    "description": "IEEE AFRICON 2023 published paper presenting an IoT-based system for monitoring and optimizing Black Soldier Fly larvae farming conditions.",
+    "venue": "IEEE AFRICON 2023",
+    "location": "Nairobi, Kenya",
+    "date": "Sep 2023",
+    "year": 2023,
+    "type": "Conference Paper",
+    "highlights": [
+      "Co-authored an IEEE AFRICON 2023 paper on IoT-based Black Soldier Fly farming",
+      "Presented the paper at AFRICON conference",
+      "Designed database flow and backend with Python and Firebase"
+    ],
+    "skills": ["IoT", "Cloud Computing", "Python", "Firebase", "Embedded Systems", "Agriculture Technology"],
+    "links": {
+      "ieee": "https://ieeexplore.ieee.org/document/10293221",
+      "doi": "10.1109/AFRICON53745.2023.10293221"
+    },
+    "order": 2
+  }
+]

@@ -1,0 +1,121 @@
+// Main Styles Entry Point
+// Portfolio Application - Shawal Mbalire
+
+// =============================================================================
+// IMPORTS - Using modern Sass module system
+// =============================================================================
+@use 'sass:map';
+@use 'styles/variables' as *;
+@use 'styles/mixins';
+@use 'styles/themes' as *;
+
+// =============================================================================
+// GLOBAL RESET & BASE STYLES
+// =============================================================================
+* {
+  color: var(--fontColor);
+  text-decoration: none;
+  text-emphasis: none;
+  font-family: 'Comfortaa', sans-serif;
+  font-optical-sizing: auto;
+  margin: 0;
+  padding: 0;
+  scrollbar-width: none;
+}
+
+body {
+  background-color: var(--backgroundColor);
+  color: var(--fontColor);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+main {
+  min-height: 80vh;
+}
+
+// =============================================================================
+// ICON STYLES
+// =============================================================================
+svg,
+svg path,
+svg g path {
+  fill: var(--iconColor);
+}
+
+// =============================================================================
+// BUTTON STYLES
+// =============================================================================
+.button {
+  @include mixins.button-base;
+  padding: map.get($spacing, 'md') map.get($spacing, 'lg');
+  border: 2px solid var(--secondaryColor);
+  border-radius: map.get($border-radius, 'lg');
+  font-weight: map.get($font-weights, 'bold');
+  color: var(--secondaryColor);
+  background: transparent;
+  
+  &:hover {
+    background: var(--secondaryColor);
+    border-color: var(--secondaryColor);
+    color: #0d1117;
+  }
+}
+
+// =============================================================================
+// ANGULAR MATERIAL DIALOG THEMING
+// =============================================================================
+.mat-mdc-dialog-surface {
+  background: var(--primaryColor) !important;
+  color: var(--fontColor) !important;
+}
+
+.mat-mdc-dialog-container {
+  background: transparent !important;
+}
+
+.mat-mdc-dialog-title {
+  color: var(--fontColor) !important;
+}
+
+.mat-mdc-dialog-content {
+  color: var(--fontColor) !important;
+}
+
+.cdk-overlay-backdrop {
+  backdrop-filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+// =============================================================================
+// HEADER
+// =============================================================================
+header {
+  position: fixed;
+}
+
+// =============================================================================
+// UTILITY CLASSES
+// =============================================================================
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.flex-center {
+  @include mixins.flex-center;
+}
+
+.flex-between {
+  @include mixins.flex-between;
+}
+
+.sr-only {
+  @include mixins.sr-only;
+}

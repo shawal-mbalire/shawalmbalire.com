@@ -7,6 +7,7 @@ import { NavComponent } from './nav';
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 import { ExperienceComponent } from './experience';
+import { ResearchComponent } from './research';
 import { ContactComponent } from './contact';
 import { FooterComponent } from './footer';
 
@@ -21,11 +22,12 @@ import { FooterComponent } from './footer';
     HomeComponent,
     AboutComponent,
     ExperienceComponent,
+    ResearchComponent,
     ContactComponent,
     FooterComponent
   ],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   private readonly themeService = inject(ThemeService);

@@ -37,32 +37,42 @@
     <form (ngSubmit)="onSubmit()" novalidate [class.form-submitting]="formStatus() === 'submitting'">
       <div class="contact__form-div">
         <label for="name" class="contact__form-tag">Name</label>
-        <input 
-          id="name" 
-          type="text" 
-          placeholder="Insert your name." 
-          class="contact__form-input" 
+        <input
+          id="name"
+          type="text"
+          placeholder="Insert your name."
+          class="contact__form-input"
           required
+          minlength="2"
           [ngModel]="formData().name"
           (ngModelChange)="onInputChange('name', $event)"
           name="name"
           [disabled]="formStatus() === 'submitting'"
+          #name="ngModel"
         >
+        @if (name.invalid && name.touched) {
+          <span class="error">Name must be at least 2 characters.</span>
+        }
       </div>
 
       <div class="contact__form-div">
         <label for="email" class="contact__form-tag">Email</label>
-        <input 
-          id="email" 
-          type="email" 
-          placeholder="Insert your email" 
-          class="contact__form-input" 
+        <input
+          id="email"
+          type="email"
+          placeholder="Insert your email"
+          class="contact__form-input"
           required
+          email
           [ngModel]="formData().email"
           (ngModelChange)="onInputChange('email', $event)"
           name="email"
           [disabled]="formStatus() === 'submitting'"
+          #email="ngModel"
         >
+        @if (email.invalid && email.touched) {
+          <span class="error">Please enter a valid email address.</span>
+        }
       </div>
 
       <div class="contact__form-div contact__form-area">
@@ -80,7 +90,7 @@
           [disabled]="formStatus() === 'submitting'"
         ></textarea>
       </div>
-      <button class="submitbutton" type="submit" [disabled]="formStatus() === 'submitting'">
+      <button class="submitbutton" type="submit" [disabled]="formStatus() === 'submitting' || !canSubmit()">
         @if (formStatus() === 'submitting') {
           <span class="button-loading">
             <svg class="spinner" viewBox="0 0 24 24">

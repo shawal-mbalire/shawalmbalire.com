@@ -8,7 +8,7 @@ import { Menu, MenuItem, MenuTrigger } from '../core/aria';
 @Component({
   selector: 'app-theme-switcher',
   templateUrl: './theme-switcher.component.html',
-  styleUrl: './theme-switcher.component.css',
+  styleUrl: './theme-switcher.component.scss',
   imports: [Menu, MenuItem, MenuTrigger]
 })
 export class ThemeSwitcherComponent {
@@ -20,7 +20,7 @@ export class ThemeSwitcherComponent {
 
   toggleTheme(): void {
     const current = this.themeService.getActiveTheme();
-    const next = current === 'dark-theme' ? 'light-theme' : 'light-theme';
+    const next = current === 'dark-theme' ? 'solarized-light-theme' : 'dark-theme';
     this.themeService.setActiveTheme(next);
   }
 }

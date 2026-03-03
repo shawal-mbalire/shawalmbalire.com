@@ -1,8 +1,8 @@
-import { ServerRoute } from '@angular/ssr';
+import { ServerRoute, RenderMode } from '@angular/ssr';
 
 export const serverRoutes: ServerRoute[] = [
   {
     path: '**',
-    page: '/index.html'
+    renderMode: RenderMode.Server
   }
 ];
