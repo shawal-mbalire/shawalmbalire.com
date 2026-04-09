@@ -4,6 +4,16 @@ import { FormsModule } from '@angular/forms';
 export type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
 
 /**
+ * Contact form data structure
+ */
+export interface ContactFormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+/**
  * Contact component with contact information and form
  */
 @Component({
@@ -14,7 +24,7 @@ export type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
 })
 export class ContactComponent {
   readonly formStatus = signal<FormStatus>('idle');
-  readonly formData = signal({ name: '', email: '', message: '' });
+  readonly formData = signal<ContactFormData>({ name: '', email: '', subject: '', message: '' });
 
   private isValidEmail(email: string): boolean {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -27,8 +37,8 @@ export class ContactComponent {
 
   canSubmit(): boolean {
     const data = this.formData();
-    return this.isValidName(data.name) && 
-           this.isValidEmail(data.email) && 
+    return this.isValidName(data.name) &&
+           this.isValidEmail(data.email) &&
            data.message.trim().length > 0;
   }
 
@@ -47,7 +57,7 @@ export class ContactComponent {
       this.formStatus.set(success ? 'success' : 'error');
 
       if (success) {
-        this.formData.set({ name: '', email: '', message: '' });
+        this.formData.set({ name: '', email: '', subject: '', message: '' });
       }
 
       // Reset status after 5 seconds
@@ -55,7 +65,7 @@ export class ContactComponent {
     }, 1000);
   }
 
-  onInputChange(field: 'name' | 'email' | 'message', value: string): void {
+  onInputChange(field: keyof ContactFormData, value: string): void {
     this.formData.update(data => ({ ...data, [field]: value }));
   }
 }

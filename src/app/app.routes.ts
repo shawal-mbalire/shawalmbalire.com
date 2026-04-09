@@ -47,6 +47,14 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'projects',
+    component: AppComponent,
+    data: {
+      title: 'Projects - Shawal Mbalire',
+      description: 'Explore projects and applications by Shawal Mbalire - web, mobile, IoT, and automation projects built with modern technologies'
+    }
+  },
+  {
     path: 'contact',
     component: AppComponent,
     data: {

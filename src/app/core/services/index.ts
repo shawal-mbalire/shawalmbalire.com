@@ -11,3 +11,4 @@ export * from './about.service';
 export * from './experience.service';
 export * from './work-entry.service';
 export * from './research.service';
+export * from './project.service';

@@ -1,0 +1,24 @@
+[
+  {
+    "id": "muslim-companion-noor",
+    "title": "Muslim Companion (Noor)",
+    "description": "A comprehensive Islamic lifestyle application designed to support daily worship with features like prayer times, Quran, and more.",
+    "longDescription": "Muslim Companion (Noor) is an ad-free Islamic utility app focused on providing a clean and seamless experience for users. It helps in tracking daily prayers, reading the Quran, and finding the Qibla direction, among other features.",
+    "category": "Mobile Application",
+    "techStack": ["Android", "Java/Kotlin", "Firebase", "SQLite"],
+    "features": [
+      "Accurate Prayer Times with Athan notifications",
+      "Quran with translations and audio recitations",
+      "Dhikr & Digital Tasbih counter",
+      "Qibla Finder (Visual Compass)",
+      "Islamic (Hijri) Calendar & Event reminders",
+      "Hisnul Muslim (Duas & Adhkar)"
+    ],
+    "links": {
+      "website": "https://muslimcompanion.shawalmbalire.com/",
+      "playstore": "https://play.google.com/store/apps/details?id=com.shawalmbalire.noor"
+    },
+    "isFeatured": true,
+    "order": 1
+  }
+]

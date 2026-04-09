@@ -75,14 +75,28 @@
         }
       </div>
 
+      <div class="contact__form-div">
+        <label for="subject" class="contact__form-tag">Subject</label>
+        <input
+          id="subject"
+          type="text"
+          placeholder="What is this about?"
+          class="contact__form-input"
+          [ngModel]="formData().subject"
+          (ngModelChange)="onInputChange('subject', $event)"
+          name="subject"
+          [disabled]="formStatus() === 'submitting'"
+        >
+      </div>
+
       <div class="contact__form-div contact__form-area">
-        <label for="project" class="contact__form-tag">Project</label>
-        <textarea 
-          id="project" 
-          cols="30" 
-          rows="10" 
+        <label for="message" class="contact__form-tag">Message</label>
+        <textarea
+          id="message"
+          cols="30"
+          rows="10"
           placeholder="Write to me"
-          class="contact__form-input" 
+          class="contact__form-input"
           required
           [ngModel]="formData().message"
           (ngModelChange)="onInputChange('message', $event)"

@@ -8,6 +8,7 @@ import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 import { ExperienceComponent } from './experience';
 import { ResearchComponent } from './research';
+import { ProjectsComponent } from './projects/projects.component';
 import { ContactComponent } from './contact';
 import { FooterComponent } from './footer';
 
@@ -21,6 +22,7 @@ import { FooterComponent } from './footer';
     NavComponent,
     HomeComponent,
     AboutComponent,
+    ProjectsComponent,
     ExperienceComponent,
     ResearchComponent,
     ContactComponent,
