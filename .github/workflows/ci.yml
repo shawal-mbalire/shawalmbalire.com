@@ -1,0 +1,77 @@
+# CI pipeline for the monorepo
+# Builds and tests both Angular app and LaTeX CV
+
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - 'feature/**'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  angular_build:
+    name: Angular Build & Test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: angular_app
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: TypeScript check
+        run: npx tsc --noEmit --project tsconfig.app.json
+
+      - name: Build production bundle
+        run: bun run build:prod
+        env:
+          NODE_ENV: production
+
+      - name: Run tests
+        run: bun run test
+
+      - name: Upload build artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: angular-dist
+          path: angular_app/dist/
+          retention-days: 7
+
+  latex_build:
+    name: LaTeX CV Build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: latex_app
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup TeX Live
+        uses: zauguin/install-texlive@v4
+        with:
+          package_file: .github/workflows/texlive-packages.txt
+
+      - name: Build CV
+        run: xelatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=ShawalMbalireCV -output-directory=. main.tex && \
+             xelatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=ShawalMbalireCV -output-directory=. main.tex
+
+      - name: Upload CV artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: shawal-mbalire-cv
+          path: latex_app/ShawalMbalireCV.pdf
+          retention-days: 30

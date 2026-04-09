@@ -1,67 +1,84 @@
-# Portfolio
+# Shawal Mbalire — Portfolio Monorepo
 
-Static Angular SPA served as static files. Scripts are Bun-first and follow applicable 12‑Factor practices (explicit deps, env‑driven config, build/release/run separation).
+Monorepo containing:
+- **`angular_app/`** — Angular 21 SPA portfolio site (Firebase Hosting)
+- **`latex_app/`** — LaTeX CV / Resume (Awesome-CV)
 
 ## Prerequisites
 
-- Bun 1.0+
+- [Bun](https://bun.sh) 1.0+
+- [Just](https://github.com/casey/just) — task runner
+- [XeLaTeX](https://tug.org/xetex/) — for CV builds
+- [Firebase CLI](https://firebase.google.com/docs/cli) — for deployment
 
-## Install
+## Quick Start
 
 ```bash
+just               # list all available commands
+just serve         # start Angular dev server (http://localhost:4200)
+just build         # production Angular build
+just test          # run Angular tests
+just cv_build      # build LaTeX CV to PDF
+just cv_view       # open the generated CV PDF
+just deploy        # build + deploy to Firebase Hosting
+```
+
+## Project Structure
+
+```
+.
+├── angular_app/          # Angular portfolio SPA
+│   ├── src/
+│   ├── public/
+│   ├── firebase.json
+│   ├── package.json
+│   └── justfile          # Angular-specific commands
+├── latex_app/            # LaTeX CV & Resume
+│   ├── main.tex
+│   ├── resume.tex
+│   ├── awesome-cv.cls
+│   └── justfile          # LaTeX-specific commands
+├── .github/workflows/    # CI/CD pipelines
+├── justfile              # Monorepo-level commands
+└── README.md
+```
+
+## CI/CD
+
+| Workflow | Trigger | Job |
+|----------|---------|-----|
+| `ci.yml` | Push / PR | Angular build + test, LaTeX CV build |
+| `firebase-hosting-merge.yml` | Push to `main` | Deploy to Firebase live channel |
+| `firebase-hosting-pull-request.yml` | PR to `main` | Deploy Firebase preview channel |
+
+## Angular App
+
+See [`angular_app/README.md`](angular_app/README.md) for details.
+
+```bash
+cd angular_app
 bun install
+just serve       # dev server
+just build       # production build
+just test        # tests
 ```
 
-## Development
+## LaTeX CV
 
 ```bash
-bun start
-# http://localhost:4200
+cd latex_app
+make             # or: xelatex main.tex (run twice)
+open ShawalMbalireCV.pdf
 ```
 
-## Configuration (12‑Factor: Config)
+## Environment Variables
 
-Non‑secret runtime config is generated at build time from environment variables and written to `public/app-config.json`.
+Copy `.env.example` → `.env` in `angular_app/`:
 
-1. Copy `.env.example` to `.env` and edit values.
-2. Build (the `prebuild` step generates the config file).
-
-Available variables:
-
-- `PUBLIC_APP_NAME` – Display name
-- `PUBLIC_ENV` – `production` | `development`
-- `PUBLIC_BASE_URL` – Base URL for deployment
-- `PUBLIC_CONTACT_EMAIL` – Contact email
-- `PUBLIC_ANALYTICS_ID` – Analytics tag (optional)
-
-## Build (12‑Factor: Build, Release, Run)
-
-```bash
-# Development build
-bun run build
-
-# Production build
-bun run build:prod
-```
-
-Artifacts are written to `dist/portfolio/browser`.
-
-## Preview static build
-
-```bash
-bun run preview
-# http://localhost:4173
-```
-
-## Tests
-
-```bash
-bun run test        # run once
-bun run test:watch  # watch mode
-bun run test:coverage
-```
-
-## Notes
-
-- No server/Express is required in production; hosting serves the contents of `dist/portfolio/browser`.
-- `.env` is ignored by Git; `.env.example` documents expected config.
+| Variable | Description |
+|----------|-------------|
+| `PUBLIC_APP_NAME` | Display name |
+| `PUBLIC_ENV` | `production` \| `development` |
+| `PUBLIC_BASE_URL` | Base URL for deployment |
+| `PUBLIC_CONTACT_EMAIL` | Contact email |
+| `PUBLIC_ANALYTICS_ID` | Analytics tag (optional) |
