@@ -8,7 +8,6 @@ etoolbox
 setspace
 fontawesome5
 roboto
-sourcesanspro
 tcolorbox
 parskip
 hyperref
@@ -18,11 +17,9 @@ ragged2e
 geometry
 fancyhdr
 xcolor
-array
 environ
 pgf
 trimspaces
-ms
 tools
 infwarerr
 kvoptions
