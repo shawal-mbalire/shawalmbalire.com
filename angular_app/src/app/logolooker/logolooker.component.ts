@@ -4,7 +4,7 @@ import { isPlatformBrowser } from '@angular/common';
 @Component({
   selector: 'app-logolooker',
   templateUrl: './logolooker.component.html',
-  styleUrls: ['./logolooker.component.css']
+  styleUrls: ['./logolooker.component.scss']
 })
 export class LogolookerComponent implements OnInit, OnDestroy {
   private logo!: HTMLElement | null;

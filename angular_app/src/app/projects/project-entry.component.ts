@@ -77,44 +77,44 @@ import { Project } from '../core/models/project.model';
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
       }
 
-      &--featured {
+      &.project-entry--featured {
         border-color: rgba(99, 102, 241, 0.4);
         background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
       }
 
-      &__title {
+      .project-entry__title {
         margin: 0 0 0.5rem 0;
         font-size: 1.5rem;
         color: var(--text-primary);
       }
 
-      &__category {
+      .project-entry__category {
         margin: 0 0 0.75rem 0;
         font-size: 1rem;
         color: var(--text-secondary);
         font-weight: 500;
       }
 
-      &__dates {
+      .project-entry__dates {
         margin: 0 0 0.75rem 0;
         font-size: 0.85rem;
         color: var(--text-muted);
       }
 
-      &__description {
+      .project-entry__description {
         margin: 0 0 1.5rem 0;
         color: var(--text-muted);
         line-height: 1.6;
       }
 
-      &__tags {
+      .project-entry__tags {
         display: flex;
         flex-wrap: wrap;
         gap: 0.5rem;
         margin-bottom: 1.5rem;
       }
 
-      &__actions {
+      .project-entry__actions {
         display: flex;
         flex-wrap: wrap;
         gap: 0.75rem;
@@ -168,12 +168,12 @@ import { Project } from '../core/models/project.model';
         filter: brightness(1.1);
       }
 
-      &--secondary {
+      &.button--secondary {
         background: var(--secondary-color, rgba(255, 255, 255, 0.1));
         color: var(--text-primary);
       }
 
-      &--outline {
+      &.button--outline {
         background: transparent;
         border: 1px solid var(--border-color, rgba(255, 255, 255, 0.2));
         color: var(--text-primary);
@@ -320,10 +320,10 @@ export class ProjectEntryComponent {
       font-size: 0.85rem;
       font-weight: 600;
 
-      &--primary { background: var(--primary-color); color: white; }
-      &--secondary { background: rgba(255, 255, 255, 0.1); color: var(--text-primary); }
-      &--outline { background: transparent; border: 1px solid rgba(255, 255, 255, 0.2); color: var(--text-primary); }
-      &--ghost { background: transparent; color: var(--text-secondary); }
+      &.button--primary { background: var(--primary-color); color: white; }
+      &.button--secondary { background: rgba(255, 255, 255, 0.1); color: var(--text-primary); }
+      &.button--outline { background: transparent; border: 1px solid rgba(255, 255, 255, 0.2); color: var(--text-primary); }
+      &.button--ghost { background: transparent; color: var(--text-secondary); }
     }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,

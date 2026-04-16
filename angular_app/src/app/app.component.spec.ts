@@ -6,6 +6,7 @@ import {
 import { AppComponent } from './app.component';
 import { ThemeService } from './core/services';
 import { signal } from '@angular/core';
+import { provideRouter } from '@angular/router';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -18,6 +19,7 @@ describe('AppComponent', () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
       providers: [
+        provideRouter([]),
         {
           provide: ThemeService,
           useValue: {

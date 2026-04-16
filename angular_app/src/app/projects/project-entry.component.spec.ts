@@ -3,7 +3,7 @@ import {
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting,
 } from '@angular/platform-browser-dynamic/testing';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { ProjectEntryComponent, ProjectEntryDialogComponent } from './project-entry.component';
@@ -121,13 +121,16 @@ describe('ProjectEntryDialogComponent', () => {
     }
     await TestBed.configureTestingModule({
       imports: [ProjectEntryDialogComponent, MatDialogModule],
-      providers: [provideAnimations()]
+      providers: [
+        provideAnimations(),
+        { provide: MAT_DIALOG_DATA, useValue: mockProject },
+        { provide: MatDialogRef, useValue: { close: () => {} } }
+      ]
     })
     .compileComponents();
 
     fixture = TestBed.createComponent(ProjectEntryDialogComponent);
     component = fixture.componentInstance;
-    component.data = mockProject;
     fixture.detectChanges();
   });
 
