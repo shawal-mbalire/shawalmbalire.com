@@ -57,17 +57,17 @@ describe('ProjectEntryComponent', () => {
 
   it('should display project title', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.project-entry__title')?.textContent).toContain('Test Project');
+    expect(compiled.querySelector('.project-card__title')?.textContent).toContain('Test Project');
   });
 
   it('should display project category', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.project-entry__category')?.textContent).toContain('Web Application');
+    expect(compiled.querySelector('.project-card__category')?.textContent).toContain('Web Application');
   });
 
   it('should display project description', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.project-entry__description')?.textContent).toContain('A test project description');
+    expect(compiled.querySelector('.project-card__description')?.textContent).toContain('A test project description');
   });
 
   it('should display tech stack tags', () => {
@@ -100,11 +100,11 @@ describe('ProjectEntryComponent', () => {
     expect(websiteLink).toBeTruthy();
   });
 
-  it('should show Show More button', () => {
+  it('should show Details button', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const button = compiled.querySelector('button');
     expect(button).toBeTruthy();
-    expect(button?.textContent).toContain('Show More');
+    expect(button?.textContent).toContain('Details');
   });
 });
 
@@ -140,7 +140,7 @@ describe('ProjectEntryDialogComponent', () => {
 
   it('should display project title', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('[mat-dialog-title]')?.textContent).toContain('Test Project');
+    expect(compiled.querySelector('.dialog-title')?.textContent).toContain('Test Project');
   });
 
   it('should display long description', () => {
@@ -150,13 +150,13 @@ describe('ProjectEntryDialogComponent', () => {
 
   it('should display features list', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    const features = compiled.querySelectorAll('.features li');
+    const features = compiled.querySelectorAll('.features-list li');
     expect(features.length).toBe(3);
   });
 
   it('should display tech stack tags', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    const tags = compiled.querySelectorAll('.tags .tag');
+    const tags = compiled.querySelectorAll('.tags-container .tag');
     expect(tags.length).toBe(3);
   });
 

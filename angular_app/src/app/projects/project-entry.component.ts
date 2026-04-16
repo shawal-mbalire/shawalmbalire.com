@@ -11,172 +11,230 @@ import { Project } from '../core/models/project.model';
   standalone: true,
   imports: [CommonModule, MatDialogModule],
   template: `
-    <div class="project-entry" [class.project-entry--featured]="featured()">
-      <div class="project-entry__content">
-        @if (featured()) {
-          <span class="featured-badge">Featured</span>
-        }
-        <h2 class="project-entry__title">{{ project().title }}</h2>
-        @if (project().category) {
-          <h3 class="project-entry__category">{{ project().category }}</h3>
-        }
-        @if (project().startDate || project().endDate) {
-          <p class="project-entry__dates">
-            @if (project().startDate) {
-              <span>{{ project().startDate }}</span>
+    <div class="project-card" [class.project-card--featured]="featured()">
+      <div class="project-card__content">
+        <div class="project-card__header">
+          <h2 class="project-card__title">
+            {{ project().title }}
+            @if (featured()) {
+              <span class="featured-badge">Featured</span>
             }
-            @if (project().startDate && project().endDate) {
-              <span> → </span>
+          </h2>
+          <div class="project-card__meta-info">
+            @if (project().category) {
+              <span class="project-card__category">{{ project().category }}</span>
             }
-            @if (project().endDate) {
-              <span>{{ project().endDate }}</span>
+            @if (project().startDate || project().endDate) {
+              <span class="project-card__dates">
+                {{ project().startDate }}{{ project().startDate && project().endDate ? ' → ' : '' }}{{ project().endDate }}
+              </span>
             }
-          </p>
-        }
-        <p class="project-entry__description">{{ project().description }}</p>
+          </div>
+        </div>
 
-        <div class="project-entry__tags">
+        <p class="project-card__description">{{ project().description }}</p>
+
+        <div class="project-card__tags">
           @for (tech of project().techStack; track tech) {
             <span class="tag">{{ tech }}</span>
           }
         </div>
-      </div>
 
-      <div class="project-entry__actions">
-        <button class="button" (click)="openDialog()" [attr.aria-label]="'Show more about ' + project().title">Show More</button>
+        <div class="project-card__actions">
+          <button class="button button--primary" (click)="openDialog()" [attr.aria-label]="'Show more about ' + project().title">
+            <svg class="button__icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+            </svg>
+            Details
+          </button>
 
-        @if (project().links?.github) {
-          <a [href]="project().links?.github" target="_blank" rel="noopener" class="button button--outline" aria-label="View source code on GitHub">
-            <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            Source
-          </a>
-        }
-        @if (project().links?.website) {
-          <a [href]="project().links?.website" target="_blank" rel="noopener" class="button button--secondary">
-            Website
-          </a>
-        }
+          @if (project().links?.github) {
+            <a [href]="project().links?.github" target="_blank" rel="noopener" class="button button--secondary" aria-label="View source code on GitHub">
+              <svg class="button__icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              Source
+            </a>
+          }
+          @if (project().links?.website) {
+            <a [href]="project().links?.website" target="_blank" rel="noopener" class="button button--secondary">
+              <svg class="button__icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+              </svg>
+              Website
+            </a>
+          }
+        </div>
       </div>
     </div>
   `,
   styles: [`
-    .project-entry {
-      background: var(--card-bg, rgba(255, 255, 255, 0.05));
-      border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
-      border-radius: 12px;
-      padding: 1.5rem;
+    .project-card {
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 100%;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      width: 100%;
+    }
+
+    .project-card__content {
+      flex: 1;
+      padding: 1.5rem;
+      background: var(--primaryColor);
+      border: 2px solid var(--secondaryColor);
+      border-radius: 12px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
       position: relative;
+    }
 
-      &:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-      }
+    .project-card:hover .project-card__content {
+      transform: translateX(4px);
+      box-shadow: 0 8px 24px var(--glowColor);
+      border-color: var(--secondaryColor);
+    }
 
-      &.project-entry--featured {
-        border-color: rgba(99, 102, 241, 0.4);
-        background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
-      }
+    .project-card--featured .project-card__content {
+      border-color: var(--secondaryColor);
+      border-width: 3px;
+      background: var(--primaryColor);
+    }
 
-      .project-entry__title {
-        margin: 0 0 0.5rem 0;
-        font-size: 1.5rem;
-        color: var(--text-primary);
-      }
+    .project-card__header {
+      margin-bottom: 1rem;
+    }
 
-      .project-entry__category {
-        margin: 0 0 0.75rem 0;
-        font-size: 1rem;
-        color: var(--text-secondary);
-        font-weight: 500;
-      }
-
-      .project-entry__dates {
-        margin: 0 0 0.75rem 0;
-        font-size: 0.85rem;
-        color: var(--text-muted);
-      }
-
-      .project-entry__description {
-        margin: 0 0 1.5rem 0;
-        color: var(--text-muted);
-        line-height: 1.6;
-      }
-
-      .project-entry__tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .project-entry__actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-      }
+    .project-card__title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--fontColor);
+      margin: 0;
+      line-height: 1.3;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
     }
 
     .featured-badge {
-      position: absolute;
-      top: -8px;
-      right: 12px;
-      background: linear-gradient(135deg, #6366f1, #8b5cf6);
-      color: white;
-      padding: 2px 10px;
-      border-radius: 12px;
       font-size: 0.7rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      background: var(--secondaryColor);
+      color: var(--backgroundColor);
+      padding: 0.15rem 0.6rem;
+      border-radius: 9999px;
+    }
+
+    .project-card__meta-info {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    .project-card__category {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--secondaryColor);
+      background: var(--backgroundColor);
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      border: 1px solid var(--secondaryColor);
+    }
+
+    .project-card__dates {
+      font-size: 0.8rem;
+      color: var(--dim-gray);
+      font-weight: 500;
+    }
+
+    .project-card__description {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--fontColor);
+      margin: 0 0 1.25rem 0;
+    }
+
+    .project-card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
     }
 
     .tag {
-      background: var(--tag-bg, rgba(255, 255, 255, 0.1));
-      color: var(--tag-text, var(--text-secondary));
-      padding: 0.25rem 0.75rem;
-      border-radius: 20px;
-      font-size: 0.875rem;
+      display: inline-block;
+      padding: 0.3rem 0.7rem;
+      background: var(--backgroundColor);
+      border: 1px solid var(--secondaryColor);
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--fontColor);
+      transition: background 0.2s ease, transform 0.2s ease;
     }
 
-    .icon {
-      width: 16px;
-      height: 16px;
-      margin-right: 4px;
+    .tag:hover {
+      background: var(--secondaryColor);
+      color: var(--backgroundColor);
+      transform: translateY(-1px);
+    }
+
+    .project-card__actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
     }
 
     .button {
-      padding: 0.6rem 1.2rem;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      border: none;
-      background: var(--primary-color, #6366f1);
-      color: white;
-      text-decoration: none;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      font-weight: 700;
+      border-radius: 10px;
+      border: 2px solid var(--secondaryColor);
+      color: var(--secondaryColor);
+      background: transparent;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+      text-decoration: none;
+      white-space: nowrap;
       font-size: 0.9rem;
-      transition: filter 0.2s, background 0.2s;
+      cursor: pointer;
+    }
 
-      &:hover {
-        filter: brightness(1.1);
+    .button--primary {
+      background: var(--secondaryColor);
+      color: var(--backgroundColor);
+    }
+
+    .button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px var(--glowColor);
+    }
+
+    .button--primary:hover {
+      filter: brightness(1.1);
+    }
+
+    .button--secondary:hover {
+      background: var(--secondaryColor);
+      color: var(--backgroundColor);
+    }
+
+    .button__icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 640px) {
+      .project-card__actions {
+        flex-direction: column;
       }
-
-      &.button--secondary {
-        background: var(--secondary-color, rgba(255, 255, 255, 0.1));
-        color: var(--text-primary);
-      }
-
-      &.button--outline {
-        background: transparent;
-        border: 1px solid var(--border-color, rgba(255, 255, 255, 0.2));
-        color: var(--text-primary);
+      .button {
+        width: 100%;
       }
     }
   `],
@@ -202,16 +260,17 @@ export class ProjectEntryComponent {
   imports: [CommonModule, MatDialogModule],
   template: `
     <div class="project-dialog">
-      <h2 mat-dialog-title>{{ data.title }}</h2>
-      <mat-dialog-content>
+      <h2 mat-dialog-title class="dialog-title">{{ data.title }}</h2>
+      <mat-dialog-content class="dialog-content">
         @if (data.category) {
-          <p class="category">{{ data.category }}</p>
+          <span class="category-badge">{{ data.category }}</span>
         }
         @if (data.startDate || data.endDate) {
           <p class="dates">
-            @if (data.startDate) { <span>{{ data.startDate }}</span> }
-            @if (data.startDate && data.endDate) { <span> → </span> }
-            @if (data.endDate) { <span>{{ data.endDate }}</span> }
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/>
+            </svg>
+            {{ data.startDate }}{{ data.startDate && data.endDate ? ' → ' : '' }}{{ data.endDate }}
           </p>
         }
         @if (data.longDescription) {
@@ -221,109 +280,188 @@ export class ProjectEntryComponent {
         }
 
         @if (data.features?.length) {
-          <h3>Key Features</h3>
-          <ul class="features">
+          <h3 class="section-header">Key Features</h3>
+          <ul class="features-list">
             @for (feature of data.features; track feature) {
-              <li>{{ feature }}</li>
+              <li>
+                <svg class="check-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+                {{ feature }}
+              </li>
             }
           </ul>
         }
 
-        <h3>Tech Stack</h3>
-        <div class="tags">
+        <h3 class="section-header">Tech Stack</h3>
+        <div class="tags-container">
           @for (tech of data.techStack; track tech) {
             <span class="tag">{{ tech }}</span>
           }
         </div>
       </mat-dialog-content>
-      <mat-dialog-actions align="end">
+      <mat-dialog-actions align="end" class="dialog-actions">
         @if (data.links?.playstore) {
           <a [href]="data.links!.playstore" target="_blank" rel="noopener" class="button button--primary">
-            <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.807 1.627a1 1 0 010 1.73l-2.807 1.627L15.206 12l2.492-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
             Play Store
           </a>
         }
         @if (data.links?.appstore) {
           <a [href]="data.links!.appstore" target="_blank" rel="noopener" class="button button--primary">
-            <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
             App Store
           </a>
         }
-        @if (data.links?.demo) {
-          <a [href]="data.links!.demo" target="_blank" rel="noopener" class="button button--secondary">
-            Live Demo
-          </a>
-        }
         @if (data.links?.github) {
-          <a [href]="data.links!.github" target="_blank" rel="noopener" class="button button--outline">
-            <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            Source
+          <a [href]="data.links!.github" target="_blank" rel="noopener" class="button button--secondary">
+            GitHub
           </a>
         }
-        @if (data.links?.website) {
-          <a [href]="data.links!.website" target="_blank" rel="noopener" class="button button--secondary">Website</a>
-        }
-        <button class="button button--ghost" (click)="close()">Close</button>
+        <button class="button button--outline" (click)="close()">Close</button>
       </mat-dialog-actions>
     </div>
   `,
   styles: [`
     .project-dialog {
-      padding: 1rem;
-      color: var(--text-primary);
-      background: var(--dialog-bg, #1e1e1e);
+      background: var(--primaryColor);
+      color: var(--fontColor);
+      border-radius: 12px;
+      overflow: hidden;
     }
-    .category {
-      color: var(--text-secondary);
-      margin-bottom: 0.5rem;
+
+    .dialog-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--fontColor);
+      padding: 1.5rem 1.5rem 0.5rem;
+      margin: 0;
     }
+
+    .dialog-content {
+      padding: 0 1.5rem 1.5rem !important;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .category-badge {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--secondaryColor);
+      background: var(--backgroundColor);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      border: 1px solid var(--secondaryColor);
+      align-self: flex-start;
+    }
+
     .dates {
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--dim-gray);
+      margin: 0;
     }
+
+    .icon {
+      width: 18px;
+      height: 18px;
+    }
+
     .long-description {
+      font-size: 1rem;
       line-height: 1.6;
-      margin-bottom: 1.5rem;
+      margin: 0.5rem 0;
     }
-    .features {
-      margin-bottom: 1.5rem;
-      padding-left: 1.2rem;
-      li { margin-bottom: 0.5rem; }
+
+    .section-header {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 1rem 0 0.5rem;
+      color: var(--secondaryColor);
     }
-    .tags {
+
+    .features-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .features-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .check-icon {
+      width: 18px;
+      height: 18px;
+      color: var(--myrtle-green);
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .tags-container {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
-      margin-top: 0.5rem;
     }
+
     .tag {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 0.25rem 0.75rem;
-      border-radius: 20px;
-      font-size: 0.875rem;
+      display: inline-block;
+      padding: 0.3rem 0.7rem;
+      background: var(--backgroundColor);
+      border: 1px solid var(--secondaryColor);
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      color: var(--fontColor);
     }
-    .icon {
-      width: 16px;
-      height: 16px;
-      margin-right: 4px;
+
+    .dialog-actions {
+      padding: 1rem 1.5rem !important;
+      background: var(--backgroundColor);
+      gap: 0.75rem;
     }
+
     .button {
-      margin-left: 0.5rem;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
       display: inline-flex;
       align-items: center;
-      font-size: 0.85rem;
-      font-weight: 600;
+      justify-content: center;
+      padding: 0.6rem 1.2rem;
+      font-weight: 700;
+      border-radius: 8px;
+      border: 2px solid var(--secondaryColor);
+      color: var(--secondaryColor);
+      background: transparent;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
 
-      &.button--primary { background: var(--primary-color); color: white; }
-      &.button--secondary { background: rgba(255, 255, 255, 0.1); color: var(--text-primary); }
-      &.button--outline { background: transparent; border: 1px solid rgba(255, 255, 255, 0.2); color: var(--text-primary); }
-      &.button--ghost { background: transparent; color: var(--text-secondary); }
+    .button--primary {
+      background: var(--secondaryColor);
+      color: var(--backgroundColor);
+    }
+
+    .button--outline {
+      border-color: var(--secondaryColor);
+      color: var(--secondaryColor);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px var(--glowColor);
+    }
+
+    .button--primary:hover {
+      filter: brightness(1.1);
     }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,11 +1,11 @@
 [
   {
-    "id": "muslim-companion-noor",
-    "title": "Muslim Companion (Noor)",
+    "id": "muslim-companion-dhikr",
+    "title": "Muslim companion: Dhikr",
     "description": "A comprehensive Islamic lifestyle application designed to support daily worship with features like prayer times, Quran, and more.",
-    "longDescription": "Muslim Companion (Noor) is an ad-free Islamic utility app focused on providing a clean and seamless experience for users. It helps in tracking daily prayers, reading the Quran, and finding the Qibla direction, among other features.",
+    "longDescription": "Muslim companion: Dhikr is an ad-free Islamic utility app focused on providing a clean and seamless experience for users. It helps in tracking daily prayers, reading the Quran, and finding the Qibla direction, among other features.",
     "category": "Mobile Application",
-    "techStack": ["Android", "Java/Kotlin", "Firebase", "SQLite"],
+    "techStack": ["Flutter", "Dart", "Firebase", "SQLite"],
     "features": [
       "Accurate Prayer Times with Athan notifications",
       "Quran with translations and audio recitations",

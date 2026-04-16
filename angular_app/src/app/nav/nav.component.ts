@@ -32,6 +32,44 @@ export class NavComponent {
         
         window.addEventListener('scroll', handleScroll, { passive: true });
       }
+
+      // Active link tracking logic
+      this.setupActiveLinkObserver();
     });
+  }
+
+  private setupActiveLinkObserver(): void {
+    const sections = document.querySelectorAll('main[id], section[id]');
+    const navLinks = document.querySelectorAll('.nav__link');
+
+    const options = {
+      root: null,
+      threshold: 0.3,
+      rootMargin: '-10% 0px -70% 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entries[0].isIntersecting) {
+          // If multiple are intersecting, the observer logic might be tricky, 
+          // but usually one is dominant.
+        }
+        
+        if (entry.isIntersecting) {
+          let id = entry.target.getAttribute('id');
+          // Map projects to about link
+          if (id === 'projects') id = 'about';
+          
+          navLinks.forEach(link => {
+            link.classList.remove('active-link');
+            if (link.getAttribute('href') === `#${id}`) {
+              link.classList.add('active-link');
+            }
+          });
+        }
+      });
+    }, options);
+
+    sections.forEach(section => observer.observe(section));
   }
 }

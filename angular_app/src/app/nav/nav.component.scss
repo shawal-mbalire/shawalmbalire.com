@@ -1,62 +1,130 @@
 header {
-  width: 100vw;
+  width: 100%;
   display: flex;
-  justify-content: space-evenly;
-  height: 4.2rem;
+  justify-content: space-between;
+  padding: 0 5%;
+  height: 4.5rem;
   align-items: center;
-  filter: drop-shadow(0 0 0.75rem var(--glowColor));
-  z-index: 10;
+  z-index: 100;
   background-color: var(--backgroundColor);
+  position: sticky;
+  top: 0;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+
+  &.scrolled {
+    box-shadow: 0 4px 20px var(--glowColor);
+    background-color: var(--backgroundColor);
+    backdrop-filter: blur(10px);
+    opacity: 0.98;
+  }
 }
 
-div img {
-  height: 4rem;
+#logo {
+  display: flex;
+  align-items: center;
+  
+  svg {
+    height: 3rem;
+    width: auto;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: rotate(5deg) scale(1.05);
+    }
+  }
 }
 
 nav {
-  width: 60%;
-  align-items: center;
   display: flex;
-  justify-content: space-evenly;
+  align-items: center;
+  gap: 2.5rem;
 }
 
-nav svg,
-button svg{
-  height: 2rem;
-}
-svg,
-svg path,
-svg g path{
-  fill:var(--iconColor);
+.nav__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0.5rem;
+  transition: transform 0.2s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--secondaryColor);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    
+    &::after {
+      width: 80%;
+    }
+
+    svg {
+      fill: var(--secondaryColor);
+    }
+  }
+
+  &.active-link {
+    &::after {
+      width: 80%;
+    }
+    svg {
+      fill: var(--secondaryColor);
+    }
+  }
 }
 
-nav a[aria-label="Research"] svg path {
-  stroke: var(--iconColor) !important;
-  stroke-width: 20 !important;
-  fill: none !important;
+nav svg {
+  height: 1.5rem;
+  width: 1.5rem;
+  fill: var(--iconColor);
+  transition: fill 0.2s ease, transform 0.2s ease;
 }
 
+/* Specific fix for Research icon stroke issue */
 nav a[aria-label="Research"] svg {
   fill: none !important;
+  stroke: var(--iconColor);
+  stroke-width: 32px; /* Increased stroke width for better visibility */
+
+  &:hover {
+    stroke: var(--secondaryColor);
+  }
 }
 
-button {
-  height: 70%;
-  border: none;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
+nav a[aria-label="Research"].active-link svg {
+  stroke: var(--secondaryColor);
 }
 
-button img {
-  height: 2rem;
+app-theme-switcher {
+  display: flex;
+  align-items: center;
 }
-svg{
-  transition: color 0.2s ease-in-out;
-  transition: background-color 0.2s ease-in-out;
-}
-svg:hover{
-  transform: scale(1.2);
-  background-color: var(--primaryColor);
+
+@media (max-width: 768px) {
+  header {
+    padding: 0 1rem;
+  }
   
+  nav {
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    gap: 0.75rem;
+  }
+  
+  #logo svg {
+    height: 2.5rem;
+  }
 }

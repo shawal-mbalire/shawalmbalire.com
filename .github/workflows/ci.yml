@@ -49,29 +49,3 @@ jobs:
           name: angular-dist
           path: angular_app/dist/
           retention-days: 7
-
-  latex_build:
-    name: LaTeX CV Build
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: latex_app
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup TeX Live
-        uses: zauguin/install-texlive@v4
-        with:
-          package_file: .github/workflows/texlive-packages.txt
-
-      - name: Build CV
-        run: xelatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=ShawalMbalireCV -output-directory=. main.tex && \
-             xelatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=ShawalMbalireCV -output-directory=. main.tex
-
-      - name: Upload CV artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: shawal-mbalire-cv
-          path: latex_app/ShawalMbalireCV.pdf
-          retention-days: 30

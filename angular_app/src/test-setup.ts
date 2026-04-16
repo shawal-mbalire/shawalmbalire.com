@@ -1,3 +1,36 @@
+// Mock IntersectionObserver globally (must be first)
+const IntersectionObserverMock = class IntersectionObserver {
+  readonly root: Element | Document | null = null;
+  readonly rootMargin: string = '';
+  readonly thresholds: ReadonlyArray<number> = [];
+
+  constructor(callback: IntersectionObserverCallback, options?: IntersectionObserverInit) {
+    this.root = options?.root ?? null;
+    this.rootMargin = options?.rootMargin ?? '';
+    this.thresholds = options?.threshold ? (Array.isArray(options.threshold) ? options.threshold : [options.threshold]) : [];
+  }
+  
+  observe() {
+    return null;
+  }
+  disconnect() {
+    return null;
+  }
+  unobserve() {
+    return null;
+  }
+  takeRecords(): IntersectionObserverEntry[] {
+    return [];
+  }
+};
+
+if (typeof global !== 'undefined') {
+  (global as any).IntersectionObserver = IntersectionObserverMock;
+}
+if (typeof window !== 'undefined') {
+  (window as any).IntersectionObserver = IntersectionObserverMock;
+}
+
 import 'zone.js';
 import { vi } from 'vitest';
 
@@ -29,32 +62,4 @@ vi.stubGlobal('matchMedia', (query: string) => ({
   cancel: () => {},
 });
 
-// Mock IntersectionObserver globally
-const IntersectionObserverMock = class IntersectionObserver {
-  readonly root: Element | Document | null = null;
-  readonly rootMargin: string = '';
-  readonly thresholds: ReadonlyArray<number> = [];
-
-  constructor(callback: IntersectionObserverCallback, options?: IntersectionObserverInit) {
-    this.root = options?.root ?? null;
-    this.rootMargin = options?.rootMargin ?? '';
-    this.thresholds = options?.threshold ? (Array.isArray(options.threshold) ? options.threshold : [options.threshold]) : [];
-  }
-  
-  observe() {
-    return null;
-  }
-  disconnect() {
-    return null;
-  }
-  unobserve() {
-    return null;
-  }
-  takeRecords(): IntersectionObserverEntry[] {
-    return [];
-  }
-};
-
 vi.stubGlobal('IntersectionObserver', IntersectionObserverMock);
-window.IntersectionObserver = IntersectionObserverMock;
-global.IntersectionObserver = IntersectionObserverMock;
