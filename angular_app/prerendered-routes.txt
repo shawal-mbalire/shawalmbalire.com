@@ -1,0 +1,7 @@
+/
+/home
+/about
+/experience
+/research
+/projects
+/contact

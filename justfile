@@ -1,78 +1,76 @@
-# Portfolio Justfile
-# Common commands for development and Firebase deployment
+# Monorepo Justfile
+# Shawal Mbalire Portfolio — Angular App + LaTeX CV
 
-# Default target
 default:
     @just --list
 
-# Development server
-serve:
-    @echo "Starting development server..."
-    bun run start
+# ─── Angular App ───────────────────────────────────────────────
 
-# Build for production
-build:
-    @echo "Building for production..."
-    bun run build:prod
+angular_serve:
+    @echo "Starting Angular dev server..."
+    cd angular_app && bun run start
 
-# Build for development
-build-dev:
-    @echo "Building for development..."
-    bun run build
+angular_build:
+    @echo "Building Angular app (production)..."
+    cd angular_app && bun run build:prod
 
-# Run tests
-test:
-    @echo "Running tests..."
-    bun run test
+angular_build_dev:
+    @echo "Building Angular app (development)..."
+    cd angular_app && bun run build
 
-# Run tests in watch mode
-test-watch:
-    @echo "Running tests in watch mode..."
-    bun run test:watch
+angular_test:
+    @echo "Running Angular tests..."
+    cd angular_app && bun run test
 
-# Preview production build locally
-preview:
-    @echo "Previewing production build..."
-    bun run preview
+angular_test_watch:
+    @echo "Running Angular tests (watch mode)..."
+    cd angular_app && bun run test:watch
 
-# Firebase: Login to Firebase
-firebase-login:
-    @echo "Logging in to Firebase..."
-    firebase login
+angular_preview:
+    @echo "Previewing Angular production build..."
+    cd angular_app && bun run preview
 
-# Firebase: Initialize project (if needed)
-firebase-init:
-    @echo "Initializing Firebase project..."
-    firebase init hosting
+angular_install:
+    @echo "Installing Angular dependencies..."
+    cd angular_app && bun install
 
-# Firebase: Deploy to production (live channel)
-deploy: build
+angular_clean:
+    @echo "Cleaning Angular build artifacts..."
+    cd angular_app && rm -rf dist/ .angular/
+
+# ─── LaTeX CV ──────────────────────────────────────────────────
+
+cv_build:
+    @echo "Building CV (ShawalMbalireCV.pdf)..."
+    cd latex_app && xelatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=ShawalMbalireCV -output-directory=. main.tex
+    cd latex_app && xelatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=ShawalMbalireCV -output-directory=. main.tex
+
+cv_clean:
+    @echo "Cleaning LaTeX aux files..."
+    cd latex_app && rm -f *.aux *.log *.out *.toc *.blg *.bbl *.fls *.fdb_latexmk *.synctex.gz
+
+cv_view:
+    @echo "Opening CV..."
+    @if [ -f latex_app/ShawalMbalireCV.pdf ]; then xdg-open latex_app/ShawalMbalireCV.pdf; else echo "ShawalMbalireCV.pdf not found. Run 'just cv_build' first."; fi
+
+# ─── Firebase Deployment ───────────────────────────────────────
+
+firebase_deploy: angular_build
     @echo "Deploying to Firebase Hosting (production)..."
-    firebase deploy --only hosting
+    cd angular_app && firebase deploy --only hosting
 
-# Firebase: Deploy to production with force
-deploy-force: build
+firebase_deploy_force: angular_build
     @echo "Force deploying to Firebase Hosting..."
-    firebase deploy --only hosting --force
+    cd angular_app && firebase deploy --only hosting --force
 
-# Firebase: Deploy preview channel (for PRs)
-deploy-preview: build
+firebase_deploy_preview: angular_build
     @echo "Deploying to Firebase Hosting (preview channel)..."
-    firebase hosting:channel:deploy preview
+    cd angular_app && firebase hosting:channel:deploy preview
 
-# Firebase: Delete preview channel
-delete-preview:
-    @echo "Deleting preview channel..."
-    firebase hosting:channel:delete preview
+firebase_login:
+    cd angular_app && firebase login
 
-# Firebase: List all channels
-channels:
-    @echo "Listing Firebase Hosting channels..."
-    firebase hosting:channel:list
-
-# Firebase: Open Firebase Console
-firebase-console:
-    @echo "Opening Firebase Console..."
+firebase_console:
     @if command -v xdg-open > /dev/null; then \
         xdg-open https://console.firebase.google.com/project/shawalmbalirecom; \
     elif command -v open > /dev/null; then \
@@ -81,104 +79,49 @@ firebase-console:
         echo "Open: https://console.firebase.google.com/project/shawalmbalirecom"; \
     fi
 
-# Build CV (output: ShawalMbalireCV/ShawalMbalireCV.pdf)
-cv:
-    @echo "Building CV..."
-    cd ShawalMbalireCV && just build
-    @echo "Copying CV to public/documents..."
-    mkdir -p public/documents
-    cp ShawalMbalireCV/ShawalMbalireCV.pdf public/documents/MbalireShawalCV.pdf
-    @echo "CV built and copied to public/documents/MbalireShawalCV.pdf"
+# ─── Full Workflow ─────────────────────────────────────────────
 
-# Open CV document
-cv-open:
-    @echo "Opening CV..."
-    @if command -v xdg-open > /dev/null; then \
-        xdg-open ShawalMbalireCV/ShawalMbalireCV.pdf; \
-    elif command -v open > /dev/null; then \
-        open ShawalMbalireCV/ShawalMbalireCV.pdf; \
-    else \
-        echo "Please open: ShawalMbalireCV/ShawalMbalireCV.pdf"; \
-    fi
+build_all: angular_build cv_build
+    @echo "All builds complete!"
 
-# Clean build artifacts
-clean:
-    @echo "Cleaning build artifacts..."
-    rm -rf dist/
-    rm -rf .angular/
+test_all: angular_test
+    @echo "All tests passed!"
 
-# Install dependencies
-install:
-    @echo "Installing dependencies..."
-    bun install
+clean_all: angular_clean cv_clean
+    @echo "All build artifacts cleaned."
 
-# Update dependencies
-update:
-    @echo "Updating dependencies..."
-    bun update
-
-# Lint code (if linting is configured)
-lint:
-    @echo "Linting code..."
-    @if [ -f package.json ] && grep -q '"lint"' package.json; then \
-        bun run lint; \
-    else \
-        echo "No lint script configured"; \
-    fi
-
-# Format code with Prettier (if configured)
-format:
-    @echo "Formatting code..."
-    @if command -v prettier > /dev/null; then \
-        bunx prettier --write "src/**/*.{ts,html,css,scss}"; \
-    else \
-        echo "Prettier not installed"; \
-    fi
-
-# Generate Angular component
-generate-component name:
-    @echo "Generating component: {{name}}"
-    bunx ng generate component {{name}}
-
-# Generate Angular service
-generate-service name:
-    @echo "Generating service: {{name}}"
-    bunx ng generate service {{name}}
-
-# Full deployment workflow
-full-deploy: test build deploy
+full_deploy: test_all angular_build firebase_deploy
     @echo "Full deployment complete!"
 
-# Show help
-help:
-    @echo "Portfolio Commands:"
-    @echo ""
-    @echo "Development:"
-    @echo "  just serve        - Start development server"
-    @echo "  just build        - Build for production"
-    @echo "  just build-dev    - Build for development"
-    @echo "  just test         - Run tests"
-    @echo "  just test-watch   - Run tests in watch mode"
-    @echo "  just preview      - Preview production build locally"
-    @echo ""
-    @echo "Firebase Deployment:"
-    @echo "  just firebase-login    - Login to Firebase"
-    @echo "  just deploy            - Deploy to Firebase Hosting (production)"
-    @echo "  just deploy-force      - Force deploy to Firebase"
-    @echo "  just deploy-preview    - Deploy to preview channel"
-    @echo "  just delete-preview    - Delete preview channel"
-    @echo "  just channels          - List all hosting channels"
-    @echo "  just firebase-console  - Open Firebase Console"
-    @echo "  just full-deploy       - Test, build, and deploy"
-    @echo ""
-    @echo "CV:"
-    @echo "  just cv           - Build CV and copy to public/documents"
-    @echo "  just cv-open      - Open the generated CV PDF"
-    @echo ""
-    @echo "Utilities:"
-    @echo "  just clean        - Clean build artifacts"
-    @echo "  just install      - Install dependencies"
-    @echo "  just update       - Update dependencies"
-    @echo "  just lint         - Lint code"
-    @echo "  just format       - Format code"
-    @echo "  just help         - Show this help"
+# ─── Utilities ─────────────────────────────────────────────────
+
+lint:
+    @echo "Linting Angular code..."
+    cd angular_app && if grep -q '"lint"' package.json; then bun run lint; else echo "No lint script configured"; fi
+
+format:
+    @echo "Formatting Angular code..."
+    cd angular_app && if command -v prettier > /dev/null; then bunx prettier --write "src/**/*.{ts,html,css,scss}"; else echo "Prettier not installed"; fi
+
+# ─── Aliases (shortcuts) ───────────────────────────────────────
+
+serve:
+    @just angular_serve
+
+build:
+    @just angular_build
+
+test:
+    @just angular_test
+
+cv:
+    @just cv_build
+
+cv-open:
+    @just cv_view
+
+deploy:
+    @just firebase_deploy
+
+clean:
+    @just clean_all

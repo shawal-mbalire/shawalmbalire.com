@@ -1,5 +1,5 @@
 # Deploy preview to Firebase Hosting on pull requests
-# Auto-generated and optimized for Angular v21 + Bun
+# Monorepo: Angular app lives in angular_app/
 
 name: Deploy to Firebase Hosting on PR
 
@@ -17,6 +17,9 @@ jobs:
   build_and_preview:
     if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: angular_app
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -40,4 +43,4 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SHAWALMBALIRECOM }}
           projectId: shawalmbalirecom
-          entryPoint: .
+          entryPoint: ./angular_app
