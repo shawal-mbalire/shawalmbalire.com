@@ -20,5 +20,26 @@
     },
     "isFeatured": true,
     "order": 1
+  },
+  {
+    "id": "sha-stack",
+    "title": "SHA-STACK",
+    "description": "A monorepo showcase of my favorite technologies and architectural patterns.",
+    "longDescription": "SHA-STACK (Shawal's Stack) is a modular monorepo designed to showcase my preferred full-stack technologies. It serves as a living blueprint for modern application development, featuring independent modules for web, mobile, and documentation. The project emphasizes clean architecture, type safety, and automated workflows across different frameworks.",
+    "category": "Monorepo / Full-Stack",
+    "status": "Incomplete",
+    "techStack": ["Angular", "TypeScript", "Firebase", "SCSS", "Justfile"],
+    "features": [
+      "Modular Monorepo Structure",
+      "Angular-based Web Frontend",
+      "LaTeX-based Professional Documentation",
+      "Automated CI/CD with GitHub Actions",
+      "Shared Configuration and Task Management (Justfile)"
+    ],
+    "links": {
+      "website": "https://sha-stack.web.app/"
+    },
+    "isFeatured": true,
+    "order": 2
   }
 ]

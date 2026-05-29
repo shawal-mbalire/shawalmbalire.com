@@ -24,6 +24,9 @@ import { Project } from '../core/models/project.model';
             @if (project().category) {
               <span class="project-card__category">{{ project().category }}</span>
             }
+            @if (project().status) {
+              <span class="project-card__status">{{ project().status }}</span>
+            }
             @if (project().startDate || project().endDate) {
               <span class="project-card__dates">
                 {{ project().startDate }}{{ project().startDate && project().endDate ? ' → ' : '' }}{{ project().endDate }}
@@ -140,6 +143,17 @@ import { Project } from '../core/models/project.model';
       padding: 0.2rem 0.6rem;
       border-radius: 9999px;
       border: 1px solid var(--secondaryColor);
+    }
+
+    .project-card__status {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--backgroundColor);
+      background: var(--dim-gray);
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      text-transform: uppercase;
     }
 
     .project-card__dates {
@@ -262,9 +276,14 @@ export class ProjectEntryComponent {
     <div class="project-dialog">
       <h2 mat-dialog-title class="dialog-title">{{ data.title }}</h2>
       <mat-dialog-content class="dialog-content">
-        @if (data.category) {
-          <span class="category-badge">{{ data.category }}</span>
-        }
+        <div class="dialog-meta">
+          @if (data.category) {
+            <span class="category-badge">{{ data.category }}</span>
+          }
+          @if (data.status) {
+            <span class="status-badge">{{ data.status }}</span>
+          }
+        </div>
         @if (data.startDate || data.endDate) {
           <p class="dates">
             <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
@@ -343,6 +362,13 @@ export class ProjectEntryComponent {
       gap: 1rem;
     }
 
+    .dialog-meta {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
     .category-badge {
       display: inline-block;
       font-size: 0.8rem;
@@ -352,7 +378,17 @@ export class ProjectEntryComponent {
       padding: 0.25rem 0.75rem;
       border-radius: 9999px;
       border: 1px solid var(--secondaryColor);
-      align-self: flex-start;
+    }
+
+    .status-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--backgroundColor);
+      background: var(--dim-gray);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      text-transform: uppercase;
     }
 
     .dates {

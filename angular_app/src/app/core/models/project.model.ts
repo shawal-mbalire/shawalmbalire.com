@@ -20,6 +20,7 @@ export interface Project {
   };
   startDate?: string;
   endDate?: string;
+  status?: string;
   isFeatured?: boolean;
   order?: number;
 }
