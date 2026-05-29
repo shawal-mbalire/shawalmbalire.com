@@ -1,8 +1,8 @@
 # Shawal Mbalire — Portfolio Monorepo
 
 Monorepo containing:
-- **`angular_app/`** — Angular 21 SPA portfolio site (Firebase Hosting)
-- **`latex_app/`** — LaTeX CV / Resume (Awesome-CV)
+- **`frontend/`** — Angular 21 SPA portfolio site (Firebase Hosting)
+- **`latex/`** — LaTeX CV / Resume (Awesome-CV)
 
 ## Prerequisites
 
@@ -27,13 +27,13 @@ just deploy        # build + deploy to Firebase Hosting
 
 ```
 .
-├── angular_app/          # Angular portfolio SPA
+├── frontend/             # Angular portfolio SPA
 │   ├── src/
 │   ├── public/
 │   ├── firebase.json
 │   ├── package.json
-│   └── justfile          # Angular-specific commands
-├── latex_app/            # LaTeX CV & Resume
+│   └── justfile          # Frontend-specific commands
+├── latex/                # LaTeX CV & Resume
 │   ├── main.tex
 │   ├── resume.tex
 │   ├── awesome-cv.cls
@@ -53,10 +53,10 @@ just deploy        # build + deploy to Firebase Hosting
 
 ## Angular App
 
-See [`angular_app/README.md`](angular_app/README.md) for details.
+See [`frontend/README.md`](frontend/README.md) for details.
 
 ```bash
-cd angular_app
+cd frontend
 bun install
 just serve       # dev server
 just build       # production build
@@ -66,14 +66,14 @@ just test        # tests
 ## LaTeX CV
 
 ```bash
-cd latex_app
+cd latex
 make             # or: xelatex main.tex (run twice)
 open ShawalMbalireCV.pdf
 ```
 
 ## Environment Variables
 
-Copy `.env.example` → `.env` in `angular_app/`:
+Copy `.env.example` → `.env` in `frontend/`:
 
 | Variable | Description |
 |----------|-------------|

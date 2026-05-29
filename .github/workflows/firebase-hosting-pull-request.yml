@@ -1,5 +1,5 @@
 # Deploy preview to Firebase Hosting on pull requests
-# Monorepo: Angular app lives in angular_app/
+# Monorepo: Frontend app lives in frontend/
 
 name: Deploy to Firebase Hosting on PR
 
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: angular_app
+        working-directory: frontend
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -43,4 +43,4 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SHAWALMBALIRECOM }}
           projectId: shawalmbalirecom
-          entryPoint: ./angular_app
+          entryPoint: ./frontend

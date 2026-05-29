@@ -31,30 +31,30 @@ yarn.lock
 .env.local
 .env.*.local
 
-# ─── Angular app ───────────────────────────────────────────────
-angular_app/dist/
-angular_app/out-tsc/
-angular_app/tmp/
-angular_app/coverage/
-angular_app/.angular/
-angular_app/public/app-config.json
+# ─── Frontend app ──────────────────────────────────────────────
+frontend/dist/
+frontend/out-tsc/
+frontend/tmp/
+frontend/coverage/
+frontend/.angular/
+frontend/public/app-config.json
 
 # ─── LaTeX app ─────────────────────────────────────────────────
-latex_app/*.aux
-latex_app/*.log
-latex_app/*.out
-latex_app/*.toc
-latex_app/*.blg
-latex_app/*.bbl
-latex_app/*.fls
-latex_app/*.fdb_latexmk
-latex_app/*.synctex.gz
-latex_app/*.lof
-latex_app/*.lot
-latex_app/*.pdf
+latex/*.aux
+latex/*.log
+latex/*.out
+latex/*.toc
+latex/*.blg
+latex/*.bbl
+latex/*.fls
+latex/*.fdb_latexmk
+latex/*.synctex.gz
+latex/*.lof
+latex/*.lot
+latex/*.pdf
 
 # ─── Generated documents ───────────────────────────────────────
-angular_app/public/documents/*.pdf
+frontend/public/documents/*.pdf
 
 # ─── Build artifacts ───────────────────────────────────────────
 *.tsbuildinfo
