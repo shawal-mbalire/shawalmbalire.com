@@ -26,13 +26,15 @@ jobs:
           compiler: xelatex
           args: "-interaction=nonstopmode -halt-on-error -file-line-error -jobname=ShawalMbalireCV"
 
-      - name: Copy CV to Angular public directory
+      - name: Locate and Copy CV
         run: |
           mkdir -p angular_app/public/documents
-          if [ -f ShawalMbalireCV.pdf ]; then
-            cp ShawalMbalireCV.pdf angular_app/public/documents/MbalireShawalCV.pdf
+          PDF_PATH=$(find . -name "ShawalMbalireCV.pdf" | head -n 1)
+          if [ -n "$PDF_PATH" ]; then
+            cp "$PDF_PATH" angular_app/public/documents/MbalireShawalCV.pdf
           else
-            cp latex_app/ShawalMbalireCV.pdf angular_app/public/documents/MbalireShawalCV.pdf
+            echo "Error: ShawalMbalireCV.pdf not found!"
+            exit 1
           fi
 
       - name: Setup Bun

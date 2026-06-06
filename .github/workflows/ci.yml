@@ -45,15 +45,18 @@ jobs:
           compiler: xelatex
           args: "-interaction=nonstopmode -halt-on-error -file-line-error -jobname=ShawalMbalireCV"
 
-      - name: Copy CV to Angular public directory
+      - name: Locate and Copy CV
         run: |
           mkdir -p angular_app/public/documents
-          # latex-action with working_directory often puts the PDF in the root, 
-          # but we'll check both root and latex_app just in case.
-          if [ -f ShawalMbalireCV.pdf ]; then
-            cp ShawalMbalireCV.pdf angular_app/public/documents/MbalireShawalCV.pdf
+          echo "Searching for ShawalMbalireCV.pdf..."
+          ls -R
+          PDF_PATH=$(find . -name "ShawalMbalireCV.pdf" | head -n 1)
+          if [ -n "$PDF_PATH" ]; then
+            echo "Found PDF at: $PDF_PATH"
+            cp "$PDF_PATH" angular_app/public/documents/MbalireShawalCV.pdf
           else
-            cp latex_app/ShawalMbalireCV.pdf angular_app/public/documents/MbalireShawalCV.pdf
+            echo "Error: ShawalMbalireCV.pdf not found anywhere!"
+            exit 1
           fi
 
       - name: Setup Bun
