@@ -25,10 +25,18 @@ jobs:
         with:
           root_file: main.tex
           working_directory: latex_app
-          args: "-xelatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=ShawalMbalireCV"
+          compiler: xelatex
+          args: "-interaction=nonstopmode -halt-on-error -file-line-error -jobname=ShawalMbalireCV"
+
+      - name: Upload CV artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cv-pdf
+          path: latex_app/ShawalMbalireCV.pdf
 
   angular_build:
     name: Angular Build & Test
+    needs: latex_build
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -37,27 +45,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v3
+      - name: Download CV artifact
+        uses: actions/download-artifact@v4
         with:
-          root_file: main.tex
-          working_directory: latex_app
-          compiler: xelatex
-          args: "-interaction=nonstopmode -halt-on-error -file-line-error -jobname=ShawalMbalireCV"
+          name: cv-pdf
+          path: angular_app/public/documents/
 
-      - name: Locate and Copy CV
+      - name: Rename PDF
         run: |
-          mkdir -p angular_app/public/documents
-          echo "Searching for ShawalMbalireCV.pdf..."
-          ls -R
-          PDF_PATH=$(find . -name "ShawalMbalireCV.pdf" | head -n 1)
-          if [ -n "$PDF_PATH" ]; then
-            echo "Found PDF at: $PDF_PATH"
-            cp "$PDF_PATH" angular_app/public/documents/MbalireShawalCV.pdf
-          else
-            echo "Error: ShawalMbalireCV.pdf not found anywhere!"
-            exit 1
-          fi
+          mv public/documents/ShawalMbalireCV.pdf public/documents/MbalireShawalCV.pdf
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2

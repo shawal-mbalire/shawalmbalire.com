@@ -14,12 +14,10 @@ permissions:
   pull-requests: write
 
 jobs:
-  build_and_preview:
+  build_cv:
     if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+    name: Build CV
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: angular_app
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -32,16 +30,33 @@ jobs:
           compiler: xelatex
           args: "-interaction=nonstopmode -halt-on-error -file-line-error -jobname=ShawalMbalireCV"
 
-      - name: Locate and Copy CV
+      - name: Upload CV artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cv-pdf
+          path: latex_app/ShawalMbalireCV.pdf
+
+  build_and_preview:
+    if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+    name: Build and Preview Angular
+    needs: build_cv
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: angular_app
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download CV artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: cv-pdf
+          path: angular_app/public/documents/
+
+      - name: Rename PDF
         run: |
-          mkdir -p angular_app/public/documents
-          PDF_PATH=$(find . -name "ShawalMbalireCV.pdf" | head -n 1)
-          if [ -n "$PDF_PATH" ]; then
-            cp "$PDF_PATH" angular_app/public/documents/MbalireShawalCV.pdf
-          else
-            echo "Error: ShawalMbalireCV.pdf not found!"
-            exit 1
-          fi
+          mv public/documents/ShawalMbalireCV.pdf public/documents/MbalireShawalCV.pdf
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
