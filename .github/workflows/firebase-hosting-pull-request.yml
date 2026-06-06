@@ -14,8 +14,32 @@ permissions:
   pull-requests: write
 
 jobs:
+  build_cv:
+    if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+    name: Build CV
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          working_directory: latex_app
+          compiler: xelatex
+          args: "-interaction=nonstopmode -halt-on-error -file-line-error -jobname=ShawalMbalireCV"
+
+      - name: Upload CV artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cv-pdf
+          path: latex_app/ShawalMbalireCV.pdf
+
   build_and_preview:
     if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+    name: Build and Preview Angular
+    needs: build_cv
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -23,6 +47,16 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Download CV artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: cv-pdf
+          path: angular_app/public/documents/
+
+      - name: Rename PDF
+        run: |
+          mv public/documents/ShawalMbalireCV.pdf public/documents/MbalireShawalCV.pdf
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
