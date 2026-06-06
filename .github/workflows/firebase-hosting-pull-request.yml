@@ -27,14 +27,14 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: main.tex
-          working_directory: latex_app
-          args: "-xelatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=ShawalMbalireCV"
+          root_file: latex_app/main.tex
+          compiler: xelatex
+          args: "-interaction=nonstopmode -halt-on-error -file-line-error -jobname=ShawalMbalireCV"
 
       - name: Copy CV to Angular public directory
         run: |
           mkdir -p angular_app/public/documents
-          cp latex_app/ShawalMbalireCV.pdf angular_app/public/documents/MbalireShawalCV.pdf
+          cp ShawalMbalireCV.pdf angular_app/public/documents/MbalireShawalCV.pdf
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
